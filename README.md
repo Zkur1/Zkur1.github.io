@@ -1,5 +1,4 @@
-# VEFÞ1VG-X-2018H
-(Sniðmát fyrir verkefnageymslu og verkefnalýsingar nemenda VEFÞ1) <!--ATH! texta -->
+# VEFÞ1VG-H2-2018H
 
 ### Verkefni
 
