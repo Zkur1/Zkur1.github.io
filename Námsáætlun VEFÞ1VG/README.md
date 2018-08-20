@@ -1,7 +1,6 @@
 # VEFÞ1VG-H2-2018H
 
 ### Verkefnaskil miðast við upphaf næsta verkefnis.
-
 * Verkefnaskil 1 - HTML & CSS. Vika 36. 02/09/2018
 * Verkefnaskil 2 - Box módelið. Vika 37. 16/09/2018
 * Verkefnaskil 3 - Skipulag. Vika 40. 30/09/2018
