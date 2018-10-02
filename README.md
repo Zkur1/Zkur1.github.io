@@ -2,8 +2,8 @@
 
 ### Verkefni
 
-* [Verkefnalýsing 1 - HTML & CSS](Verkefni-1/README.md)
-* [Verkefnalýsing 2 - Box módelið](Verkefni-2/README.md)
+* [Verkefnalýsing 1 - HTML & CSS](Verkefni-1/Verkefni-1/)
+* [Verkefnalýsing 2 - Box módelið](Verkefni-2/)
 * [Verkefnalýsing 3 - Skipulag](Verkefni-3/README.md)
 * [Verkefnalýsing 4 - Uppsetning](Verkefni-4/README.md)
 * [Verkefnalýsing 5 - Myndvinnsla](Verkefni-5/README.md)
