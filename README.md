@@ -2,15 +2,9 @@
 
 ### Verkefni
 
-* [Verkefnalýsing 1 - HTML & CSS](Verkefni-1/Verkefni-1/)
-* [Verkefnalýsing 2 - Box módelið](Verkefni-2/)
-* [Verkefnalýsing 3 - Skipulag](Verkefni-3/)
-* [Verkefnalýsing 4 - Uppsetning](Verkefni-4/README.md)
-* [Verkefnalýsing 5 - Myndvinnsla](Verkefni-5/README.md)
-* [Verkefnalýsing 6 - Sveigjanleg vefhönnun](Verkefni-6/README.md) 
-
-Öll verkefni sem lögð eru fyrir í áfanganum VEFÞ1VG **á að skila hér** í geymsluna (_Repository_) í viðeigandi verkefnamöppu. 
-
-Yfirferð verkefna miðast við stöðu verkefna á skiladegi. Ef unnið er í verkefnum eftir skiladag þá þarf að útskýra ástæður þess í kommentakerfinu. **Ekki** er farið yfir verkefni sem skilað er í INNU. 
-
-**Skilafrestur** á verkefnum kemur fram í [námsáætlun](https://github.com/vefgrunnur/VEF1VG-H2-2018H/tree/master/N%C3%A1ms%C3%A1%C3%A6tlun%20VEF%C3%9E1VG) og Innu. 
+* [Verkefni 1 - HTML & CSS](Verkefni-1/)
+* [Verkefni 2 - Box módelið](Verkefni-2/)
+* [Verkefni 3 - Skipulag](Verkefni-3/Verkefni - 3.2/)
+* [Verkefni 4 - Uppsetning](Verkefni-4/README.md)
+* [Verkefni 5 - Myndvinnsla](Verkefni-5/README.md)
+* [Verkefni 6 - Sveigjanleg vefhönnun](Verkefni-6/README.md) 
