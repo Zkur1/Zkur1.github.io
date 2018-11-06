@@ -2,8 +2,7 @@
 
 ### Verkefni
 
-### ATH: Verkefni 3 kom ekki rétt hingað inn síðast og fékk ég því lægri einkun
-###      Hún er nú komin inn
+### ATH: Verkefni 3 kom ekki rétt hingað inn síðast og fékk ég því lægri einkun, hún er nú komin inn.
 
 * [Verkefni 1 - HTML & CSS](Verkefni-1/)
 * [Verkefni 2 - Box módelið](Verkefni-2/)
