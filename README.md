@@ -2,9 +2,12 @@
 
 ### Verkefni
 
+### ATH: Verkefni 3 kom ekki rétt hingað inn síðast og fékk ég því lægri einkun
+###      Hún er nú komin inn
+
 * [Verkefni 1 - HTML & CSS](Verkefni-1/)
 * [Verkefni 2 - Box módelið](Verkefni-2/)
 * [Verkefni 3 - Skipulag](Verkefni-3/Verkefni - 3.2/)
-* [Verkefni 4 - Uppsetning](Verkefni-4/README.md)
-* [Verkefni 5 - Myndvinnsla](Verkefni-5/README.md)
-* [Verkefni 6 - Sveigjanleg vefhönnun](Verkefni-6/README.md) 
+* [Verkefni 4 - Uppsetning](Verkefni-4/)
+* [Verkefni 5 - Myndvinnsla](Verkefni-5/)
+* [Verkefni 6 - Sveigjanleg vefhönnun]() 
