@@ -24,7 +24,7 @@
 
 .tool_section{
     display: flex;
-    background: lightgrey;
+    background: grey;
     color: white;
     align-items: center;
     justify-content: left;
@@ -42,15 +42,6 @@
     padding-left: 5%;
 }
 
-div a{
-    text-decoration: none;
-    color: black;
-}
-
-.main > div:hover, .main > div:active{
-    color: black;
-    background: #BFC0C0;
-}
 
 .navigation{
     display: grid;
