@@ -8,6 +8,8 @@
         <link rel="stylesheet" type="text/css" href="langijon-style.css">
         <link rel="stylesheet" type="text/css" href="normalize.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="langijon_scripts.js"></script>
     </head>
     
     <body>
@@ -15,19 +17,29 @@
             <div class="header">
                     <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
-
+            
+            <div class="tool_description">
+                <div>
+                <h1>Langi Jón  :: FR-001</h1>
+                <p id="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci incidunt molestiae porro odit illum modi fugit? Nemo, commodi. Atque natus reprehenderit architecto laborum ipsam cumque, facere veniam non possimus error.</p>
+                </div>
+                <img class="tool_logo" src="../../myndir/longneck.jpg">
+            </div>
+            <div>
+                <button class="button_history" id="button_history" onclick="changeHeader()">Saga Verkfæris</button>
+            </div>
             <div class="navigation">
                 <div>
-                    <a href="index.html">Verkfæri</a>
+                    <a href="../index.html">Verkfæri</a>
                 </div>
                 <div>
-                    <a href="bifreiðir/bifreiðir.html">Bifreiðir</a>
+                    <a href="../bifreiðir/bifreiðir.html">Bifreiðir</a>
                 </div>
                 <div>
-                    <a href="vinnusvæði/vinnusvaedi.html">Vinnusvæði</a>
+                    <a href="../vinnusvæði/vinnusvaedi.html">Vinnusvæði</a>
                 </div>
                 <div>
-                    Starfsmenn
+                    <a href="../starfsmenn/starfsmenn.html">Starfsmenn</a>
                 </div>
                 <div>
                     Stillingar
@@ -38,5 +50,22 @@
                 
             </div>
         </div>
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAQCv7N_Ca0My8g85_GnTFO632qn8UmnBc",
+            authDomain: "fagraf-2019.firebaseapp.com",
+            databaseURL: "https://fagraf-2019.firebaseio.com",
+            projectId: "fagraf-2019",
+            storageBucket: "fagraf-2019.appspot.com",
+            messagingSenderId: "1072889478071",
+            appId: "1:1072889478071:web:a8c6b621894abdab"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        </script>
     </body>
 </html>
