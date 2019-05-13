@@ -23,20 +23,6 @@
     margin-top: 0.2em;
 }
 
-.tooll_section{
-    display: flex;
-    background: lightgrey;
-    color: white;
-    align-items: center;
-    justify-content: left;
-    font-size: 18pt;
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 1%;
-}
 .tool_section{
     display: grid;
     max-width: 100%;
@@ -70,13 +56,30 @@ div a{
 }
 
 .navigation{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1px;
     font-family: 'Montserrat', sans-serif;
-    bottom: 2%;
+    background:#333;
+    text-align: center;
     position: fixed;
-    width: fill;
+    bottom: 1em;
+    width: 100%;
+    max-width: 48em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navigation ul{
+    padding: 0;
+    margin: 0;
+}
+
+.navigation ul > li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px 20px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    padding: 1.8em 2em;
 }
 
 .navigation a{
@@ -84,14 +87,7 @@ div a{
     text-decoration: none;
 }
 
-.navigation > div{
-    background: #333;
-    color: white;
-    padding: 1.84em;
-    text-align: center;
-}
-
-.navigation > div:hover, .navigation > div:active{
+.navigation ul > li:hover, .navigation > li:active{
     color: black;
     background: #BFC0C0;
 }

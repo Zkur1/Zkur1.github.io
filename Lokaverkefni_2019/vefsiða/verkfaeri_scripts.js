@@ -51,6 +51,7 @@ function renderToolList(doc){
     }
 }
 
+
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'index.html'){
@@ -63,6 +64,7 @@ function testForPage(){
     })
 }
 }
+console.log(counter)
 testForPage();
 
 
