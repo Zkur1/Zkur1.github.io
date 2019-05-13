@@ -5,9 +5,8 @@
         <meta name="description" content="Fagraf App">
         <meta name="author" content="Askur Hugi">
         <title>FagrafAPP</title>
-        <link rel="stylesheet" type="text/css" href="langijon-style.css">
-        <link rel="stylesheet" type="text/css" href="../normalize.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="staff_default-style.css">
+        <link rel="stylesheet" type="text/css" href="../../normalize.css">
         <link rel="icon" href="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png">
     </head>
     
@@ -17,28 +16,25 @@
                     <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
             
-            <div class="tool_description">
-                <div>
-                    <h1 id="username_serialnr">Langi Jón  :: FR-001</h1>
+            <div class="user_description" id="user_description">
+                <div id="description" class="description">
                     <p id="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci incidunt molestiae porro odit illum modi fugit? Nemo, commodi. Atque natus reprehenderit architecto laborum ipsam cumque, facere veniam non possimus error.</p>
                 </div>
-                <img class="tool_logo" src="../../myndir/longneck.jpg">
+                <img class="user_logo" src="../../../myndir/longneck.jpg">
             </div>
-            <div>
-                <button class="button_history" id="button_history" onclick="changeHeader()">Saga Verkfæris</button>
-            </div>
+
             <div class="navigation">
                 <div>
-                    <a href="../index.html">Verkfæri</a>
+                    <a href="../../index.html">Verkfæri</a>
                 </div>
                 <div>
-                    <a href="../bifreiðir/bifreiðir.html">Bifreiðir</a>
+                    <a href="../../bifreiðir/bifreiðir.html">Bifreiðir</a>
                 </div>
                 <div>
-                    <a href="../vinnusvæði/vinnusvaedi.html">Vinnusvæði</a>
+                    <a href="../../vinnusvæði/vinnusvaedi.html">Vinnusvæði</a>
                 </div>
                 <div>
-                    <a href="../starfsmenn/starfsmenn.html">Starfsmenn</a>
+                    <a href="../../starfsmenn/starfsmenn.html">Starfsmenn</a>
                 </div>
                 <div>
                     Stillingar
@@ -50,7 +46,8 @@
             </div>
         </div>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-        <script src="../starfsmenn/starfsmenn_scripts.js"></script>
-        <script src="langijon_scripts.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+        <script src="../starfsmenn_scripts.js"></script>
+        <script src="staff_default_scripts.js"></script>
     </body>
 </html>

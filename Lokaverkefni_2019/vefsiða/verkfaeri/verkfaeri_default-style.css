@@ -28,6 +28,7 @@
 
 .tool_description h1{
     flex-direction: column;
+    width: auto;
 }
 
 .tool_logo{

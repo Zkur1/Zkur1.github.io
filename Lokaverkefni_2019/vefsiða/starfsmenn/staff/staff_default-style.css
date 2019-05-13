@@ -21,16 +21,17 @@
     padding: 1em;
 }
 
-.tool_description{
+.user_description{
     display: flex;
 
 }
 
-.tool_description h1{
+.user_description h1{
     flex-direction: column;
+    width: auto;
 }
 
-.tool_logo{
+.user_logo{
     width: 300px;
     height: 300px;
     float: right;

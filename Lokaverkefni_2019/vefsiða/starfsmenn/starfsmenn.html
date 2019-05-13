@@ -6,36 +6,21 @@
         <meta name="author" content="Askur Hugi">
         <title>FagrafAPP</title>
         <link rel="stylesheet" type="text/css" href="starfsmenn-style.css">
-        <link rel="stylesheet" type="text/css" href="normalize.css">
+        <link rel="stylesheet" type="text/css" href="../normalize.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
-        <script src="starfsmenn_scripts.js"></script>
+        <link rel="icon" href="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png">
     </head>
     
-    <body>
+    <body id="starfsmenn">
         <div class="container">
             <div class="header">
                 <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
 
             <div class="main">
-                <div class="staff_section">
-                    <div>
-                        <img class="staff_img" src="../../myndir/longneck.jpg" id="staff_img" onclick="goToStaff()">
-                        <p>Reynir Páll</p>
-                    </div>
-                    <div>
-                        <img class="staff_img" src="../../myndir/longneck.jpg">
-                        <p>Reynir Páll</p>
-                    </div>
-                    <div>
-                        <img class="staff_img" src="../../myndir/longneck.jpg">
-                        <p>Reynir Páll</p>
-                    </div>
-                    <div>
-                        <img class="staff_img" src="../../myndir/longneck.jpg">
-                        <p>Reynir Páll</p>
-                    </div>
-                </div>
+                <ul class="staff_section" id="user_list">
+                    
+                </ul>
             </div>
 
             <div class="navigation">
@@ -55,30 +40,9 @@
                     Stillingar
                 </div>
             </div>
-
-            <div class="main">
-                
-            </div>
         </div>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#config-web-app -->
-
-        <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAQCv7N_Ca0My8g85_GnTFO632qn8UmnBc",
-            authDomain: "fagraf-2019.firebaseapp.com",
-            databaseURL: "https://fagraf-2019.firebaseio.com",
-            projectId: "fagraf-2019",
-            storageBucket: "fagraf-2019.appspot.com",
-            messagingSenderId: "1072889478071",
-            appId: "1:1072889478071:web:a8c6b621894abdab"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        </script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+        <script src="starfsmenn_scripts.js"></script>
     </body>
 </html>

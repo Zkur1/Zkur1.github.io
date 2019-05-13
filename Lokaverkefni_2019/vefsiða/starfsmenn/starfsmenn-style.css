@@ -28,11 +28,23 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2em;
     font-family: 'Montserrat', sans-serif;
-    
+    padding: 0;
 }
 
-.staff_section p{
-    padding-left: 8.5em;
+.staff_section ul{
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    list-style-type: none;
+}
+
+.staff_section li{
+    list-style-type: none;
+    padding: 1em;
+    font-size: 16pt;
+    background: lightgray;
+    color: black;
 }
 
 .staff_img{
@@ -48,7 +60,7 @@ div a{
     color: black;
 }
 
-.staff_section > div:hover, .staff_section > div:active{
+.staff_section > li:hover, .staff_section > li:active{
     color: black;
     background: #BFC0C0;
 }
@@ -60,7 +72,7 @@ div a{
     font-family: 'Montserrat', sans-serif;
     bottom: 2%;
     position: fixed;
-    width: fill;
+    width: auto;
 }
 
 .navigation a{

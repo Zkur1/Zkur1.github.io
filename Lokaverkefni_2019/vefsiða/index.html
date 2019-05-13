@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="index-style.css">
         <link rel="stylesheet" type="text/css" href="normalize.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
+        <link rel="icon" href="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png">
     </head>
     
     <body>
@@ -17,30 +18,9 @@
             </div>
 
             <div class="main">
-                <div class="tool_section">
-                    <a href="langijon/langijon.html">Langi Jón :: FR-001</a>
-                    <img class="red_dot" src="../myndir/paintgreen.png" alt="red_dot">
-                </div>
-                <div class="tool_section">
-                    <a href="langijon/langijon.html">Bróðir feita Jóns :: FR-002</a>
-                    <img class="green_dot" src="../myndir/paintred.png" alt="green_dot">
-                </div>
-                <div class="tool_section">
-                    <a href="langijon/langijon.html">Feiti Jón :: FR-003</a>
-                    <img class="red_dot" src="../myndir/paintgreen.png" alt="red_dot">
-                </div>
-                <div class="tool_section">
-                    <a href="langijon/langijon.html">Borvél :: FR-004</a>
-                    <img class="red_dot" src="../myndir/paintgreen.png" alt="red_dot">
-                </div>
-                <div class="tool_section">
-                    <a href="langijon/langijon.html">Stigi :: FR-005</a>
-                    <img class="red_dot" src="../myndir/paintgreen.png" alt="red_dot">
-                </div>
-                <div class="tool_section">
-                    <a href="langijon/langijon.html">Kútur :: FR-006</a>
-                    <img class="red_dot" src="../myndir/paintgreen.png" alt="red_dot">
-                </div>
+                <ul class="tool_section" id="tool_list">
+                </ul>
+              
             </div>
 
             <div class="navigation">
@@ -65,25 +45,8 @@
                 
             </div>
         </div>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#config-web-app -->
-
-        <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAQCv7N_Ca0My8g85_GnTFO632qn8UmnBc",
-            authDomain: "fagraf-2019.firebaseapp.com",
-            databaseURL: "https://fagraf-2019.firebaseio.com",
-            projectId: "fagraf-2019",
-            storageBucket: "fagraf-2019.appspot.com",
-            messagingSenderId: "1072889478071",
-            appId: "1:1072889478071:web:a8c6b621894abdab"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        </script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+        <script src="verkfaeri_scripts.js"></script>
     </body>
 </html>
