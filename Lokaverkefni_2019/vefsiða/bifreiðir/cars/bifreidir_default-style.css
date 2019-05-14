@@ -38,6 +38,37 @@
     margin-top: 1em;
 }
 
+.in_stock{
+    padding-top: 5em;
+}
+
+.staff_nr{
+    display: flex;
+    flex-direction: row;
+    padding: 1em 1em 2em 0;
+}
+
+.user_name_in{
+    margin-left: 1em;
+} 
+
+.save_button{
+    position: relative;
+    left: 0%;
+    padding: 1em 2em;
+    font-size: 10pt;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; 
+    color: white;
+    background:#14489f;
+}
+
+.save_button:hover, .save_button:active{
+    color: white;
+    background:#333;
+
+}
+
 .button_history{
     position: relative;
     left: 70%;

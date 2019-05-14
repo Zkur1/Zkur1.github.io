@@ -8,6 +8,7 @@
     padding: 1em;
     margin-right: auto;
     margin-left: auto;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .header{
@@ -22,13 +23,46 @@
     padding: 1em;
 }
 
+.add_remove{
+    display: flex;
+    flex-direction: row;
+}
+
+.add_remove .add{
+    padding: 1em 2em;
+    width: 25%;
+    margin: 2% 50% 0% 0;
+}
+
+.add_remove .remove{
+    padding: 1em 2em;
+    width: 25%;
+    margin: 2% 0 0% 0%;
+}
+
+.searchbar{
+    width: 100%;
+    margin: 1em 0 0 0;
+}
+
+.searchbar input{
+    width: 100%;
+    font-size: 16pt;
+}
+
 .main{
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
     position: absolute;
     max-width: 48em;
     width: 100%;
-    height: 76%;
+    height: 70%;
+}
+
+.main::-webkit-scrollbar{
+    display: none;
 }
 
 .car_section{

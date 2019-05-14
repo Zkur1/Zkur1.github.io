@@ -50,9 +50,28 @@ function renderUserList(doc){
         window.open("staff/staff_default.html", "_self");
         
     }
-    
     // Enables scrolling inside of a spescific div.
     document.addEventListener("touchstart", function(){}, true)
+}
+
+// Displays list items as the user types in a dropdown fashion.
+function searchDropdown() {
+    // Creates variable to be used in the searchloop.
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("search_bar");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("user_list");
+    li = ul.getElementsByTagName("li");
+    // Loops through all items in list and hides those who don't match the search query.
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("span")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
 }
 
 
