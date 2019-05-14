@@ -54,16 +54,16 @@ function renderToolList(doc){
 
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
-    if(sPage.trim() === 'index.html'){
+    //if(sPage.trim() === 'index.html'){
         // Gets a snapshot of first 10 documents inside the collection 'Tools' and renders new li element for each snapshot.
-        firestore.collection('Tools').get().then((snapshot) => {
-        snapshot.docs.slice(-10).forEach(doc => {
-            renderToolList(doc);
-            counter += 1;
-        })
-    })
-}
-}
+        //firestore.collection('Tools').get().then((snapshot) => {
+        //snapshot.docs.slice(-10).forEach(doc => {
+            //renderToolList(doc);
+            //unter += 1;
+        //
+    //
+//
+//
 console.log(counter)
 testForPage();
 
