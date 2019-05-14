@@ -22,56 +22,30 @@
     padding: 1em;
 }
 
-.main{
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    position: absolute;
-    max-width: 48em;
-    width: 100%;
-    height: 76%;
+.settings{
+    display: flex;
+    flex-direction: column;
+    padding: 5em 1em;
 }
 
-.staff_section{
-    display: grid;
-    max-width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2em;
-    font-family: 'Montserrat', sans-serif;
-    padding: 0;
+.settings span{
+    font-size: 18pt;
+    margin-right: 3em;
 }
 
-.staff_section ul{
-    text-align: center;
-    align-content: center;
-    align-items: center;
-    align-self: center;
-    list-style-type: none;
-}
-
-.staff_section li{
-    list-style-type: none;
-    padding: 1em;
-    font-size: 16pt;
-    background: lightgray;
-    color: black;
-}
-
-.staff_img{
-    max-width: 80%; 
-    height: auto;
-    padding: 5%;
-    margin-left: 2em;
+.settings div{
+    padding: 2em 0 2em 0;
     
 }
 
-div a{
-    text-decoration: none;
-    color: black;
+.staff_nr{
+    display: flex;
+    flex-direction: row;
+    
 }
 
-.staff_section > li:hover, .staff_section > li:active{
-    color: black;
-    background: #BFC0C0;
+.user_name_in{
+    justify-content: center;
 }
 
 .navigation{

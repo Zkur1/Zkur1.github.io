@@ -31,7 +31,6 @@ function readToolData(){
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'verkfaeri_default.html'){
-        console.log(tool_selector);
         readToolData();
         }
 }

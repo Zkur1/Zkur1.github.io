@@ -31,7 +31,7 @@
     height: 76%;
 }
 
-.staff_section{
+.car_section{
     display: grid;
     max-width: 100%;
     grid-template-columns: repeat(2, 1fr);
@@ -40,7 +40,7 @@
     padding: 0;
 }
 
-.staff_section ul{
+.car_section ul{
     text-align: center;
     align-content: center;
     align-items: center;
@@ -48,7 +48,7 @@
     list-style-type: none;
 }
 
-.staff_section li{
+.car_section li{
     list-style-type: none;
     padding: 1em;
     font-size: 16pt;
@@ -56,12 +56,11 @@
     color: black;
 }
 
-.staff_img{
+.car_img{
     max-width: 80%; 
     height: auto;
     padding: 5%;
     margin-left: 2em;
-    
 }
 
 div a{
@@ -69,11 +68,10 @@ div a{
     color: black;
 }
 
-.staff_section > li:hover, .staff_section > li:active{
+.car_section > li:hover, .car_section > li:active{
     color: black;
     background: #BFC0C0;
 }
-
 .navigation{
     font-family: 'Montserrat', sans-serif;
     background:#333;

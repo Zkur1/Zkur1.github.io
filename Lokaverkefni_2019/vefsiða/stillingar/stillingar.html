@@ -5,22 +5,37 @@
         <meta name="description" content="Fagraf App">
         <meta name="author" content="Askur Hugi">
         <title>FagrafAPP</title>
-        <link rel="stylesheet" type="text/css" href="starfsmenn-style.css">
+        <link rel="stylesheet" type="text/css" href="stillingar-style.css">
         <link rel="stylesheet" type="text/css" href="../normalize.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
         <link rel="icon" href="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png">
     </head>
     
-    <body id="starfsmenn">
+    <body>
         <div class="container">
             <div class="header">
                 <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
 
             <div class="main">
-                <ul class="staff_section" id="user_list">
-                    
-                </ul>
+                <div class="settings">
+                    <div class="staff_nr">
+                        <span>Starfsmannanúmer (FR:xxx):</span>
+                        <input type="textfield" class="user_name_in">
+                        <button id="save_button"> Vista </button>
+                    </div>
+                    <div class="staff_nr">
+                        <span>Bílnúmer (xx-xxx):</span>
+                        <input type="textfield" class="user_name_in">
+                        <button id="save_button"> Vista </button>
+                    </div>
+                    <div class="staff_nr">
+                        <span>Verknúmer (FR-xxx):</span>
+                        <input type="textfield" class="user_name_in">
+                        <button id="save_button"> Vista </button>
+                    </div>
+                </div>
+              
             </div>
 
             <div class="navigation">
@@ -32,16 +47,16 @@
                         <a href="../bifreiðir/bifreidir.html">Bifreiðir</a>
                     </li>
                     <li>
-                        <a href="starfsmenn.html">Starfsmenn</a>
+                        <a href="../starfsmenn/starfsmenn.html">Starfsmenn</a>
                     </li>
                     <li>
-                        <a href="../stillingar/stillingar.html">Stillingar</a>
+                        <a href="stillingar.html">Stillingar</a>
                     </li>
                 </ul>
             </div>
         </div>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-        <script src="starfsmenn_scripts.js"></script>
+        <script src="stillingar_scripts.js"></script>
     </body>
 </html>
