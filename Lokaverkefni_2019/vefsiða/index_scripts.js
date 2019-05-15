@@ -77,7 +77,8 @@ function testForPage(){
     if(sPage.trim() === 'index.html'){
         // Gets a snapshot of first 10 documents inside the collection 'Tools' and renders new li element for each snapshot.
         firestore.collection('Tools').get().then((snapshot) => {
-        snapshot.docs.slice(-10).forEach(doc => {
+        //snapshot.docs.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements.
+            snapshot.docs.forEach(doc => {
             renderToolList(doc);
             counter += 1;
         })
