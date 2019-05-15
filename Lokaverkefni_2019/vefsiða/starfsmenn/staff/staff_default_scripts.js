@@ -9,18 +9,24 @@ function readUserData(){
             console.log("Document data:", doc.data());
             // Creates elements to be displayed on the page.
             let user_name = document.createElement('h1');
-            let user_phone = document.createElement('h2')
+            let user_phone = document.createElement('h2');
+            let user_email = document.createElement('h2');
 
             // Specifies both classes of the elements and their content. 
             user_name.setAttribute("class", 'user_name');
             user_name.textContent = doc.data().firstName + " " +  doc.data().lastName +' :: '+ doc.data().userID;
+            
              
             user_phone.setAttribute("class", 'user_phone');
             user_phone.textContent = 'Farsími: ' + doc.data().phoneNr;
 
+            user_email.setAttribute("class", 'user_email')
+            user_email.textContent = 'Netfang: ' + doc.data().email;
+
             // Adds the elements on the page.
             user_info.insertBefore(user_name , user_info.firstChild);
             user_info.appendChild(user_phone);
+            user_info.appendChild(user_email);
         
         // If the document is not correctly read. 
         } else {
