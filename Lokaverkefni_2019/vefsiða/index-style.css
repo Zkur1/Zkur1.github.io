@@ -25,6 +25,7 @@
 
 .add_remove{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 
@@ -38,6 +39,44 @@
     padding: 1em 2em;
     width: 25%;
     margin: 2% 0 0% 0%;
+}
+
+.dropdown_main{
+    display: none;
+    padding-top: 1em;
+}
+
+
+.add_menu{
+    display: flex;
+    flex-wrap: wrap;
+    width: 65%;
+    padding: 1em 1em 2em 0;
+}
+
+.add_menu >*{
+    flex: 1 1 30%;
+}
+
+.tool_name_in{
+    margin-bottom: 1em;
+}
+
+.save_button{
+    position: relative;
+    left: 0%;
+    padding: 1em 2em;
+    margin: 0 0 2em 0;
+    font-size: 10pt;
+    font-weight: bold; 
+    color: white;
+    background:#14489f;
+}
+
+.save_button:hover, .save_button:active{
+    color: white;
+    background:#333;
+
 }
 
 .searchbar{
@@ -55,7 +94,7 @@
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none; 
     scrollbar-width: none; 
-    position: absolute;
+    
     max-width: 48em;
     width: 100%;
     height: 70%;
@@ -67,10 +106,9 @@
 
 .tool_section{
     display: grid;
-    max-width: 100%;
+    width: 100%;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 2em;
-    font-family: 'Montserrat', sans-serif;
     padding: 0;
 }
 
@@ -98,7 +136,6 @@ div a{
 }
 
 .navigation{
-    font-family: 'Montserrat', sans-serif;
     background:#333;
     text-align: center;
     position: fixed;
@@ -118,7 +155,6 @@ div a{
     list-style-type: none;
     display: inline-block;
     padding: 5px 20px;
-    text-align: center;
     color: white;
     font-size: 18px;
     padding: 1.8em 2em;

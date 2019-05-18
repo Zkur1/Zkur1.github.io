@@ -17,9 +17,19 @@
                 <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
 
-            <div class="add_remove">
-                <button id="save_button" class="add"> Bæta við </button>
-                <button id="save_button" class="remove"> Eyða </button>
+            <div class="add_remove" id="add_remove">
+                <button id="add_button" class="add"> Bæta við </button>
+                <button id="remove_button" class="remove"> Eyða </button>
+                <div class="dropdown_main" id="dropdown_main">
+                    <h2>Bæta við verkfæri: </h2>
+                    <div class="add_menu">
+                        <span>Nafn verkfæris: </span>
+                        <input type="textfield" class="tool_name_in">
+                        <span>Fjöldi: </span>
+                        <input type="textfield" class="tool_count" value="1">
+                    </div>
+                    <button class="save_button">Bæta við</button>
+                </div>
             </div>
 
             <div class="searchbar">

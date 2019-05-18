@@ -16,11 +16,13 @@ var firestore = firebase.firestore();
 
 // Global varibles.
 var tool_list = document.querySelector("#tool_list");
-var tool_selector = "";
 var tool_info = document.querySelector("#description");
+var add_remove = document.querySelector("#add_remove");
+var tool_selector = "";
 var sPath = window.location.pathname;
 var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
 var counter = 0;
+
 
 // Creates elements and renders "tool_list".
 function renderToolList(doc){
@@ -51,6 +53,7 @@ function renderToolList(doc){
     document.addEventListener("touchstart", function(){}, true)
 }
 
+
 // Displays list items as the user types in a dropdown fashion.
 function searchDropdown() {
     // Creates variable to be used in the searchloop.
@@ -72,7 +75,20 @@ function searchDropdown() {
 }
 
 
-// Makes sure this javascript file is only ran on a specific page.
+// Displays "add_tool" menu when the "add_button" is pressed.
+document.getElementById("add_button").onclick = function addToolShow(){
+    var i = document.getElementById('dropdown_main');
+    // determines if the menue is being displayed and hides it or shows it accordingly. 
+    if(i.style.display == "block"){
+        i.style.display = "none";
+    }
+    else{
+        i.style.display = "block";
+    }
+}
+
+
+// Makes sure this javascript file is only run on a specific page.
 function testForPage(){
     if(sPage.trim() === 'index.html'){
         // Gets a snapshot of first 10 documents inside the collection 'Tools' and renders new li element for each snapshot.
@@ -85,6 +101,7 @@ function testForPage(){
     })
 }
 }
+
 
 testForPage();
 
