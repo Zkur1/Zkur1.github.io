@@ -23,6 +23,10 @@
     padding: 1em;
 }
 
+.main{
+    max-width: 100%;
+}
+
 .settings{
     display: flex;
     flex-direction: column;

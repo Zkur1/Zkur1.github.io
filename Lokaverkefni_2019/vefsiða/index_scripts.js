@@ -78,15 +78,36 @@ function searchDropdown() {
 // Displays "add_tool" menu when the "add_button" is pressed.
 document.getElementById("add_button").onclick = function addToolShow(){
     var i = document.getElementById('dropdown_main');
-    // determines if the menue is being displayed and hides it or shows it accordingly. 
-    if(i.style.display == "block"){
-        i.style.display = "none";
-    }
+    var x = document.getElementById('dropdown_remove');
+    // Checks if the "remove_button" has been pressed and displays "dropdown_main" if it hasn't.
+    if(x.style.display == "block"){}
     else{
-        i.style.display = "block";
+        // Determines if the menu is being displayed and hides it or shows it accordingly. 
+        if(i.style.display == "block"){
+            i.style.display = "none";
+        }
+        else{
+            i.style.display = "block";
+        }
     }
 }
 
+// Displays "add_tool" menu when the "add_button" is pressed.
+document.getElementById("remove_button").onclick = function removeToolShow(){
+    var i = document.getElementById('dropdown_remove');
+    var x = document.getElementById('dropdown_main');
+    // Checks if the "add_button" has been pressed and displays "dropdown_remove" if it hasn't.
+    if(x.style.display == "block"){}
+    else{
+        // Determines if the menu is being displayed and hides it or shows it accordingly. 
+        if(i.style.display == "block"){
+            i.style.display = "none";
+        }
+        else{
+            i.style.display = "block";
+        }
+    }
+}
 
 // Makes sure this javascript file is only run on a specific page.
 function testForPage(){
@@ -99,6 +120,10 @@ function testForPage(){
             counter += 1;
         })
     })
+
+    if (/Mobi/.test(navigator.userAgent)) {
+        document.getElementById('navigation').style.display = 'none';
+    }
 }
 }
 
