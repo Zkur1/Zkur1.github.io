@@ -109,10 +109,9 @@
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none; 
     scrollbar-width: none; 
-    
     max-width: 48em;
     width: 100%;
-    height: 70%;
+    height: 68%;
 }
 
 .main::-webkit-scrollbar{
@@ -151,9 +150,10 @@ div a{
 }
 
 .navigation{
+    display: block;
     background:#333;
     text-align: center;
-    position: fixed;
+    position: sticky;
     bottom: 1em;
     width: 100%;
     max-width: 48em;
@@ -181,6 +181,43 @@ div a{
 }
 
 .navigation ul > li:hover, .navigation > li:active{
+    color: black;
+    background: #BFC0C0;
+}
+
+.m_navigation{
+    display: none;
+    background:#333;
+    text-align: center;
+    position: sticky;
+    bottom: 1em;
+    width: 100%;
+    max-width: 48em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.m_navigation ul{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr)
+}
+
+.m_navigation ul > li{
+    list-style-type: none;
+    color: white;
+    padding: 0.2em;    
+}
+
+.m_navigation .icon{
+    text-decoration: none;
+    margin-top: 0.5em;
+    height: 3em;
+    width: 3em;
+}
+
+.m_navigation ul > li:hover, .m_navigation > li:active{
     color: black;
     background: #BFC0C0;
 }
