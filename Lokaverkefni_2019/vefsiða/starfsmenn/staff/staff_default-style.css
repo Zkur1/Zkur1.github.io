@@ -26,6 +26,7 @@
 .user_description{
     display: flex;
     font-family: 'Montserrat', sans-serif;
+    height: 100%;
 }
 
 .user_description h1{
@@ -34,8 +35,8 @@
 }
 
 .user_logo{
-    width: 300px;
-    height: 300px;
+    width: 4em;
+    height: 4em;
     float: right;
     margin-top: 1em;
 }
@@ -59,10 +60,10 @@
 }
 
 .navigation{
-    font-family: 'Montserrat', sans-serif;
+    display: block;
     background:#333;
     text-align: center;
-    position: fixed;
+    position: sticky;
     bottom: 1em;
     width: 100%;
     max-width: 48em;
@@ -79,7 +80,6 @@
     list-style-type: none;
     display: inline-block;
     padding: 5px 20px;
-    text-align: center;
     color: white;
     font-size: 18px;
     padding: 1.8em 2em;
@@ -91,6 +91,43 @@
 }
 
 .navigation ul > li:hover, .navigation > li:active{
+    color: black;
+    background: #BFC0C0;
+}
+
+.m_navigation{
+    display: none;
+    background:#333;
+    text-align: center;
+    position: sticky;
+    bottom: 1em;
+    width: 100%;
+    max-width: 48em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.m_navigation ul{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr)
+}
+
+.m_navigation ul > li{
+    list-style-type: none;
+    color: white;
+    padding: 0.2em;    
+}
+
+.m_navigation .icon{
+    text-decoration: none;
+    margin-top: 0.5em;
+    height: 3em;
+    width: 3em;
+}
+
+.m_navigation ul > li:hover, .m_navigation > li:active{
     color: black;
     background: #BFC0C0;
 }

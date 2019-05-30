@@ -30,14 +30,13 @@
 }
 
 .add_remove .add{
-    padding: 1em 2em;
-    width: 25%;
-    margin: 2% 50% 0% 0;
+    width: 30%;
+    margin: 2% 40% 0% 0;
 }
 
 .add_remove .remove{
     padding: 1em 2em;
-    width: 25%;
+    width: 30%;
     margin: 2% 0 0% 0%;
 }
 
@@ -45,7 +44,6 @@
     display: none;
     padding-top: 1em;
 }
-
 
 .add_menu{
     display: flex;
@@ -76,7 +74,6 @@
 .save_button:hover, .save_button:active{
     color: white;
     background:#333;
-
 }
 
 .dropdown_remove{
