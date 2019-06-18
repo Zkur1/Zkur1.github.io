@@ -58,7 +58,7 @@ function searchDropdown() {
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("search_bar");
     filter = input.value.toUpperCase();
-    ul = document.getElementById("car_list");
+    ul = document.getElementById("tool_list");
     li = ul.getElementsByTagName("li");
     // Loops through all items in list and hides those who don't match the search query.
     for (i = 0; i < li.length; i++) {
@@ -72,7 +72,40 @@ function searchDropdown() {
     }
 }
 
-console.log(sPage.trim())
+
+// Displays "add_tool" menu when the "add_button" is pressed.
+document.getElementById("add_button").onclick = function addToolShow(){
+    var i = document.getElementById('dropdown_main');
+    var x = document.getElementById('dropdown_remove');
+    // Checks if the "remove_button" has been pressed and displays "dropdown_main" if it hasn't.
+    if(x.style.display == "block"){}
+    else{
+        // Determines if the menu is being displayed and hides it or shows it accordingly. 
+        if(i.style.display == "block"){
+            i.style.display = "none";
+        }
+        else{
+            i.style.display = "block";
+        }
+    }
+}
+
+// Displays "add_tool" menu when the "add_button" is pressed.
+document.getElementById("remove_button").onclick = function removeToolShow(){
+    var i = document.getElementById('dropdown_remove');
+    var x = document.getElementById('dropdown_main');
+    // Checks if the "add_button" has been pressed and displays "dropdown_remove" if it hasn't.
+    if(x.style.display == "block"){}
+    else{
+        // Determines if the menu is being displayed and hides it or shows it accordingly. 
+        if(i.style.display == "block"){
+            i.style.display = "none";
+        }
+        else{
+            i.style.display = "block";
+        }
+    }
+}
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'bifreidir.html'){

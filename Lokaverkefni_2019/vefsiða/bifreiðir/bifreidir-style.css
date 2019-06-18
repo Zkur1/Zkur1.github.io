@@ -25,6 +25,7 @@
 
 .add_remove{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 
@@ -37,6 +38,54 @@
     padding: 1em 2em;
     width: 30%;
     margin: 2% 0 0% 0%;
+}
+
+.dropdown_main{
+    display: none;
+    padding-top: 1em;
+}
+
+.add_menu{
+    display: flex;
+    flex-wrap: wrap;
+    width: 65%;
+    padding: 1em 1em 2em 0;
+}
+
+.add_menu >*{
+    flex: 1 1 30%;
+    margin-bottom: 1em;
+}
+
+.save_button{
+    position: relative;
+    left: 0%;
+    padding: 1em 2em;
+    margin: 0 0 2em 0;
+    font-size: 10pt;
+    font-weight: bold; 
+    color: white;
+    background:#14489f;
+}
+
+.save_button:hover, .save_button:active{
+    color: white;
+    background:#333;
+}
+
+.dropdown_remove{
+    display: none;
+}
+
+.remove_button{
+    position: relative;
+    left: 0%;
+    padding: 1em 2em;
+    margin: 0 0 2em 0;
+    font-size: 10pt;
+    font-weight: bold; 
+    color: white;
+    background:#9f1414;
 }
 
 .searchbar{
