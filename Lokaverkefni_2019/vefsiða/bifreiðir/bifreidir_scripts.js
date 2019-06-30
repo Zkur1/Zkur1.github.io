@@ -110,7 +110,7 @@ document.getElementById("remove_button").onclick = function removeToolShow(){
 function testForPage(){
     if(sPage.trim() === 'bifreidir.html'){
         // Gets a snapshot of documents inside the collection 'Users' and logs to console.
-        firestore.collection('Cars').get().then((snapshot) => {
+        firestore.collection('Cars').orderBy('carID').get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             renderCarList(doc);
             console.log(doc.id)

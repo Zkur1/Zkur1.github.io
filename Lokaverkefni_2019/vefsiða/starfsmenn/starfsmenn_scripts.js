@@ -79,7 +79,7 @@ function searchDropdown() {
 function testForPage(){
     if(sPage.trim() === 'starfsmenn.html'){
         // Gets a snapshot of documents inside the collection 'Users' and logs to console.
-        firestore.collection('Users').get().then((snapshot) => {
+        firestore.collection('Users').orderBy('userID').get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             renderUserList(doc);
             console.log(doc.id)

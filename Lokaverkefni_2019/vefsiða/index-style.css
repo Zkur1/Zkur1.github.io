@@ -54,10 +54,13 @@
 
 .add_menu >*{
     flex: 1 1 30%;
+    margin-bottom: 1em;    
 }
 
-.tool_name_in{
-    margin-bottom: 1em;
+.or_spacer{
+    flex: 1 100%;
+    font-weight: 1000;
+    margin-left: 2em;
 }
 
 .save_button{

@@ -30,7 +30,7 @@
     position: absolute;
     max-width: 48em;
     width: 100%;
-    height: 65%;
+    height: 70%;
 }
 
 .main::-webkit-scrollbar{
@@ -39,7 +39,6 @@
 
 .tool_description{
     display: flex;
-
 }
 
 .tool_description h1{
@@ -52,6 +51,24 @@
     height: 30%;
     float: right;
     margin-top: 1em;
+}
+
+.in_stock{
+    display: block;
+}
+
+.tool_in_stock{
+    color: green;
+    margin: 0 0 2em 0;
+}
+
+.out_of_stock{
+    display: block;
+}
+
+.tool_out_of_stock{
+    color: red;
+    margin: 0 0 2em 0;
 }
 
 .staff_nr{

@@ -22,23 +22,29 @@
                 <button id="remove_button" class="remove"> Eyða </button>
                 <div class="dropdown_main" id="dropdown_main">
                     <h2>Bæta við verkfæri: </h2>
-                    <div class="add_menu">
+                    <div class="add_menu" id="add_menu">
                         <span>Nafn verkfæris: </span>
-                        <input type="textfield" class="tool_name_in">
+                        <input type="text" id="tool_name_in" name="tool_name_in">
+                        <span>FR-Númer: </span>
+                        <input type="text" id="tool_id_in" value="FR-" name="tool_id_in">
                         <span>Fjöldi: </span>
-                        <input type="textfield" class="tool_count" value="1">
+                        <input type="text" id="tool_count_in" value="1" name="tool_count_in">
+                        <span>Lýsing: </span>
+                        <input type="text" id="tool_description_in" value="" name="tool_description_in">    
                     </div>
-                    <button class="save_button">Bæta við</button>
+                    <button class="save_button" id="save_button">Bæta við</button>
                 </div>
+
                 <div class="dropdown_remove" id="dropdown_remove">
                     <h2>Eyða verkfæri: </h2>
-                    <div class="add_menu">
+                    <div class="add_menu" id="remove_menu">
                         <span>Nafn verkfæris: </span>
-                        <input type="textfield" class="tool_name_in">
-                        <span>Fjöldi: </span>
-                        <input type="textfield" class="tool_count" value="1">
+                        <input type="text" id="remove_tool_name_in" class="remove_tool_name_in">
+                        <span class="or_spacer">eða</span>
+                        <span>FR-Númer: </span>
+                        <input type="text" id="remove_tool_id_in" class="remove_tool_id_in" value="FR-">
                     </div>
-                    <button class="remove_button">Eyða</button>
+                    <button id="delete_button" class="remove_button">Eyða</button>
                 </div>
             </div>
 

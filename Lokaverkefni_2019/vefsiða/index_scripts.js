@@ -92,7 +92,7 @@ document.getElementById("add_button").onclick = function addToolShow(){
     }
 }
 
-// Displays "add_tool" menu when the "add_button" is pressed.
+// Displays "remove_tool" menu when the "remove_button" is pressed.
 document.getElementById("remove_button").onclick = function removeToolShow(){
     var i = document.getElementById('dropdown_remove');
     var x = document.getElementById('dropdown_main');
@@ -109,11 +109,52 @@ document.getElementById("remove_button").onclick = function removeToolShow(){
     }
 }
 
+// Runs the function "addToolToDatabase" when "save_button" is pressed.
+// This function saves user input as a firestore document.
+document.getElementById("save_button").onclick = function addToolToDatabase(){
+    var tool_name_in = document.querySelector("#tool_name_in");
+    var tool_id_in = document.querySelector("#tool_id_in");
+    if(tool_id_in.value == "FR-" || tool_name_in.value == ""){}
+    else{
+        firestore.collection('Tools').add({
+            toolID: tool_id_in.value,
+            toolName: tool_name_in.value,
+            inUse: false,
+            inUseBy: '',
+        });
+    }
+    // Resets the default values of the inputs. 
+    tool_name_in.value = "";
+    tool_id_in.value = "FR-";
+}
+
+
+// Runs the function "removeToolFromDatabase" when "delete_button" is pressed.
+// This function deletes user selected document from the firestore database.
+document.getElementById("delete_button").onclick = function removeToolFromDatabase(){
+    var tool_name_in = document.querySelector("#remove_tool_name_in");
+    var tool_id_in = document.querySelector("#remove_tool_id_in");
+    console.log(tool_id_in.value)
+    // Queries the firestore database for a spesific document determined by user input "tool_id_in".
+    // Cycles through each document that matches the querying fields of "tool_id_in" and logs their firestore path to the console.
+    firestore.collection("Tools").where("toolID", "==", tool_id_in.value).onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(doc.id);
+            // Deletes spesific document determined by the querying above.
+            firestore.collection('Tools').doc(doc.id).delete();
+        });
+    });
+
+    // Resets the default values of the inputs. 
+    tool_name_in.value = "";
+    tool_id_in.value = "FR-";
+}
+
 // Makes sure this javascript file is only run on a specific page.
 function testForPage(){
     if(sPage.trim() === 'index.html'){
         // Gets a snapshot of first 10 documents inside the collection 'Tools' and renders new li element for each snapshot.
-        firestore.collection('Tools').get().then((snapshot) => {
+        firestore.collection('Tools').orderBy('toolID').get().then((snapshot) => {
         //snapshot.docs.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements.
             snapshot.docs.forEach(doc => {
             renderToolList(doc);

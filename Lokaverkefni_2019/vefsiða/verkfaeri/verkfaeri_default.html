@@ -26,18 +26,29 @@
 
                 <button class="button_history">Saga verkfæris</button>
 
-                <div class="in_stock">
+                <div id="in_stock" class="in_stock">
+                    <h1 class="tool_in_stock">Verkfæri er á lager</h1>
                     <h2>Skrá á starfsmann:</h2>
                     <div class="staff_nr">
                         <span>Starfsmannanúmer (FRS-xxx):</span>
-                        <input type="textfield" id="user_name_in" class="user_name_in" name="user_name_input" value="FRS-">
+                        <input type="textfield" id="user_name_in" class="user_name_in" value="FRS-">
                     </div>
                     <div class="staff_nr">
                         <span>Verknúmer (R-xxxx):</span>
-                        <input type="textfield" id="project_name_in" class="user_name_in" name="project_name_input" value="R-">
+                        <input type="textfield" id="project_name_in" class="user_name_in" value="R-">
                     </div>
                     
                     <button class="save_button" id="save_button"> Skrá út</button>
+                </div>
+
+                <div id="out_of_stock" class="out_of_stock">
+                    <h1 class="tool_out_of_stock">Verkfæri er í útláni</h1>
+                    <h2>Skrá á lager:</h2>
+                    <div class="staff_nr">
+                        <span>Starfsmannanúmer (FRS-xxx):</span>
+                        <input type="textfield" id="return_user_name_in" class="user_name_in" value="FRS-">
+                    </div>
+                    <button id="return_button" class="save_button"> Skrá inn</button>
                 </div>
             </div>
 

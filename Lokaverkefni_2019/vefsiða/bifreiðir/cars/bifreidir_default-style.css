@@ -18,7 +18,6 @@
     align-items: center;
     justify-content: left;
     font-size: 30pt;
-    font-family: 'Montserrat', sans-serif;
     padding: 1em;
 }
 
@@ -39,7 +38,6 @@
 
 .car_description{
     display: flex;
-    font-family: 'Montserrat', sans-serif;
 }
 
 .car_description h1{
@@ -48,15 +46,20 @@
 }
 
 .car_logo{
-    width: 320px;
-    height: 200px;
+    width: 50%;
+    height: 50%;
     float: right;
     margin-top: 1em;
-    display: none;
 }
 
-.in_stock{
-    padding-top: 5em;
+.available{
+    padding-top: 3em;
+    color: green;
+}
+
+.not_available{
+    padding-top: 3em;
+    color: red;
 }
 
 .staff_nr{
@@ -79,8 +82,39 @@
     color: white;
     background:#14489f;
 }
-
 .save_button:hover, .save_button:active{
+
+    color: white;
+    background:#333;
+
+}
+.remove_button{
+    position: relative;
+    left: 70%;
+    padding: 1em 2em;
+    margin: 0 0 2em 0;
+    font-size: 10pt;
+    font-weight: bold; 
+    color: white;
+    background:#9f1414;
+}
+.remove_button:hover, .remove_button:active{
+    color: white;
+    background:#333;
+
+}
+.return_button{
+    position: relative;
+    left: 0%;
+    padding: 1em 2em;
+    font-size: 10pt;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; 
+    color: white;
+    background:#9f1414;
+}
+
+.return_button:hover, .return_button:active{
     color: white;
     background:#333;
 
@@ -92,6 +126,7 @@
     padding: 2em;
     margin-top: 3em;
     font-size: 10pt;
+    font-weight: bold; 
     font-family: 'Montserrat', sans-serif;
     color: white;
     background:#14489f;
@@ -99,8 +134,8 @@
 }
 
 .button_history:hover, .button_history:active{
-    color: black;
-    background:#82b6ff;
+    color: white;
+    background:#333;
 
 }
 
@@ -108,7 +143,7 @@
     display: block;
     background:#333;
     text-align: center;
-    position: sticky;
+    position: fixed;
     bottom: 1em;
     width: 100%;
     max-width: 48em;
@@ -125,6 +160,7 @@
     list-style-type: none;
     display: inline-block;
     padding: 5px 20px;
+    text-align: center;
     color: white;
     font-size: 18px;
     padding: 1.8em 2em;
