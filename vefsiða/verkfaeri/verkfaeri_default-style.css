@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+    height: 100%;
+    max-width: 50em;
+    padding: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header{
+    height: 12%;
+    display: flex;
+    background: #14489f;
+    color: white;
+    align-items: center;
+    justify-content: left;
+    font-size: 30pt;
+    font-family: 'Montserrat', sans-serif;
+    padding: 1em;
+}
+
+.main{
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    position: absolute;
+    max-width: 48em;
+    width: 100%;
+    height: 70%;
+}
+
+.main::-webkit-scrollbar{
+    display: none;
+}
+
+.tool_description{
+    display: flex;
+}
+
+.tool_description h1{
+    flex-direction: column;
+    width: auto;
+}
+
+.tool_logo{
+    width: 30%;
+    height: 30%;
+    float: right;
+    margin-top: 1em;
+}
+
+.in_stock{
+    display: block;
+}
+
+.tool_in_stock{
+    color: green;
+    margin: 0 0 2em 0;
+}
+
+.out_of_stock{
+    display: block;
+}
+
+.tool_out_of_stock{
+    color: red;
+    margin: 0 0 2em 0;
+}
+
+.staff_nr{
+    display: flex;
+    flex-direction: row;
+    padding: 1em 1em 1em 0;
+}
+
+.user_name_in{
+    margin-left: 1em;
+} 
+
+.save_button{
+    position: relative;
+    left: 0%;
+    padding: 1em 2em;
+    font-size: 10pt;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; 
+    color: white;
+    background:#14489f;
+}
+
+.save_button:hover, .save_button:active{
+    color: white;
+    background:#333;
+
+}
+
+.button_history{
+    position: relative;
+    left: 70%;
+    padding: 2em;
+    margin-top: 0.5m;
+    font-size: 10pt;
+    font-weight: bold; 
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background:#14489f;
+
+}
+
+.button_history:hover, .button_history:active{
+    color: white;
+    background:#333;
+
+}
+
+.navigation{
+    font-family: 'Montserrat', sans-serif;
+    background:#333;
+    text-align: center;
+    position: fixed;
+    bottom: 1em;
+    width: 100%;
+    max-width: 48em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navigation ul{
+    padding: 0;
+    margin: 0;
+}
+
+.navigation ul > li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px 20px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    padding: 1.8em 2em;
+}
+
+.navigation a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.navigation ul > li:hover, .navigation > li:active{
+    color: black;
+    background: #BFC0C0;
+}

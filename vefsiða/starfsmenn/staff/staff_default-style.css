@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100%;
+    max-width: 50em;
+    padding: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header{
+    height: 12%;
+    display: flex;
+    background: #14489f;
+    color: white;
+    align-items: center;
+    justify-content: left;
+    font-size: 30pt;
+    padding: 1em;
+}
+
+.user_description{
+    display: flex;
+    height: 100%;
+}
+
+.user_description h1{
+    flex-direction: column;
+    width: auto;
+}
+
+.user_logo{
+    width: 30%;
+    height: 30%;
+    float: right;
+    margin-top: 1em;
+}
+
+.button_history{
+    position: relative;
+    left: 70%;
+    padding: 2em;
+    margin-top: 3em;
+    font-size: 10pt;
+    color: white;
+    background:#14489f;
+
+}
+
+.button_history:hover, .button_history:active{
+    color: black;
+    background:#82b6ff;
+
+}
+
+.navigation{
+    display: block;
+    background:#333;
+    text-align: center;
+    position: sticky;
+    bottom: 1em;
+    width: 100%;
+    max-width: 48em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navigation ul{
+    padding: 0;
+    margin: 0;
+}
+
+.navigation ul > li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px 20px;
+    color: white;
+    font-size: 18px;
+    padding: 1.8em 2em;
+}
+
+.navigation a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.navigation ul > li:hover, .navigation > li:active{
+    color: black;
+    background: #BFC0C0;
+}
+
+.m_navigation{
+    display: none;
+    background:#333;
+    text-align: center;
+    position: sticky;
+    bottom: 1em;
+    width: 100%;
+    max-width: 48em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.m_navigation ul{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr)
+}
+
+.m_navigation ul > li{
+    list-style-type: none;
+    color: white;
+    padding: 0.2em;    
+}
+
+.m_navigation .icon{
+    text-decoration: none;
+    margin-top: 0.5em;
+    height: 3em;
+    width: 3em;
+}
+
+.m_navigation ul > li:hover, .m_navigation > li:active{
+    color: black;
+    background: #BFC0C0;
+}
