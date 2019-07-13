@@ -28,6 +28,11 @@ function readToolData(){
         console.log("Error getting document:", error);
     });
 }
+
+// When the "history_button" is pressed a new history page opens. 
+document.getElementById("history_button").onclick = function openHistoryPage(){
+    window.open("verkfaeri_saga/verkfaeri_saga.html", "_self");
+}
         
 // Displays a menu to loan a tool if its "inUse" varible is false and a menu to return the tool if the variable is true.
 function showToolStatus(){
@@ -77,23 +82,29 @@ document.getElementById("return_button").onclick = function returnTool(){
             console.log(doc.data().inUseBy);;
             console.log(return_user_name_in.value);
             // if "inUseBy" mathces with the user input the menus will switch and variables regarding the loan will change accordingly. 
-            if(doc.data().inUseBy == return_user_name_in.value){
-                firestore.collection('Tools').doc(tool_selector).update({
-                    inUse: false,
-                    inUseBy: "",
-                    projectID: "",
-                    loanDate: "",
-                })
-                return_user_name_in.value = "FRS-";
-            }
-            // if "inUseBy" doesn't match the user input.
-            else{
-                alert("Starfsmannanúmer er ekki rétt.");
-                return_user_name_in.value = "FRS-";
-            }
+            firestore.collection('Tools').doc(tool_selector).update({
+                inUse: false,
+                inUseBy: "",
+                projectID: "",
+                loanDate: "",
+            })
+            return_user_name_in.value = "FRS-";
         }
     });
-    
+}
+
+// Displays information about who has the tool.
+function displayLoanInfo(){
+    var inUseBy_text = document.querySelector("#inUseBy_text");
+    var projectID_text = document.querySelector("#projectID_text");
+    docRef.get().then(function(doc) {
+        // If the document is correctly read. 
+        if(doc.exists) {
+            inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().inUseBy;
+            projectID_text.textContent = "Verkfæri skráð á verknúmer: " + doc.data().projectID;
+
+        }
+    });
 }
 
 // Makes sure this javascript file is only ran on a specific page.
@@ -106,3 +117,4 @@ function testForPage(){
 // Functions to be run when the webpage is opened.
 testForPage();
 showToolStatus();
+displayLoanInfo()

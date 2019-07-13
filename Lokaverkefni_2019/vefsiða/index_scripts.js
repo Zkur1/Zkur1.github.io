@@ -26,7 +26,6 @@ var counter = 0;
 
 // Creates elements and renders "tool_list".
 function renderToolList(doc){
-    
     // Creates elements.
     let li = document.createElement('li');
     let tool_name_id = document.createElement('span');
@@ -34,6 +33,7 @@ function renderToolList(doc){
     // Sets specific content in id to each element.
     li.setAttribute("id", doc.id);
     li.setAttribute("sorting_nr", counter);
+    li.setAttribute("class", "tool_in_list")
     tool_name_id.textContent = doc.data().toolName + " :: " +  doc.data().toolID;
 
     // Appends content into li.
@@ -51,6 +51,15 @@ function renderToolList(doc){
 
     // Enables scrolling inside of a spescific div.
     document.addEventListener("touchstart", function(){}, true)
+
+    // Checks if tool is in use and greys it out if it is. 
+    function greyOutTool(){
+        if(doc.data().inUse == true){
+            li.setAttribute("class", "tool_in_list_greyed")
+            //red_dot.style.display = "inline-block";
+        }
+    }
+    greyOutTool();
 }
 
 
@@ -153,7 +162,7 @@ document.getElementById("delete_button").onclick = function removeToolFromDataba
 // Makes sure this javascript file is only run on a specific page.
 function testForPage(){
     if(sPage.trim() === 'index.html'){
-        // Gets a snapshot of first 10 documents inside the collection 'Tools' and renders new li element for each snapshot.
+        // Gets a snapshot of all documents inside the collection 'Tools' and renders new li element for each snapshot.
         firestore.collection('Tools').orderBy('toolID').get().then((snapshot) => {
         //snapshot.docs.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements.
             snapshot.docs.forEach(doc => {

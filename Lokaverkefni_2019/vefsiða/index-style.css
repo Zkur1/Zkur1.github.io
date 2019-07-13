@@ -126,12 +126,20 @@
     padding: 0;
 }
 
-.tool_section li{
+.tool_in_list{
+    list-style-type: none;
+    padding: 1em;
+    font-size: 16pt;
+    background: rgb(165, 164, 164);
+    color: black;
+}
+
+.tool_in_list_greyed{
     list-style-type: none;
     padding: 1em;
     font-size: 16pt;
     background: lightgray;
-    color: black;
+    color: grey;
 }
 
 .tool_section img{

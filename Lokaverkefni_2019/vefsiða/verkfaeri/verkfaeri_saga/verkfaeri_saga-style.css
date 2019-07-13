@@ -37,89 +37,30 @@
     display: none;
 }
 
-.tool_description{
-    display: flex;
+.check_in_list{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2em;
+    padding: 0;
 }
 
-.tool_description h1{
-    flex-direction: column;
-    width: auto;
+.check_in_list li{
+    list-style-type: none;
+    padding: 1em;
+    font-size: 16pt;
+    background: lightgray;
+    color: black;
 }
 
-.tool_logo{
-    width: 30%;
-    height: 30%;
-    float: right;
-    margin-top: 1em;
+.check_in{
+    margin: 4em;
 }
 
-.in_stock{
-    display: block;
+.check_out{
+    margin: 4em;
 }
 
-.tool_in_stock{
-    color: green;
-    margin: 0 0 2em 0;
-}
-
-.out_of_stock{
-    display: block;
-}
-
-.tool_out_of_stock{
-    color: red;
-    margin: 0 0 2em 0;
-}
-
-.projectID_text{
-    margin-bottom: 3em;
-}
-
-.staff_nr{
-    display: flex;
-    flex-direction: row;
-    padding: 1em 1em 1em 0;
-}
-
-.user_name_in{
-    margin-left: 1em;
-} 
-
-.save_button{
-    position: relative;
-    left: 0%;
-    padding: 1em 2em;
-    font-size: 10pt;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold; 
-    color: white;
-    background:#14489f;
-}
-
-.save_button:hover, .save_button:active{
-    color: white;
-    background:#333;
-
-}
-
-.history_button{
-    position: relative;
-    left: 70%;
-    padding: 2em;
-    margin-top: 0.5m;
-    font-size: 10pt;
-    font-weight: bold; 
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    background:#14489f;
-
-}
-
-.history_button:hover, .history_button:active{
-    color: white;
-    background:#333;
-
-}
 
 .navigation{
     font-family: 'Montserrat', sans-serif;
