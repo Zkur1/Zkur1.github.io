@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background: lightgrey;
+}
+
 .container {
     height: 100%;
     max-width: 50em;
@@ -130,7 +134,7 @@
     list-style-type: none;
     padding: 1em;
     font-size: 16pt;
-    background: rgb(165, 164, 164);
+    background: white;
     color: black;
 }
 
