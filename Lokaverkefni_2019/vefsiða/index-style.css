@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-body{
-    background: lightgrey;
-}
-
 .container {
     height: 100%;
     max-width: 50em;
@@ -134,7 +130,7 @@ body{
     list-style-type: none;
     padding: 1em;
     font-size: 16pt;
-    background: white;
+    background: rgb(165, 164, 164);
     color: black;
 }
 
