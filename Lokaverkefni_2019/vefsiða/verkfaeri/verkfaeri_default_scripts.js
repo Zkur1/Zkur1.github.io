@@ -2,6 +2,9 @@
 var tool_selector = localStorage.getItem("tool_selector");
 console.log(tool_selector);
 
+// Global variables.
+
+
 // Reads specific document from the "Tool" collection in the firestore database.
 var docRef = firestore.collection("Tools").doc(localStorage.getItem("tool_selector"));
 function readToolData(){
@@ -65,11 +68,26 @@ document.getElementById("save_button").onclick = function loanTool(){
         inUse: true,
         inUseBy: user_name_in.value,
         projectID: project_name_in.value,
-        loanDate: new Date().toDateString(),
+        loanDate: new Date().toLocaleString(),
     })
+
+    // Adds "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the tool. 
+    firestore.collection('Tools').doc(tool_selector).collection("in_out").add({
+        checkOutDate: new Date().toLocaleString(),
+        checkOutUser: user_name_in.value,
+        checkInDate: "",
+        checkInUser: "",
+    })
+
+    // Gives access to the id of the document created above and assigns its value to the global variable "history_in".
+    .then(docRef =>{
+        localStorage.setItem("history_in", docRef.id);
+        console.log(docRef.id)
+    });
+
+    // Resets the input fields. 
     user_name_in.value = "FRS-";
-    project_name_in.value = "R-";
- 
+    project_name_in.value = "R-"; 
 }
 
 // Runs the function "returnTool" when "return_button" is pressed.
@@ -87,7 +105,13 @@ document.getElementById("return_button").onclick = function returnTool(){
                 inUseBy: "",
                 projectID: "",
                 loanDate: "",
-            })
+            });
+
+            // Logs who returns the tool and when and logs it to variables stored in the subcollection "in_out".
+            firestore.collection('Tools').doc(tool_selector).collection("in_out").doc(localStorage.getItem("history_in")).update({
+                checkInDate: new Date().toLocaleString(),
+                checkInUser: return_user_name_in.value,
+            });
             return_user_name_in.value = "FRS-";
         }
     });

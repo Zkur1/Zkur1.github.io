@@ -123,9 +123,10 @@ document.getElementById("remove_button").onclick = function removeToolShow(){
 document.getElementById("save_button").onclick = function addToolToDatabase(){
     var tool_name_in = document.querySelector("#tool_name_in");
     var tool_id_in = document.querySelector("#tool_id_in");
-    if(tool_id_in.value == "FR-" || tool_name_in.value == ""){}
+    if(tool_id_in.value == "FR-" || tool_name_in.value == ""){
+        }
     else{
-        firestore.collection('Tools').add({
+        new_tool = firestore.collection('Tools').add({
             toolID: tool_id_in.value,
             toolName: tool_name_in.value,
             inUse: false,
@@ -163,6 +164,7 @@ document.getElementById("delete_button").onclick = function removeToolFromDataba
 function testForPage(){
     if(sPage.trim() === 'index.html'){
         // Gets a snapshot of all documents inside the collection 'Tools' and renders new li element for each snapshot.
+        // Note: function "orderBy()" lists the objects in order of "toolID".
         firestore.collection('Tools').orderBy('toolID').get().then((snapshot) => {
         //snapshot.docs.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements.
             snapshot.docs.forEach(doc => {

@@ -130,15 +130,15 @@
     list-style-type: none;
     padding: 1em;
     font-size: 16pt;
-    background: rgb(165, 164, 164);
-    color: black;
+    background: #14489f;
+    color: white;
 }
 
 .tool_in_list_greyed{
     list-style-type: none;
     padding: 1em;
     font-size: 16pt;
-    background: lightgray;
+    background: #cac6c6;
     color: grey;
 }
 
@@ -152,9 +152,14 @@ div a{
     color: black;
 }
 
-.tool_section > li:hover, .tool_section > li:active{
+.tool_in_list:hover, .tool_in_list:active{
     color: black;
-    background: #BFC0C0;
+    background: #83aeff;
+}
+
+.tool_in_list_greyed:hover, .tool_in_list_greyed:active{
+    color: black;
+    background: #8e8e8e;
 }
 
 .navigation{

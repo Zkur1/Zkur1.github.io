@@ -1,5 +1,7 @@
-// Reads through the subcollection "in_out" of the specific tool, snapshots its contents and runs the function "renderCheckInData" for each document. 
-firestore.collection('Tools').doc(localStorage.getItem("tool_selector")).collection("in_out").get().then((snapshot) => { 
+// Reads through the subcollection "in_out" of the specific tool, snapshots its contents and runs the function "renderCheckInData" for each document.
+// Note: function "orderBy()" lists the objects by "checkOutDate in decending order.
+// Note: function "slice()" limits the "forEach()" request by a specified amount (in this case it limits it to 10 results). 
+firestore.collection('Tools').doc(localStorage.getItem("tool_selector")).collection("in_out").orderBy('checkOutDate', 'desc').get().then((snapshot) => { 
     snapshot.docs.forEach(doc => {
             renderCheckInData(doc);
     })
