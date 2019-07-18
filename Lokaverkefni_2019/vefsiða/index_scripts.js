@@ -56,7 +56,6 @@ function renderToolList(doc){
     function greyOutTool(){
         if(doc.data().inUse == true){
             li.setAttribute("class", "tool_in_list_greyed")
-            //red_dot.style.display = "inline-block";
         }
     }
     greyOutTool();
@@ -85,11 +84,14 @@ function searchDropdown() {
 
 
 // Displays "add_tool" menu when the "add_button" is pressed.
-document.getElementById("add_button").onclick = function addToolShow(){
+document.getElementById("add_button").onclick = addToolShow;
+function addToolShow(){
     var i = document.getElementById('dropdown_main');
     var x = document.getElementById('dropdown_remove');
     // Checks if the "remove_button" has been pressed and displays "dropdown_main" if it hasn't.
-    if(x.style.display == "block"){}
+    if(x.style.display == "block"){
+        removeToolShow();
+    }
     else{
         // Determines if the menu is being displayed and hides it or shows it accordingly. 
         if(i.style.display == "block"){
@@ -102,11 +104,14 @@ document.getElementById("add_button").onclick = function addToolShow(){
 }
 
 // Displays "remove_tool" menu when the "remove_button" is pressed.
-document.getElementById("remove_button").onclick = function removeToolShow(){
+document.getElementById("remove_button").onclick = removeToolShow;
+function removeToolShow(){
     var i = document.getElementById('dropdown_remove');
     var x = document.getElementById('dropdown_main');
     // Checks if the "add_button" has been pressed and displays "dropdown_remove" if it hasn't.
-    if(x.style.display == "block"){}
+    if(x.style.display == "block"){
+        addToolShow();
+    }
     else{
         // Determines if the menu is being displayed and hides it or shows it accordingly. 
         if(i.style.display == "block"){
@@ -123,43 +128,66 @@ document.getElementById("remove_button").onclick = function removeToolShow(){
 document.getElementById("save_button").onclick = function addToolToDatabase(){
     var tool_name_in = document.querySelector("#tool_name_in");
     var tool_id_in = document.querySelector("#tool_id_in");
+    // If either the "tool_id_in" or "tool_name_in" input fields are empty nothing will execute.
     if(tool_id_in.value == "FR-" || tool_name_in.value == ""){
         }
+
+    // If the "tool_id_in" or "tool_name_in" input fields contain text.
     else{
-        firestore.collection('Tools').add({
-            toolID: tool_id_in.value,
-            toolName: tool_name_in.value,
-            inUse: false,
-            inUseBy: '',
-        });
+        // Displays a confirmation form with the information the user is adding to the database. 
+        var answer = window.confirm("Bæta á við verkfæri: " + tool_name_in.value + "\ná FR-númeri: " + tool_id_in.value + ". ")
+        // If the user confirms.
+        if(answer){
+            firestore.collection('Tools').add({
+                toolID: tool_id_in.value,
+                toolName: tool_name_in.value,
+                inUse: false,
+                inUseBy: '',
+            });
+            // Log confirmation message to console.
+            console.log("Tool added!");
+        }
+        // If the user rejects.
+        else{
+        }
     }
-    // Log confirmation message to console.
-    console.log("Tool added!");
     // Resets the default values of the inputs. 
     tool_name_in.value = "";
     tool_id_in.value = "FR-";
 }
 
-
 // Runs the function "removeToolFromDatabase" when "delete_button" is pressed.
 // This function deletes user selected document from the firestore database.
 document.getElementById("delete_button").onclick = function removeToolFromDatabase(){
-    var tool_name_in = document.querySelector("#remove_tool_name_in");
-    var tool_id_in = document.querySelector("#remove_tool_id_in");
-    console.log(tool_id_in.value);
-    // Queries the firestore database for a spesific document determined by user input "tool_id_in".
-    // Cycles through each document that matches the querying fields of "tool_id_in" and logs their firestore path to the console.
-    firestore.collection("Tools").where("toolID", "==", tool_id_in.value).get().then((snapshot) => {
-        snapshot.docs.forEach(doc => {
-            var tool_id = doc.id;
-            firestore.collection("Tools").doc(tool_id).delete();
-        });
-    });
-    // Log confirmation message to console.
-    console.log("Tool deleted!");
+    var remove_tool_name_in = document.querySelector("#remove_tool_name_in");
+    var remove_tool_id_in = document.querySelector("#remove_tool_id_in");
+    // If either the "tool_id_in" or "tool_name_in" input fields are empty nothing will execute.
+    if(remove_tool_id_in.value == "FR-" && remove_tool_name_in.value == ""){
+    }
+
+    // If the "tool_id_in" or "tool_name_in" input fields contain text.
+    else{
+        // Displays a confirmation form with the information the user is deleting from the database. 
+        var answer = window.confirm("Eyða á verkfæri: " + remove_tool_id_in.value + ". ")
+        // If the user confirms.
+        if(answer){
+            // Queries the firestore database for a spesific document determined by user input "tool_id_in".
+            // Cycles through each document that matches the querying fields of "tool_id_in" and logs their firestore path to the console.
+            firestore.collection("Tools").where("toolID", "==", remove_tool_id_in.value).get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    firestore.collection("Tools").doc(doc.id).delete();
+                });
+            });
+            // Log confirmation message to console.
+            console.log("Tool deleted!");
+        }
+        // If the user rejects.
+        else{
+        }
     // Resets the default values of the inputs. 
-    tool_name_in.value = "";
-    tool_id_in.value = "FR-";
+    remove_tool_name_in.value = "";
+    remove_tool_id_in.value = "FR-";
+    }
 }
 
 // Makes sure this javascript file is only run on a specific page.
@@ -219,6 +247,6 @@ function testForPage(){
     
         }
     }
-    }
+}
 
 testForPage();
