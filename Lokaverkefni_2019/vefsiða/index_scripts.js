@@ -84,7 +84,8 @@ function searchDropdown() {
 
 
 // Displays "add_tool" menu when the "add_button" is pressed.
-document.getElementById("add_button").onclick = function addToolShow(){
+document.getElementById("add_button").onclick = addToolShow;
+function addToolShow(){
     var i = document.getElementById('dropdown_main');
     var x = document.getElementById('dropdown_remove');
     // Checks if the "remove_button" has been pressed and displays "dropdown_main" if it hasn't.
@@ -103,7 +104,8 @@ document.getElementById("add_button").onclick = function addToolShow(){
 }
 
 // Displays "remove_tool" menu when the "remove_button" is pressed.
- document.getElementById("remove_button").onclick = function removeToolShow(){
+ document.getElementById("remove_button").onclick = removeToolShow;
+ function removeToolShow(){
     var i = document.getElementById('dropdown_remove');
     var x = document.getElementById('dropdown_main');
     // Checks if the "add_button" has been pressed and displays "dropdown_remove" if it hasn't.

@@ -36,21 +36,21 @@
     display: none;
 }
 
-.user_description{
+.staff_description{
     display: flex;
     height: 100%;
 }
 
-.user_description h1{
+.staff_description h1{
     flex-direction: column;
     width: auto;
 }
 
-.user_logo{
-    width: 30%;
-    height: 30%;
+.staff_logo{
+    width: auto;
+    height: auto;
+    max-height: 50%;
     float: right;
-    margin-top: 1em;
 }
 
 .button_history{

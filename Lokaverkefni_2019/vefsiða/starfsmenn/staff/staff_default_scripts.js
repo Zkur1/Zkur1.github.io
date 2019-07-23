@@ -1,5 +1,5 @@
 // Reads specific document from the "Users" collection in the firestore database.
-function readUserData(){
+function readStaffData(){
     var docRef = firestore.collection("Users").doc(localStorage.getItem("user_selector"));
     docRef.get().then(function(doc) {
         
@@ -8,25 +8,48 @@ function readUserData(){
             // Logs the content of the document to the console. 
             console.log("Document data:", doc.data());
             // Creates elements to be displayed on the page.
-            let user_name = document.createElement('h1');
-            let user_phone = document.createElement('h2');
-            let user_email = document.createElement('h2');
+            let staff_name = document.createElement('h1');
+            let staff_mobile = document.createElement('h2');
+            let staff_email = document.createElement('h2');
+            let staff_position = document.createElement('h2');
+            let staff_phone = document.createElement('h2');
 
             // Specifies both classes of the elements and their content. 
-            user_name.setAttribute("class", 'user_name');
-            user_name.textContent = doc.data().firstName + " " +  doc.data().lastName +' :: '+ doc.data().userID;
-            
+            staff_name.setAttribute("class", 'staff_name');
+            staff_name.textContent = doc.data().staffName + ' :: ' + doc.data().staffID;
              
-            user_phone.setAttribute("class", 'user_phone');
-            user_phone.textContent = 'Farsími: ' + doc.data().phoneNr;
+            staff_mobile.setAttribute("class", 'staff_mobile');
+            staff_mobile.textContent = 'Farsími: ' + doc.data().staffMobile;
 
-            user_email.setAttribute("class", 'user_email')
-            user_email.textContent = 'Netfang: ' + doc.data().email;
+            staff_phone.setAttribute("class", 'staff_phone')
+            staff_phone.textContent = 'Sími: ' + doc.data().staffPhoneNr;
 
-            // Adds the elements on the page.
-            user_info.insertBefore(user_name , user_info.firstChild);
-            user_info.appendChild(user_phone);
-            user_info.appendChild(user_email);
+            staff_email.setAttribute("class", 'staff_email')
+            staff_email.textContent = 'Netfang: ' + doc.data().staffEmail;
+
+            staff_position.setAttribute("class", 'staff_position')
+            staff_position.textContent = 'Starfstitill: ' + doc.data().staffPosition;
+
+            // Adds the elements on the page if the specific information is available in the database.
+            if(doc.data().staffName != ""){
+                staff_info.insertBefore(staff_name , staff_info.firstChild);
+            }
+            if(doc.data().staffMobile != ""){
+                staff_info.appendChild(staff_mobile);
+            }
+            
+            if(doc.data().staffPhoneNr != ""){
+                staff_info.appendChild(staff_phone);
+            }
+            
+            if(doc.data().staffEmail != ""){
+                staff_info.appendChild(staff_email);
+            }
+            
+            if(doc.data().staffPosition != ""){
+                staff_info.appendChild(staff_position);
+            }
+            
         
         // If the document is not correctly read. 
         } else {
@@ -43,8 +66,9 @@ function readUserData(){
 function testForPage(){
     if(sPage.trim() === 'staff_default.html'){
         console.log(user_selector);
-        readUserData();
+        readStaffData();
         }
+        
     // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
     if (/Mobi/.test(navigator.userAgent)) {
         document.getElementById('navigation').style.display = 'none';     

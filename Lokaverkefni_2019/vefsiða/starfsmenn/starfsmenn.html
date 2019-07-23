@@ -17,9 +17,39 @@
                 <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
             
-            <div class="add_remove">
-                <button id="save_button" class="add"> Bæta við </button>
-                <button id="save_button" class="remove"> Eyða </button>
+            <div class="add_remove" id="add_remove">
+                <button id="add_button" class="add"> Bæta við </button>
+                <button id="remove_button" class="remove"> Eyða </button>
+                <div class="dropdown_main" id="dropdown_main">
+                    <h2>Bæta við starfsmanni: </h2>
+                    <div class="add_menu" id="add_menu">
+                        <span>Nafn: </span>
+                        <input type="text" id="staff_name_in" name="staff_name_in">
+                        <span>FRS-Númer: </span>
+                        <input type="text" id="staff_id_in" value="FRS-" name="staff_id_in">
+                        <span>Farsími: </span>
+                        <input type="text" id="staff_mobile_in" name="staff_mobile_in">
+                        <span>Sími: </span>
+                        <input type="text" id="staff_phoneNr_in" name="staff_phoneNr_in">
+                        <span>Netfang: </span>
+                        <input type="text" id="staff_email_in" value="" name="staff_email_in">
+                        <span>Starfstitill: </span>
+                        <input type="text" id="staff_position_in" value="" name="staff_position_in">        
+                    </div>
+                    <button class="save_button" id="save_button">Bæta við</button>
+                </div>
+
+                <div class="dropdown_remove" id="dropdown_remove">
+                    <h2>Eyða starfsmanni: </h2>
+                    <div class="add_menu" id="remove_menu">
+                        <span>Nafn starfsmanns: </span>
+                        <input type="text" id="remove_staff_name_in" class="remove_staff_name_in">
+                        <span class="or_spacer">eða</span>
+                        <span>FRS-Númer: </span>
+                        <input type="text" id="remove_staff_id_in" class="remove_staff_id_in" value="FRS-">
+                    </div>
+                    <button id="delete_button" class="remove_button">Eyða</button>
+                </div>
             </div>
 
             <div class="searchbar">
