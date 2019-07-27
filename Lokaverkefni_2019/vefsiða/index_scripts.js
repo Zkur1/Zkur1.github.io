@@ -86,19 +86,22 @@ function searchDropdown() {
 // Displays "add_tool" menu when the "add_button" is pressed.
 document.getElementById("add_button").onclick = addToolShow;
 function addToolShow(){
-    var i = document.getElementById('dropdown_main');
-    var x = document.getElementById('dropdown_remove');
+    var dropdown_main = document.getElementById('dropdown_main');
+    var dropdown_remove = document.getElementById('dropdown_remove');
+    var main = document.getElementById('main');
     // Checks if the "remove_button" has been pressed and displays "dropdown_main" if it hasn't.
-    if(x.style.display == "block"){
+    if(dropdown_remove.style.display == "block"){
         removeToolShow();
     }
     else{
-        // Determines if the menu is being displayed and hides it or shows it accordingly. 
-        if(i.style.display == "block"){
-            i.style.display = "none";
+        // Determines if the menu is being displayed and hides it or shows it accordingly. Also shrinks the "tool_list" to fit the page when a dropdown menu is shown. 
+        if(dropdown_main.style.display == "block"){
+            dropdown_main.style.display = "none";
+            main.style.height = "66%";
         }
         else{
-            i.style.display = "block";
+            dropdown_main.style.display = "block";
+            main.style.height = "20%";
         }
     }
 }
@@ -106,26 +109,29 @@ function addToolShow(){
 // Displays "remove_tool" menu when the "remove_button" is pressed.
  document.getElementById("remove_button").onclick = removeToolShow;
  function removeToolShow(){
-    var i = document.getElementById('dropdown_remove');
-    var x = document.getElementById('dropdown_main');
+    var dropdown_remove = document.getElementById('dropdown_remove');
+    var dropdown_main = document.getElementById('dropdown_main');
     // Checks if the "add_button" has been pressed and displays "dropdown_remove" if it hasn't.
-    if(x.style.display == "block"){
+    if(dropdown_main.style.display == "block"){
         addToolShow();
     }
     else{
-        // Determines if the menu is being displayed and hides it or shows it accordingly. 
-        if(i.style.display == "block"){
-            i.style.display = "none";
+        // Determines if the menu is being displayed and hides it or shows it accordingly. Also shrinks the "tool_list" to fit the page when a dropdown menu is shown. 
+        if(dropdown_remove.style.display == "block"){
+            dropdown_remove.style.display = "none";
+            main.style.height = "66%";
         }
         else{
-            i.style.display = "block";
+            dropdown_remove.style.display = "block";
+            main.style.height = "34%";
         }
     }
 }
 
 // Runs the function "addToolToDatabase" when "save_button" is pressed.
 // This function saves user input as a firestore document.
-document.getElementById("save_button").onclick = function addToolToDatabase(){
+document.getElementById("save_button").onclick = addToolToDatabase;
+function addToolToDatabase(){
     var tool_name_in = document.querySelector("#tool_name_in");
     var tool_id_in = document.querySelector("#tool_id_in");
     // If either the "tool_id_in" or "tool_name_in" input fields are empty nothing will execute.

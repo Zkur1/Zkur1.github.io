@@ -4,7 +4,6 @@ console.log(tool_selector);
 
 // Global variables.
 var docRef = firestore.collection("Tools").doc(localStorage.getItem("tool_selector"));
-var checkOutProject_text = ""
 
 // Displays all live data (data that can change) on the page and updates said data in real time. 
 function displayLiveData(){
@@ -71,7 +70,8 @@ function showToolStatus(){
 }
 
 // Runs the function "loanTool" when "save_button" is pressed.
-document.getElementById("save_button").onclick = function loanTool(){
+document.getElementById("save_button").onclick = loanTool;
+function loanTool(){
     // Fetches input tags on the html and puts them into variables to be used later. 
     var user_name_in = document.querySelector("#user_name_in");
     var project_name_in = document.querySelector("#project_name_in");
@@ -81,8 +81,8 @@ document.getElementById("save_button").onclick = function loanTool(){
         projectID: project_name_in.value,
     })
 
+    console.log("Fyrst");
     // Adds "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the tool. 
-    console.log(checkOutProject_text)
     firestore.collection('Tools').doc(tool_selector).collection("in_out").add({
         checkOutDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
         checkOutUser: user_name_in.value,
@@ -103,7 +103,8 @@ document.getElementById("save_button").onclick = function loanTool(){
 }
 
 // Runs the function "returnTool" when "return_button" is pressed.
-document.getElementById("return_button").onclick = function returnTool(){
+document.getElementById("return_button").onclick = returnTool;
+function returnTool(){
     // Fetches input tags on the html and puts them into variables to be used later. 
     var return_user_name_in = document.querySelector("#return_user_name_in");
     docRef.get().then(function(doc) {
@@ -121,6 +122,7 @@ document.getElementById("return_button").onclick = function returnTool(){
                 checkInDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
                 checkInUser: return_user_name_in.value,
             });
+
             return_user_name_in.value = "FRS-";
         }
     });
@@ -132,18 +134,13 @@ function displayLoanInfo(){
     var inUseBy_text = document.querySelector("#inUseBy_text");
     var projectID_text = document.querySelector("#projectID_text");
     var loanDate_text = document.querySelector("#loanDate_text");
-    docRef.get().then(function(doc) {
+    docRef.onSnapshot(function(doc) {
         // If the document is correctly read. 
         if(doc.exists){
             // Reads from the subcollection "in_out" of the tools document and uses the variable "checkOutDate" from the subcollection to display the loan date on the page. 
             firestore.collection('Tools').doc(tool_selector).collection("in_out").doc(localStorage.getItem("history_in")).get().then(function(doc) {
-                if(doc.exists) {
-                    loanDate_text.textContent = "Verkfæri skráð út: " + doc.data().checkOutDate; 
-                } 
-                else{
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                }
+                loanDate_text.textContent = "Verkfæri skráð út: " + doc.data().checkOutDate; 
+                console.log("Seinna");
             });     
             inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().inUseBy;
             projectID_text.textContent = "Verkfæri skráð á verknúmer: " + doc.data().projectID;
@@ -157,6 +154,7 @@ function testForPage(){
     if(sPage.trim() === 'verkfaeri_default.html'){
         displayLiveData();
         }
+
     if (/Mobi/.test(navigator.userAgent)) {
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';

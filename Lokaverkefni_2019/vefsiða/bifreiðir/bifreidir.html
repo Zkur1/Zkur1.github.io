@@ -23,25 +23,29 @@
                 <div class="dropdown_main" id="dropdown_main">
                     <h2>Bæta við bifreið: </h2>
                     <div class="add_menu">
-                        <span>Tegund bifreiðar: </span>
-                        <input type="textfield" class="car_name_in">
+                        <span>Framleiðandi: </span>
+                        <input type="textfield" id="car_manufacturer_in">
+                        <span>Tegund: </span>
+                        <input type="textfield" id="car_model_in">
                         <span>Bílnúmer: </span>
-                        <input type="textfield" class="car_id" value="">
+                        <input type="textfield" id="car_id_in" style="text-transform: uppercase">
+                        <span>Árgerð: </span>
+                        <input type="textfield" id="car_model_year_in">
                         <span>Akstur: </span>
-                        <input type="textfield" class="car_milage" value="">
+                        <input type="textfield" id="car_milage_in">
+                        <span>Skoðunar dags.: </span>
+                        <input type="textfield" id="car_checkup_date_in">
                     </div>
-                    <button class="save_button">Bæta við</button>
+                    <button class="save_button" id="save_button">Bæta við</button>
                 </div>
                 
                 <div class="dropdown_remove" id="dropdown_remove">
                     <h2>Eyða bifreið: </h2>
                     <div class="add_menu">
-                        <span>Tegund bifreiðar: </span>
-                        <input type="textfield" class="car_name_in">
                         <span>Bílnúmer: </span>
-                        <input type="textfield" class="car_id">
+                        <input type="textfield" id="remove_car_id_in"style="text-transform: uppercase">
                     </div>
-                    <button class="remove_button">Eyða</button>
+                    <button class="remove_button" id="delete_button">Eyða</button>
                 </div>
             </div>
 
@@ -49,7 +53,7 @@
                     <input type="textfield" id="search_bar" placeholder="Leita að bifreið" onkeyup="searchDropdown()">
             </div>
 
-            <div class="main">
+            <div class="main" id="main">
                 <ul class="car_section" id="car_list">
                     
                 </ul>

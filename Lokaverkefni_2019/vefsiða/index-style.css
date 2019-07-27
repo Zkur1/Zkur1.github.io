@@ -11,225 +11,223 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.header{
-    height: 12%;
-    display: flex;
-    background: #14489f;
-    color: white;
-    align-items: center;
-    justify-content: left;
-    font-size: 30pt;
-    font-family: 'Montserrat', sans-serif;
-    padding: 1em;
-}
+    .header{
+        height: 12%;
+        display: flex;
+        background: #14489f;
+        color: white;
+        align-items: center;
+        justify-content: left;
+        font-size: 30pt;
+        font-family: 'Montserrat', sans-serif;
+        padding: 1em;
+    }
 
-.add_remove{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
+    .add_remove{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
 
-.add_remove .add{
-    width: 30%;
-    margin: 2% 40% 0% 0;
-}
+        .add_remove .add{
+            width: 30%;
+            margin: 2% 40% 0% 0;
+        }
 
-.add_remove .remove{
-    padding: 1em 2em;
-    width: 30%;
-    margin: 2% 0 0% 0%;
-}
+        .add_remove .remove{
+            padding: 1em 2em;
+            width: 30%;
+            margin: 2% 0 0% 0%;
+        }
 
-.dropdown_main{
-    display: none;
-    padding-top: 1em;
-}
+        .dropdown_main{
+            display: none;
+            padding-top: 1em;
+        }
 
-.add_menu{
-    display: flex;
-    flex-wrap: wrap;
-    width: 65%;
-    padding: 1em 1em 2em 0;
-}
+        .add_menu{
+            display: flex;
+            flex-wrap: wrap;
+            width: 55%;
+            padding: 1em 1em 2em 0;
+        }
 
-.add_menu >*{
-    flex: 1 1 30%;
-    margin-bottom: 1em;    
-}
+        .add_menu >*{
+            flex: 1 1 30%;
+            margin-bottom: 1em;    
+        }
 
-.or_spacer{
-    flex: 1 100%;
-    font-weight: 1000;
-    margin-left: 2em;
-}
+        .or_spacer{
+            flex: 1 100%;
+            font-weight: 1000;
+            margin-left: 2em;
+        }
 
-.save_button{
-    position: relative;
-    left: 0%;
-    padding: 1em 2em;
-    margin: 0 0 2em 0;
-    font-size: 10pt;
-    font-weight: bold; 
-    color: white;
-    background:#14489f;
-}
+        .save_button{
+            position: relative;
+            left: 0%;
+            padding: 1em 2em;
+            margin: 0 0 2em 0;
+            font-size: 10pt;
+            font-weight: bold; 
+            color: white;
+            background:#14489f;
+        }
 
-.save_button:hover, .save_button:active{
-    color: white;
-    background:#333;
-}
+        .save_button:hover, .save_button:active{
+            color: white;
+            background:#333;
+        }
 
-.dropdown_remove{
-    display: none;
-}
+        .dropdown_remove{
+            display: none;
+        }
 
-.remove_button{
-    position: relative;
-    left: 0%;
-    padding: 1em 2em;
-    margin: 0 0 2em 0;
-    font-size: 10pt;
-    font-weight: bold; 
-    color: white;
-    background:#9f1414;
-}
+        .remove_button{
+            position: relative;
+            left: 0%;
+            padding: 1em 2em;
+            margin: 0 0 2em 0;
+            font-size: 10pt;
+            font-weight: bold; 
+            color: white;
+            background:#9f1414;
+        }
 
-.searchbar{
-    width: 100%;
-    margin: 1em 0 0 0;
-}
+    .searchbar{
+        width: 100%;
+        margin: 1em 0 0 0;
+    }
 
-.searchbar input{
-    width: 100%;
-    font-size: 16pt;
-}
+        .searchbar input{
+            width: 100%;
+            font-size: 16pt;
+        }
 
-.main{
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-    max-width: 48em;
-    height: 66%;
-}
+    .main{
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
+        height: 66%;
+    }
 
-.main::-webkit-scrollbar{
-    display: none;
-}
+        .main::-webkit-scrollbar{
+            display: none;
+        }
 
-.tool_section{
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 2em;
-    padding: 0;
-}
+        .tool_section{
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 2em;
+            padding: 0;
+        }
 
-.tool_in_list{
-    list-style-type: none;
-    padding: 1em;
-    font-size: 16pt;
-    background: #14489f;
-    color: white;
-}
+            .tool_in_list{
+                list-style-type: none;
+                padding: 1em;
+                font-size: 16pt;
+                background: #14489f;
+                color: white;
+            }
 
-.tool_in_list_greyed{
-    list-style-type: none;
-    padding: 1em;
-    font-size: 16pt;
-    background: #cac6c6;
-    color: grey;
-}
+            .tool_in_list_greyed{
+                list-style-type: none;
+                padding: 1em;
+                font-size: 16pt;
+                background: #cac6c6;
+                color: grey;
+            }
 
-.tool_section img{
-    max-width:10%;
-    padding-left: 5%;
-}
+            .tool_section img{
+                max-width:10%;
+                padding-left: 5%;
+            }
 
-div a{
-    text-decoration: none;
-    color: black;
-}
+            div a{
+                text-decoration: none;
+                color: black;
+            }
 
-.tool_in_list:hover, .tool_in_list:active{
-    color: black;
-    background: #83aeff;
-}
+            .tool_in_list:hover, .tool_in_list:active{
+                color: black;
+                background: #83aeff;
+            }
 
-.tool_in_list_greyed:hover, .tool_in_list_greyed:active{
-    color: black;
-    background: #8e8e8e;
-}
+            .tool_in_list_greyed:hover, .tool_in_list_greyed:active{
+                color: black;
+                background: #8e8e8e;
+            }
 
-.navigation{
-    display: block;
-    background:#333;
-    text-align: center;
-    position: sticky;
-    bottom: 1em;
-    width: 100%;
-    max-width: 48em;
-    margin-right: auto;
-    margin-left: auto;
-}
+    .navigation{
+        display: block;
+        background:#333;
+        text-align: center;
+        position: sticky;
+        bottom: 1em;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
 
-.navigation ul{
-    padding: 0;
-    margin: 0;
-}
+        .navigation ul{
+            padding: 0;
+            margin: 0;
+        }
 
-.navigation ul > li{
-    list-style-type: none;
-    display: inline-block;
-    padding: 5px 20px;
-    color: white;
-    font-size: 18px;
-    padding: 1.8em 2em;
-}
+        .navigation ul > li{
+            list-style-type: none;
+            display: inline-block;
+            padding: 5px 20px;
+            color: white;
+            font-size: 18px;
+            padding: 1.8em 2em;
+        }
 
-.navigation a{
-    color: inherit;
-    text-decoration: none;
-}
+        .navigation a{
+            color: inherit;
+            text-decoration: none;
+        }
 
-.navigation ul > li:hover, .navigation > li:active{
-    color: black;
-    background: #BFC0C0;
-}
+        .navigation ul > li:hover, .navigation > li:active{
+            color: black;
+            background: #BFC0C0;
+        }
 
-.m_navigation{
-    display: none;
-    background:#333;
-    text-align: center;
-    position: sticky;
-    bottom: 1em;
-    width: 100%;
-    max-width: 48em;
-    margin-right: auto;
-    margin-left: auto;
-}
+    .m_navigation{
+        display: none;
+        background:#333;
+        text-align: center;
+        position: sticky;
+        bottom: 1em;
+        width: 100%;
+        max-width: 48em;
+        margin-right: auto;
+        margin-left: auto;
+    }
 
-.m_navigation ul{
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr)
-}
+        .m_navigation ul{
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr)
+        }
 
-.m_navigation ul > li{
-    list-style-type: none;
-    color: white;
-    padding: 0.2em;    
-}
+        .m_navigation ul > li{
+            list-style-type: none;
+            color: white;
+            padding: 0.2em;    
+        }
 
-.m_navigation .icon{
-    text-decoration: none;
-    margin-top: 0.5em;
-    height: 3em;
-    width: 3em;
-}
+        .m_navigation .icon{
+            text-decoration: none;
+            margin-top: 0.5em;
+            height: 3em;
+            width: 3em;
+        }
 
-.m_navigation ul > li:hover, .m_navigation > li:active{
-    color: black;
-    background: #BFC0C0;
-}
+        .m_navigation ul > li:hover, .m_navigation > li:active{
+            color: black;
+            background: #BFC0C0;
+        }

@@ -31,22 +31,23 @@ function readStaffData(){
             staff_position.textContent = 'Starfstitill: ' + doc.data().staffPosition;
 
             // Adds the elements on the page if the specific information is available in the database.
-            if(doc.data().staffName != ""){
+            if(doc.data().staffName != undefined){
                 staff_info.insertBefore(staff_name , staff_info.firstChild);
             }
-            if(doc.data().staffMobile != ""){
+            if(doc.data().staffMobile != undefined){
                 staff_info.appendChild(staff_mobile);
             }
-            
-            if(doc.data().staffPhoneNr != ""){
+        
+            if(doc.data().staffPhoneNr != undefined){
                 staff_info.appendChild(staff_phone);
+                console.log(doc.data().staffPhoneNr)
             }
             
-            if(doc.data().staffEmail != ""){
+            if(doc.data().staffEmail != undefined){
                 staff_info.appendChild(staff_email);
             }
             
-            if(doc.data().staffPosition != ""){
+            if(doc.data().staffPosition != undefined){
                 staff_info.appendChild(staff_position);
             }
             

@@ -19,7 +19,6 @@
     align-items: center;
     justify-content: left;
     font-size: 30pt;
-    font-family: 'Montserrat', sans-serif;
     padding: 1em;
 }
 
@@ -61,7 +60,6 @@
     position: sticky;
     bottom: 1em;
     width: 100%;
-    max-width: 48em;
     margin-right: auto;
     margin-left: auto;
 }
@@ -97,7 +95,6 @@
     position: sticky;
     bottom: 1em;
     width: 100%;
-    max-width: 48em;
     margin-right: auto;
     margin-left: auto;
 }

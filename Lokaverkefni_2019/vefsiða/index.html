@@ -25,10 +25,13 @@
                     <div class="add_menu" id="add_menu">
                         <span>Nafn verkfæris: </span>
                         <input type="text" id="tool_name_in" name="tool_name_in">
+                        <span class="or_spacer"></span>
                         <span>FR-Númer: </span>
                         <input type="text" id="tool_id_in" value="FR-" name="tool_id_in">
+                        <span class="or_spacer"></span>
                         <span>Fjöldi: </span>
                         <input type="text" id="tool_count_in" value="1" name="tool_count_in">
+                        <span class="or_spacer"></span>
                         <span>Lýsing: </span>
                         <input type="text" id="tool_description_in" value="" name="tool_description_in">    
                     </div>
@@ -52,7 +55,7 @@
                 <input type="textfield" id="search_bar" placeholder="Leita að verkfæri" onkeyup="searchDropdown()">
             </div>
 
-            <div class="main">
+            <div class="main" id="main">
                 <ul class="tool_section" id="tool_list">
                 </ul>
             </div>

@@ -31,7 +31,7 @@ function renderUserList(doc){
     let staff_id = document.createElement('span');
     
     // Sets specific content in id to each element.
-    li.setAttribute("data-id", doc.id);
+    li.setAttribute("id", doc.id);
     name.textContent = doc.data().staffName;
     staff_id.textContent = " :: " + doc.data().staffID;
 
@@ -44,7 +44,7 @@ function renderUserList(doc){
 
     // Adds "onclick" function to each element in the list.
     li.onclick = function goToStaff(){
-        user_selector = li.getAttribute('data-id');
+        user_selector = li.getAttribute('id');
         localStorage.setItem("user_selector", user_selector);
         console.log(user_selector);
         window.open("staff/staff_default.html", "_self");
@@ -74,42 +74,47 @@ function searchDropdown() {
     }
 }
 
-// Displays "add_staff" menu when the "add_button" is pressed.
-document.getElementById("add_button").onclick = addStaffShow;
-function addStaffShow(){
-    var i = document.getElementById('dropdown_main');
-    var x = document.getElementById('dropdown_remove');
+// Displays "add_tool" menu when the "add_button" is pressed.
+document.getElementById("add_button").onclick = addToolShow;
+function addToolShow(){
+    var dropdown_main = document.getElementById('dropdown_main');
+    var dropdown_remove = document.getElementById('dropdown_remove');
+    var main = document.getElementById('main');
     // Checks if the "remove_button" has been pressed and displays "dropdown_main" if it hasn't.
-    if(x.style.display == "block"){
-        removeStaffShow();
+    if(dropdown_remove.style.display == "block"){
+        removeToolShow();
     }
     else{
-        // Determines if the menu is being displayed and hides it or shows it accordingly. 
-        if(i.style.display == "block"){
-            i.style.display = "none";
+        // Determines if the menu is being displayed and hides it or shows it accordingly. Also shrinks the "tool_list" to fit the page when a dropdown menu is shown. 
+        if(dropdown_main.style.display == "block"){
+            dropdown_main.style.display = "none";
+            main.style.height = "66%";
         }
         else{
-            i.style.display = "block";
+            dropdown_main.style.display = "block";
+            main.style.height = "18%";
         }
     }
 }
 
-// Displays "remove_staff" menu when the "remove_button" is pressed.
- document.getElementById("remove_button").onclick = removeStaffShow;
- function removeStaffShow(){
-    var i = document.getElementById('dropdown_remove');
-    var x = document.getElementById('dropdown_main');
+// Displays "remove_tool" menu when the "remove_button" is pressed.
+ document.getElementById("remove_button").onclick = removeToolShow;
+ function removeToolShow(){
+    var dropdown_remove = document.getElementById('dropdown_remove');
+    var dropdown_main = document.getElementById('dropdown_main');
     // Checks if the "add_button" has been pressed and displays "dropdown_remove" if it hasn't.
-    if(x.style.display == "block"){
-        addStaffShow();
+    if(dropdown_main.style.display == "block"){
+        addToolShow();
     }
     else{
-        // Determines if the menu is being displayed and hides it or shows it accordingly. 
-        if(i.style.display == "block"){
-            i.style.display = "none";
+        // Determines if the menu is being displayed and hides it or shows it accordingly. Also shrinks the "tool_list" to fit the page when a dropdown menu is shown. 
+        if(dropdown_remove.style.display == "block"){
+            dropdown_remove.style.display = "none";
+            main.style.height = "66%";
         }
         else{
-            i.style.display = "block";
+            dropdown_remove.style.display = "block";
+            main.style.height = "34%";
         }
     }
 }
@@ -197,14 +202,22 @@ document.getElementById("delete_button").onclick = function removeStaffFromDatab
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'starfsmenn.html'){
-        // Gets a snapshot of documents inside the collection 'Users' and logs to console.
-        firestore.collection('Users').orderBy('staffID').get().then((snapshot) => {
-        snapshot.docs.forEach(doc => {
-            renderUserList(doc);
-            console.log(doc.id)
-                })
+        // Detects any changes to the collection "Users", snapshots them and updates the tool list accordingly.
+        // Note: function "orderBy()" lists the objects in order of "staffID".
+        firestore.collection('Users').orderBy('staffID').onSnapshot(snapshot => {
+            var changes = snapshot.docChanges();
+            // changes.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
+            changes.forEach(change => {
+                if(change.type == 'added'){
+                    renderUserList(change.doc);
+                }
+                else if(change.type == 'removed'){
+                    console.log(user_list.querySelector('[id=' + change.doc.id + ']'))
+                    var li = user_list.querySelector('[id=' + change.doc.id + ']');
+                    user_list.removeChild(li);
+                }
             })
-        }   
+        })
     // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
     if (/Mobi/.test(navigator.userAgent)) {
         document.getElementById('navigation').style.display = 'none';     
@@ -239,6 +252,8 @@ function testForPage(){
             }   
 
         }
+
+    }
 }
 
 testForPage();
