@@ -144,7 +144,7 @@ function addCarToDatabase(){
                 model: car_model_in.value,
                 carID: car_id_in.value,
                 modelYear: car_model_year_in.value,
-                milage: car_model_year_in.value,
+                milage: car_milage_in.value,
                 checkupDate: car_checkup_date_in.value,
             });
             // Log confirmation message to console.

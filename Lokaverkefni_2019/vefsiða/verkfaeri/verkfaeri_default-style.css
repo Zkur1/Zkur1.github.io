@@ -50,6 +50,17 @@
                 margin-top: 1em;
             }
 
+        .photo_upload{
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+            .progress_bar{
+                justify-content: center;
+                margin-left: 20%;
+            }
+        
         .in_stock{
             display: none;
         }

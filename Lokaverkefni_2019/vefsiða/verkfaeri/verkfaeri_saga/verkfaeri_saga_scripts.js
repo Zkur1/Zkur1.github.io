@@ -24,8 +24,8 @@ function renderCheckInData(doc){
     projectID_out.setAttribute("id", "projectID_out");
     projectID_out.setAttribute("class", "projectID_out");
 
-    check_out.textContent = "Verkfæri skráð út þann: " + doc.data().checkOutDate + " af starfsmanni: " +  doc.data().checkOutUser + " ";
-    check_in.textContent = "Verkfæri skráð inn þann: " + doc.data().checkInDate + " af starfsmanni: " +  doc.data().checkInUser + " ";
+    check_out.textContent = "Verkfæri skráð út þann: " + doc.data().checkOutDate + " af starfsmanni: " +  doc.data().checkOutUser + " \n";
+    check_in.textContent = "Verkfæri skráð inn þann: " + doc.data().checkInDate + " af starfsmanni: " +  doc.data().checkInUser + " \n";
     projectID_out.textContent = "Verkfæri skráð á verknúmer: " + doc.data().checkOutProject;
 
     // Appends content into li.

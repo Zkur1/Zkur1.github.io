@@ -40,6 +40,17 @@ function showToolName(){
     });
 }
 
+var upload_button = document.getElementById('upload_button');
+upload_button.addEventListener('change', function(uploadFile) {
+    
+    var file = uploadFile.target.files[0];
+
+    var storageRef = firebase.storage().ref('verkfaeri_myndir/' + file.name);
+    
+    var task = storageRef.put(file);
+
+});
+
 
 // When the "history_button" is pressed a new history page opens. 
 document.getElementById("history_button").onclick = function openHistoryPage(){
@@ -118,14 +129,18 @@ function returnTool(){
             });
 
             // Logs who returns the tool and when and logs it to variables stored in the subcollection "in_out".
-            firestore.collection('Tools').doc(tool_selector).collection("in_out").doc(localStorage.getItem("history_in")).update({
-                checkInDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
-                checkInUser: return_user_name_in.value,
+            firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    firestore.collection('Tools').doc(tool_selector).collection("in_out").doc(doc.id).update({
+                        checkInDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+                        checkInUser: return_user_name_in.value,
+                    });
+                });
             });
-
-            return_user_name_in.value = "FRS-";
         }
     });
+    // Clears input field. 
+    //return_user_name_in.value = "FRS-";
 }
 
 
@@ -138,15 +153,24 @@ function displayLoanInfo(){
         // If the document is correctly read. 
         if(doc.exists){
             // Reads from the subcollection "in_out" of the tools document and uses the variable "checkOutDate" from the subcollection to display the loan date on the page. 
-            firestore.collection('Tools').doc(tool_selector).collection("in_out").doc(localStorage.getItem("history_in")).get().then(function(doc) {
-                loanDate_text.textContent = "Verkfæri skráð út: " + doc.data().checkOutDate; 
-                console.log("Seinna");
-            });     
+            firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    loanDate_text.textContent = "Verkfæri skráð út: " + doc.data().checkOutDate; 
+                });
+            });
+                
             inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().inUseBy;
             projectID_text.textContent = "Verkfæri skráð á verknúmer: " + doc.data().projectID;
         }
     });
 }
+
+firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(3).get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        console.log(doc.data())
+    });
+});
+
 
 
 // Makes sure this javascript file is only ran on a specific page.

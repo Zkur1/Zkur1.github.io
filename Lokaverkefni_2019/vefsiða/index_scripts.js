@@ -4,7 +4,7 @@ var firebaseConfig = {
     authDomain: "fagraf-2019.firebaseapp.com",
     databaseURL: "https://fagraf-2019.firebaseio.com",
     projectId: "fagraf-2019",
-    storageBucket: "fagraf-2019.appspot.com",
+    storageBucket: "gs://fagraf-2019.appspot.com/",
     messagingSenderId: "1072889478071",
     appId: "1:1072889478071:web:a8c6b621894abdab"
 };
