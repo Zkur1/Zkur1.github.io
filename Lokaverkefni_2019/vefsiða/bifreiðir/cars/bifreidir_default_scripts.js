@@ -8,10 +8,9 @@ function readCarData(){
             // Logs the content of the document to the console. 
             console.log("Document data:", doc.data());
             // Creates elements to be displayed on the page.
-            let car_id = document.createElement('h1');
-            let car_make = document.createElement('h1');
-            let car_model_year = document.createElement('h1');
-            let car_checkup_date = document.createElement('h1');
+            let car_id = document.createElement('h2');
+            let car_make = document.createElement('h2');
+            let car_model_year = document.createElement('h2');
             let description_text = document.createElement('p');
             
 
@@ -25,9 +24,6 @@ function readCarData(){
             car_model_year.setAttribute("class", 'car_model_year');
             car_model_year.textContent = 'Árgerð: ' + doc.data().modelYear;
 
-            car_checkup_date.setAttribute("class", 'car_checkup_date');
-            car_checkup_date.textContent = 'Næsta Skoðun: ' + doc.data().checkupDate;
-
             description_text.setAttribute("class", 'car_id');
             description_text.textContent = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci incidunt molestiae porro odit illum modi fugit? Nemo, commodi. Atque natus reprehenderit architecto laborum ipsam cumque, facere veniam non possimus error.";
 
@@ -35,7 +31,6 @@ function readCarData(){
             car_info.insertBefore(car_id , car_info.firstChild);
             car_info.appendChild(car_make);
             car_info.appendChild(car_model_year);
-            car_info.appendChild(car_checkup_date);
             car_info.appendChild(description_text);
         
         // If the document is not correctly read. 
@@ -91,5 +86,3 @@ function testForPage(){
     
 
 testForPage();
-
-    
