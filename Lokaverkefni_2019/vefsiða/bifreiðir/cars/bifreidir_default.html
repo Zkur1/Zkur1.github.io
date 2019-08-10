@@ -25,16 +25,23 @@
                 
                 <div class="maintenance" id="maintenance">
                     <h2>Viðhald:</h2>
-                    <div class="maintenance_info">
+                    <div class="maintenance_info" id="maintenance_info">
                         <span>Skoðun:</span>
-                        <span>20/08/2019:</span>
-                        <input type="textfield" value="FRS-">
+                        <span class="current_maintenance" id="checkup_date" style="display: block;">20/08/2019</span>
+                        <input class="new_maintenance" id="new_checkup_date" placeholder="00/00/0000">
+                        <button class="update_maintenance" id="checkup_date_button">Uppfæra dags.</button>
+
                         <span>Smurning:</span>
-                        <span>20000:</span>
-                        <input type="textfield" value="FRS-">
+                        <span class="current_maintenance" id="oil_change" style="display: block;">200.000km</span>
+                        <input class="new_maintenance" id="new_oil_change" placeholder="000.000km">
+                        <button class="update_maintenance" id="oil_change_button">Uppfæra km.</button>
+
                         <span>Dekkjaskipti:</span>
-                        <span>20/08/2019:</span>
-                        <input type="textfield"  value="FRS-">
+                        <span class="current_maintenance" id="tire_change" style="display: block;">20/08/2019</span>
+                        <input class="new_maintenance" id="new_tire_change" placeholder="00/00/0000">
+                        <button class="update_maintenance" id="tire_change_button">Uppfæra dags.</button>
+                        
+                        <button class="cancel_button" id="cancel_button">Hætta við</button>
                     </div>
                 </div>
 

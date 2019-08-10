@@ -44,6 +44,105 @@ function readCarData(){
     });
 }
         
+
+// Displays an input field to change the "checkup_date" when the "checkup_date_button" is pressed.
+document.getElementById("checkup_date_button").onclick = newCheckupDate;
+function newCheckupDate(){
+    var checkup_date = document.getElementById('checkup_date');
+    var new_checkup_date = document.getElementById('new_checkup_date');
+    var checkup_date_button = document.getElementById('checkup_date_button');
+
+    // Determines if the menu is being displayed and hides it or shows it accordingly. Also shrinks the "tool_list" to fit the page when a dropdown menu is shown. 
+    if(checkup_date.style.display == "block"){
+        checkup_date.style.display = "none";
+        new_checkup_date.style.display = "block";
+        checkup_date_button.innerHTML = "Vista dags.";
+    }
+    else{
+        new_checkup_date.style.display = "none";
+        checkup_date.style.display = "block";
+        checkup_date_button.innerHTML = "Uppfæra dags.";
+    }
+}
+
+
+// Displays an input field to change the "checkup_date" when the "checkup_date_button" is pressed.
+document.getElementById("oil_change_button").onclick = newOilChange;
+function newOilChange(){
+    var oil_change = document.getElementById('oil_change');
+    var new_oil_change = document.getElementById('new_oil_change');
+    var oil_change_button = document.getElementById('oil_change_button');
+
+    // Determines if the menu is being displayed and hides it or shows it accordingly. Also shrinks the "tool_list" to fit the page when a dropdown menu is shown. 
+    if(oil_change.style.display == "block"){
+        oil_change.style.display = "none";
+        new_oil_change.style.display = "block";
+        oil_change_button.innerHTML = "Vista km.";
+    }
+    else{
+        new_oil_change.style.display = "none";
+        oil_change.style.display = "block";
+        oil_change_button.innerHTML = "Uppfæra km.";
+    }
+}
+
+
+// Displays an input field to change the "checkup_date" when the "checkup_date_button" is pressed.
+document.getElementById("tire_change_button").onclick = newTireChange;
+function newTireChange(){
+    var tire_change = document.getElementById('tire_change');
+    var new_tire_change = document.getElementById('new_tire_change');
+    var tire_change_button = document.getElementById('tire_change_button');
+
+    // Determines if the menu is being displayed and hides it or shows it accordingly. Also shrinks the "tool_list" to fit the page when a dropdown menu is shown. 
+    if(tire_change.style.display == "block"){
+        tire_change.style.display = "none";
+        new_tire_change.style.display = "block";
+        tire_change_button.innerHTML = "Vista dags.";
+    }
+    else{
+        new_tire_change.style.display = "none";
+        tire_change.style.display = "block";
+        tire_change_button.innerHTML = "Uppfæra dags.";
+    }
+}
+
+
+// Displays an input field to change the "checkup_date" when the "checkup_date_button" is pressed.
+document.getElementById("cancel_button").onclick = cancelMaintenanceUpdate;
+function cancelMaintenanceUpdate(){
+    var checkup_date = document.getElementById('checkup_date');
+    var new_checkup_date = document.getElementById('new_checkup_date');
+    var checkup_date_button = document.getElementById('checkup_date_button');
+    var oil_change = document.getElementById('oil_change');
+    var new_oil_change = document.getElementById('new_oil_change');
+    var oil_change_button = document.getElementById('oil_change_button');
+    var tire_change = document.getElementById('tire_change');
+    var new_tire_change = document.getElementById('new_tire_change');
+    var tire_change_button = document.getElementById('tire_change_button');
+    
+    if(checkup_date.style.display == "none"){
+        new_checkup_date.style.display = "none";
+        checkup_date.style.display = "block";
+        checkup_date_button.innerHTML = "Uppfæra dags.";
+    }
+
+    if(oil_change.style.display == "none"){
+        new_oil_change.style.display = "none";
+        oil_change.style.display = "block";
+        oil_change_button.innerHTML = "Uppfæra km.";
+    }
+    
+    if(tire_change.style.display == "none"){
+        new_tire_change.style.display = "none";
+        tire_change.style.display = "block";
+        tire_change_button.innerHTML = "Uppfæra dags.";
+    }
+}
+    
+
+
+
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'bifreidir_default.html'){
