@@ -88,31 +88,51 @@
             }
 
             .update_maintenance{
-                position: relative;
-                left: 0%;
                 padding: 1em 2em;
                 font-size: 10pt;
-                font-family: 'Montserrat', sans-serif;
+                font-weight: bold; 
+                color: white;
+                background:#14489f;
+            }
+
+            .save_maintenance{
+                display: none;
+                padding: 1em 2em;
+                font-size: 10pt;
                 font-weight: bold; 
                 color: white;
                 background:#14489f;
             }
 
             .cancel_button{
-                position: relative;
-                left: 0%;
+                display: flex;
+                flex-flow: row;
                 padding: 1em 2em;
                 font-size: 10pt;
-                font-family: 'Montserrat', sans-serif;
                 font-weight: bold; 
                 color: white;
                 background: #9f1414;
                 max-width: 25%;
-                
             }
+
+            .history_button{
+                padding: 1em 2em;
+                font-size: 10pt;
+                font-weight: bold; 
+                color: white;
+                background:#d8a120;
+                max-width: 33.5%;
+                margin-left: 41.5%;
+    
+            }
+                .history_button:hover, .history_button:active{
+                    color: white;
+                    background:#333;
+                }
 
         .user_name_in{
             margin-left: 1em;
+            margin: 1em 1em 1em ;
         } 
 
         .save_button{
@@ -120,10 +140,10 @@
             left: 0%;
             padding: 1em 2em;
             font-size: 10pt;
-            font-family: 'Montserrat', sans-serif;
             font-weight: bold; 
             color: white;
             background:#14489f;
+            margin: 0 0 1em 0;
         }
 
             .save_button:hover, .save_button:active{
@@ -161,25 +181,6 @@
             .return_button:hover, .return_button:active{
                 color: white;
                 background:#333;
-
-            }
-
-        .button_history{
-            position: relative;
-            left: 70%;
-            padding: 2em;
-            margin-top: 3em;
-            font-size: 10pt;
-            font-weight: bold; 
-            color: white;
-            background:#14489f;
-
-        }
-
-            .button_history:hover, .button_history:active{
-                color: white;
-                background:#333;
-
             }
 
     .navigation{

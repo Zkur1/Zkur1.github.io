@@ -102,12 +102,6 @@ function loanTool(){
         checkInUser: "",
     })
 
-    // Gives access to the id of the document created above and assigns its value to the global variable "history_in".
-    .then(docRef =>{
-        localStorage.setItem("history_in", docRef.id);
-        console.log(docRef.id)
-    });
-
     // Resets the input fields. 
     user_name_in.value = "FRS-";
     project_name_in.value = "R-"; 
