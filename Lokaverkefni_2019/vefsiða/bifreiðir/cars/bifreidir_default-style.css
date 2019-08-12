@@ -50,6 +50,24 @@
             margin-top: 1em;
         }
 
+        .history_button{
+            position: relative;
+            left: 70%;
+            padding: 2em;
+            margin-top: 0.5em;
+            font-size: 10pt;
+            font-weight: bold;
+            color: white;
+            background:#d8a120;
+            max-width: 33.5%;
+
+        }
+            .history_button:hover, .history_button:active{
+                color: white;
+                background:#333;
+            }
+
+
         .available{
             padding-top: 3em;
             color: green;
@@ -95,6 +113,11 @@
                 background:#14489f;
             }
 
+                .update_maintenance:hover, .update_maintenance:active{
+                    color: white;
+                    background:#333;
+                }
+
             .save_maintenance{
                 display: none;
                 padding: 1em 2em;
@@ -103,6 +126,12 @@
                 color: white;
                 background:#14489f;
             }
+
+                .save_maintenance:hover, .save_maintenance:active{
+                    color: white;
+                    background:#333;
+                }
+            
 
             .cancel_button{
                 display: flex;
@@ -115,17 +144,7 @@
                 max-width: 25%;
             }
 
-            .history_button{
-                padding: 1em 2em;
-                font-size: 10pt;
-                font-weight: bold; 
-                color: white;
-                background:#d8a120;
-                max-width: 33.5%;
-                margin-left: 41.5%;
-    
-            }
-                .history_button:hover, .history_button:active{
+                .cancel_button:hover, .cancel_button:active{
                     color: white;
                     background:#333;
                 }

@@ -159,20 +159,9 @@ function displayLoanInfo(){
     });
 }
 
-firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(3).get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        console.log(doc.data())
-    });
-});
-
-
 
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
-    if(sPage.trim() === 'verkfaeri_default.html'){
-        displayLiveData();
-        }
-
     if (/Mobi/.test(navigator.userAgent)) {
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
@@ -211,3 +200,4 @@ function testForPage(){
 // Functions to be run when the webpage is opened.
 testForPage();
 showToolName();
+displayLiveData();
