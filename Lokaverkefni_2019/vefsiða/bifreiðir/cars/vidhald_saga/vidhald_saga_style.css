@@ -34,15 +34,32 @@
     display: none;
 }
 
-.check_in_list{
+.maintenance_title{
+    margin: 1em 2em 0em 2em;
+}
+
+.maintenance_list{
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 2em;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
     padding: 0;
 }
 
-.check_in_list li{
+.maintenance_list ul{
+    list-style-type: none;
+    padding: 0.2em;
+    font-size: 16pt;
+    background: lightgray;
+    color: black;
+}
+
+.checkup_list{
+    width: 100%;
+    margin: 0;
+}
+
+.checkup_list li{
     list-style-type: none;
     padding: 1em;
     font-size: 16pt;
@@ -50,12 +67,34 @@
     color: black;
 }
 
-.check_in{
-    margin-right: 1em;
+.checkup_bold{
+    margin-left: 2em;
 }
 
-.check_out{
-    margin-right: 1em;
+.oil_change_list{
+    width: 100%;
+    margin: 0;
+}
+
+.oil_change_list li{
+    list-style-type: none;
+    padding: 1em;
+    font-size: 16pt;
+    background: lightgray;
+    color: black;
+}
+
+.tire_change_list{
+    width: 100%;
+    margin: 0;
+}
+
+.tire_change_list li{
+    list-style-type: none;
+    padding: 1em;
+    font-size: 16pt;
+    background: lightgray;
+    color: black;
 }
 
 .navigation{
