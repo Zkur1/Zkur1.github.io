@@ -94,6 +94,11 @@
             background:#9f1414;
         }
 
+        .remove_button:hover, .remove_button:active{
+            color: white;
+            background:#333;
+        }
+
     .searchbar{
         width: 100%;
         margin: 1em 0 0 0;

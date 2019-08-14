@@ -10,198 +10,265 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.header{
-    height: 12%;
-    display: flex;
-    background: #14489f;
-    color: white;
-    align-items: center;
-    justify-content: left;
-    font-size: 30pt;
-    padding: 1em;
-}
+    .header{
+        height: 12%;
+        display: flex;
+        background: #14489f;
+        color: white;
+        align-items: center;
+        justify-content: left;
+        font-size: 30pt;
+        padding: 1em;
+    }
 
-.main{
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-    width: 100%;
-    height: 79%;
-}
+    .main{
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
+        width: 100%;
+        height: 79%;
+    }
 
-.main::-webkit-scrollbar{
-    display: none;
-}
+        .main::-webkit-scrollbar{
+            display: none;
+        }
 
-.car_description{
-    display: flex;
-}
+        .car_description{
+            display: flex;
+        }
 
-.car_description h1{
-    flex-direction: column;
-    width: auto;
-}
+        .car_description h1{
+            flex-direction: column;
+            width: auto;
+        }
 
-.car_logo{
-    width: 50%;
-    height: 50%;
-    float: right;
-    margin-top: 1em;
-}
+        .car_logo{
+            width: 50%;
+            height: 50%;
+            float: right;
+            margin-top: 1em;
+        }
 
-.available{
-    padding-top: 3em;
-    color: green;
-}
+        .history_button{
+            position: relative;
+            left: 70%;
+            padding: 2em;
+            margin-top: 0.5em;
+            font-size: 10pt;
+            font-weight: bold;
+            color: white;
+            background:#d8a120;
+            max-width: 33.5%;
 
-.not_available{
-    padding-top: 3em;
-    color: red;
-}
+        }
+            .history_button:hover, .history_button:active{
+                color: white;
+                background:#333;
+            }
 
-.staff_nr{
-    display: flex;
-    flex-direction: row;
-    padding: 1em 1em 2em 0;
-}
 
-.user_name_in{
-    margin-left: 1em;
-} 
+        .available{
+            padding-top: 3em;
+            color: green;
+        }
 
-.save_button{
-    position: relative;
-    left: 0%;
-    padding: 1em 2em;
-    font-size: 10pt;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold; 
-    color: white;
-    background:#14489f;
-}
-.save_button:hover, .save_button:active{
+        .not_available{
+            padding-top: 3em;
+            color: red;
+        }
 
-    color: white;
-    background:#333;
+        .maintenance{
+            display: block;
+        }
 
-}
-.remove_button{
-    position: relative;
-    left: 70%;
-    padding: 1em 2em;
-    margin: 0 0 2em 0;
-    font-size: 10pt;
-    font-weight: bold; 
-    color: white;
-    background:#9f1414;
-}
-.remove_button:hover, .remove_button:active{
-    color: white;
-    background:#333;
+            .maintenance_info{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                width: 70%;
+                padding: 1em 1em 2em 0;
+            }
 
-}
-.return_button{
-    position: relative;
-    left: 0%;
-    padding: 1em 2em;
-    font-size: 10pt;
-    font-weight: bold; 
-    color: white;
-    background:#9f1414;
-}
+            .maintenance_info >*{
+                flex: 33%;
+                margin-bottom: 1em;    
+            }
 
-.return_button:hover, .return_button:active{
-    color: white;
-    background:#333;
+            .current_maintenance{
+                display: block;
+                font-weight: bold;
+            }
 
-}
+            .new_maintenance{
+                display: none;
+                width: 5%;
+            }
 
-.button_history{
-    position: relative;
-    left: 70%;
-    padding: 2em;
-    margin-top: 3em;
-    font-size: 10pt;
-    font-weight: bold; 
-    color: white;
-    background:#14489f;
+            .update_maintenance{
+                padding: 1em 2em;
+                font-size: 10pt;
+                font-weight: bold; 
+                color: white;
+                background:#14489f;
+            }
 
-}
+                .update_maintenance:hover, .update_maintenance:active{
+                    color: white;
+                    background:#333;
+                }
 
-.button_history:hover, .button_history:active{
-    color: white;
-    background:#333;
+            .save_maintenance{
+                display: none;
+                padding: 1em 2em;
+                font-size: 10pt;
+                font-weight: bold; 
+                color: white;
+                background:#14489f;
+            }
 
-}
+                .save_maintenance:hover, .save_maintenance:active{
+                    color: white;
+                    background:#333;
+                }
+            
 
-.navigation{
-    display: block;
-    background:#333;
-    text-align: center;
-    position: sticky;
-    bottom: 1em;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-}
+            .cancel_button{
+                display: flex;
+                flex-flow: row;
+                padding: 1em 2em;
+                font-size: 10pt;
+                font-weight: bold; 
+                color: white;
+                background: #9f1414;
+                max-width: 25%;
+            }
 
-.navigation ul{
-    padding: 0;
-    margin: 0;
-}
+                .cancel_button:hover, .cancel_button:active{
+                    color: white;
+                    background:#333;
+                }
 
-.navigation ul > li{
-    list-style-type: none;
-    display: inline-block;
-    padding: 5px 20px;
-    color: white;
-    font-size: 18px;
-    padding: 1.8em 2em;
-}
+        .user_name_in{
+            margin-left: 1em;
+            margin: 1em 1em 1em ;
+        } 
 
-.navigation a{
-    color: inherit;
-    text-decoration: none;
-}
+        .save_button{
+            position: relative;
+            left: 0%;
+            padding: 1em 2em;
+            font-size: 10pt;
+            font-weight: bold; 
+            color: white;
+            background:#14489f;
+            margin: 0 0 1em 0;
+        }
 
-.navigation ul > li:hover, .navigation > li:active{
-    color: black;
-    background: #BFC0C0;
-}
+            .save_button:hover, .save_button:active{
+                color: white;
+                background:#333;
+            }
 
-.m_navigation{
-    display: none;
-    background:#333;
-    text-align: center;
-    position: sticky;
-    bottom: 1em;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-}
+        .remove_button{
+            position: relative;
+            left: 70%;
+            padding: 1em 2em;
+            margin: 0 0 2em 0;
+            font-size: 10pt;
+            font-weight: bold; 
+            color: white;
+            background:#9f1414;
+        }
 
-.m_navigation ul{
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr)
-}
+            .remove_button:hover, .remove_button:active{
+                color: white;
+                background:#333;
 
-.m_navigation ul > li{
-    list-style-type: none;
-    color: white;
-    padding: 0.2em;    
-}
+            }
 
-.m_navigation .icon{
-    text-decoration: none;
-    margin-top: 0.5em;
-    height: 3em;
-    width: 3em;
-}
+        .return_button{
+            position: relative;
+            left: 0%;
+            padding: 1em 2em;
+            font-size: 10pt;
+            font-weight: bold; 
+            color: white;
+            background:#9f1414;
+        }
 
-.m_navigation ul > li:hover, .m_navigation > li:active{
-    color: black;
-    background: #BFC0C0;
-}
+            .return_button:hover, .return_button:active{
+                color: white;
+                background:#333;
+            }
+
+    .navigation{
+        display: block;
+        background:#333;
+        text-align: center;
+        position: sticky;
+        bottom: 1em;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+        .navigation ul{
+            padding: 0;
+            margin: 0;
+        }
+
+        .navigation ul > li{
+            list-style-type: none;
+            display: inline-block;
+            padding: 5px 20px;
+            color: white;
+            font-size: 18px;
+            padding: 1.8em 2em;
+        }
+
+        .navigation a{
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .navigation ul > li:hover, .navigation > li:active{
+            color: black;
+            background: #BFC0C0;
+        }
+
+    .m_navigation{
+        display: none;
+        background:#333;
+        text-align: center;
+        position: sticky;
+        bottom: 1em;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+        .m_navigation ul{
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr)
+        }
+
+        .m_navigation ul > li{
+            list-style-type: none;
+            color: white;
+            padding: 0.2em;    
+        }
+
+        .m_navigation .icon{
+            text-decoration: none;
+            margin-top: 0.5em;
+            height: 3em;
+            width: 3em;
+        }
+
+        .m_navigation ul > li:hover, .m_navigation > li:active{
+            color: black;
+            background: #BFC0C0;
+        }

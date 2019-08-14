@@ -102,12 +102,6 @@ function loanTool(){
         checkInUser: "",
     })
 
-    // Gives access to the id of the document created above and assigns its value to the global variable "history_in".
-    .then(docRef =>{
-        localStorage.setItem("history_in", docRef.id);
-        console.log(docRef.id)
-    });
-
     // Resets the input fields. 
     user_name_in.value = "FRS-";
     project_name_in.value = "R-"; 
@@ -165,20 +159,9 @@ function displayLoanInfo(){
     });
 }
 
-firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(3).get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        console.log(doc.data())
-    });
-});
-
-
 
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
-    if(sPage.trim() === 'verkfaeri_default.html'){
-        displayLiveData();
-        }
-
     if (/Mobi/.test(navigator.userAgent)) {
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
@@ -217,3 +200,4 @@ function testForPage(){
 // Functions to be run when the webpage is opened.
 testForPage();
 showToolName();
+displayLiveData();

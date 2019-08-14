@@ -1,3 +1,31 @@
+// Displays all live data (data that can change) on the page and updates said data in real time. 
+function displayLiveData(){
+    // Listens for changes in the "chekcup_history" subcollection
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("checkup_history").onSnapshot(snapshot => {
+        let changes = snapshot.docChanges();
+        changes.forEach(change => {
+            liveMaintenanceData();
+        })
+    });
+
+    // Listens for changes in the "oil_change_history" subcollection
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("oil_change_history").onSnapshot(snapshot => {
+        let changes = snapshot.docChanges();
+        changes.forEach(change => {
+            liveMaintenanceData();
+        })
+    });
+
+    // Listens for changes in the "oil_change_history" subcollection
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("tire_change_history").onSnapshot(snapshot => {
+        let changes = snapshot.docChanges();
+        changes.forEach(change => {
+            liveMaintenanceData();
+        })
+    });
+}
+      
+
 // Reads specific document from the "Users" collection in the firestore database.
 function readCarData(){
     var docRef = firestore.collection("Cars").doc(localStorage.getItem("car_selector"));
@@ -8,10 +36,9 @@ function readCarData(){
             // Logs the content of the document to the console. 
             console.log("Document data:", doc.data());
             // Creates elements to be displayed on the page.
-            let car_id = document.createElement('h1');
-            let car_make = document.createElement('h1');
-            let car_model_year = document.createElement('h1');
-            let car_checkup_date = document.createElement('h1');
+            let car_id = document.createElement('h2');
+            let car_make = document.createElement('h2');
+            let car_model_year = document.createElement('h2');
             let description_text = document.createElement('p');
             
 
@@ -25,9 +52,6 @@ function readCarData(){
             car_model_year.setAttribute("class", 'car_model_year');
             car_model_year.textContent = 'Árgerð: ' + doc.data().modelYear;
 
-            car_checkup_date.setAttribute("class", 'car_checkup_date');
-            car_checkup_date.textContent = 'Næsta Skoðun: ' + doc.data().checkupDate;
-
             description_text.setAttribute("class", 'car_id');
             description_text.textContent = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci incidunt molestiae porro odit illum modi fugit? Nemo, commodi. Atque natus reprehenderit architecto laborum ipsam cumque, facere veniam non possimus error.";
 
@@ -35,7 +59,6 @@ function readCarData(){
             car_info.insertBefore(car_id , car_info.firstChild);
             car_info.appendChild(car_make);
             car_info.appendChild(car_model_year);
-            car_info.appendChild(car_checkup_date);
             car_info.appendChild(description_text);
         
         // If the document is not correctly read. 
@@ -48,12 +71,230 @@ function readCarData(){
         console.log("Error getting document:", error);
     });
 }
-        
+
+// Reads from the database and displays live information about the cars maintenance.
+function liveMaintenanceData(){
+    var checkup_date = document.getElementById('checkup_date');
+    var oil_change = document.getElementById('oil_change');
+    var tire_change = document.getElementById('tire_change');
+    // Reads from the subcollection "checkup_history" of the cars document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("checkup_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            checkup_date.innerHTML = doc.data().checkupDate;
+        });
+    });
+    // Reads from the subcollection "checkup_history" of the tools document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("oil_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            oil_change.innerHTML = doc.data().oilChangeKm + " km";
+        });
+    });
+    // Reads from the subcollection "checkup_history" of the tools document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("tire_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            tire_change.innerHTML = doc.data().tireChangeDate;
+        });
+    });
+}
+
+
+// When the "history_button" is pressed a new history page opens. 
+document.getElementById("history_button").onclick = function openHistoryPage(){
+    window.open("vidhald_saga/vidhald_saga.html", "_self");
+}
+
+
+// Runs "newCheckupDate" when "checkup_date_button" is pressed. 
+// The function controls displays inputfields for the user to update maintenance information and writes said information to the database.  
+document.getElementById("checkup_date_button").onclick = newCheckupDate;
+function newCheckupDate(){
+    var checkup_date = document.getElementById('checkup_date');
+    var new_checkup_date = document.getElementById('new_checkup_date');
+    var checkup_date_button = document.getElementById('checkup_date_button');
+    var save_checkup_date_button = document.getElementById("save_checkup_date_button");
+    // Determines if either the "current_maintenance" variable or the "new_checkup_date" inputfield should be displayed and hides the other. 
+    if(checkup_date.style.display == "block"){
+        checkup_date.style.display = "none";
+        new_checkup_date.style.display = "block";
+        checkup_date_button.style.display = "none";
+        save_checkup_date_button.style.display = "block";
+    }
+
+    // If the "save_checkup_date_button" is clicked. 
+    save_checkup_date_button.onclick = saveCheckupDate;
+    // Saves the users input to the database and resets the input field and button. 
+    function saveCheckupDate(){
+        if(new_checkup_date.value.length == 10){
+            // Writes user input to the subcollection "maintenance_history" in the database. 
+            firestore.collection('Cars').doc(localStorage.getItem('car_selector')).collection('checkup_history').add({
+                checkupDate: new_checkup_date.value,
+                dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            });
+            
+            // Hides the "save_checkup_date_button" button and displays "checkup_date_button".
+            save_checkup_date_button.style.display = "none";
+            checkup_date_button.style.display = "block"
+
+            // Hides "new_checkup_date" and displays "checkup_date".
+            new_checkup_date.style.display = "none";
+            checkup_date.style.display = "block";
+
+            // Clears the input field.
+            new_checkup_date.value = "";
+        }
+
+        else{
+            alert('ATH: Dagsetning þarf að vera á forminu 00/00/0000. ')
+        }
+    }
+}
+
+
+// Runs "newOilChange" when "oil_change_button" is pressed. 
+// The function controls displays inputfields for the user to update maintenance information and writes said information to the database.
+document.getElementById("oil_change_button").onclick = newOilChange;
+function newOilChange(){
+    var oil_change = document.getElementById('oil_change');
+    var new_oil_change = document.getElementById('new_oil_change');
+    var oil_change_button = document.getElementById('oil_change_button');
+    var save_oil_change_button = document.getElementById('save_oil_change_button');
+
+    // Determines if either the "current_maintenance" variable or the "new_oil_change" inputfield should be shown and hides the other. 
+    if(oil_change.style.display == "block"){
+        oil_change.style.display = "none";
+        new_oil_change.style.display = "block";
+        oil_change_button.style.display = "none";
+        save_oil_change_button.style.display = "block";
+    }
+
+    // If the "save_oil_change_button" is clicked. 
+    save_oil_change_button.onclick = saveOilChange;
+    // Saves the users input to the database and resets the input field and button. 
+    function saveOilChange(){
+        if(new_oil_change.value.length != 0){
+            // Writes user input to the subcollection "maintenance_history" in the database. 
+            firestore.collection('Cars').doc(localStorage.getItem('car_selector')).collection('oil_change_history').add({
+                oilChangeKm: new_oil_change.value,
+                dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            });
+            
+            // Hides the "save_oil_change_button" button and displays "oil_change_button".
+            save_oil_change_button.style.display = "none";
+            oil_change_button.style.display = "block"
+
+            // Hides "new_oil_change" and displays "oil_change".
+            new_oil_change.style.display = "none";
+            oil_change.style.display = "block";
+
+            // Clears the input field.
+            new_oil_change.value = "";
+        }
+
+        else{
+            alert("ATH: Vinsamlegast skráðu kílómetrafjölda. ")
+        }
+    }
+
+}
+
+// Runs "newTireChange" when "tire_change_button" is pressed. 
+// The function controls displays inputfields for the user to update maintenance information and writes said information to the database.
+document.getElementById("tire_change_button").onclick = newTireChange;
+function newTireChange(){
+    var tire_change = document.getElementById('tire_change');
+    var new_tire_change = document.getElementById('new_tire_change');
+    var tire_change_button = document.getElementById('tire_change_button');
+    var save_tire_change_button = document.getElementById('save_tire_change_button');
+
+
+    // Determines if either the "current_maintenance" variable or the "new_tire_change" input field should be shown and hides the other. 
+    if(tire_change.style.display == "block"){
+        tire_change.style.display = "none";
+        new_tire_change.style.display = "block";
+        tire_change_button.style.display = "none";
+        save_tire_change_button.style.display = "block";
+    }
+
+    // If the "save_tire_change_button" is clicked. 
+    save_tire_change_button.onclick = saveTireChange;
+    // Saves the users input to the database and resets the input field and button. 
+    function saveTireChange(){
+        if(new_tire_change.value.length == 10){
+            // Writes user input to the subcollection "maintenance_history" in the database. 
+            firestore.collection('Cars').doc(localStorage.getItem('car_selector')).collection('tire_change_history').add({
+                tireChangeDate: new_tire_change.value,
+                dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            });
+            
+            // Hides the "save_tire_change_button" button and displays "tire_change_button".
+            save_tire_change_button.style.display = "none";
+            tire_change_button.style.display = "block"
+
+            // Hides "new_tire_change" and displays "tire_change".
+            new_tire_change.style.display = "none";
+            tire_change.style.display = "block";
+
+            // Clears the input field.
+            new_tire_change.value = "";
+        }
+
+        else{
+            alert("ATH: Dagsetning þarf að vera á forminu 00/00/0000. ")
+        }
+    }
+}
+
+
+// Resets all input fields and buttons in the "maintenance" section to "current_maintenance". 
+document.getElementById("cancel_button").onclick = cancelMaintenanceUpdate;
+function cancelMaintenanceUpdate(){
+    var checkup_date = document.getElementById('checkup_date');
+    var new_checkup_date = document.getElementById('new_checkup_date');
+    var checkup_date_button = document.getElementById('checkup_date_button');
+    var save_checkup_date_button = document.getElementById("save_checkup_date_button");
+
+    var oil_change = document.getElementById('oil_change');
+    var new_oil_change = document.getElementById('new_oil_change');
+    var oil_change_button = document.getElementById('oil_change_button');
+    var save_oil_change_button = document.getElementById("save_oil_change_button");
+
+    var tire_change = document.getElementById('tire_change');
+    var new_tire_change = document.getElementById('new_tire_change');
+    var tire_change_button = document.getElementById('tire_change_button');
+    var save_tire_change_button = document.getElementById("save_tire_change_button");
+
+    
+    // Resets fields for "checkup_date" section
+    if(checkup_date.style.display == "none"){
+        new_checkup_date.style.display = "none";
+        new_checkup_date.value = "";
+        checkup_date.style.display = "block";
+        save_checkup_date_button.style.display = "none";
+        checkup_date_button.style.display = "block";
+    }
+
+    // Resets fields for "oil_change" section
+    if(oil_change.style.display == "none"){
+        new_oil_change.style.display = "none";
+        new_oil_change.value = "";
+        oil_change.style.display = "block";
+        save_oil_change_button.style.display = "none";
+        oil_change_button.style.display = "block";
+    }
+    
+    // Resets fields for "tire_change" section
+    if(tire_change.style.display == "none"){
+        new_tire_change.style.display = "none";
+        new_tire_change.value = "";
+        tire_change.style.display = "block";
+        save_tire_change_button.style.display = "none";
+        tire_change_button.style.display = "block";
+    }
+}
+    
+
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
-    if(sPage.trim() === 'bifreidir_default.html'){
-        readCarData();
-        }
     if (/Mobi/.test(navigator.userAgent)) {
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
@@ -91,5 +332,5 @@ function testForPage(){
     
 
 testForPage();
-
-    
+readCarData();
+displayLiveData();
