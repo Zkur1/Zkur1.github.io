@@ -153,7 +153,7 @@
             display: none;
         }
 
-            .tool_in_stock{
+            .car_in_stock{
                 color: green;
                 margin: 0 0 1em 0;
             }
@@ -162,7 +162,7 @@
             display: none;
         }
 
-            .tool_out_of_stock{
+            .car_out_of_stock{
                 color: red;
                 margin: 0 0 1em 0;
             }
@@ -189,6 +189,7 @@
                 font-weight: bold; 
                 color: white;
                 background:#14489f;
+                margin-bottom: 2em;
             }
 
             .save_button:hover, .save_button:active{

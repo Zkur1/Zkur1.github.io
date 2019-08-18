@@ -155,7 +155,7 @@ function displayLoanInfo(){
             
             inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().inUseBy;
 
-            // Reads from the "Tools" subcollection and appends staffname to the "inUseBy_text".
+            // Reads from the "Users" subcollection and appends staffName to the "inUseBy_text".
             firestore.collection('Users').where("staffID", "==", doc.data().inUseBy).get().then((snapshot) =>{
                 snapshot.docs.forEach(doc => {
                     inUseBy_text.textContent += " / " + doc.data().staffName;

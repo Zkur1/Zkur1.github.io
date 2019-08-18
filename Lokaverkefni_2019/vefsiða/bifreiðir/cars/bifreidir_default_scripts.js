@@ -41,13 +41,16 @@ function displayLiveData(){
             liveMaintenanceData();
         })
     });
+
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).onSnapshot(function(){
+        showCarStatus();
+    });
 }
       
 
 // Reads specific document from the "Users" collection in the firestore database.
 function displayCarData(){
-    var docRef = firestore.collection("Cars").doc(localStorage.getItem("car_selector"));
-    docRef.get().then(function(doc) {
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc) {
         
         // If the document is correctly read. 
         if (doc.exists) {
@@ -57,6 +60,7 @@ function displayCarData(){
             let car_id = document.createElement('h2');
             let car_make = document.createElement('h2');
             let car_model_year = document.createElement('h2');
+            let car_loan_status = document.createElement('h2');
             let description_text = document.createElement('p');
             
 
@@ -70,6 +74,8 @@ function displayCarData(){
             car_model_year.setAttribute("class", 'car_model_year');
             car_model_year.textContent = 'Árgerð: ' + doc.data().modelYear;
 
+            car_loan_status.setAttribute("id", "car_loan_status")
+
             description_text.setAttribute("class", 'car_id');
             description_text.textContent = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci incidunt molestiae porro odit illum modi fugit? Nemo, commodi. Atque natus reprehenderit architecto laborum ipsam cumque, facere veniam non possimus error.";
 
@@ -77,6 +83,7 @@ function displayCarData(){
             car_info.insertBefore(car_id , car_info.firstChild);
             car_info.appendChild(car_make);
             car_info.appendChild(car_model_year);
+            car_info.appendChild(car_loan_status);
             car_info.appendChild(description_text);
         
         // If the document is not correctly read. 
@@ -152,14 +159,14 @@ function liveMaintenanceData(){
         });
     });
     
-    // Reads from the subcollection "checkup_history" of the tools document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
+    // Reads from the subcollection "checkup_history" of the cars document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
     firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("oil_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             oil_change.innerHTML = doc.data().oilChangeKm + " km";
         });
     });
 
-    // Reads from the subcollection "checkup_history" of the tools document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
+    // Reads from the subcollection "checkup_history" of the cars document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
     firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("tire_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             tire_change.innerHTML = doc.data().tireChangeDate;
@@ -190,6 +197,12 @@ function newCheckupDate(){
     // Executes the function "displayMaintenanceData" to determine the placeholder of "new_checkup_date".
     displayMaintenanceData();
 
+    // Retrieves the name of the staff using the car and adds it to the variable "checkupStaff". 
+    var checkup_staff = "";
+    firestore.collection("Cars").doc(localStorage.getItem('car_selector')).get().then(function(doc){
+        checkup_staff = doc.data().inUseBy;
+    });
+
     // If the "save_checkup_date_button" is clicked. 
     save_checkup_date_button.onclick = saveCheckupDate;
     // Saves the users input to the database and resets the input field and button. 
@@ -198,6 +211,7 @@ function newCheckupDate(){
             // Writes user input to the subcollection "maintenance_history" in the database. 
             firestore.collection('Cars').doc(localStorage.getItem('car_selector')).collection('checkup_history').add({
                 checkupDate: new_checkup_date.value,
+                checkupStaff: checkup_staff,
                 dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
             });
             
@@ -237,6 +251,12 @@ function newOilChange(){
         });
     }
 
+    // Retrieves the name of the staff using the car and adds it to the variable "oil_change_staff". 
+    var oil_change_staff = "";
+    firestore.collection("Cars").doc(localStorage.getItem('car_selector')).get().then(function(doc){
+        oil_change_staff = doc.data().inUseBy;
+    });
+
     // If the "save_oil_change_button" is clicked. 
     save_oil_change_button.onclick = saveOilChange;
     // Saves the users input to the database and resets the input field and button. 
@@ -245,6 +265,7 @@ function newOilChange(){
             // Writes user input to the subcollection "maintenance_history" in the database. 
             firestore.collection('Cars').doc(localStorage.getItem('car_selector')).collection('oil_change_history').add({
                 oilChangeKm: new_oil_change.value,
+                oilChangeStaff: oil_change_staff,
                 dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
             });
             
@@ -284,6 +305,12 @@ function newTireChange(){
         });
     }
 
+    // Retrieves the name of the staff using the car and adds it to the variable "tire_change_staff". 
+    var tire_change_staff = "";
+    firestore.collection("Cars").doc(localStorage.getItem('car_selector')).get().then(function(doc){
+        tire_change_staff = doc.data().inUseBy;
+    });
+
     // If the "save_tire_change_button" is clicked. 
     save_tire_change_button.onclick = saveTireChange;
     // Saves the users input to the database and resets the input field and button. 
@@ -292,6 +319,7 @@ function newTireChange(){
             // Writes user input to the subcollection "maintenance_history" in the database. 
             firestore.collection('Cars').doc(localStorage.getItem('car_selector')).collection('tire_change_history').add({
                 tireChangeDate: new_tire_change.value,
+                tireChangeStaff: tire_change_staff,
                 dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
             });
             
@@ -346,76 +374,94 @@ function cancelMaintenanceUpdate(){
 }
 
 
-// Displays a menu to loan a tool if its "inUse" varible is false and a menu to return the tool if the variable is true.
-function showToolStatus(){
-    var x = document.getElementById('in_stock');
-    var i = document.getElementById('out_of_stock');
+// Displays a menu to loan a car if its "inUse" varible is false and a menu to return the car if the variable is true.
+function showCarStatus(){
+    var in_stock = document.getElementById('in_stock');
+    var out_of_stock = document.getElementById('out_of_stock');
     // References the variable "docRef" made previously to communicate with firestore.
-    docRef.get().then(function(doc) {
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc) {
         // If the document is correctly read. 
         if(doc.exists) {
-            // if "inUse" is true the menu for returning the tool will be displayed.
+            // if "inUse" is true the menu for returning the car will be displayed.
             if(doc.data().inUse == true){
-                x.style.display = "none";
-                i.style.display = "block";
+                in_stock.style.display = "none";
+                out_of_stock.style.display = "block";
             }
-            // if "inUse" is false the menu for loaning the tool will be displayed.
+            // if "inUse" is false the menu for loaning the car will be displayed.
             else{
-                x.style.display = "block";
-                i.style.display = "none";
+                in_stock.style.display = "block";
+                out_of_stock.style.display = "none";
+            }
+            
+            // Updates the cars status indicator at the top of the page.
+            var car_loan_status = document.getElementById("car_loan_status")
+
+            // If the car is being used/loaned.
+            if(doc.data().inUse == true){
+                // Changes the class and text content of the element to suit its current state. 
+                car_loan_status.setAttribute("class", 'car_out_of_stock');
+                car_loan_status.textContent = "Bifreið skráð á : " + doc.data().inUseBy;
+                
+                // Reads from the "Users" subcollection and appends staffName to the "car_loan_status".
+                firestore.collection('Users').where("staffID", "==", doc.data().inUseBy).get().then((snapshot) =>{
+                    snapshot.docs.forEach(doc => {
+                        car_loan_status.textContent += " / " + doc.data().staffName;
+                    });
+                });
+            }
+
+            // If the car is available. 
+            else{
+                // Changes the class and text content of the element to suit its current state. 
+                car_loan_status.setAttribute("class", 'car_in_stock');
+                car_loan_status.textContent = "Bifreið er laus. "
             }
         }
     });
 }
 
 
-// Runs the function "loanTool" when "save_button" is pressed.
-document.getElementById("save_button").onclick = loanTool;
-function loanTool(){
+// Runs the function "loanCar" when "save_button" is pressed.
+document.getElementById("save_button").onclick = loanCar;
+function loanCar(){
     // Fetches input tags on the html and puts them into variables to be used later. 
     var user_name_in = document.querySelector("#user_name_in");
-    var project_name_in = document.querySelector("#project_name_in");
-    firestore.collection('Tools').doc(tool_selector).update({
+    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).update({
         inUse: true,
         inUseBy: user_name_in.value,
-        projectID: project_name_in.value,
     })
-
-    console.log("Fyrst");
-    // Adds "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the tool. 
-    firestore.collection('Tools').doc(tool_selector).collection("in_out").add({
+    
+    // Creates an "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the car. 
+    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").add({
         checkOutDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
         checkOutUser: user_name_in.value,
-        checkOutProject: project_name_in.value,
         checkInDate: "",
         checkInUser: "",
     })
 
     // Resets the input fields. 
     user_name_in.value = "FRS-";
-    project_name_in.value = "R-"; 
 }
 
 
-// Runs the function "returnTool" when "return_button" is pressed.
-document.getElementById("return_button").onclick = returnTool;
-function returnTool(){
+// Runs the function "returnCar" when "return_button" is pressed.
+document.getElementById("return_button").onclick = returnCar;
+function returnCar(){
     // Fetches input tags on the html and puts them into variables to be used later. 
     var return_user_name_in = document.querySelector("#return_user_name_in");
-    docRef.get().then(function(doc) {
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc) {
         // If the document is correctly read. 
         if(doc.exists) {
             // if "inUseBy" mathces with the user input the menus will switch and variables regarding the loan will change accordingly. 
-            firestore.collection('Tools').doc(tool_selector).update({
+            firestore.collection('Cars').doc(localStorage.getItem("car_selector")).update({
                 inUse: false,
                 inUseBy: "",
-                projectID: "",
             });
 
-            // Logs who returns the tool and when and logs it to variables stored in the subcollection "in_out".
-            firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
+            // Logs who returns the car and when and logs it to variables stored in the subcollection "in_out".
+            firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
                 snapshot.docs.forEach(doc => {
-                    firestore.collection('Tools').doc(tool_selector).collection("in_out").doc(doc.id).update({
+                    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").doc(doc.id).update({
                         checkInDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
                         checkInUser: return_user_name_in.value,
                     });
@@ -423,37 +469,9 @@ function returnTool(){
             });
         }
     });
+
     // Clears input field. 
     //return_user_name_in.value = "FRS-";
-}
-
-
-// Displays information about who has the tool.
-function displayLoanInfo(){
-    var inUseBy_text = document.querySelector("#inUseBy_text");
-    var projectID_text = document.querySelector("#projectID_text");
-    var loanDate_text = document.querySelector("#loanDate_text");
-    docRef.onSnapshot(function(doc) {
-        // If the document is correctly read. 
-        if(doc.exists){
-            // Reads from the subcollection "in_out" of the tools document and uses the variable "checkOutDate" from the subcollection to display the loan date on the page. 
-            firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
-                snapshot.docs.forEach(doc => {
-                    loanDate_text.textContent = "Verkfæri skráð út: " + doc.data().checkOutDate; 
-                });
-            });
-            
-            inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().inUseBy;
-
-            // Reads from the "Tools" subcollection and appends staffname to the "inUseBy_text".
-            firestore.collection('Users').where("staffID", "==", doc.data().inUseBy).get().then((snapshot) =>{
-                snapshot.docs.forEach(doc => {
-                    inUseBy_text.textContent += " / " + doc.data().staffName;
-                });
-            });
-            projectID_text.textContent = "Verkfæri skráð á verknúmer: " + doc.data().projectID;
-        }
-    });
 }
 
 

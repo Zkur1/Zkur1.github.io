@@ -118,7 +118,7 @@ function renderTireChangeData(doc){
         tire_change_text.textContent = "Síðustu dekkjaskipti: ";
         tire_change_var.textContent = doc.data().tireChangeDate + " km. \n";
         tire_change_staff_text.textContent = "Viðstaddur starfsmaður: ";
-        tire_change_staff_var.textContent = doc.data().oilChangeStaff + " \n";
+        tire_change_staff_var.textContent = doc.data().tireChangeStaff + " \n";
     
         // Appends content into li.
         li.appendChild(tire_change_text);

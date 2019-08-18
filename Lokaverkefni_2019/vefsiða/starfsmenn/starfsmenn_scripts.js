@@ -123,6 +123,7 @@ function addToolShow(){
 // This function saves user input as a firestore document.
 document.getElementById("save_button").onclick = function addStaffToDatabase(){
     var staff_name_in = document.querySelector("#staff_name_in");
+    var staff_individual_id_in = document.querySelector("#staff_individual_id_in")
     var staff_id_in = document.querySelector("#staff_id_in");
     var staff_mobile_in = document.querySelector("#staff_mobile_in");
     var staff_phoneNr_in = document.querySelector("#staff_phoneNr_in");
@@ -141,6 +142,7 @@ document.getElementById("save_button").onclick = function addStaffToDatabase(){
         if(answer){
             firestore.collection('Users').doc(staff_id_in.value).set({
                 staffID: staff_id_in.value,
+                staffIndividualID: staff_individual_id_in.value,
                 staffName: staff_name_in.value,
                 staffMobile: staff_mobile_in.value,
                 staffPhoneNr: staff_phoneNr_in.value,
@@ -158,6 +160,7 @@ document.getElementById("save_button").onclick = function addStaffToDatabase(){
     }
     // Resets the default values of the inputs. 
     staff_name_in.value = "";
+    staff_individual_id_in.value = "";
     staff_id_in.value = "FRS-";
     staff_mobile_in.value = "";
     staff_phoneNr_in.value = "";
