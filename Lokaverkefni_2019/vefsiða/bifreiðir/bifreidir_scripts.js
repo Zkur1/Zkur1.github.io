@@ -139,6 +139,7 @@ function addCarToDatabase(){
         var answer = window.confirm("Bæta á við bifreið: " + car_manufacturer_in.value + " " + car_model_in.value + "\ná Bílnúmeri: " + car_id_in.value + ". ")
         // If the user confirms.
         if(answer){
+            // Creates a document for the specific car containing information given by user input. 
             firestore.collection('Cars').add({
                 manufacturer: car_manufacturer_in.value,
                 model: car_model_in.value,
@@ -147,6 +148,14 @@ function addCarToDatabase(){
                 milage: car_milage_in.value,
                 checkupDate: car_checkup_date_in.value,
             });
+
+            // Creates an "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the tool. 
+            firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").add({
+                checkOutDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+                checkOutUser: user_name_in.value,
+                checkInDate: "",
+                checkInUser: "",
+            })
             // Log confirmation message to console.
             console.log("Car added!");
             // Resets the default values of the inputs. 

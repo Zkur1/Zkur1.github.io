@@ -1,3 +1,21 @@
+// Global variables.
+// Creates variables from the elements of the page to be used later.
+var checkup_date = document.getElementById('checkup_date');
+var new_checkup_date = document.getElementById('new_checkup_date');
+var checkup_date_button = document.getElementById('checkup_date_button');
+var save_checkup_date_button = document.getElementById("save_checkup_date_button");
+
+var oil_change = document.getElementById('oil_change');
+var new_oil_change = document.getElementById('new_oil_change');
+var oil_change_button = document.getElementById('oil_change_button');
+var save_oil_change_button = document.getElementById("save_oil_change_button");
+
+var tire_change = document.getElementById('tire_change');
+var new_tire_change = document.getElementById('new_tire_change');
+var tire_change_button = document.getElementById('tire_change_button');
+var save_tire_change_button = document.getElementById("save_tire_change_button");
+
+
 // Displays all live data (data that can change) on the page and updates said data in real time. 
 function displayLiveData(){
     // Listens for changes in the "chekcup_history" subcollection
@@ -5,7 +23,7 @@ function displayLiveData(){
         let changes = snapshot.docChanges();
         changes.forEach(change => {
             liveMaintenanceData();
-        })
+        });
     });
 
     // Listens for changes in the "oil_change_history" subcollection
@@ -13,7 +31,7 @@ function displayLiveData(){
         let changes = snapshot.docChanges();
         changes.forEach(change => {
             liveMaintenanceData();
-        })
+        });
     });
 
     // Listens for changes in the "oil_change_history" subcollection
@@ -27,7 +45,7 @@ function displayLiveData(){
       
 
 // Reads specific document from the "Users" collection in the firestore database.
-function readCarData(){
+function displayCarData(){
     var docRef = firestore.collection("Cars").doc(localStorage.getItem("car_selector"));
     docRef.get().then(function(doc) {
         
@@ -72,23 +90,75 @@ function readCarData(){
     });
 }
 
+
+
+// Determines information to be desplayed in the "maintenance" portion of the page. 
+function displayMaintenanceData(){
+     // If the specific cars checkup history is blank. 
+     if(checkup_date.textContent != ""){
+        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("checkup_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                new_checkup_date.placeholder = doc.data().checkupDate;
+            });
+        });
+    }
+
+    // If there are entries in the specific cars checkup history. 
+    else{
+        checkup_date.textContent = "Óskráð. ";
+        new_checkup_date.placeholder = "00/00/000";
+    }
+
+     // If the specific cars oil change history is blank. 
+     if(oil_change.textContent != ""){
+        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("oil_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                new_oil_change.placeholder = doc.data().oilChangeKm;
+            });
+        });
+    }
+
+    // If there are entries in the specific cars oil change history. 
+    else{
+        oil_change.textContent = "Óskráð. ";
+        new_oil_change.placeholder = "00.000 km";
+    }
+
+     // If the specific cars tire change history is blank. 
+     if(tire_change.textContent != ""){
+        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("tire_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                new_tire_change.placeholder = doc.data().tireChangeDate;
+            });
+        });
+    }
+
+    // If there are entries in the specific cars tire change history. 
+    else{
+        tire_change.textContent = "Óskráð. ";
+        new_tire_change.placeholder = "00/00/0000";
+    }
+}
+
+
+
+
 // Reads from the database and displays live information about the cars maintenance.
 function liveMaintenanceData(){
-    var checkup_date = document.getElementById('checkup_date');
-    var oil_change = document.getElementById('oil_change');
-    var tire_change = document.getElementById('tire_change');
     // Reads from the subcollection "checkup_history" of the cars document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
     firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("checkup_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             checkup_date.innerHTML = doc.data().checkupDate;
         });
     });
+    
     // Reads from the subcollection "checkup_history" of the tools document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
     firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("oil_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             oil_change.innerHTML = doc.data().oilChangeKm + " km";
         });
     });
+
     // Reads from the subcollection "checkup_history" of the tools document and uses the variable "checkupDate" from the subcollection to display the latest checkup date on the page. 
     firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("tire_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
@@ -108,17 +178,17 @@ document.getElementById("history_button").onclick = function openHistoryPage(){
 // The function controls displays inputfields for the user to update maintenance information and writes said information to the database.  
 document.getElementById("checkup_date_button").onclick = newCheckupDate;
 function newCheckupDate(){
-    var checkup_date = document.getElementById('checkup_date');
-    var new_checkup_date = document.getElementById('new_checkup_date');
-    var checkup_date_button = document.getElementById('checkup_date_button');
-    var save_checkup_date_button = document.getElementById("save_checkup_date_button");
     // Determines if either the "current_maintenance" variable or the "new_checkup_date" inputfield should be displayed and hides the other. 
     if(checkup_date.style.display == "block"){
         checkup_date.style.display = "none";
         new_checkup_date.style.display = "block";
         checkup_date_button.style.display = "none";
         save_checkup_date_button.style.display = "block";
+        
     }
+    
+    // Executes the function "displayMaintenanceData" to determine the placeholder of "new_checkup_date".
+    displayMaintenanceData();
 
     // If the "save_checkup_date_button" is clicked. 
     save_checkup_date_button.onclick = saveCheckupDate;
@@ -154,17 +224,17 @@ function newCheckupDate(){
 // The function controls displays inputfields for the user to update maintenance information and writes said information to the database.
 document.getElementById("oil_change_button").onclick = newOilChange;
 function newOilChange(){
-    var oil_change = document.getElementById('oil_change');
-    var new_oil_change = document.getElementById('new_oil_change');
-    var oil_change_button = document.getElementById('oil_change_button');
-    var save_oil_change_button = document.getElementById('save_oil_change_button');
-
     // Determines if either the "current_maintenance" variable or the "new_oil_change" inputfield should be shown and hides the other. 
     if(oil_change.style.display == "block"){
         oil_change.style.display = "none";
         new_oil_change.style.display = "block";
         oil_change_button.style.display = "none";
         save_oil_change_button.style.display = "block";
+        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("oil_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                new_oil_change.placeholder = doc.data().oilChangeKm + " km";
+            });
+        });
     }
 
     // If the "save_oil_change_button" is clicked. 
@@ -201,18 +271,17 @@ function newOilChange(){
 // The function controls displays inputfields for the user to update maintenance information and writes said information to the database.
 document.getElementById("tire_change_button").onclick = newTireChange;
 function newTireChange(){
-    var tire_change = document.getElementById('tire_change');
-    var new_tire_change = document.getElementById('new_tire_change');
-    var tire_change_button = document.getElementById('tire_change_button');
-    var save_tire_change_button = document.getElementById('save_tire_change_button');
-
-
     // Determines if either the "current_maintenance" variable or the "new_tire_change" input field should be shown and hides the other. 
     if(tire_change.style.display == "block"){
         tire_change.style.display = "none";
         new_tire_change.style.display = "block";
         tire_change_button.style.display = "none";
         save_tire_change_button.style.display = "block";
+        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("tire_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                new_tire_change.placeholder = doc.data().tireChangeDate;
+            });
+        });
     }
 
     // If the "save_tire_change_button" is clicked. 
@@ -247,23 +316,7 @@ function newTireChange(){
 
 // Resets all input fields and buttons in the "maintenance" section to "current_maintenance". 
 document.getElementById("cancel_button").onclick = cancelMaintenanceUpdate;
-function cancelMaintenanceUpdate(){
-    var checkup_date = document.getElementById('checkup_date');
-    var new_checkup_date = document.getElementById('new_checkup_date');
-    var checkup_date_button = document.getElementById('checkup_date_button');
-    var save_checkup_date_button = document.getElementById("save_checkup_date_button");
-
-    var oil_change = document.getElementById('oil_change');
-    var new_oil_change = document.getElementById('new_oil_change');
-    var oil_change_button = document.getElementById('oil_change_button');
-    var save_oil_change_button = document.getElementById("save_oil_change_button");
-
-    var tire_change = document.getElementById('tire_change');
-    var new_tire_change = document.getElementById('new_tire_change');
-    var tire_change_button = document.getElementById('tire_change_button');
-    var save_tire_change_button = document.getElementById("save_tire_change_button");
-
-    
+function cancelMaintenanceUpdate(){  
     // Resets fields for "checkup_date" section
     if(checkup_date.style.display == "none"){
         new_checkup_date.style.display = "none";
@@ -291,7 +344,118 @@ function cancelMaintenanceUpdate(){
         tire_change_button.style.display = "block";
     }
 }
-    
+
+
+// Displays a menu to loan a tool if its "inUse" varible is false and a menu to return the tool if the variable is true.
+function showToolStatus(){
+    var x = document.getElementById('in_stock');
+    var i = document.getElementById('out_of_stock');
+    // References the variable "docRef" made previously to communicate with firestore.
+    docRef.get().then(function(doc) {
+        // If the document is correctly read. 
+        if(doc.exists) {
+            // if "inUse" is true the menu for returning the tool will be displayed.
+            if(doc.data().inUse == true){
+                x.style.display = "none";
+                i.style.display = "block";
+            }
+            // if "inUse" is false the menu for loaning the tool will be displayed.
+            else{
+                x.style.display = "block";
+                i.style.display = "none";
+            }
+        }
+    });
+}
+
+
+// Runs the function "loanTool" when "save_button" is pressed.
+document.getElementById("save_button").onclick = loanTool;
+function loanTool(){
+    // Fetches input tags on the html and puts them into variables to be used later. 
+    var user_name_in = document.querySelector("#user_name_in");
+    var project_name_in = document.querySelector("#project_name_in");
+    firestore.collection('Tools').doc(tool_selector).update({
+        inUse: true,
+        inUseBy: user_name_in.value,
+        projectID: project_name_in.value,
+    })
+
+    console.log("Fyrst");
+    // Adds "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the tool. 
+    firestore.collection('Tools').doc(tool_selector).collection("in_out").add({
+        checkOutDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+        checkOutUser: user_name_in.value,
+        checkOutProject: project_name_in.value,
+        checkInDate: "",
+        checkInUser: "",
+    })
+
+    // Resets the input fields. 
+    user_name_in.value = "FRS-";
+    project_name_in.value = "R-"; 
+}
+
+
+// Runs the function "returnTool" when "return_button" is pressed.
+document.getElementById("return_button").onclick = returnTool;
+function returnTool(){
+    // Fetches input tags on the html and puts them into variables to be used later. 
+    var return_user_name_in = document.querySelector("#return_user_name_in");
+    docRef.get().then(function(doc) {
+        // If the document is correctly read. 
+        if(doc.exists) {
+            // if "inUseBy" mathces with the user input the menus will switch and variables regarding the loan will change accordingly. 
+            firestore.collection('Tools').doc(tool_selector).update({
+                inUse: false,
+                inUseBy: "",
+                projectID: "",
+            });
+
+            // Logs who returns the tool and when and logs it to variables stored in the subcollection "in_out".
+            firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    firestore.collection('Tools').doc(tool_selector).collection("in_out").doc(doc.id).update({
+                        checkInDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+                        checkInUser: return_user_name_in.value,
+                    });
+                });
+            });
+        }
+    });
+    // Clears input field. 
+    //return_user_name_in.value = "FRS-";
+}
+
+
+// Displays information about who has the tool.
+function displayLoanInfo(){
+    var inUseBy_text = document.querySelector("#inUseBy_text");
+    var projectID_text = document.querySelector("#projectID_text");
+    var loanDate_text = document.querySelector("#loanDate_text");
+    docRef.onSnapshot(function(doc) {
+        // If the document is correctly read. 
+        if(doc.exists){
+            // Reads from the subcollection "in_out" of the tools document and uses the variable "checkOutDate" from the subcollection to display the loan date on the page. 
+            firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    loanDate_text.textContent = "Verkfæri skráð út: " + doc.data().checkOutDate; 
+                });
+            });
+            
+            inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().inUseBy;
+
+            // Reads from the "Tools" subcollection and appends staffname to the "inUseBy_text".
+            firestore.collection('Users').where("staffID", "==", doc.data().inUseBy).get().then((snapshot) =>{
+                snapshot.docs.forEach(doc => {
+                    inUseBy_text.textContent += " / " + doc.data().staffName;
+                });
+            });
+            projectID_text.textContent = "Verkfæri skráð á verknúmer: " + doc.data().projectID;
+        }
+    });
+}
+
 
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
@@ -332,5 +496,6 @@ function testForPage(){
     
 
 testForPage();
-readCarData();
+displayCarData();
 displayLiveData();
+displayMaintenanceData();

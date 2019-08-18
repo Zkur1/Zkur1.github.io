@@ -29,19 +29,19 @@
                     <div class="maintenance_info" id="maintenance_info">
                         <span>Skoðun:</span>
                         <span class="current_maintenance" id="checkup_date" style="display: block;"></span>
-                        <input class="new_maintenance" id="new_checkup_date" placeholder="00/00/0000">
+                        <input class="new_maintenance" id="new_checkup_date" placeholder="">
                         <button class="update_maintenance" id="checkup_date_button">Uppfæra dags.</button>
                         <button class="save_maintenance" id="save_checkup_date_button">Vista dags.</button>
 
                         <span>Smurning:</span>
                         <span class="current_maintenance" id="oil_change" style="display: block;"></span>
-                        <input class="new_maintenance" id="new_oil_change" placeholder="000.000 km">
+                        <input class="new_maintenance" id="new_oil_change" placeholder="">
                         <button class="update_maintenance" id="oil_change_button">Uppfæra km.</button>
                         <button class="save_maintenance" id="save_oil_change_button">Vista km.</button>
 
                         <span>Dekkjaskipti:</span>
                         <span class="current_maintenance" id="tire_change" style="display: block;"></span>
-                        <input class="new_maintenance" id="new_tire_change" placeholder="00/00/0000">
+                        <input class="new_maintenance" id="new_tire_change" placeholder="">
                         <button class="update_maintenance" id="tire_change_button">Uppfæra dags.</button>
                         <button class="save_maintenance" id="save_tire_change_button">Vista dags.</button>
                         
@@ -49,14 +49,27 @@
                     </div>
                 </div>
 
-                <div class="in_stock">
+                <div id="in_stock" class="in_stock">
+                    <h1 class="tool_in_stock">Verkfæri er á lager</h1>
                     <h2>Skrá á starfsmann:</h2>
                     <div class="staff_nr">
                         <span>Starfsmannanúmer (FRS-xxx):</span>
-                        <input type="textfield" class="user_name_in" value="FRS-">
+                        <input type="textfield" id="user_name_in" class="user_name_in" value="FRS-">
                     </div>
-                    
-                    <button class="save_button"> Skrá út</button>
+            
+                    <button class="save_button" id="save_button"> Skrá út</button>
+                </div>
+
+                <div id="out_of_stock" class="out_of_stock">
+                    <h1 class="tool_out_of_stock">Verkfæri er í útláni</h1>
+                    <h3 id="loanDate_text" class="loanDate_text"></h3>
+                    <h3 id="inUseBy_text"></h3>
+                    <h2>Skrá á lager:</h2>
+                    <div class="staff_nr">
+                        <span>Starfsmannanúmer (FRS-xxx):</span>
+                        <input type="textfield" id="return_user_name_in" class="user_name_in" value="FRS-">
+                    </div>
+                    <button id="return_button" class="save_button"> Skrá inn</button>
                 </div>
             </div>  
             <div class="navigation" id="navigation">

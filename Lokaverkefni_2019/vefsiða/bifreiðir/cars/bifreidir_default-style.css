@@ -149,57 +149,52 @@
                     background:#333;
                 }
 
-        .user_name_in{
-            margin-left: 1em;
-            margin: 1em 1em 1em ;
-        } 
-
-        .save_button{
-            position: relative;
-            left: 0%;
-            padding: 1em 2em;
-            font-size: 10pt;
-            font-weight: bold; 
-            color: white;
-            background:#14489f;
-            margin: 0 0 1em 0;
+        .in_stock{
+            display: none;
         }
+
+            .tool_in_stock{
+                color: green;
+                margin: 0 0 1em 0;
+            }
+
+        .out_of_stock{
+            display: none;
+        }
+
+            .tool_out_of_stock{
+                color: red;
+                margin: 0 0 1em 0;
+            }
+
+            .projectID_text{
+                margin-bottom: 3em;
+            }
+
+            .staff_nr{
+                display: flex;
+                flex-direction: row;
+                padding: 1em 1em 1em 0;
+            }
+
+            .user_name_in{
+                margin-left: 1em;
+            } 
+
+            .save_button{
+                position: relative;
+                left: 0%;
+                padding: 1em 2em;
+                font-size: 10pt;
+                font-weight: bold; 
+                color: white;
+                background:#14489f;
+            }
 
             .save_button:hover, .save_button:active{
                 color: white;
                 background:#333;
-            }
 
-        .remove_button{
-            position: relative;
-            left: 70%;
-            padding: 1em 2em;
-            margin: 0 0 2em 0;
-            font-size: 10pt;
-            font-weight: bold; 
-            color: white;
-            background:#9f1414;
-        }
-
-            .remove_button:hover, .remove_button:active{
-                color: white;
-                background:#333;
-
-            }
-
-        .return_button{
-            position: relative;
-            left: 0%;
-            padding: 1em 2em;
-            font-size: 10pt;
-            font-weight: bold; 
-            color: white;
-            background:#9f1414;
-        }
-
-            .return_button:hover, .return_button:active{
-                color: white;
-                background:#333;
             }
 
     .navigation{

@@ -62,22 +62,31 @@ function renderCheckupData(doc){
 function renderOilChangeData(doc){
     // Creates elements.
     let li = document.createElement('li');
-    let oil_change_km = document.createElement('span');
-    let oil_change_staff = document.createElement('span');
+    let oil_change_text = document.createElement('span');
+    let oil_change_var = document.createElement('span');
+    let oil_change_staff_text = document.createElement('span');
+    let oil_change_staff_var = document.createElement('span');
     
     // Sets specific content in id to each element.
     li.setAttribute("id", doc.id);
-    oil_change_km.setAttribute("id", "oil_change_km");
-    oil_change_km.setAttribute("class", "oil_change_km");
-    oil_change_staff.setAttribute("id", "oil_change_staff");
-    oil_change_staff.setAttribute("class", "oil_change_staff");
+    oil_change_text.setAttribute("id", "oil_change_km");
+    oil_change_text.setAttribute("class", "oil_change_km");
+    oil_change_staff_text.setAttribute("id", "oil_change_staff");
+    oil_change_staff_var.setAttribute("class", "oil_change_staff");
 
-    oil_change_km.textContent = doc.data().oilChangeKm + " \n";
-    oil_change_staff.textContent = doc.data().dateCreated + " \n";
+    oil_change_var.style.fontWeight = "bold";
+    oil_change_staff_var.style.fontWeight = "bold";
+
+    oil_change_text.textContent = "Síðasta smurning: ";
+    oil_change_var.textContent = doc.data().oilChangeKm + " km. \n";
+    oil_change_staff_text.textContent = "Viðstaddur starfsmaður: ";
+    oil_change_staff_var.textContent = doc.data().oilChangeStaff + " \n";
 
     // Appends content into li.
-    li.appendChild(oil_change_km);
-    li.appendChild(oil_change_staff);
+    li.appendChild(oil_change_text);
+    li.appendChild(oil_change_var);
+    li.appendChild(oil_change_staff_text);
+    li.appendChild(oil_change_staff_var);
 
     // Appends li to the tool_list (ul)
     document.getElementById("oil_change_list").appendChild(li);
@@ -89,30 +98,39 @@ function renderOilChangeData(doc){
 
 // Renders all history data of the tool and displays on the page. 
 function renderTireChangeData(doc){
-    // Creates elements.
-    let li = document.createElement('li');
-    let tire_change_date = document.createElement('span');
-    let tire_change_staff = document.createElement('span');
+        // Creates elements.
+        let li = document.createElement('li');
+        let tire_change_text = document.createElement('span');
+        let tire_change_var = document.createElement('span');
+        let tire_change_staff_text = document.createElement('span');
+        let tire_change_staff_var = document.createElement('span');
+        
+        // Sets specific content in id to each element.
+        li.setAttribute("id", doc.id);
+        tire_change_text.setAttribute("id", "tire_change_date");
+        tire_change_text.setAttribute("class", "tire_change_date");
+        tire_change_staff_text.setAttribute("id", "tire_change_staff");
+        tire_change_staff_var.setAttribute("class", "tire_change_staff");
     
-    // Sets specific content in id to each element.
-    li.setAttribute("id", doc.id);
-    tire_change_date.setAttribute("id", "tire_change_date");
-    tire_change_date.setAttribute("class", "tire_change_date");
-    tire_change_staff.setAttribute("id", "tire_change_staff");
-    tire_change_staff.setAttribute("class", "tire_change_staff");
-
-    tire_change_date.textContent = doc.data().tireChangeDate + " \n";
-    tire_change_staff.textContent = doc.data().dateCreated + " \n";
-
-    // Appends content into li.
-    li.appendChild(tire_change_date);
-    li.appendChild(tire_change_staff);
-
-    // Appends li to the tool_list (ul)
-    document.getElementById("tire_change_list").appendChild(li);
-
-    // Enables scrolling inside of a spescific div.
-    document.addEventListener("touchstart", function(){}, true)
+        tire_change_var.style.fontWeight = "bold";
+        tire_change_staff_var.style.fontWeight = "bold";
+    
+        tire_change_text.textContent = "Síðustu dekkjaskipti: ";
+        tire_change_var.textContent = doc.data().tireChangeDate + " km. \n";
+        tire_change_staff_text.textContent = "Viðstaddur starfsmaður: ";
+        tire_change_staff_var.textContent = doc.data().oilChangeStaff + " \n";
+    
+        // Appends content into li.
+        li.appendChild(tire_change_text);
+        li.appendChild(tire_change_var);
+        li.appendChild(tire_change_staff_text);
+        li.appendChild(tire_change_staff_var);
+    
+        // Appends li to the tool_list (ul)
+        document.getElementById("tire_change_list").appendChild(li);
+    
+        // Enables scrolling inside of a spescific div.
+        document.addEventListener("touchstart", function(){}, true)
 }
 
 // Makes sure this javascript file is only ran on a specific page.

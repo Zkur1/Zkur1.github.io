@@ -152,8 +152,15 @@ function displayLoanInfo(){
                     loanDate_text.textContent = "Verkfæri skráð út: " + doc.data().checkOutDate; 
                 });
             });
-                
+            
             inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().inUseBy;
+
+            // Reads from the "Tools" subcollection and appends staffname to the "inUseBy_text".
+            firestore.collection('Users').where("staffID", "==", doc.data().inUseBy).get().then((snapshot) =>{
+                snapshot.docs.forEach(doc => {
+                    inUseBy_text.textContent += " / " + doc.data().staffName;
+                });
+            });
             projectID_text.textContent = "Verkfæri skráð á verknúmer: " + doc.data().projectID;
         }
     });
