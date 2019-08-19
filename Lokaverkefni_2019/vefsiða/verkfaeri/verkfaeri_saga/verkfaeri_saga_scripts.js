@@ -1,7 +1,7 @@
 // Reads through the subcollection "in_out" of the specific tool, snapshots its contents and runs the function "renderCheckInData" for each document.
-// Note: function "orderBy()" lists the objects by "checkOutDate in decending order.
-// Note: function "slice()" limits the "forEach()" request by a specified amount (in this case it limits it to 10 results). 
-firestore.collection('Tools').doc(localStorage.getItem("tool_selector")).collection("in_out").orderBy('checkOutDate', 'desc').get().then((snapshot) => { 
+// Note: function ".orderBy()" lists the objects by "checkOutDate in decending order.
+// Note: function ".limit()" limits the "forEach()" request by a specified amount (in this case it limits it to 10 results). 
+firestore.collection('Tools').doc(localStorage.getItem("tool_selector")).collection("in_out").orderBy('checkOutDate', 'desc').limit(5).get().then((snapshot) => { 
     snapshot.docs.forEach(doc => {
             renderCheckInData(doc);
     });
@@ -11,27 +11,80 @@ firestore.collection('Tools').doc(localStorage.getItem("tool_selector")).collect
 function renderCheckInData(doc){
     // Creates elements.
     let li = document.createElement('li');
-    let check_in = document.createElement('span');
-    let check_out = document.createElement('span');
-    let projectID_out = document.createElement('span');
+
+    let check_out_date_text = document.createElement('span');
+    let check_out_date_var = document.createElement('span');
+
+    let check_out_staff_text = document.createElement('span');
+    let check_out_staff_var = document.createElement('span');
+
+    let check_in_date_text = document.createElement('span');
+    let check_in_date_var = document.createElement('span');
+
+    let check_in_staff_text = document.createElement('span');
+    let check_in_staff_var = document.createElement('span');
+
+    let projectID_out_text = document.createElement('span');
+    let projectID_out_var = document.createElement('span');
     
     // Sets specific content in id to each element.
     li.setAttribute("id", doc.id);
-    check_out.setAttribute("id", "check_out");
-    check_out.setAttribute("class", "check_out");
-    check_in.setAttribute("id", "check_in");
-    check_in.setAttribute("class", "check_in");
-    projectID_out.setAttribute("id", "projectID_out");
-    projectID_out.setAttribute("class", "projectID_out");
+    
+    check_out_date_text.setAttribute("id", "check_out_date_text");
+    check_out_date_text.setAttribute("class", "check_out_date_text");
 
-    check_out.textContent = "Verkfæri skráð út þann: " + doc.data().checkOutDate + " af starfsmanni: " +  doc.data().checkOutUser + " \n";
-    check_in.textContent = "Verkfæri skráð inn þann: " + doc.data().checkInDate + " af starfsmanni: " +  doc.data().checkInUser + " \n";
-    projectID_out.textContent = "Verkfæri skráð á verknúmer: " + doc.data().checkOutProject;
+    check_out_date_var.setAttribute("id", "check_out_date_var");
+    check_out_date_var.setAttribute("class", "history_bold");
+
+    check_out_staff_text.setAttribute("id", "check_out_staff_text");
+    check_out_staff_text.setAttribute("class", "check_out_staff_text");
+
+    check_out_staff_var.setAttribute("id", "check_out_staff_var");
+    check_out_staff_var.setAttribute("class", "history_bold");
+
+    check_in_date_text.setAttribute("id", "check_in_date_text");
+    check_in_date_text.setAttribute("class", "check_in_date_text");
+
+    check_in_date_var.setAttribute("id", "check_in_date_var");
+    check_in_date_var.setAttribute("class", "history_bold");
+
+    check_in_staff_text.setAttribute("id", "check_in_staff_text");
+    check_in_staff_text.setAttribute("class", "check_in_staff_text");
+
+    check_in_staff_var.setAttribute("id", "check_in_staff_var");
+    check_in_staff_var.setAttribute("class", "history_bold");
+
+    projectID_out_text.setAttribute("id", "projectID_out_text");
+    projectID_out_text.setAttribute("class", "projectID_out_text");
+
+    projectID_out_var.setAttribute("id", "projectID_out_var");
+    projectID_out_var.setAttribute("class", "history_bold");
+
+
+    check_out_date_text.textContent = "Verkfæri skráð út þann: ";
+    check_out_date_var.textContent = doc.data().checkOutDate;
+    check_out_staff_text.textContent = " af starfsmanni: ";
+    check_out_staff_var.textContent = doc.data().checkOutUser;
+
+    check_in_date_text.textContent = "Verkfæri skráð inn þann: ";
+    check_in_date_var.textContent = doc.data().checkInDate;
+    check_in_staff_text.textContent = " af starfsmanni: ";
+    check_in_staff_var.textContent = doc.data().checkInUser;
+
+    projectID_out_text.textContent = "Verkfæri skráð á verknúmer: ";
+    projectID_out_var.textContent = doc.data().checkOutProject;
 
     // Appends content into li.
-    li.appendChild(check_out);
-    li.appendChild(check_in);
-    li.appendChild(projectID_out);
+    li.appendChild(check_out_date_text);
+    li.appendChild(check_out_date_var);
+    li.appendChild(check_out_staff_text);
+    li.appendChild(check_out_staff_var);
+    li.appendChild(check_in_date_text);
+    li.appendChild(check_in_date_var);
+    li.appendChild(check_in_staff_text);
+    li.appendChild(check_in_staff_var);
+    li.appendChild(projectID_out_text);
+    li.appendChild(projectID_out_var);
 
     // Appends li to the tool_list (ul)
     document.getElementById("check_in_list").appendChild(li);

@@ -44,7 +44,11 @@
 
 .check_in_list li{
     list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     padding: 1em;
+    row-gap: 1em;
+    justify-items: center;
     font-size: 16pt;
     background: lightgray;
     color: black;
@@ -56,6 +60,10 @@
 
 .check_out{
     margin-right: 1em;
+}
+
+.history_bold{
+    font-weight: bold;
 }
 
 .navigation{

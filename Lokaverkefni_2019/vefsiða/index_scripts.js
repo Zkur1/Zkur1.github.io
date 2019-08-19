@@ -203,7 +203,7 @@ function testForPage(){
         // Note: function "orderBy()" lists the objects in order of "toolID".
         firestore.collection('Tools').orderBy('toolID').onSnapshot(snapshot => {
             var changes = snapshot.docChanges();
-            // changes.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
+            // changes.limit(10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
             changes.forEach(change => {
                 if(change.type == 'added'){
                     renderToolList(change.doc);

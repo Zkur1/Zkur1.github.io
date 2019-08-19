@@ -116,7 +116,7 @@ function renderTireChangeData(doc){
         tire_change_staff_var.style.fontWeight = "bold";
     
         tire_change_text.textContent = "Síðustu dekkjaskipti: ";
-        tire_change_var.textContent = doc.data().tireChangeDate + " km. \n";
+        tire_change_var.textContent = doc.data().tireChangeDate + " ";
         tire_change_staff_text.textContent = "Viðstaddur starfsmaður: ";
         tire_change_staff_var.textContent = doc.data().tireChangeStaff + " \n";
     

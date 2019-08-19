@@ -1,6 +1,5 @@
 // Accessing variables saved locally in other js files.
 var tool_selector = localStorage.getItem("tool_selector");
-console.log(tool_selector);
 
 // Global variables.
 var docRef = firestore.collection("Tools").doc(localStorage.getItem("tool_selector"));
@@ -92,7 +91,6 @@ function loanTool(){
         projectID: project_name_in.value,
     })
 
-    console.log("Fyrst");
     // Adds "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the tool. 
     firestore.collection('Tools').doc(tool_selector).collection("in_out").add({
         checkOutDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
@@ -129,12 +127,15 @@ function returnTool(){
                         checkInDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
                         checkInUser: return_user_name_in.value,
                     });
+                    
+                    // Clears input field. 
+                    firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(1).onSnapshot(function(){
+                        return_user_name_in.value = "FRS-";
+                    });
                 });
             });
         }
     });
-    // Clears input field. 
-    //return_user_name_in.value = "FRS-";
 }
 
 
@@ -152,15 +153,14 @@ function displayLoanInfo(){
                     loanDate_text.textContent = "Verkfæri skráð út: " + doc.data().checkOutDate; 
                 });
             });
-            
-            inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().inUseBy;
 
             // Reads from the "Users" subcollection and appends staffName to the "inUseBy_text".
-            firestore.collection('Users').where("staffID", "==", doc.data().inUseBy).get().then((snapshot) =>{
+            firestore.collection('Users').where("staffID", "==", doc.data().inUseBy).limit(1).get().then((snapshot) =>{
                 snapshot.docs.forEach(doc => {
-                    inUseBy_text.textContent += " / " + doc.data().staffName;
+                    inUseBy_text.textContent = "Starfsmaður með verkfæri: " + doc.data().staffID + " / " + doc.data().staffName;
                 });
             });
+
             projectID_text.textContent = "Verkfæri skráð á verknúmer: " + doc.data().projectID;
         }
     });

@@ -277,6 +277,11 @@ function newOilChange(){
             new_oil_change.style.display = "none";
             oil_change.style.display = "block";
 
+            // Updates the "milage" field of the specific cars' document. 
+            firestore.collection('Cars').doc(localStorage.getItem('car_selector')).update({
+                milage: new_oil_change.value,
+            });
+
             // Clears the input field.
             new_oil_change.value = "";
         }
@@ -467,11 +472,13 @@ function returnCar(){
                     });
                 });
             });
+
+            // Clears input field. 
+            firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").onSnapshot(function(){
+                return_user_name_in.value = "FRS-";
+            })
         }
     });
-
-    // Clears input field. 
-    //return_user_name_in.value = "FRS-";
 }
 
 
