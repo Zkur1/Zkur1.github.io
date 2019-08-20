@@ -9,6 +9,7 @@ function displayLiveData(){
     docRef.onSnapshot(function(){
         showToolStatus();
         displayLoanInfo();
+        renderToolImg()
     });
 }
 
@@ -39,14 +40,99 @@ function showToolName(){
     });
 }
 
+
+// Fetches the image corrosponding to the tool and displays on the page. 
+function renderToolImg(){
+    // A variable to be used in the function below. 
+    var uploaded_file_name = ""
+    var img_url = ""
+
+    // Accesses the specific cars' document field "toolID" and appends its' value to the variable "uploaded_file_name". 
+    firestore.collection('Tools').doc(tool_selector).get().then(function(doc){
+        uploaded_file_name = doc.data().toolID;
+    });
+
+    // Makes sure that the value of "uploaded_file_name" is updated before executing the rest of the funciton. 
+    firestore.collection('Tools').doc(tool_selector).onSnapshot(function(){
+        // Creates a referance to a folder in the storage bucket. 
+        var storageRef = firebase.storage().ref('verkfaeri_myndir/' + uploaded_file_name);
+        
+        // Creates a referance to the url of the uploaded image. 
+        storageRef.getDownloadURL().then(function(url){
+            img_url = url;
+            var tool_logo = document.getElementById("tool_logo");
+            tool_logo.setAttribute("src", url);
+
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+            });
+
+        if(img_url == ""){
+            tool_logo.setAttribute("src", "../../myndir/image-placeholder.jpg");
+            console.log("what");
+        }
+    });
+}
+
+
+// Displays the div "photo_upload" (a menu to change the tools' image) when the "update_logo_button" button is pressed. 
+var update_logo_button = document.getElementById('update_logo_button');
+update_logo_button.onclick = updateToolLogo;
+function updateToolLogo(){
+    var photo_upload = document.getElementById('photo_upload');
+
+    photo_upload.style.display = "flex";
+    update_logo_button.style.display = "none";
+}
+
+// Uploads an image supplied by the user to the projects storage bucket. 
 var upload_button = document.getElementById('upload_button');
 upload_button.addEventListener('change', function(uploadFile) {
-    
+    // Receives a file from the user. 
     var file = uploadFile.target.files[0];
 
-    var storageRef = firebase.storage().ref('verkfaeri_myndir/' + file.name);
+    // A variable to be used in the function below. 
+    var uploaded_file_name = ""
+
+    // Accesses the specific cars' document field "toolID" and appends its' value to the variable "uploaded_file_name". 
+    firestore.collection('Tools').doc(tool_selector).get().then(function(doc){
+        uploaded_file_name = doc.data().toolID;
+    });
+
+    // Makes sure that the value of "uploaded_file_name" is updated before executing the rest of the funciton. 
+    firestore.collection('Tools').doc(tool_selector).onSnapshot(function(){
+        // Creates a referance to a folder in the storage bucket. 
+        var storageRef = firebase.storage().ref('verkfaeri_myndir/' + uploaded_file_name);
+
+        // Uploads the received file to the storage bucket. 
+        var task = storageRef.put(file);
+
+        // Updates the progress bar in real time. 
+        task.on('state_changed', 
+            
+            function progress(snapshot){
+                var precentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                uploader.value = precentage;
+            },
+
+            // Catches any errors that occur. 
+            function error(err){
+
+            },
+
+            // Executes when everything above finishes. 
+            function complete(){
+                // Executes the funtion "renderToolImg"
+                renderToolImg();
+
+                // Hides the "photo_upload" menu and displays the "update_logo_button". 
+                var photo_upload = document.getElementById('photo_upload');
+                photo_upload.style.display = "none";
+                update_logo_button.style.display = "block";
+            },
+        );
+        });
     
-    var task = storageRef.put(file);
 
 });
 

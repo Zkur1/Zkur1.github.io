@@ -22,11 +22,15 @@
                     <div id="description" class="description">
                         <p id="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci incidunt molestiae porro odit illum modi fugit? Nemo, commodi. Atque natus reprehenderit architecto laborum ipsam cumque, facere veniam non possimus error.</p>
                     </div>
-                    <img class="tool_logo" src="../../myndir/wrench.jpg">
+                    <img id ="tool_logo" class="tool_logo" src="">
+                    <div>
+                        <img id="update_logo_button" class="update_logo_button" src="../../myndir/add.jpg">
+                    </div>
                 </div>
-                <div class="photo_upload">
+                
+                <div id="photo_upload" class="photo_upload">
                     <progress value="0" max="100" id="uploader" class="progress_bar">0%</progress>
-                    <input type="file" value="upload" id="upload_button">
+                    <input type="file" value="upload" id="upload_button" class="file_in">
                 </div>
                 <button id="history_button" class="history_button">Saga verkfæris</button>
 
@@ -95,6 +99,7 @@
         </div>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
         <script src="../index_scripts.js"></script>
         <script src="verkfaeri_default_scripts.js"></script>
     </body>

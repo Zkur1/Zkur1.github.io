@@ -44,21 +44,38 @@
             }
 
             .tool_logo{
-                width: 30%;
-                height: 30%;
+                max-width: 35vw;
+                max-height: 18vw;
                 float: right;
-                margin-top: 1em;
+                margin: 1em 0;
             }
 
+        .update_logo_button{
+            position: relative;
+            margin: 0.5em 0 0.5em 0;
+            max-width: 4vw;
+            max-height: 4vw;
+        }
+
+        .update_logo_button:hover, .update_logo_button:active{
+            border-radius: 50%;
+            background: rgb(199, 197, 197);
+        }
+
         .photo_upload{
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: flex-end;
             flex-direction: column;
         }
             .progress_bar{
                 justify-content: center;
-                margin-left: 20%;
+                margin: 2% 9% 0 0;
+            }
+
+            .file_in{
+                width: 35%; 
+                padding: 0.5em;
             }
         
         .in_stock{
