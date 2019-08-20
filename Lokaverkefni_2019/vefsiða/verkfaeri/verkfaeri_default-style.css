@@ -47,7 +47,7 @@
                 max-width: 35vw;
                 max-height: 18vw;
                 float: right;
-                margin: 1em 0;
+                margin: 1em 0.5em;
             }
 
         .update_logo_button{
@@ -76,6 +76,23 @@
             .file_in{
                 width: 35%; 
                 padding: 0.5em;
+            }
+
+        .history_button{
+            position: relative;
+            left: 70%;
+            padding: 2em;
+            font-size: 10pt;
+            font-weight: bold; 
+            color: white;
+            background:#d8a120;
+
+        }
+
+            .history_button:hover, .history_button:active{
+                color: white;
+                background:#333;
+
             }
         
         .in_stock{
@@ -114,6 +131,7 @@
                 position: relative;
                 left: 0%;
                 padding: 1em 2em;
+                margin-bottom: 1em ;
                 font-size: 10pt;
                 font-weight: bold; 
                 color: white;
@@ -121,24 +139,6 @@
             }
 
             .save_button:hover, .save_button:active{
-                color: white;
-                background:#333;
-
-            }
-
-        .history_button{
-            position: relative;
-            left: 70%;
-            padding: 2em;
-            margin-top: 0.5m;
-            font-size: 10pt;
-            font-weight: bold; 
-            color: white;
-            background:#d8a120;
-
-        }
-
-            .history_button:hover, .history_button:active{
                 color: white;
                 background:#333;
 

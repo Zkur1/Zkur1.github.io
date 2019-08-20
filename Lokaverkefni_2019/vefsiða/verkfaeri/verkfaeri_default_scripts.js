@@ -34,7 +34,7 @@ function showToolName(){
             // doc.data() will be undefined in this case
             console.log("No such document!");
         }
-    // If an error accours when reading the document. 
+    // Catches any errors. 
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
@@ -63,13 +63,14 @@ function renderToolImg(){
             var tool_logo = document.getElementById("tool_logo");
             tool_logo.setAttribute("src", url);
 
+        // Catches any errors.             
         }).catch(function(error) {
             console.log("Error getting document:", error);
             });
 
+        // if the car has no associated image a placeholder image will be displayd. 
         if(img_url == ""){
             tool_logo.setAttribute("src", "../../myndir/image-placeholder.jpg");
-            console.log("what");
         }
     });
 }
@@ -80,9 +81,15 @@ var update_logo_button = document.getElementById('update_logo_button');
 update_logo_button.onclick = updateToolLogo;
 function updateToolLogo(){
     var photo_upload = document.getElementById('photo_upload');
+    // Displays the "photo_upload" menu if hidden.
+    if(photo_upload.style.display == "none"){
+        photo_upload.style.display = "flex";
+    }
 
-    photo_upload.style.display = "flex";
-    update_logo_button.style.display = "none";
+    // Hides the "photo_upload" menu if shown. 
+    else{
+        photo_upload.style.display = "none";
+    }
 }
 
 // Uploads an image supplied by the user to the projects storage bucket. 
@@ -122,13 +129,16 @@ upload_button.addEventListener('change', function(uploadFile) {
 
             // Executes when everything above finishes. 
             function complete(){
-                // Executes the funtion "renderToolImg"
+                // Updates the "tool_logo" by executing the function "renderToolImg". 
                 renderToolImg();
 
-                // Hides the "photo_upload" menu and displays the "update_logo_button". 
-                var photo_upload = document.getElementById('photo_upload');
-                photo_upload.style.display = "none";
-                update_logo_button.style.display = "block";
+                // Hides the "photo_upload" menu after the user updates the "tool_logo" by executing the function "updateToolLogo". 
+                updateToolLogo();
+
+                 // Clears the file display and progress bar. 
+                 uploader.value = "";
+                 upload_button.value = "";
+ 
             },
         );
         });

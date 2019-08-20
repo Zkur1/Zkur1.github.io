@@ -43,12 +43,49 @@
             width: auto;
         }
 
-        .car_logo{
-            width: 50%;
-            height: 50%;
-            float: right;
-            margin-top: 1em;
+        .logo_section{
+            display: flex;
+            flex-direction: row;
         }
+
+        .car_logo{
+            max-width: 20vw;
+            max-height: 20vw;
+            float: right;
+            margin: 1em 0.5em ;
+
+        }
+
+        .update_logo_button{
+            position: relative;
+            margin: 0.5em 0 0.5em 0;
+            max-width: 4vw;
+            max-height: 4vw;
+            float: right;
+        }
+
+        .update_logo_button:hover, .update_logo_button:active{
+            border-radius: 50%;
+            background: rgb(199, 197, 197);
+        }
+
+        .photo_upload{
+            display: none;
+            float: right;
+            justify-content: center;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+            .progress_bar{
+                justify-content: center;
+                margin: 2% 25% 0 0;
+            }
+
+            .file_in{
+                width: 80%; 
+                padding: 0.5em;
+            }
+
 
         .history_button{
             position: relative;

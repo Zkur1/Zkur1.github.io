@@ -45,6 +45,9 @@ function displayLiveData(){
     firestore.collection("Cars").doc(localStorage.getItem("car_selector")).onSnapshot(function(){
         showCarStatus();
     });
+
+    // Runs the "renderCarImg" function. 
+    renderCarImg();
 }
       
 
@@ -96,6 +99,112 @@ function displayCarData(){
         console.log("Error getting document:", error);
     });
 }
+
+
+// Fetches the image corrosponding to the car and displays on the page. 
+function renderCarImg(){
+    // A variable to be used in the function below. 
+    var uploaded_file_name = ""
+    var img_url = ""
+
+    // Accesses the specific cars' document field "carID" and appends its' value to the variable "uploaded_file_name". 
+    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).get().then(function(doc){
+        uploaded_file_name = doc.data().carID;
+    });
+
+    // Makes sure that the value of "uploaded_file_name" is updated before executing the rest of the funciton. 
+    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).onSnapshot(function(){
+        // Creates a referance to a folder in the storage bucket. 
+        var storageRef = firebase.storage().ref('bifreidir_myndir/' + uploaded_file_name);
+        
+        // Creates a referance to the url of the uploaded image. 
+        storageRef.getDownloadURL().then(function(url){
+            img_url = url;
+            var car_logo = document.getElementById("car_logo");
+            car_logo.setAttribute("src", url);
+
+        // Catches any errors. 
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+            });
+
+        // if the car has no associated image a placeholder image will be displayd. 
+        if(img_url == ""){
+            car_logo.setAttribute("src", "../../../myndir/image-placeholder.jpg");
+        }
+    });
+}
+
+
+// Displays the div "photo_upload" (a menu to change the cars' image) when the "update_logo_button" button is pressed. 
+var update_logo_button = document.getElementById('update_logo_button');
+update_logo_button.onclick = updateCarLogo;
+function updateCarLogo(){
+    var photo_upload = document.getElementById('photo_upload');
+    // Displays the "photo_upload" menu if hidden.
+    if(photo_upload.style.display == "none"){
+        photo_upload.style.display = "flex";
+    }
+
+    // Hides the "photo_upload" menu if shown. 
+    else{
+        photo_upload.style.display = "none";
+    }
+}
+
+// Uploads an image supplied by the user to the projects storage bucket. 
+var upload_button = document.getElementById('upload_button');
+upload_button.addEventListener('change', function(uploadFile) {
+    // Receives a file from the user. 
+    var file = uploadFile.target.files[0];
+
+    // A variable to be used in the function below. 
+    var uploaded_file_name = ""
+
+    // Accesses the specific cars' document field "carID" and appends its' value to the variable "uploaded_file_name". 
+    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).get().then(function(doc){
+        uploaded_file_name = doc.data().carID;
+    });
+
+    // Makes sure that the value of "uploaded_file_name" is updated before executing the rest of the funciton. 
+    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).onSnapshot(function(){
+        // Creates a referance to a folder in the storage bucket. 
+        var storageRef = firebase.storage().ref('bifreidir_myndir/' + uploaded_file_name);
+
+        // Uploads the received file to the storage bucket. 
+        var task = storageRef.put(file);
+
+        // Updates the progress bar in real time. 
+        task.on('state_changed', 
+            
+            function progress(snapshot){
+                var precentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                uploader.value = precentage;
+            },
+
+            // Catches any errors that occur. 
+            function error(err){
+
+            },
+
+            // Executes when everything above finishes. 
+            function complete(){
+                // Executes the funtion "renderCarImg"
+                renderCarImg();
+
+                // Hides the "photo_upload" menu after the user updates the "car_logo" by executing the function "updateCarLogo". 
+                updateCarLogo();
+
+                // Clears the file display and progress bar. 
+                uploader.value = "";
+                upload_button.value = "";
+
+            },
+        );
+        });
+    
+
+});
 
 
 

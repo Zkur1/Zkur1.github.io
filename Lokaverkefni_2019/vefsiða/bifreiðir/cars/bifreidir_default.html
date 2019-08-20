@@ -18,9 +18,17 @@
             </div>
             <div class="main">
                 <div class="car_description" id="car_description">
-                    <div id="description" class="description">
+                    <div id="description" class="description"></div>
+                    <div>
+                        <div id="logo_section" class="logo_section">
+                            <img class="car_logo" id="car_logo" src=".">
+                            <img id="update_logo_button" class="update_logo_button" src="../../../myndir/add.jpg">
+                        </div>
+                        <div id="photo_upload" class="photo_upload" style="display: none;">
+                            <progress value="0" max="100" id="uploader" class="progress_bar">0%</progress>
+                            <input type="file" value="upload" id="upload_button" class="file_in">
+                        </div>
                     </div>
-                    <img class="car_logo" src="../../../myndir/vito.jpg">
                 </div>
                 <button class="history_button" id="history_button">Saga Viðhalds</button>                    
                 
@@ -106,6 +114,7 @@
         </div>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
         <script src="../bifreidir_scripts.js"></script>
         <script src="bifreidir_default_scripts.js"></script>
     </body>
