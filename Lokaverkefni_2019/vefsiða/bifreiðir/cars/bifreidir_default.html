@@ -18,8 +18,16 @@
             </div>
             <div class="main">
                 <div class="car_description" id="car_description">
-                    <div id="description" class="description"></div>
-                    <div>
+                    <div id="description" class="description">
+                        <div id="description_text_div" class="description_text_div">
+                            <p id="description_text" class="description_text" contenteditable="true"></p>
+                            <div class="desc_buttons">
+                                <button id="desc_save_button" class="save_text_button" style="display: none;">Vista</button>
+                                <button id="desc_cancel_button" class="remove_button" style="display: none;">Hætta við</button> 
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="right_description">
                         <div id="logo_section" class="logo_section">
                             <img class="car_logo" id="car_logo" src=".">
                             <img id="update_logo_button" class="update_logo_button" src="../../../myndir/add.jpg">
@@ -28,9 +36,9 @@
                             <progress value="0" max="100" id="uploader" class="progress_bar">0%</progress>
                             <input type="file" value="upload" id="upload_button" class="file_in">
                         </div>
+                        <button class="history_button" id="history_button">Saga Viðhalds</button>                    
                     </div>
                 </div>
-                <button class="history_button" id="history_button">Saga Viðhalds</button>                    
                 
                 <div class="maintenance" id="maintenance">
                     <h2>Viðhald:</h2>
@@ -60,8 +68,9 @@
                 <div id="in_stock" class="in_stock">
                     <h2>Skrá á starfsmann:</h2>
                     <div class="staff_nr">
-                        <span>Starfsmannanúmer (FRS-xxx):</span>
-                        <input type="textfield" id="user_name_in" class="user_name_in" value="FRS-">
+                        <span>Starfsmaður:</span>
+                        <input type="textfield" id="user_name_in" class="user_name_in" list="staff" autocomplete="off">
+                        <datalist id="staff"></datalist>
                     </div>
             
                     <button class="save_button" id="save_button"> Skrá út</button>
@@ -72,8 +81,9 @@
                     <h3 id="inUseBy_text"></h3>
                     <h2>Skrá á lager:</h2>
                     <div class="staff_nr">
-                        <span>Starfsmannanúmer (FRS-xxx):</span>
-                        <input type="textfield" id="return_user_name_in" class="user_name_in" value="FRS-">
+                        <span>Starfsmaður: </span>
+                        <input type="textfield" id="return_user_name_in" class="user_name_in" list="staff" autocomplete="off">
+                        <datalist id="staff"></datalist>
                     </div>
                     <button id="return_button" class="save_button"> Skrá inn</button>
                 </div>

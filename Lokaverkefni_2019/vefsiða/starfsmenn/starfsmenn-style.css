@@ -21,6 +21,7 @@
         font-size: 30pt;
         font-family: 'Montserrat', sans-serif;
         padding: 1em;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
     .add_remove{
@@ -32,12 +33,22 @@
         .add_remove .add{
             width: 30%;
             margin: 2% 40% 0% 0;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+        }
+
+        .add:hover, .add:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
         }
 
         .add_remove .remove{
             padding: 1em 2em;
             width: 30%;
             margin: 2% 0 0% 0%;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+        }
+
+        .remove:hover, .remove:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
         }
 
         .dropdown_main{
@@ -72,6 +83,7 @@
             font-weight: bold; 
             color: white;
             background:#14489f;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
         }
 
         .save_button:hover, .save_button:active{
@@ -92,6 +104,7 @@
             font-weight: bold; 
             color: white;
             background:#9f1414;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
         }
 
         .remove_button:hover, .remove_button:active{
@@ -102,7 +115,12 @@
     .searchbar{
         width: 100%;
         margin: 1em 0 0 0;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
+
+        .searchbar:hover, .searchbar:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+        }
 
         .searchbar input{
             width: 100%;
@@ -110,12 +128,12 @@
         }
 
     .main{
+        display: flex;
+        justify-content: center;
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
         -ms-overflow-style: none; 
         scrollbar-width: none; 
-        max-width: 48em;
-        width: 100%;
         height: 66%;
     }
 
@@ -125,10 +143,9 @@
 
         .staff_section{
             display: grid;
-            max-width: 100%;
+            width: 98%;
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 2em;
-            font-family: 'Montserrat', sans-serif;
             padding: 0;
         }
 
@@ -144,8 +161,10 @@
                 list-style-type: none;
                 padding: 1em;
                 font-size: 16pt;
+                text-align: center;
                 background: lightgray;
                 color: black;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
 
             .staff_img{
@@ -153,7 +172,6 @@
                 height: auto;
                 padding: 5%;
                 margin-left: 2em;
-                
             }
 
             div a{
@@ -164,6 +182,7 @@
             .staff_section > li:hover, .staff_section > li:active{
                 color: black;
                 background: #BFC0C0;
+                box-shadow: 5px 5px 5px -2px rgba(0,0,0,0.75);
             }
 
     .navigation{
@@ -176,6 +195,7 @@
         max-width: 48em;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
         .navigation ul{
@@ -212,6 +232,7 @@
         max-width: 48em;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
         .m_navigation ul{

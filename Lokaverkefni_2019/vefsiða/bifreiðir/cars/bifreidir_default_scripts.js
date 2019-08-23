@@ -15,6 +15,8 @@ var new_tire_change = document.getElementById('new_tire_change');
 var tire_change_button = document.getElementById('tire_change_button');
 var save_tire_change_button = document.getElementById("save_tire_change_button");
 
+var car_selector = localStorage.getItem("car_selector");
+
 
 // Displays all live data (data that can change) on the page and updates said data in real time. 
 function displayLiveData(){
@@ -42,19 +44,19 @@ function displayLiveData(){
         })
     });
 
+
+    // Live Function! runs functions responsible for displaying live data on the site. 
     firestore.collection("Cars").doc(localStorage.getItem("car_selector")).onSnapshot(function(){
         showCarStatus();
+        showCarDesc();
+        renderCarImg();
     });
-
-    // Runs the "renderCarImg" function. 
-    renderCarImg();
 }
       
 
 // Reads specific document from the "Users" collection in the firestore database.
 function displayCarData(){
     firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc) {
-        
         // If the document is correctly read. 
         if (doc.exists) {
             // Logs the content of the document to the console. 
@@ -64,8 +66,6 @@ function displayCarData(){
             let car_make = document.createElement('h2');
             let car_model_year = document.createElement('h2');
             let car_loan_status = document.createElement('h2');
-            let description_text = document.createElement('p');
-            
 
             // Specifies both classes of the elements and their content. 
             car_id.setAttribute("class", 'car_id');
@@ -77,27 +77,91 @@ function displayCarData(){
             car_model_year.setAttribute("class", 'car_model_year');
             car_model_year.textContent = 'Árgerð: ' + doc.data().modelYear;
 
-            car_loan_status.setAttribute("id", "car_loan_status")
-
-            description_text.setAttribute("class", 'car_id');
-            description_text.textContent = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci incidunt molestiae porro odit illum modi fugit? Nemo, commodi. Atque natus reprehenderit architecto laborum ipsam cumque, facere veniam non possimus error.";
+            car_loan_status.setAttribute("id", "car_loan_status");
 
             // Adds the elements on the page.
+            car_info.insertBefore(car_loan_status, car_info.firstChild);
+            car_info.insertBefore(car_model_year, car_info.firstChild);
+            car_info.insertBefore(car_make, car_info.firstChild);
             car_info.insertBefore(car_id , car_info.firstChild);
-            car_info.appendChild(car_make);
-            car_info.appendChild(car_model_year);
-            car_info.appendChild(car_loan_status);
-            car_info.appendChild(description_text);
-        
+        } 
         // If the document is not correctly read. 
-        } else {
+        else{
             // doc.data() will be undefined in this case
             console.log("No such document!");
-        }
+            }
     // If an error accours when reading the document. 
     }).catch(function(error) {
         console.log("Error getting document:", error);
+        });
+}
+
+
+// Reads from the database and shows up do date description of the car. 
+function showCarDesc(){
+    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc) {
+        // If the document is correctly read. 
+        if(doc.exists){
+            var description_text = document.getElementById("description_text");
+            var inner_text = ""
+
+            // Reads the "description" variable of the car from the database and appends its content to the local variable "inner_text".
+            firestore.collection('Cars').doc(car_selector).get().then(function(doc){
+                inner_text = doc.data().description;
+            });
+
+            // Makes sure the code above has excuted an then appends the content of the "inner_text" variable to the element "description_text". 
+            firestore.collection('Cars').doc(car_selector).onSnapshot(function(){
+                description_text.innerText = inner_text;
+            })
+        } 
+        // If the document is not correctly read. 
+        else{
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    // Catches any errors. 
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
     });
+}
+
+
+// Either shows or hides the "description_text" editor menu and saves the user input to the "description" variable in the database.
+description_text = document.getElementById("description_text");
+description_text.addEventListener("click", EditDescText);
+function EditDescText(){
+    var desc_save_button = document.getElementById("desc_save_button");
+    var desc_cancel_button = document.getElementById("desc_cancel_button");
+
+    // Shows the editor menu when the textblock is clicked and adds a background and border. 
+    if(desc_save_button.style.display == "none"){
+        desc_save_button.style.display = "block";
+        desc_cancel_button.style.display = "block";
+        description_text.style.cssText += "border: solid; border-width: 1px; background: #e2e2e2";
+    }
+
+    // Hides the editor menu when the "desc_cancel_button" is clicked. 
+    desc_cancel_button.onclick = function closeDescEdit(){
+        desc_save_button.style.display = "none";
+        desc_cancel_button.style.display = "none";
+        description_text.style.cssText = "";
+        showCarDesc();
+    }
+
+    // Saves user input to the "description" variable in the database on click of the "desc_save_button". 
+    desc_save_button.onclick = function saveDescEdit(){
+        firestore.collection('Cars').doc(car_selector).update({
+            description: description_text.innerText,
+        });
+
+        // Makes sure the code above executes and then hides the editor menu. 
+        firestore.collection('Cars').doc(car_selector).onSnapshot(function(){
+            desc_save_button.style.display = "none";
+            desc_cancel_button.style.display = "none";
+            description_text.style.cssText = "";
+        });
+    }
 }
 
 
@@ -152,6 +216,7 @@ function updateCarLogo(){
     }
 }
 
+
 // Uploads an image supplied by the user to the projects storage bucket. 
 var upload_button = document.getElementById('upload_button');
 upload_button.addEventListener('change', function(uploadFile) {
@@ -201,11 +266,8 @@ upload_button.addEventListener('change', function(uploadFile) {
 
             },
         );
-        });
-    
-
+    });
 });
-
 
 
 // Determines information to be desplayed in the "maintenance" portion of the page. 
@@ -538,23 +600,42 @@ function showCarStatus(){
 // Runs the function "loanCar" when "save_button" is pressed.
 document.getElementById("save_button").onclick = loanCar;
 function loanCar(){
-    // Fetches input tags on the html and puts them into variables to be used later. 
+    // Fetches input tags from the page and puts them into variables to be used later. 
     var user_name_in = document.querySelector("#user_name_in");
-    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).update({
-        inUse: true,
-        inUseBy: user_name_in.value,
-    })
-    
-    // Creates an "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the car. 
-    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").add({
-        checkOutDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
-        checkOutUser: user_name_in.value,
-        checkInDate: "",
-        checkInUser: "",
-    })
 
-    // Resets the input fields. 
-    user_name_in.value = "FRS-";
+    // Local variables.
+    var staff_id = ""
+
+    // Checks if user input matches the name of a document in the database and executes the function "saveData" if it does .
+    firestore.collection('Users').where("staffName", "==", user_name_in.value).get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            staff_id = doc.data().staffID
+
+            if(staff_id != ""){
+                saveData();
+            }
+            
+        });
+    });
+
+    // Saves user input to the database. 
+    function saveData(){
+        firestore.collection('Cars').doc(localStorage.getItem("car_selector")).update({
+            inUse: true,
+            inUseBy: staff_id,
+        });
+        
+        // Creates an "in_out" subcollection to the firestore document and appends variables intended to store data about the loan of the car. 
+        firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").add({
+            checkOutDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            checkOutUser: staff_id,
+            checkInDate: "",
+            checkInUser: "",
+        });
+
+        // Resets the input fields. 
+        user_name_in.value = "FRS-";
+    }
 }
 
 
@@ -563,32 +644,67 @@ document.getElementById("return_button").onclick = returnCar;
 function returnCar(){
     // Fetches input tags on the html and puts them into variables to be used later. 
     var return_user_name_in = document.querySelector("#return_user_name_in");
-    firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc) {
-        // If the document is correctly read. 
-        if(doc.exists) {
-            // if "inUseBy" mathces with the user input the menus will switch and variables regarding the loan will change accordingly. 
-            firestore.collection('Cars').doc(localStorage.getItem("car_selector")).update({
-                inUse: false,
-                inUseBy: "",
-            });
 
-            // Logs who returns the car and when and logs it to variables stored in the subcollection "in_out".
-            firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
-                snapshot.docs.forEach(doc => {
-                    firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").doc(doc.id).update({
-                        checkInDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
-                        checkInUser: return_user_name_in.value,
+    // Local variables.
+    var staff_id = ""
+
+    // Checks if user input matches the name of a document in the database and executes the function "saveData" if it does .
+    firestore.collection('Users').where("staffName", "==", return_user_name_in.value).get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            staff_id = doc.data().staffID
+
+            if(staff_id != ""){
+                saveData();
+            }
+            
+        });
+    });
+
+    // Saves user input to the database. 
+    function saveData(){
+        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc) {
+            // If the document is correctly read. 
+            if(doc.exists) {
+                // if "inUseBy" mathces with the user input the menus will switch and variables regarding the loan will change accordingly. 
+                firestore.collection('Cars').doc(localStorage.getItem("car_selector")).update({
+                    inUse: false,
+                    inUseBy: "",
+                });
+    
+                // Logs who returns the car and when and logs it to variables stored in the subcollection "in_out".
+                firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").orderBy("checkOutDate", "desc").limit(1).get().then((snapshot) => {
+                    snapshot.docs.forEach(doc => {
+                        firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").doc(doc.id).update({
+                            checkInDate: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+                            checkInUser: staff_id,
+                        });
                     });
                 });
-            });
+    
+                // Clears input field. 
+                firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").onSnapshot(function(){
+                    return_user_name_in.value = "FRS-";
+                })
+            }
+        });
+    }
+}
 
-            // Clears input field. 
-            firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").onSnapshot(function(){
-                return_user_name_in.value = "FRS-";
-            })
-        }
+
+// Creates a dropdown list with every document in a specific collection.
+function dropdownSelect(){
+    firestore.collection("Users").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            let input_field = document.getElementById("staff");
+            let option_in_input_field = document.createElement("option");
+    
+            option_in_input_field.textContent = doc.data().staffName;
+            
+            input_field.appendChild(option_in_input_field)
+        });
     });
 }
+dropdownSelect();
 
 
 // Makes sure this javascript file is only ran on a specific page.

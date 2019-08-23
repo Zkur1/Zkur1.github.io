@@ -36,6 +36,8 @@
 
         .car_description{
             display: flex;
+            width: 100%;
+            justify-content: space-between;
         }
 
         .car_description h1{
@@ -43,65 +45,128 @@
             width: auto;
         }
 
+        .description_text{
+            word-wrap: break-word;
+            max-width: 30em;
+            margin-bottom: 1em; 
+            padding:0.5em 0.5em 0.5em 0.1em;
+        }
+
+            .description_text:hover, .description_text:active{
+                background: #e2e2e2;
+                border:  solid;
+                border-width: 1px;
+                margin: 0;
+            }
+
+            .desc_buttons{
+                display: flex;
+                width: 55%; 
+                margin-top: 1em;
+            }
+
+                .save_text_button{
+                    position: relative;
+                    left: 2.5%;
+                    padding: 1em 2em;
+                    margin-bottom: 1em;
+                    font-size: 10pt;
+                    font-weight: bold; 
+                    color: white;
+                    background: #14489f;
+                    box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+                    border-radius: 10%;
+                    margin-right: 1em;
+                }
+
+                .remove_button{
+                    position: relative;
+                    left: 2.5%;
+                    padding: 1em 2em;
+                    margin-bottom: 1em;
+                    font-size: 10pt;
+                    font-weight: bold; 
+                    color: white;
+                    background: #9f1414;
+                    box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+                    border-radius: 10%;
+                }
+
+                .remove_button:hover, .remove_button:active{
+                    color: white;
+                    background:#333;
+                    cursor: pointer;
+                }
+
+        .right_description{
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+
+        }
+                
         .logo_section{
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
         }
 
-        .car_logo{
-            max-width: 20vw;
-            max-height: 20vw;
-            float: right;
-            margin: 1em 0.5em ;
+            .car_logo{
+                max-width: 15em;
+                max-height: 15em;
+                margin: 1em 0.5em ;
+            }
 
-        }
+            .update_logo_button{
+                position: relative;
+                margin: 0.5em 0 0.5em 0;
+                max-width: 2em;
+                max-height: 2em;
+                float: right;
+            }
 
-        .update_logo_button{
-            position: relative;
-            margin: 0.5em 0 0.5em 0;
-            max-width: 4vw;
-            max-height: 4vw;
-            float: right;
-        }
+                .update_logo_button:hover, .update_logo_button:active{
+                    border-radius: 50%;
+                    background: rgb(199, 197, 197);
+                    cursor: pointer;
+                }
 
-        .update_logo_button:hover, .update_logo_button:active{
-            border-radius: 50%;
-            background: rgb(199, 197, 197);
-        }
-
-        .photo_upload{
-            display: none;
-            float: right;
-            justify-content: center;
-            align-items: flex-end;
-            flex-direction: column;
-        }
-            .progress_bar{
+            .photo_upload{
+                display: none;
+                float: right;
                 justify-content: center;
-                margin: 2% 25% 0 0;
+                align-items: flex-end;
+                flex-direction: column;
             }
+                .progress_bar{
+                    justify-content: center;
+                    margin: 2% 25% 0 0;
+                }
 
-            .file_in{
-                width: 80%; 
-                padding: 0.5em;
-            }
+                .file_in{
+                    width: 80%; 
+                    padding: 0.5em;
+                }
 
 
         .history_button{
             position: relative;
-            left: 70%;
+            float: right;
+            width: 60%; 
             padding: 2em;
             margin-top: 0.5em;
             font-size: 10pt;
             font-weight: bold;
             color: white;
             background:#d8a120;
-            max-width: 33.5%;
+            align-self: center;
+            border-radius: 10%;
 
         }
             .history_button:hover, .history_button:active{
                 color: white;
                 background:#333;
+                cursor: pointer;
             }
 
 
@@ -148,11 +213,13 @@
                 font-weight: bold; 
                 color: white;
                 background:#14489f;
+                border-radius: 10%;
             }
 
                 .update_maintenance:hover, .update_maintenance:active{
                     color: white;
                     background:#333;
+                    cursor: pointer;
                 }
 
             .save_maintenance{
@@ -162,11 +229,13 @@
                 font-weight: bold; 
                 color: white;
                 background:#14489f;
+                border-radius: 10%;
             }
 
                 .save_maintenance:hover, .save_maintenance:active{
                     color: white;
                     background:#333;
+                    cursor: pointer;
                 }
             
 
@@ -179,11 +248,13 @@
                 color: white;
                 background: #9f1414;
                 max-width: 25%;
+                border-radius: 10%;
             }
 
                 .cancel_button:hover, .cancel_button:active{
                     color: white;
                     background:#333;
+                    cursor: pointer;
                 }
 
         .in_stock{
@@ -227,11 +298,13 @@
                 color: white;
                 background:#14489f;
                 margin-bottom: 2em;
+                border-radius: 10%;
             }
 
             .save_button:hover, .save_button:active{
                 color: white;
                 background:#333;
+                cursor: pointer;
 
             }
 
@@ -268,6 +341,7 @@
         .navigation ul > li:hover, .navigation > li:active{
             color: black;
             background: #BFC0C0;
+            cursor: pointer;
         }
 
     .m_navigation{
@@ -304,4 +378,5 @@
         .m_navigation ul > li:hover, .m_navigation > li:active{
             color: black;
             background: #BFC0C0;
+            cursor: pointer;
         }

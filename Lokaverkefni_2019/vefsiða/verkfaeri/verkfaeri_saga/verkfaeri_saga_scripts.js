@@ -64,12 +64,12 @@ function renderCheckInData(doc){
     check_out_date_text.textContent = "Verkfæri skráð út þann: ";
     check_out_date_var.textContent = doc.data().checkOutDate;
     check_out_staff_text.textContent = " af starfsmanni: ";
-    check_out_staff_var.textContent = doc.data().checkOutUser;
+    check_out_staff_var.textContent = doc.data().checkOutUserName + " / " + doc.data().checkOutUser;
 
     check_in_date_text.textContent = "Verkfæri skráð inn þann: ";
     check_in_date_var.textContent = doc.data().checkInDate;
     check_in_staff_text.textContent = " af starfsmanni: ";
-    check_in_staff_var.textContent = doc.data().checkInUser;
+    check_in_staff_var.textContent = doc.data().checkInUserName + " / " + doc.data().checkInUser;
 
     projectID_out_text.textContent = "Verkfæri skráð á verknúmer: ";
     projectID_out_var.textContent = doc.data().checkOutProject;

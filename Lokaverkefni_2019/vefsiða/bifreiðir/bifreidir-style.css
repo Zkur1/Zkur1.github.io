@@ -20,6 +20,7 @@
         justify-content: left;
         font-size: 30pt;
         padding: 1em;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
     .add_remove{
@@ -31,12 +32,22 @@
         .add_remove .add{
             width: 30%;
             margin: 2% 40% 0% 0;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+        }
+        
+        .add:hover, .add:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
         }
 
         .add_remove .remove{
             padding: 1em 2em;
             width: 30%;
             margin: 2% 0 0% 0%;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+        }
+
+        .remove:hover, .remove:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
         }
 
         .dropdown_main{
@@ -71,11 +82,13 @@
             font-weight: bold; 
             color: white;
             background:#14489f;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
         }
 
         .save_button:hover, .save_button:active{
             color: white;
             background:#333;
+            cursor: pointer;
         }
 
         .dropdown_remove{
@@ -92,17 +105,24 @@
             font-weight: bold; 
             color: white;
             background:#9f1414;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
         }
 
         .remove_button:hover, .remove_button:active{
             color: white;
             background:#333;
+            cursor: pointer;
         }
 
     .searchbar{
         width: 100%;
         margin: 1em 0 0 0;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
+
+        .searchbar:hover, .searchbar:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+        }
 
         .searchbar input{
             width: 100%;
@@ -110,6 +130,8 @@
         }
 
     .main{
+        display: flex;
+        justify-content: center;
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
         -ms-overflow-style: none; 
@@ -123,6 +145,7 @@
 
         .car_section{
             display: grid;
+            width: 98%;
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 2em;
             padding: 0;
@@ -140,8 +163,10 @@
                 list-style-type: none;
                 padding: 1em;
                 font-size: 16pt;
+                text-align: center;
                 background: lightgray;
                 color: black;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
 
             .car_img{
@@ -149,6 +174,7 @@
                 height: auto;
                 padding: 5%;
                 margin-left: 2em;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
 
             div a{
@@ -159,6 +185,8 @@
             .car_section > li:hover, .car_section > li:active{
                 color: black;
                 background: #BFC0C0;
+                cursor: pointer;
+                box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
             }
 
     .navigation{
@@ -170,6 +198,7 @@
         width: 100%;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
         .navigation ul{
@@ -194,6 +223,7 @@
         .navigation ul > li:hover, .navigation > li:active{
             color: black;
             background: #BFC0C0;
+            cursor: pointer;
         }
 
     .m_navigation{
@@ -205,6 +235,7 @@
         width: 100%;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
         .m_navigation ul{
@@ -230,4 +261,5 @@
         .m_navigation ul > li:hover, .m_navigation > li:active{
             color: black;
             background: #BFC0C0;
+            cursor: pointer;
         }

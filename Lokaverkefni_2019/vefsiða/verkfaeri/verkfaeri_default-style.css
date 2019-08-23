@@ -19,6 +19,7 @@
         justify-content: left;
         font-size: 30pt;
         padding: 1em;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
     .main{
@@ -38,28 +39,93 @@
             display: flex;
         }
 
+            .tool_description *{
+                width: 100%;
+            }
+
             .tool_description h1{
                 flex-direction: column;
                 width: auto;
             }
 
+            .description_text{
+                word-wrap: break-word;
+                max-width: 30em;
+                margin-bottom: 1em; 
+                padding:0.5em 0.5em 0.5em 0.1em;
+            }
+
+            .description_text:hover, .description_text:active{
+                background: #e2e2e2;
+                border:  solid;
+                border-width: 1px;
+                margin: 0;
+            }
+
+            .desc_buttons{
+                display: flex;
+                width: 80%; 
+                margin-top: 1em;
+            }
+
+                .save_text_button{
+                    position: relative;
+                    left: 2.5%;
+                    padding: 1em 2em;
+                    margin-bottom: 1em;
+                    font-size: 10pt;
+                    font-weight: bold; 
+                    color: white;
+                    background: #14489f;
+                    box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+                    border-radius: 10%;
+                    margin-right: 1em;
+                    max-width: 35%;
+                }
+
+                .save_text_button:hover, .save_text_button:active{
+                    color: white;
+                    background:#333;
+                    cursor: pointer;
+                }
+
+                .remove_button{
+                    position: relative;
+                    left: 2.5%;
+                    padding: 0.5em 1;
+                    margin-bottom: 1em ;
+                    font-size: 10pt;
+                    font-weight: bold; 
+                    color: white;
+                    background: #9f1414;
+                    box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+                    border-radius: 10%;
+                    max-width: 35%;
+                }
+
+                .remove_button:hover, .remove_button:active{
+                    color: white;
+                    background:#333;
+                    cursor: pointer;
+                }
+
             .tool_logo{
-                max-width: 35vw;
-                max-height: 18vw;
-                float: right;
+                max-width: 15em;
+                max-height: 15em;
                 margin: 1em 0.5em;
             }
 
         .update_logo_button{
             position: relative;
             margin: 0.5em 0 0.5em 0;
-            max-width: 4vw;
-            max-height: 4vw;
+            max-width: 2.5vw;
+            max-height: 2.5vw;
         }
 
         .update_logo_button:hover, .update_logo_button:active{
             border-radius: 50%;
             background: rgb(199, 197, 197);
+            cursor: pointer;
         }
 
         .photo_upload{
@@ -86,13 +152,14 @@
             font-weight: bold; 
             color: white;
             background:#d8a120;
-
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+            border-radius: 10%;
         }
 
             .history_button:hover, .history_button:active{
                 color: white;
                 background:#333;
-
+                cursor: pointer;
             }
         
         .in_stock{
@@ -136,12 +203,14 @@
                 font-weight: bold; 
                 color: white;
                 background:#14489f;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+                border-radius: 10%;
             }
 
             .save_button:hover, .save_button:active{
                 color: white;
                 background:#333;
-
+                cursor: pointer;
             }
 
     .navigation{
@@ -153,6 +222,7 @@
         width: 100%;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
         .navigation ul{
@@ -177,6 +247,7 @@
         .navigation ul > li:hover, .navigation > li:active{
             color: black;
             background: #BFC0C0;
+            cursor: pointer;
         }
 
     .m_navigation{
@@ -188,6 +259,7 @@
         width: 100%;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
         .m_navigation ul{
@@ -213,4 +285,5 @@
         .m_navigation ul > li:hover, .m_navigation > li:active{
             color: black;
             background: #BFC0C0;
+            cursor: pointer;
         }

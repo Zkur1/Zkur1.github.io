@@ -147,6 +147,7 @@ function addToolToDatabase(){
             firestore.collection('Tools').add({
                 toolID: tool_id_in.value,
                 toolName: tool_name_in.value,
+                description: '',
                 inUse: false,
                 inUseBy: '',
             });
