@@ -208,11 +208,14 @@ function updateCarLogo(){
     // Displays the "photo_upload" menu if hidden.
     if(photo_upload.style.display == "none"){
         photo_upload.style.display = "flex";
+        update_logo_button.setAttribute("src", "../../../myndir/minus.png");
     }
 
     // Hides the "photo_upload" menu if shown. 
     else{
         photo_upload.style.display = "none";
+        update_logo_button.setAttribute("src", "../../../myndir/add.jpg");
+
     }
 }
 
@@ -371,7 +374,20 @@ function newCheckupDate(){
     // Retrieves the name of the staff using the car and adds it to the variable "checkupStaff". 
     var checkup_staff = "";
     firestore.collection("Cars").doc(localStorage.getItem('car_selector')).get().then(function(doc){
-        checkup_staff = doc.data().inUseBy;
+        if(doc.data().inUseBy == undefined || doc.data().inUseBy == ""){
+            alert("ATH: Bifreið ekki skráð á starfsmann. Viðhald verður skráð án viðstadds starfsmanns. ")
+
+        }
+        else{
+            checkup_staff = doc.data().inUseBy;
+        }
+    });
+
+    // Runs the funciton "saveCheckupDate" if ENTER is pressed when the "user_name_in" inputfield is selected. 
+    document.getElementById("new_checkup_date").addEventListener("keypress", function(e){
+        if(e.keyCode == 13){
+            saveCheckupDate();
+        }
     });
 
     // If the "save_checkup_date_button" is clicked. 
@@ -425,7 +441,19 @@ function newOilChange(){
     // Retrieves the name of the staff using the car and adds it to the variable "oil_change_staff". 
     var oil_change_staff = "";
     firestore.collection("Cars").doc(localStorage.getItem('car_selector')).get().then(function(doc){
-        oil_change_staff = doc.data().inUseBy;
+        if(doc.data().inUseBy == undefined || doc.data().inUseBy == ""){
+            alert("ATH: Bifreið ekki skráð á starfsmann. Viðhald verður skráð án viðstadds starfsmanns. ")
+        }
+        else{
+            oil_change_staff = doc.data().inUseBy;
+        }
+    });
+
+    // Runs the funciton "saveOilChange" if ENTER is pressed when the "new_oil_change" inputfield is selected. 
+    document.getElementById("new_oil_change").addEventListener("keypress", function(e){
+        if(e.keyCode == 13){
+            saveOilChange();
+        }
     });
 
     // If the "save_oil_change_button" is clicked. 
@@ -484,7 +512,19 @@ function newTireChange(){
     // Retrieves the name of the staff using the car and adds it to the variable "tire_change_staff". 
     var tire_change_staff = "";
     firestore.collection("Cars").doc(localStorage.getItem('car_selector')).get().then(function(doc){
-        tire_change_staff = doc.data().inUseBy;
+        if(doc.data().inUseBy == undefined || doc.data().inUseBy == ""){
+            alert("ATH: Bifreið ekki skráð á starfsmann. Viðhald verður skráð án viðstadds starfsmanns. ")
+        }
+        else{
+            tire_change_staff = doc.data().inUseBy;
+        }
+    });
+
+    // Runs the funciton "saveTireChange" if ENTER is pressed when the "new_tire_change" inputfield is selected. 
+    document.getElementById("new_tire_change").addEventListener("keypress", function(e){
+        if(e.keyCode == 13){
+            saveTireChange();
+        }
     });
 
     // If the "save_tire_change_button" is clicked. 
@@ -597,6 +637,13 @@ function showCarStatus(){
 }
 
 
+// Runs the funciton "loanCar" if ENTER is pressed when the "user_name_in" inputfield is selected. 
+document.getElementById("user_name_in").addEventListener("keypress", function(e){
+    if(e.keyCode == 13){
+        loanCar();
+    }
+});
+
 // Runs the function "loanCar" when "save_button" is pressed.
 document.getElementById("save_button").onclick = loanCar;
 function loanCar(){
@@ -634,10 +681,17 @@ function loanCar(){
         });
 
         // Resets the input fields. 
-        user_name_in.value = "FRS-";
+        user_name_in.value = "";
     }
 }
 
+
+// Runs the funciton "returnCae" if ENTER is pressed when "return_user_name_in" inputfield is selected. 
+document.getElementById("return_user_name_in").addEventListener("keypress", function(e){
+    if(e.keyCode == 13){
+        returnCar();
+    }
+});
 
 // Runs the function "returnCar" when "return_button" is pressed.
 document.getElementById("return_button").onclick = returnCar;
@@ -683,7 +737,7 @@ function returnCar(){
     
                 // Clears input field. 
                 firestore.collection('Cars').doc(localStorage.getItem("car_selector")).collection("in_out").onSnapshot(function(){
-                    return_user_name_in.value = "FRS-";
+                    return_user_name_in.value = "";
                 })
             }
         });

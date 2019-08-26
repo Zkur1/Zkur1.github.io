@@ -130,7 +130,6 @@
         }
 
     .main{
-        display: flex;
         justify-content: center;
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
@@ -149,6 +148,7 @@
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 2em;
             padding: 0;
+            margin: 2% 1%
         }
 
             .car_section ul{
@@ -160,10 +160,14 @@
             }
 
             .car_section li{
+                display: flex;
                 list-style-type: none;
                 padding: 1em;
                 font-size: 16pt;
                 text-align: center;
+                align-items: center;
+                justify-content: center;
+                flex-flow: row wrap;
                 background: lightgray;
                 color: black;
                 box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);

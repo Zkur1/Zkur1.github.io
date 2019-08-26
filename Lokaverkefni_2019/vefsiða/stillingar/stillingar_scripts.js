@@ -1,3 +1,9 @@
+document.getElementById("settings").style.display = "none";
+
+alert("Síða ekki aðgengileg starfsmönnum.");
+window.open("../index.html", "_self");
+
+
 // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
 if (/Mobi/.test(navigator.userAgent)) {
     document.getElementById('navigation').style.display = 'none';     

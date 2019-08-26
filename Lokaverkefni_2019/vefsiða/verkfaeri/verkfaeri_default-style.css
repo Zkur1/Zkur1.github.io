@@ -109,58 +109,75 @@
                     cursor: pointer;
                 }
 
+        .right_description{
+            display: flex;
+            flex-flow: column;
+            max-width: 40%;
+        }
+                
+        .logo_section{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
             .tool_logo{
                 max-width: 15em;
                 max-height: 15em;
-                margin: 1em 0.5em;
+                margin: 1em 0.5em ;
             }
 
-        .update_logo_button{
-            position: relative;
-            margin: 0.5em 0 0.5em 0;
-            max-width: 2.5vw;
-            max-height: 2.5vw;
-        }
+            .update_logo_button{
+                position: relative;
+                margin: 0.5em 0 0.5em 0;
+                max-width: 2em;
+                max-height: 2em;
+                float: right;
+            }
 
-        .update_logo_button:hover, .update_logo_button:active{
-            border-radius: 50%;
-            background: rgb(199, 197, 197);
-            cursor: pointer;
-        }
+                .update_logo_button:hover, .update_logo_button:active{
+                    border-radius: 50%;
+                    background: rgb(199, 197, 197);
+                    cursor: pointer;
+                }
 
-        .photo_upload{
-            display: none;
-            justify-content: center;
-            align-items: flex-end;
-            flex-direction: column;
-        }
-            .progress_bar{
+            .photo_upload{
+                display: none;
                 justify-content: center;
-                margin: 2% 9% 0 0;
+                flex-direction: column;
             }
+                .progress_bar{
+                    justify-content: center;
+                    margin: 2% 25% 0 0;
+                    max-width: 50%;
+                }
 
-            .file_in{
-                width: 35%; 
-                padding: 0.5em;
-            }
+                .file_in{
+                    width: 80%; 
+                    padding: 0.5em;
+                }
+
 
         .history_button{
             position: relative;
-            left: 70%;
+            float: right;
+            width: 60%; 
             padding: 2em;
+            margin-top: 0.5em;
             font-size: 10pt;
-            font-weight: bold; 
+            font-weight: bold;
             color: white;
             background:#d8a120;
-            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+            align-self: center;
             border-radius: 10%;
-        }
 
+        }
             .history_button:hover, .history_button:active{
                 color: white;
                 background:#333;
                 cursor: pointer;
             }
+        
         
         .in_stock{
             display: none;

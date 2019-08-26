@@ -27,17 +27,14 @@ function renderUserList(doc){
     
     // Creates elements.
     let li = document.createElement('li');
-    let name = document.createElement('span');
-    let staff_id = document.createElement('span');
+    let name_and_id = document.createElement('span');
     
     // Sets specific content in id to each element.
     li.setAttribute("id", doc.id);
-    name.textContent = doc.data().staffName;
-    staff_id.textContent = " :: " + doc.data().staffID;
+    name_and_id.textContent = doc.data().staffName + " :: " + doc.data().staffID;
 
     // Appends content into li.
-    li.appendChild(name);
-    li.appendChild(staff_id);
+    li.appendChild(name_and_id);
 
     // Appends li to the user_list (ul)
     user_list.appendChild(li);

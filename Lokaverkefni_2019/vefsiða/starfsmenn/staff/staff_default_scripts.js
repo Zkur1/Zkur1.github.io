@@ -46,20 +46,40 @@ function readStaffData(){
             if(doc.data().staffName != ""){
                 staff_info.insertBefore(staff_name , staff_info.firstChild);
             }
+            else{
+                staff_name.textContent += " Óskráð. ";
+                staff_info.insertBefore(staff_name , staff_info.firstChild);
+            }
+
             if(doc.data().staffMobile != ""){
+                staff_info.appendChild(staff_mobile);
+            }
+            else{
+                staff_mobile.textContent += " Óskráð. ";
                 staff_info.appendChild(staff_mobile);
             }
         
             if(doc.data().staffPhoneNr != ""){
                 staff_info.appendChild(staff_phone);
-                console.log(doc.data().staffPhoneNr)
+            }
+            else{
+                staff_phone.textContent += " Óskráð. ";
+                staff_info.appendChild(staff_phone);
             }
             
             if(doc.data().staffEmail != ""){
                 staff_info.appendChild(staff_email);
             }
+            else{
+                staff_email.textContent += " Óskráð. ";
+                staff_info.appendChild(staff_email);
+            }
             
             if(doc.data().staffPosition != ""){
+                staff_info.appendChild(staff_position);
+            }
+            else{
+                staff_position.textContent += " Óskráð. ";
                 staff_info.appendChild(staff_position);
             }
             
@@ -125,7 +145,7 @@ function EditDescText(){
         desc_save_button.style.display = "none";
         desc_cancel_button.style.display = "none";
         description_text.style.cssText = "";
-        showUserDesc();
+        showStaffDesc();
     }
 
     // Saves user input to the "description" variable in the database on click of the "desc_save_button". 
@@ -188,11 +208,15 @@ function updateStaffLogo(){
     // Displays the "photo_upload" menu if hidden.
     if(photo_upload.style.display == "none"){
         photo_upload.style.display = "flex";
+        update_logo_button.setAttribute("src", "../../../myndir/minus.png");
+
     }
 
     // Hides the "photo_upload" menu if shown. 
     else{
         photo_upload.style.display = "none";
+        update_logo_button.setAttribute("src", "../../../myndir/add.jpg");
+
     }
 }
 
@@ -260,6 +284,10 @@ function testForPage(){
         
     // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
     if (/Mobi/.test(navigator.userAgent)) {
+
+        // Removes padding around the "container" element for a cleaner look. 
+        document.getElementById("container").style.padding = "0"
+
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
         

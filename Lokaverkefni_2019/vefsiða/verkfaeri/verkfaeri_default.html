@@ -26,17 +26,19 @@
                             <button id="desc_cancel_button" class="remove_button" style="display: none;">Hætta við</button> 
                         </div>                   
                     </div>
-                    <img id ="tool_logo" class="tool_logo" src="">
-                    <img id="update_logo_button" class="update_logo_button" src="../../myndir/add.jpg">
-                    
+                    <div class="right_description">
+                        <div id="logo_section" class="logo_section">
+                            <img class="tool_logo" id="tool_logo" src=".">
+                            <img id="update_logo_button" class="update_logo_button" src="../../myndir/add.jpg">
+                        </div>
+                        <div id="photo_upload" class="photo_upload" style="display: none;">
+                            <progress value="0" max="100" id="uploader" class="progress_bar">0%</progress>
+                            <input type="file" value="upload" id="upload_button" class="file_in">
+                        </div>
+                        <button class="history_button" id="history_button">Saga Viðhalds</button>                    
+                    </div>
                 </div>
                 
-                <div id="photo_upload" class="photo_upload" style="display: none;">
-                    <progress value="0" max="100" id="uploader" class="progress_bar">0%</progress>
-                    <input type="file" value="upload" id="upload_button" class="file_in">
-                </div>
-                <button id="history_button" class="history_button">Saga verkfæris</button>
-
                 <div id="in_stock" class="in_stock">
                     <h1 class="tool_in_stock">Verkfæri er á lager</h1>
                     <h2>Skrá á starfsmann:</h2>
@@ -47,7 +49,7 @@
                     </div>
                     <div class="staff_nr">
                         <span>Verknúmer (R-xxxx):</span>
-                        <input type="textfield" id="project_name_in" class="user_name_in" value="R-">
+                        <input type="textfield" id="project_name_in" class="user_name_in" value="R-" onfocus="this.selectionStart = this.selectionEnd = this.value.length;">
                     </div>
                     
                     <button class="save_button" id="save_button"> Skrá út</button>

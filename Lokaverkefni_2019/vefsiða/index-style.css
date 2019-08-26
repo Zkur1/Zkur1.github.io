@@ -130,7 +130,6 @@
         }
 
     .main{
-        display: flex;
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
         -ms-overflow-style: none; 
@@ -149,6 +148,7 @@
             grid-template-columns: repeat(1, 1fr);
             grid-gap: 2em;
             padding: 0;
+            margin: 2% 1%
         }
 
             .tool_in_list{

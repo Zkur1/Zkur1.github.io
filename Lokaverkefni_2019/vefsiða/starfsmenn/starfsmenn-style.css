@@ -19,7 +19,6 @@
         align-items: center;
         justify-content: left;
         font-size: 30pt;
-        font-family: 'Montserrat', sans-serif;
         padding: 1em;
         box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
@@ -38,6 +37,7 @@
 
         .add:hover, .add:active{
             box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+            cursor: pointer;
         }
 
         .add_remove .remove{
@@ -49,6 +49,7 @@
 
         .remove:hover, .remove:active{
             box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+            cursor: pointer;
         }
 
         .dropdown_main{
@@ -89,6 +90,7 @@
         .save_button:hover, .save_button:active{
             color: white;
             background:#333;
+            cursor: pointer;
         }
 
         .dropdown_remove{
@@ -110,6 +112,7 @@
         .remove_button:hover, .remove_button:active{
             color: white;
             background:#333;
+            cursor: pointer;
         }
 
     .searchbar{
@@ -128,7 +131,6 @@
         }
 
     .main{
-        display: flex;
         justify-content: center;
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
@@ -147,6 +149,7 @@
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 2em;
             padding: 0;
+            margin: 2% 1%
         }
 
             .staff_section ul{
@@ -158,11 +161,15 @@
             }
 
             .staff_section li{
+                display: flex;
                 list-style-type: none;
                 padding: 1em;
                 font-size: 16pt;
                 text-align: center;
+                align-items: center;
+                justify-content: center;
                 background: lightgray;
+                flex-flow: row wrap;
                 color: black;
                 box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
@@ -183,6 +190,7 @@
                 color: black;
                 background: #BFC0C0;
                 box-shadow: 5px 5px 5px -2px rgba(0,0,0,0.75);
+                cursor: pointer;
             }
 
     .navigation{
@@ -220,6 +228,7 @@
         .navigation ul > li:hover, .navigation > li:active{
             color: black;
             background: #BFC0C0;
+            cursor: pointer;
         }
 
     .m_navigation{

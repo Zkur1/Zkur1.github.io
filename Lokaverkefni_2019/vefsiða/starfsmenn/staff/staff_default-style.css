@@ -40,6 +40,9 @@
             display: flex;
             width: 100%;
             justify-content: space-between;
+            flex-flow: column;
+            align-items: center;
+            text-align: center;
         }
 
         .description_text{
@@ -58,7 +61,7 @@
 
             .desc_buttons{
                 display: flex;
-                width: 55%; 
+                width: 70%; 
                 margin-top: 1em;
             }
 
@@ -98,7 +101,7 @@
         .right_description{
             display: flex;
             flex-flow: column;
-            justify-content: space-between;
+            align-items: center;
         }
                 
         .logo_section{
@@ -111,6 +114,7 @@
                 max-width: 20em;
                 max-height: 20em;
                 margin: 1em 0.5em ;
+                padding-left: 2.5em;
             }
 
             .update_logo_button{

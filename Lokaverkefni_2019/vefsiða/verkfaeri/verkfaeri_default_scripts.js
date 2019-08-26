@@ -154,11 +154,14 @@ function updateToolLogo(){
     // Displays the "photo_upload" menu if hidden.
     if(photo_upload.style.display == "none"){
         photo_upload.style.display = "flex";
+        update_logo_button.setAttribute("src", "../../../myndir/minus.png");
     }
 
     // Hides the "photo_upload" menu if shown. 
     else{
         photo_upload.style.display = "none";
+        update_logo_button.setAttribute("src", "../../../myndir/add.jpg");
+
     }
 }
 
@@ -244,6 +247,21 @@ function showToolStatus(){
 }
 
 
+// Runs the funciton "loanTool" if ENTER is pressed when the "project_name_in" inputfield is selected. 
+document.getElementById("user_name_in").addEventListener("keypress", function(e){
+    console.log(e.keyCode)
+    if(e.keyCode == 13){
+        document.getElementById("project_name_in").focus();
+    }
+});
+
+// Runs the funciton "loanTool" if ENTER is pressed when the "project_name_in" inputfield is selected. 
+document.getElementById("project_name_in").addEventListener("keypress", function(e){
+    if(e.keyCode == 13){
+        loanTool();
+    }
+});
+
 // Runs the function "loanTool" when "save_button" is pressed.
 document.getElementById("save_button").onclick = loanTool;
 function loanTool(){
@@ -287,10 +305,18 @@ function loanTool(){
         });
 
         // Resets the input fields. 
-        user_name_in.value = "FRS-";
+        user_name_in.value = "";
         project_name_in.value = "R-"; 
     }
 }
+
+
+// Runs the funciton "returnTool" if ENTER is pressed when "return_user_name_in" inputfield is selected. 
+document.getElementById("return_user_name_in").addEventListener("keypress", function(e){
+    if(e.keyCode == 13){
+        returnTool();
+    }
+});
 
 // Runs the function "returnTool" when "return_button" is pressed.
 document.getElementById("return_button").onclick = returnTool;
@@ -337,7 +363,7 @@ function returnTool(){
                         
                         // Clears input field. 
                         firestore.collection('Tools').doc(tool_selector).collection("in_out").orderBy("checkOutDate", "desc").limit(1).onSnapshot(function(){
-                            return_user_name_in.value = "FRS-";
+                            return_user_name_in.value = "";
                         });
                     });
                 });
@@ -356,7 +382,7 @@ function dropdownSelect(){
     
             option_in_input_field.textContent = doc.data().staffName;
             
-            input_field.appendChild(option_in_input_field)
+            input_field.appendChild(option_in_input_field);
         });
     });
 }
