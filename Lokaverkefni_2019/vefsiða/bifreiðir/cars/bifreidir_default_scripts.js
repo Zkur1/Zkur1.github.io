@@ -763,7 +763,24 @@ dropdownSelect();
 
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
-    if (/Mobi/.test(navigator.userAgent)) {
+    // If the browser detects that the page is being viewed on a smartphone. 
+    if(/Mobi/.test(navigator.userAgent)){
+        // Changes the layout of the page to fit the smaller screen of the smartphone. 
+        function changeToMobile(){
+            document.getElementById("maintenance_info").style.width = "100%";
+            document.getElementById("main").insertBefore(document.getElementById("right_description"), document.getElementById("main").firstChild);
+            document.getElementById("description").appendChild(document.getElementById("history_button"));
+            document.getElementById("right_description").style.maxWidth = "100%";
+            document.getElementById("right_description").style.alignItems = "center";
+            document.getElementById("right_description").style.paddingLeft = "2.5em";
+            document.getElementById("car_description").style.textAlign = "center";
+            document.getElementById("desc_buttons").style.width = "100%";
+            document.getElementById("desc_buttons").style.justifyContent = "center";
+            document.getElementById("cancel_button").style.maxWidth = "30%"
+
+        }
+        changeToMobile();
+        
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
         

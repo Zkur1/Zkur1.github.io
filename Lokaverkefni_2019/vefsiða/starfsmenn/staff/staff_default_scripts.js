@@ -284,10 +284,6 @@ function testForPage(){
         
     // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
     if (/Mobi/.test(navigator.userAgent)) {
-
-        // Removes padding around the "container" element for a cleaner look. 
-        document.getElementById("container").style.padding = "0"
-
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
         

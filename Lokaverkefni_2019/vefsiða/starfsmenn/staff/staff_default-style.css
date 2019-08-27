@@ -102,6 +102,7 @@
             display: flex;
             flex-flow: column;
             align-items: center;
+            padding-left: 2.5em;
         }
                 
         .logo_section{
@@ -111,10 +112,9 @@
         }
 
             .staff_logo{
-                max-width: 20em;
-                max-height: 20em;
+                max-width: 15em;
+                max-height: 15em;
                 margin: 1em 0.5em ;
-                padding-left: 2.5em;
             }
 
             .update_logo_button{

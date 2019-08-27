@@ -419,7 +419,14 @@ function displayLoanInfo(){
 
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
-    if (/Mobi/.test(navigator.userAgent)) {
+    // If the browser detects that the page is being viewed on a smartphone. 
+    if(/Mobi/.test(navigator.userAgent)){
+        // Changes the layout of the page to fit the smaller screen of the smartphone. 
+        function changeToMobile(){
+            document.getElementById("history_button").style.padding = "1em"
+            document.getElementById("history_button").style.width = "90%"
+        }
+        changeToMobile();
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
         
