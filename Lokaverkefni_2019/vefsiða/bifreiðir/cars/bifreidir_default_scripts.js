@@ -776,8 +776,11 @@ function testForPage(){
             document.getElementById("car_description").style.textAlign = "center";
             document.getElementById("desc_buttons").style.width = "100%";
             document.getElementById("desc_buttons").style.justifyContent = "center";
-            document.getElementById("cancel_button").style.maxWidth = "30%"
-
+            document.getElementById("cancel_button").style.maxWidth = "30%";
+            
+            for(i = 0; i < document.getElementById("maintenance_info").children.length; i++){
+                document.getElementById("maintenance_info").children[i].style.width = "10%";
+            }
         }
         changeToMobile();
         

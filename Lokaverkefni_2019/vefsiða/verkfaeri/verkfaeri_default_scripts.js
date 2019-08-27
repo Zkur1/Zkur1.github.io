@@ -427,6 +427,7 @@ function testForPage(){
             document.getElementById("history_button").style.width = "90%"
         }
         changeToMobile();
+
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
         
