@@ -49,6 +49,7 @@
             }
 
             .description_text{
+                display: inline-block;
                 word-wrap: break-word;
                 max-width: 30em;
                 margin-bottom: 1em; 
@@ -59,13 +60,12 @@
                 background: #e2e2e2;
                 border:  solid;
                 border-width: 1px;
-                margin: 0;
             }
 
             .desc_buttons{
                 display: flex;
                 width: 80%; 
-                margin-top: 1em;
+                
             }
 
                 .save_text_button{
@@ -122,10 +122,9 @@
         }
 
             .tool_logo{
-                width: auto ;
-                max-width: 100% ;
-                height: auto ;
-                margin: 1em 0 0.5em 0;
+                max-width: 15em;
+                max-height: 15em;
+                margin: 1em 0.5em;
             }
 
             .update_logo_button{

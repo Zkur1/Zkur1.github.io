@@ -423,8 +423,52 @@ function testForPage(){
     if(/Mobi/.test(navigator.userAgent)){
         // Changes the layout of the page to fit the smaller screen of the smartphone. 
         function changeToMobile(){
-            document.getElementById("history_button").style.padding = "1em"
-            document.getElementById("history_button").style.width = "90%"
+            document.getElementById("main").insertBefore(document.getElementById("right_description"), document.getElementById("main").firstChild);
+            document.getElementById("right_description").style.paddingLeft = "2.5em";
+            document.getElementById("right_description").style.maxWidth = "100%";
+            document.getElementById("right_description").style.alignItems = "center";
+            document.getElementById("photo_upload").style.alignItems = "center";
+            document.getElementById("photo_upload").style.paddingLeft = "2.5em";
+            document.getElementById("description").appendChild(document.getElementById("history_button"));
+            document.getElementById("description").style.alignItems = "center";
+            document.getElementById("description_text").style.width = "70vw";
+            document.getElementById("description_text").style.maxWidth = "70vw";
+            document.getElementById("history_button").style.padding = "2em";
+            document.getElementById("history_button").style.marginBottom = "2em";
+            document.getElementById("history_button").style.width = "60%";
+            document.getElementById("history_button").style.float = "none";
+            document.getElementById("tool_description").style.textAlign = "center";
+            document.getElementById("desc_buttons").style.width = "100%";
+            document.getElementById("desc_buttons").style.justifyContent = "center";
+            document.getElementById("return_user_name_in").style.width = "60%";
+
+            // Reads through every child element of the "in_stock" element.
+            for(i = 0; i < document.getElementById("in_stock").children.length; i++){
+                // If a child is a "div" element.
+                if(document.getElementById("in_stock").children[i].tagName == "DIV"){
+                    // Reads through every child element of the "div" child. 
+                    for(x = 0; x < document.getElementById("in_stock").children[i].children.length; x++){
+                        // If a child is an "input" element.
+                        if(document.getElementById("in_stock").children[i].children[x].tagName == "INPUT"){
+                            document.getElementById("in_stock").children[i].children[x].style.width = "60%";
+                        }
+                    }
+                }
+            }
+            // Reads through every child element of the "in_stock" element.
+            for(i = 0; i < document.getElementById("out_of_stock").children.length; i++){
+                // If a child is a "div" element.
+                if(document.getElementById("out_of_stock").children[i].tagName == "DIV"){
+                    // Reads through every child element of the "div" child.
+                    for(x = 0; x < document.getElementById("out_of_stock").children[i].children.length; x++){
+                        // If a child is an "input" element.
+                        if(document.getElementById("out_of_stock").children[i].children[x].tagName == "INPUT"){
+                            document.getElementById("out_of_stock").children[i].children[x].style.width = "60%";
+                        }
+                    }
+                }
+            }
+
         }
         changeToMobile();
 

@@ -770,9 +770,14 @@ function testForPage(){
             document.getElementById("maintenance_info").style.width = "100%";
             document.getElementById("main").insertBefore(document.getElementById("right_description"), document.getElementById("main").firstChild);
             document.getElementById("description").appendChild(document.getElementById("history_button"));
+            document.getElementById("description").style.alignItems = "center";
+            document.getElementById("description_text").style.width = "70vw";
+            document.getElementById("description_text").style.maxWidth = "70vw";
             document.getElementById("right_description").style.maxWidth = "100%";
             document.getElementById("right_description").style.alignItems = "center";
             document.getElementById("right_description").style.paddingLeft = "2.5em";
+            document.getElementById("photo_upload").style.alignItems = "center";
+            document.getElementById("photo_upload").style.paddingLeft = "2.5em";
             document.getElementById("car_description").style.textAlign = "center";
             document.getElementById("desc_buttons").style.width = "100%";
             document.getElementById("desc_buttons").style.justifyContent = "center";
@@ -780,6 +785,33 @@ function testForPage(){
             
             for(i = 0; i < document.getElementById("maintenance_info").children.length; i++){
                 document.getElementById("maintenance_info").children[i].style.width = "10%";
+            }
+
+            for(i = 0; i < document.getElementById("in_stock").children.length; i++){
+                console.log(i)
+                if(document.getElementById("in_stock").children[i].tagName == "DIV"){
+                    console.log(document.getElementById("in_stock").children[i]);
+                    for(x = 0; x < document.getElementById("in_stock").children[i].children.length; x++){
+                        console.log("hm");
+                        if(document.getElementById("in_stock").children[i].children[x].tagName == "INPUT"){
+                            console.log(document.getElementById("in_stock").children[i].children[x]);
+                            document.getElementById("in_stock").children[i].children[x].style.width = "60%";
+                        }
+                    }
+                }
+            }
+            for(i = 0; i < document.getElementById("out_of_stock").children.length; i++){
+                console.log(i)
+                if(document.getElementById("out_of_stock").children[i].tagName == "DIV"){
+                    console.log(document.getElementById("out_of_stock").children[i]);
+                    for(x = 0; x < document.getElementById("out_of_stock").children[i].children.length; x++){
+                        console.log("hm");
+                        if(document.getElementById("out_of_stock").children[i].children[x].tagName == "INPUT"){
+                            console.log(document.getElementById("out_of_stock").children[i].children[x]);
+                            document.getElementById("out_of_stock").children[i].children[x].style.width = "60%";
+                        }
+                    }
+                }
             }
         }
         changeToMobile();
