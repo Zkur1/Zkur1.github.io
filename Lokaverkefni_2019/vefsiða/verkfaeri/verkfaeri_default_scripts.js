@@ -451,7 +451,7 @@ function testForPage(){
                         // Reads through every child element of the "div" child.
                         for(x = 0; x < document.getElementById(parent_element).children[i].children.length; x++){
                             // If a child is an "input" element.
-                            if(document.getElementById(parent_element).children[i].children[x].tagName == "parent"){
+                            if(document.getElementById(parent_element).children[i].children[x].tagName == "INPUT"){
                                 document.getElementById(parent_element).children[i].children[x].style.width = "60%";
                             }
                         }
@@ -461,9 +461,27 @@ function testForPage(){
             // Executes the functions on specified elements. 
             mobileInputWidth("in_stock");
             mobileInputWidth("out_of_stock");
-            
+
         }
         changeToMobile();
+
+        // Hides the normal navbar and displays the mobile navbar. 
+        document.getElementById('navigation').style.display = 'none';     
+        document.getElementById('m_navigation').style.display = 'block';
+
+        // Detects if keyboard is being displayed and hides the navbar if it is.
+        function hideNavOnKeyboard(){
+            console.log("gang")
+            if(window.innerWidth + window.innerHeight < original_dimensions - 60){
+                document.getElementById("m_navigation").style.display = "none";
+            }
+            else if(window.innerWidth + window.innerHeight > original_dimensions - 60){
+                document.getElementById("m_navigation").style.display = "block";
+            }
+        }
+
+        // Listens for keyboard popup and runs the "hideNavOnKeyboard" function.
+        window.addEventListener("resize", hideNavOnKeyboard);
 
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';

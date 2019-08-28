@@ -780,6 +780,7 @@ function testForPage(){
             document.getElementById("right_description").style.maxWidth = "100%";
             document.getElementById("right_description").style.alignItems = "center";
             document.getElementById("right_description").style.paddingLeft = "2.5em";
+            document.getElementById("car_description").style.justifyContent = "center";
             document.getElementById("photo_upload").style.alignItems = "center";
             document.getElementById("photo_upload").style.paddingLeft = "2.5em";
             document.getElementById("car_description").style.textAlign = "center";
@@ -800,7 +801,7 @@ function testForPage(){
                         // Reads through every child element of the "div" child.
                         for(x = 0; x < document.getElementById(parent_element).children[i].children.length; x++){
                             // If a child is an "input" element.
-                            if(document.getElementById(parent_element).children[i].children[x].tagName == "parent"){
+                            if(document.getElementById(parent_element).children[i].children[x].tagName == "INPUT"){
                                 document.getElementById(parent_element).children[i].children[x].style.width = "60%";
                             }
                         }
@@ -828,6 +829,7 @@ function testForPage(){
             }
         }
 
+        // Listens for keyboard popup and runs the "hideNavOnKeyboard" function.
         window.addEventListener("resize", hideNavOnKeyboard);
 
         
