@@ -442,33 +442,26 @@ function testForPage(){
             document.getElementById("desc_buttons").style.justifyContent = "center";
             document.getElementById("return_user_name_in").style.width = "60%";
 
-            // Reads through every child element of the "in_stock" element.
-            for(i = 0; i < document.getElementById("in_stock").children.length; i++){
-                // If a child is a "div" element.
-                if(document.getElementById("in_stock").children[i].tagName == "DIV"){
-                    // Reads through every child element of the "div" child. 
-                    for(x = 0; x < document.getElementById("in_stock").children[i].children.length; x++){
-                        // If a child is an "input" element.
-                        if(document.getElementById("in_stock").children[i].children[x].tagName == "INPUT"){
-                            document.getElementById("in_stock").children[i].children[x].style.width = "60%";
+            // Finds every child-input element of a specified parent element and changes its' style attributes. 
+            function mobileInputWidth(parent_element){
+                // Reads through every child element of the "in_stock" element.
+                for(i = 0; i < document.getElementById(parent_element).children.length; i++){
+                    // If a child is a "div" element.
+                    if(document.getElementById(parent_element).children[i].tagName == "DIV"){
+                        // Reads through every child element of the "div" child.
+                        for(x = 0; x < document.getElementById(parent_element).children[i].children.length; x++){
+                            // If a child is an "input" element.
+                            if(document.getElementById(parent_element).children[i].children[x].tagName == "parent"){
+                                document.getElementById(parent_element).children[i].children[x].style.width = "60%";
+                            }
                         }
                     }
                 }
             }
-            // Reads through every child element of the "in_stock" element.
-            for(i = 0; i < document.getElementById("out_of_stock").children.length; i++){
-                // If a child is a "div" element.
-                if(document.getElementById("out_of_stock").children[i].tagName == "DIV"){
-                    // Reads through every child element of the "div" child.
-                    for(x = 0; x < document.getElementById("out_of_stock").children[i].children.length; x++){
-                        // If a child is an "input" element.
-                        if(document.getElementById("out_of_stock").children[i].children[x].tagName == "INPUT"){
-                            document.getElementById("out_of_stock").children[i].children[x].style.width = "60%";
-                        }
-                    }
-                }
-            }
-
+            // Executes the functions on specified elements. 
+            mobileInputWidth("in_stock");
+            mobileInputWidth("out_of_stock");
+            
         }
         changeToMobile();
 
