@@ -813,7 +813,7 @@ function testForPage(){
                     document.getElementById("m_navigation").style.display = "none";
                 }
             }
-            hideNavOnKeyboard()
+            window.addEventListener("resize", hideNavOnKeyboard);
     
         }
         changeToMobile();
