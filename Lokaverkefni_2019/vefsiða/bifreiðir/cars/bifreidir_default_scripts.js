@@ -16,6 +16,8 @@ var tire_change_button = document.getElementById('tire_change_button');
 var save_tire_change_button = document.getElementById("save_tire_change_button");
 
 var car_selector = localStorage.getItem("car_selector");
+var original_dimensions = window.innerWidth + window.innerHeight;
+
 
 
 // Displays all live data (data that can change) on the page and updates said data in real time. 
@@ -761,6 +763,8 @@ function dropdownSelect(){
 dropdownSelect();
 
 
+
+
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     // If the browser detects that the page is being viewed on a smartphone. 
@@ -806,20 +810,26 @@ function testForPage(){
             // Executes the functions on specified elements. 
             mobileInputWidth("in_stock");
             mobileInputWidth("out_of_stock");
-
-            function hideNavOnKeyboard(){
-                original_dimensions = window.innerWidth + window.innerHeight;
-                if(window.innerWidth + window.innerHeight < original_dimensions){
-                    document.getElementById("m_navigation").style.display = "none";
-                }
-            }
-            window.addEventListener("resize", hideNavOnKeyboard);
-    
         }
         changeToMobile();
-        
+    
+        // Hides the normal navbar and displays the mobile navbar. 
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
+
+        // Detects if keyboard is being displayed and hides the navbar if it is.
+        function hideNavOnKeyboard(){
+            console.log("gang")
+            if(window.innerWidth + window.innerHeight < original_dimensions - 60){
+                document.getElementById("m_navigation").style.display = "none";
+            }
+            else if(window.innerWidth + window.innerHeight > original_dimensions - 60){
+                document.getElementById("m_navigation").style.display = "block";
+            }
+        }
+
+        window.addEventListener("resize", hideNavOnKeyboard);
+
         
         // Assigns 'nav_ul' to a varible to be used later.
         var nav_ul = document.getElementById('nav_ul');
@@ -848,7 +858,6 @@ function testForPage(){
                 window.open('../../stillingar/stillingar.html','_self')
                 }
             }   
-    
         }
 }
     
@@ -857,3 +866,4 @@ testForPage();
 displayCarData();
 displayLiveData();
 displayMaintenanceData();
+
