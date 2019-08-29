@@ -16,6 +16,7 @@ var tire_change_button = document.getElementById('tire_change_button');
 var save_tire_change_button = document.getElementById("save_tire_change_button");
 
 var car_selector = localStorage.getItem("car_selector");
+
 var original_dimensions = window.innerWidth + window.innerHeight;
 
 

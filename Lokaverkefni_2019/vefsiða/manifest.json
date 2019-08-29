@@ -1,0 +1,22 @@
+{
+    "short_name": "TAR",
+    "name": "TAR Hugbúnaður",
+    "icons": [
+      {
+        "src": "../myndir/tar_logo.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "../myndir/tar_logo.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "index.html",
+    "scope": "/",
+    "background_color": "#14489f",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#14489f"
+  }

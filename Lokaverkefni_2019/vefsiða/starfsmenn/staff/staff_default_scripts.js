@@ -1,5 +1,6 @@
 // Global variables. 
 var user_selector = localStorage.getItem("user_selector");
+var original_dimensions = window.innerWidth + window.innerHeight;
 
 // Displays all live data (data that can change) on the page and updates said data in real time. 
 function displayLiveData(){
@@ -284,6 +285,29 @@ function testForPage(){
         
     // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
     if (/Mobi/.test(navigator.userAgent)) {
+        // Changes the layout of the page to fit the smaller screen of the smartphone. 
+        function changeToMobile(){
+            document.getElementById("staff_description").style.flexFlow = "column";
+            document.getElementById("staff_description").style.alignItems = "center";      
+            document.getElementById("staff_description").style.textAlign = "center";
+            document.getElementById("desc_buttons").style.width = "100%";
+            document.getElementById("desc_buttons").style.justifyContent = "center";      
+        }
+        changeToMobile();
+
+        // Detects if keyboard is being displayed and hides the navbar if it is.
+        function hideNavOnKeyboard(){
+            console.log("gang")
+            if(window.innerWidth + window.innerHeight < original_dimensions - 60){
+                document.getElementById("m_navigation").style.display = "none";
+            }
+            else if(window.innerWidth + window.innerHeight > original_dimensions - 60){
+                document.getElementById("m_navigation").style.display = "block";
+            }
+        }
+        // Listens for keyboard popup and runs the "hideNavOnKeyboard" function.
+        window.addEventListener("resize", hideNavOnKeyboard);
+
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
         

@@ -3,6 +3,7 @@ var tool_selector = localStorage.getItem("tool_selector");
 
 // Global variables.
 var docRef = firestore.collection("Tools").doc(tool_selector);
+var original_dimensions = window.innerWidth + window.innerHeight;
 
 // Displays all live data (data that can change) on the page and updates said data in real time. 
 function displayLiveData(){
@@ -452,6 +453,7 @@ function testForPage(){
                         for(x = 0; x < document.getElementById(parent_element).children[i].children.length; x++){
                             // If a child is an "input" element.
                             if(document.getElementById(parent_element).children[i].children[x].tagName == "INPUT"){
+                                console.log(document.getElementById(parent_element).children[i].children[x]);
                                 document.getElementById(parent_element).children[i].children[x].style.width = "60%";
                             }
                         }
@@ -479,7 +481,6 @@ function testForPage(){
                 document.getElementById("m_navigation").style.display = "block";
             }
         }
-
         // Listens for keyboard popup and runs the "hideNavOnKeyboard" function.
         window.addEventListener("resize", hideNavOnKeyboard);
 
