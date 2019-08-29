@@ -235,6 +235,8 @@ function testForPage(){
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
         
+        document.getElementById("container").style.padding = "0.3em";
+
         // Assigns 'nav_ul' to a varible to be used later.
         var nav_ul = document.getElementById('nav_ul');
         // When 'nav_ul' (the mobile navbar) is clicked.

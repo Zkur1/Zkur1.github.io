@@ -235,7 +235,7 @@
         background:#333;
         text-align: center;
         position: sticky;
-        bottom: 1em;
+        bottom: 0;
         width: 100%;
         max-width: 48em;
         margin-right: auto;
