@@ -61,6 +61,7 @@ function showToolDesc(){
             firestore.collection('Tools').doc(tool_selector).onSnapshot(function(){
                 description_text.innerText = inner_text;
 
+                // Changes the description text to basic "click me" text if the database variable == undefined. 
                 if(description_text.innerHTML == "undefined" || description_text.innerHTML == ""){
                     description_text.innerHTML = "Ýttu til að bæta við lýsingu. ";
                 }

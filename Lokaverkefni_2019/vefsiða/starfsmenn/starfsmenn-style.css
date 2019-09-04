@@ -85,6 +85,7 @@
             color: white;
             background:#14489f;
             box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+            border-radius: 10%;
         }
 
         .save_button:hover, .save_button:active{
@@ -107,6 +108,7 @@
             color: white;
             background:#9f1414;
             box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+            border-radius: 10%;
         }
 
         .remove_button:hover, .remove_button:active{

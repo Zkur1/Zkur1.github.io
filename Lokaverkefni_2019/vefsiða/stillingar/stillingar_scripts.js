@@ -12,7 +12,7 @@ function testForPage(){
         if(/Mobi/.test(navigator.userAgent)){
             document.getElementById('navigation').style.display = 'none';     
             document.getElementById('m_navigation').style.display = 'block';
-            
+
             // Assigns 'nav_ul' to a varible to be used later.
             var nav_ul = document.getElementById('nav_ul');
             // When 'nav_ul' (the mobile navbar) is clicked.
@@ -48,6 +48,7 @@ function testForPage(){
             alert("Síða ekki aðgengileg starfsmönnum.");
             window.open("../index.html", "_self");
         }
+        lockOutUser();
     }
 }
 
