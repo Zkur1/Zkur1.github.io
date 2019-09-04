@@ -60,7 +60,11 @@ function showToolDesc(){
             // Makes sure the code above has excuted an then appends the content of the "inner_text" variable to the element "description_text". 
             firestore.collection('Tools').doc(tool_selector).onSnapshot(function(){
                 description_text.innerText = inner_text;
-            })
+
+                if(description_text.innerHTML == "undefined" || description_text.innerHTML == ""){
+                    description_text.innerHTML = "Ýttu til að bæta við lýsingu. ";
+                }
+            });
         } 
         // If the document is not correctly read. 
         else{
@@ -86,6 +90,10 @@ function EditDescText(){
         desc_save_button.style.display = "block";
         desc_cancel_button.style.display = "block";
         description_text.style.cssText += "border: solid; border-width: 1px; background: #e2e2e2";
+        // If the description text placeholder is being displayed. 
+        if(description_text.innerHTML == "Ýttu til að bæta við lýsingu. "){
+            description_text.innerHTML = "";
+        }
     }
 
     // Hides the editor menu when the "desc_cancel_button" is clicked. 

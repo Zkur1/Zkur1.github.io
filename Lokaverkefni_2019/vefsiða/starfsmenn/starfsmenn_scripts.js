@@ -51,7 +51,32 @@ function renderUserList(doc){
     document.addEventListener("touchstart", function(){}, true)
 }
 
+
+// Detects any changes to the collection "Users", snapshots them and updates the tool list accordingly.
+function liveUserList(){
+    // Clears the searchbar on page startup. 
+    document.getElementById("search_bar").value = "";
+
+    // Note: function "orderBy()" lists the objects in order of "staffID".
+    firestore.collection('Users').orderBy('staffID').onSnapshot(snapshot => {
+        var changes = snapshot.docChanges();
+        // changes.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
+        changes.forEach(change => {
+            if(change.type == 'added'){
+                renderUserList(change.doc);
+            }
+            else if(change.type == 'removed'){
+                console.log(user_list.querySelector('[id=' + change.doc.id + ']'))
+                var li = user_list.querySelector('[id=' + change.doc.id + ']');
+                user_list.removeChild(li);
+            }
+        });
+    });
+}
+
+
 // Displays list items as the user types in a dropdown fashion.
+document.getElementById("search_bar").onkeyup = searchDropdown;
 function searchDropdown() {
     // Creates variable to be used in the searchloop.
     var input, filter, ul, li, a, i, txtValue;
@@ -70,6 +95,7 @@ function searchDropdown() {
         }
     }
 }
+
 
 // Displays "add_tool" menu when the "add_button" is pressed.
 document.getElementById("add_button").onclick = addToolShow;
@@ -202,52 +228,39 @@ document.getElementById("delete_button").onclick = function removeStaffFromDatab
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'starfsmenn.html'){
-        // Detects any changes to the collection "Users", snapshots them and updates the tool list accordingly.
-        // Note: function "orderBy()" lists the objects in order of "staffID".
-        firestore.collection('Users').orderBy('staffID').onSnapshot(snapshot => {
-            var changes = snapshot.docChanges();
-            // changes.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
-            changes.forEach(change => {
-                if(change.type == 'added'){
-                    renderUserList(change.doc);
-                }
-                else if(change.type == 'removed'){
-                    console.log(user_list.querySelector('[id=' + change.doc.id + ']'))
-                    var li = user_list.querySelector('[id=' + change.doc.id + ']');
-                    user_list.removeChild(li);
-                }
-            })
-        })
-    // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
-    if (/Mobi/.test(navigator.userAgent)) {
-        document.getElementById('navigation').style.display = 'none';     
-        document.getElementById('m_navigation').style.display = 'block';
-        
-        // Assigns 'nav_ul' to a varible to be used later.
-        var nav_ul = document.getElementById('nav_ul');
-        // When 'nav_ul' (the mobile navbar) is clicked.
-        nav_ul.onclick = function(event){
-            // Checks which button on the navbar was pressed.
-            function getEventTarget(nav_li){
-                nav_li = nav_li || window.event;
-                return nav_li.target || nav_li.srcElement; 
-                }
-            // Fetches the id tag for the button that has been pressed.
-            var target = getEventTarget(event);
-            var nav_selector = target.getAttribute('id');
+        // Functions to be executed.
+        liveUserList();
 
-            // Goes to different site depending on which button is pressed. 
-            if(nav_selector == 'verkfaeri' || nav_selector == 'staff_icon'){
-                window.open("../index.html", "_self");
+        // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
+        if (/Mobi/.test(navigator.userAgent)) {
+            document.getElementById('navigation').style.display = 'none';     
+            document.getElementById('m_navigation').style.display = 'block';
+            
+            // Assigns 'nav_ul' to a varible to be used later.
+            var nav_ul = document.getElementById('nav_ul');
+            // When 'nav_ul' (the mobile navbar) is clicked.
+            nav_ul.onclick = function(event){
+                // Checks which button on the navbar was pressed.
+                function getEventTarget(nav_li){
+                    nav_li = nav_li || window.event;
+                    return nav_li.target || nav_li.srcElement; 
                 }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
-                window.open('../bifreiðir/bifreidir.html','_self')
+                // Fetches the id tag for the button that has been pressed.
+                var target = getEventTarget(event);
+                var nav_selector = target.getAttribute('id');
+
+                // Goes to different site depending on which button is pressed. 
+                if(nav_selector == 'verkfaeri' || nav_selector == 'staff_icon'){
+                    window.open("../index.html", "_self");
                 }
-            else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
-                window.open('../starfsmenn/starfsmenn.html','_self')
+                else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
+                    window.open('../bifreiðir/bifreidir.html','_self')
                 }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'settings_icon'){
-                window.open('../stillingar/stillingar.html','_self')
+                else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
+                    window.open('../starfsmenn/starfsmenn.html','_self')
+                }
+                else if(nav_selector == 'bifreidir' || nav_selector == 'settings_icon'){
+                    window.open('../stillingar/stillingar.html','_self')
                 }
             }   
 

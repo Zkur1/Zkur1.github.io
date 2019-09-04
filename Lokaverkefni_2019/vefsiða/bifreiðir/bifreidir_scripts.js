@@ -51,8 +51,32 @@ function renderCarList(doc){
     document.addEventListener("touchstart", function(){}, true)
 }
 
+
+// Detects any changes to the collection "Tools", snapshots them and updates the tool list accordingly.
+function liveCarList(){
+    // Clears the searchbar on page startup. 
+    document.getElementById("search_bar").value = "";
+
+    // Note: function "orderBy()" lists the objects in order of "toolID".
+    firestore.collection('Cars').orderBy('carID').onSnapshot(snapshot => {
+        var changes = snapshot.docChanges();
+        // changes.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
+        changes.forEach(change => {
+            if(change.type == 'added'){
+                renderCarList(change.doc);
+            }
+            else if(change.type == 'removed'){
+                var li = car_list.querySelector('[id=' + change.doc.id + ']');
+                car_list.removeChild(li);
+            }
+        });
+    });
+}
+
+
 // Displays list items as the user types in a dropdown fashion.
-function searchDropdown() {
+document.getElementById("search_bar").onkeyup = searchDropdown;
+function searchDropdown(){
     // Creates variable to be used in the searchloop.
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("search_bar");
@@ -204,21 +228,8 @@ function removeCarFromDatabase(){
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'bifreidir.html'){
-        // Detects any changes to the collection "Tools", snapshots them and updates the tool list accordingly.
-        // Note: function "orderBy()" lists the objects in order of "toolID".
-        firestore.collection('Cars').orderBy('carID').onSnapshot(snapshot => {
-            var changes = snapshot.docChanges();
-            // changes.slice(-10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
-            changes.forEach(change => {
-                if(change.type == 'added'){
-                    renderCarList(change.doc);
-                }
-                else if(change.type == 'removed'){
-                    var li = car_list.querySelector('[id=' + change.doc.id + ']');
-                    car_list.removeChild(li);
-                }
-            });
-        });
+        // Functions to be executed.
+        liveCarList();
 
         // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
         if (/Mobi/.test(navigator.userAgent)) {

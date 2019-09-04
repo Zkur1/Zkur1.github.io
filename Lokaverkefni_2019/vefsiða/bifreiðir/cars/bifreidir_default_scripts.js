@@ -821,7 +821,6 @@ function testForPage(){
 
         // Detects if keyboard is being displayed and hides the navbar if it is.
         function hideNavOnKeyboard(){
-            console.log("gang")
             if(window.innerWidth + window.innerHeight < original_dimensions - 60){
                 document.getElementById("m_navigation").style.display = "none";
             }

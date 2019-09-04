@@ -22,6 +22,7 @@ firebase.initializeApp(firebaseConfig);
 //    });
 //  }
 //
+
 // Firestore key-functions variables.
 var firestore = firebase.firestore();
 
@@ -73,8 +74,34 @@ function renderToolList(doc){
 }
 
 
+// Detects any changes to the collection "Tools", snapshots them and updates the tool list accordingly.
+function liveToolList(){
+    // Clears the searchbar on page startup. 
+    document.getElementById("search_bar").value = "";
+
+    // Note: function "orderBy()" lists the objects in order of "toolID".
+    firestore.collection('Tools').orderBy('toolID').onSnapshot(snapshot => {
+        var changes = snapshot.docChanges();
+        // firestore.collection('Tools').orderBy('toolID').limit(10) ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
+        changes.forEach(change => {
+            if(change.type == 'added'){
+                renderToolList(change.doc);
+                counter += 1;
+                console.log(change.doc.data().toolID)
+            }
+            else if(change.type == 'removed'){
+                console.log(tool_list.querySelector('[id=' + change.doc.id + ']'))
+                var li = tool_list.querySelector('[id=' + change.doc.id + ']');
+                tool_list.removeChild(li);
+            }
+        });
+    });
+}
+
+
 // Displays list items as the user types in a dropdown fashion.
-function searchDropdown() {
+document.getElementById("search_bar").onkeyup = searchDropdown;
+function searchDropdown(){
     // Creates variable to be used in the searchloop.
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("search_bar");
@@ -143,6 +170,7 @@ function addToolShow(){
 // This function saves user input as a firestore document.
 document.getElementById("save_button").onclick = addToolToDatabase;
 function addToolToDatabase(){
+    console.log("fo")
     var tool_name_in = document.querySelector("#tool_name_in");
     var tool_id_in = document.querySelector("#tool_id_in");
     // If either the "tool_id_in" or "tool_name_in" input fields are empty nothing will execute.
@@ -176,7 +204,9 @@ function addToolToDatabase(){
 
 // Runs the function "removeToolFromDatabase" when "delete_button" is pressed.
 // This function deletes user selected document from the firestore database.
-document.getElementById("delete_button").onclick = function removeToolFromDatabase(){
+document.getElementById("delete_button").onclick = removeToolFromDatabase;
+function removeToolFromDatabase(){
+    console.log("lol");
     var remove_tool_name_in = document.querySelector("#remove_tool_name_in");
     var remove_tool_id_in = document.querySelector("#remove_tool_id_in");
     // If either the "tool_id_in" or "tool_name_in" input fields are empty nothing will execute.
@@ -211,55 +241,39 @@ document.getElementById("delete_button").onclick = function removeToolFromDataba
 // Makes sure this javascript file is only run on a specific page.
 function testForPage(){
     if(sPage.trim() === 'index.html'){
-        // Detects any changes to the collection "Tools", snapshots them and updates the tool list accordingly.
-        // Note: function "orderBy()" lists the objects in order of "toolID".
-        firestore.collection('Tools').orderBy('toolID').onSnapshot(snapshot => {
-            var changes = snapshot.docChanges();
-            // changes.limit(10).forEach(doc =>   ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
-            changes.forEach(change => {
-                if(change.type == 'added'){
-                    renderToolList(change.doc);
-                    counter += 1;
-                    console.log(change.doc.data().toolID)
-                }
-                else if(change.type == 'removed'){
-                    console.log(tool_list.querySelector('[id=' + change.doc.id + ']'))
-                    var li = tool_list.querySelector('[id=' + change.doc.id + ']');
-                    tool_list.removeChild(li);
-                }
-            })
-        })
+        // Functions to be executed. 
+        liveToolList();
 
-    // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
-    if (/Mobi/.test(navigator.userAgent)) {
-        document.getElementById('navigation').style.display = 'none';     
-        document.getElementById('m_navigation').style.display = 'block';
+        // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
+        if(/Mobi/.test(navigator.userAgent)){
+            document.getElementById('navigation').style.display = 'none';     
+            document.getElementById('m_navigation').style.display = 'block';
 
-        // Assigns 'nav_ul' to a varible to be used later.
-        var nav_ul = document.getElementById('nav_ul');
-        // When 'nav_ul' (the mobile navbar) is clicked.
-        nav_ul.onclick = function(event){
-            // Checks which button on the navbar was pressed.
-            function getEventTarget(nav_li){
-                nav_li = nav_li || window.event;
-                return nav_li.target || nav_li.srcElement; 
+            // Assigns 'nav_ul' to a varible to be used later.
+            var nav_ul = document.getElementById('nav_ul');
+            // When 'nav_ul' (the mobile navbar) is clicked.
+            nav_ul.onclick = function(event){
+                // Checks which button on the navbar was pressed.
+                function getEventTarget(nav_li){
+                    nav_li = nav_li || window.event;
+                    return nav_li.target || nav_li.srcElement; 
                 }
-            // Fetches the id tag for the button that has been pressed.
-            var target = getEventTarget(event);
-            var nav_selector = target.getAttribute('id');
+                // Fetches the id tag for the button that has been pressed.
+                var target = getEventTarget(event);
+                var nav_selector = target.getAttribute('id');
 
-            // Goes to different site depending on which button is pressed. 
-            if(nav_selector == 'verkfaeri' || nav_selector == 'tool_icon'){
-                window.open("index.html", "_self");
+                // Goes to different site depending on which button is pressed. 
+                if(nav_selector == 'verkfaeri' || nav_selector == 'tool_icon'){
+                    window.open("index.html", "_self");
                 }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
-                window.open('bifreiðir/bifreidir.html','_self')
+                else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
+                    window.open('bifreiðir/bifreidir.html','_self')
                 }
-            else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
-                window.open('starfsmenn/starfsmenn.html','_self')
+                else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
+                    window.open('starfsmenn/starfsmenn.html','_self')
                 }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'settings_icon'){
-                window.open('stillingar/stillingar.html','_self')
+                else if(nav_selector == 'bifreidir' || nav_selector == 'settings_icon'){
+                    window.open('stillingar/stillingar.html','_self')
                 }
             }   
     
