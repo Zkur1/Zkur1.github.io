@@ -1,0 +1,17 @@
+.main{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    max-width: 25vh;
+    max-height: 35vh;
+    border-radius: 20%;
+}
+
+.logo:hover, .logo:active{
+    box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
