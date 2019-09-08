@@ -28,7 +28,7 @@ function showToolName(){
 
             // Specifies both classes of the elements and their content. 
             tool_name.setAttribute("class", 'tool_name');
-            tool_name.textContent = doc.data().toolName + ' :: '+ doc.data().toolID;
+            tool_name.textContent = doc.data().toolName + ' :: ' + doc.data().toolID;
 
             tool_info.insertBefore(tool_name , tool_info.firstChild);
         }
@@ -164,13 +164,13 @@ function updateToolLogo(){
     // Displays the "photo_upload" menu if hidden.
     if(photo_upload.style.display == "none"){
         photo_upload.style.display = "flex";
-        update_logo_button.setAttribute("src", "../../../myndir/minus.png");
+        update_logo_button.setAttribute("src", "../../myndir/minus.png");
     }
 
     // Hides the "photo_upload" menu if shown. 
     else{
         photo_upload.style.display = "none";
-        update_logo_button.setAttribute("src", "../../../myndir/add.jpg");
+        update_logo_button.setAttribute("src", "../../myndir/add.jpg");
 
     }
 }
