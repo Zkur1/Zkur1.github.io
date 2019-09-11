@@ -259,7 +259,6 @@ function showToolStatus(){
 
 // Runs the funciton "loanTool" if ENTER is pressed when the "project_name_in" inputfield is selected. 
 document.getElementById("user_name_in").addEventListener("keypress", function(e){
-    console.log(e.keyCode)
     if(e.keyCode == 13){
         document.getElementById("project_name_in").focus();
     }

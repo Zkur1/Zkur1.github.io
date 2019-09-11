@@ -15,7 +15,6 @@ function displayLiveData(){
 function readStaffData(){
     var docRef = firestore.collection("Users").doc(localStorage.getItem("user_selector"));
     docRef.get().then(function(doc) {
-        
         // If the document is correctly read. 
         if (doc.exists) {
             // Logs the content of the document to the console. 
@@ -255,7 +254,6 @@ upload_button.addEventListener('change', function(uploadFile) {
 
         // Updates the progress bar in real time. 
         task.on('state_changed', 
-            
             function progress(snapshot){
                 var precentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 uploader.value = precentage;
@@ -263,17 +261,14 @@ upload_button.addEventListener('change', function(uploadFile) {
 
             // Catches any errors that occur. 
             function error(err){
-
             },
 
             // Executes when everything above finishes. 
             function complete(){
                 // Executes the funtion "renderStaffImg"
                 renderStaffImg();
-
                 // Hides the "photo_upload" menu after the user updates the "Staff_logo" by executing the function "updateStaffLogo". 
                 updateStaffLogo();
-
                 // Clears the file display and progress bar. 
                 uploader.value = "";
                 upload_button.value = "";

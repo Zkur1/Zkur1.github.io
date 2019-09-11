@@ -19,6 +19,7 @@
         justify-content: left;
         font-size: 30pt;
         padding: 1em;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
     .main{
@@ -123,6 +124,7 @@
                 max-width: 15em;
                 max-height: 15em;
                 margin: 1em 0.5em ;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
 
             .update_logo_button{
@@ -168,6 +170,7 @@
             background:#d8a120;
             align-self: center;
             border-radius: 10%;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
 
         }
             .history_button:hover, .history_button:active{
@@ -220,6 +223,7 @@
                 color: white;
                 background:#14489f;
                 border-radius: 10%;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
 
                 .update_maintenance:hover, .update_maintenance:active{
@@ -236,6 +240,7 @@
                 color: white;
                 background:#14489f;
                 border-radius: 10%;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
 
                 .save_maintenance:hover, .save_maintenance:active{
@@ -255,6 +260,7 @@
                 background: #9f1414;
                 max-width: 25%;
                 border-radius: 10%;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
 
                 .cancel_button:hover, .cancel_button:active{
@@ -305,6 +311,7 @@
                 background:#14489f;
                 margin-bottom: 2em;
                 border-radius: 10%;
+                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
             }
 
             .save_button:hover, .save_button:active{
@@ -323,6 +330,7 @@
         width: 100%;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
         .navigation ul{
@@ -359,6 +367,8 @@
         width: 100%;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+
     }
 
         .m_navigation ul{

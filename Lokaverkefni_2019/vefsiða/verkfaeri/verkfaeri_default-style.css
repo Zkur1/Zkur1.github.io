@@ -125,6 +125,8 @@
                 max-width: 15em;
                 max-height: 15em;
                 margin: 1em 0.5em;
+                box-shadow: 7px 7px 7px -6px rgba(0,0,0,0.75);
+                border-radius: 10%;
             }
 
             .update_logo_button{

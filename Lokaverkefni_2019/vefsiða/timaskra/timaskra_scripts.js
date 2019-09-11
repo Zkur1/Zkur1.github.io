@@ -1,3 +1,19 @@
+//Firebase configuration.
+var firebaseConfig = {
+    apiKey: "AIzaSyAQCv7N_Ca0My8g85_GnTFO632qn8UmnBc",
+    authDomain: "fagraf-2019.firebaseapp.com",
+    databaseURL: "https://fagraf-2019.firebaseio.com",
+    projectId: "fagraf-2019",
+    storageBucket: "fagraf-2019.appspot.com",
+    messagingSenderId: "1072889478071",
+    appId: "1:1072889478071:web:a8c6b621894abdab"
+};
+// Initialize Firebase.
+firebase.initializeApp(firebaseConfig);
+
+// Firestore key-functions variables.
+var firestore = firebase.firestore();
+
 // Global variables. 
 var sPath = window.location.pathname;
 var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
@@ -5,6 +21,56 @@ var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
 // Displays all live data (data that can change) on the page and updates said data in real time. 
 function displayLiveData(){
 }
+
+
+// When the Enter key is pressed in the inputfield.
+document.getElementById("staff_id_in").addEventListener("keypress", function(e){
+    if(e.keyCode == 13){
+        goToStaffPage();
+    }
+});
+
+
+// If "login_button" is pressed. 
+document.getElementById("login_button").onclick = goToStaffPage;
+// Checks if the id given by the user matches a user in the database and opens the staff_page of that user if the id's match. 
+function goToStaffPage(){
+    registered_user = false;
+    firestore.collection("Users").where("staffIndividualID", "==", document.getElementById("staff_id_in").value).get().then(snapshot => {
+        snapshot.forEach(doc => {
+            console.log(doc.data());
+            localStorage.setItem("user_selector", doc.data().staffID);
+            registered_user = true;
+        });
+    // Waits for the code above finishes before executing the code below. 
+    }).then(() => {
+        if(registered_user == true){
+            window.open('staff_page/staff_page.html','_self');
+            firestore.collection("Users").onSnapshot(function(){
+                document.getElementById("staff_id_in").value = "";
+            });
+        }
+    
+        // Creates and appends an error message to the page. 
+        else{
+            if(document.getElementById("fault_message") == null){
+                var fault_message = document.createElement("h4");
+
+                fault_message.setAttribute("class", "fault_message");
+                fault_message.setAttribute("id", "fault_message");
+                fault_message.innerHTML = "Notandi finnst ekki í gagnagrunni. "
+                
+                document.getElementById("main").insertBefore(fault_message, document.getElementById("main").firstChild);
+            }
+            
+            firestore.collection("Users").onSnapshot(function(){
+                document.getElementById("staff_id_in").value = "";
+            });
+        }
+
+    });
+}
+
 
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
@@ -31,7 +97,7 @@ function testForPage(){
             }
         }
         // Listens for keyboard popup and runs the "hideNavOnKeyboard" function.
-        window.addEventListener("resize", hideNavOnKeyboard);
+        //window.addEventListener("resize", hideNavOnKeyboard);
 
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';

@@ -272,7 +272,7 @@ function testForPage(){
                 else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
                     window.open('starfsmenn/starfsmenn.html','_self')
                 }
-                else if(nav_selector == 'bifreidir' || nav_selector == 'settings_icon'){
+                else if(nav_selector == 'stillingar' || nav_selector == 'settings_icon'){
                     window.open('stillingar/stillingar.html','_self')
                 }
             }   

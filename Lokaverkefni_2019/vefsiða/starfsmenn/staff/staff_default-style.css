@@ -20,6 +20,7 @@
         justify-content: left;
         font-size: 30pt;
         padding: 1em;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
     .main{
@@ -120,7 +121,8 @@
                 max-width: 15em;
                 max-height: 15em;
                 margin: 1em 0.5em ;
-                box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+                box-shadow: 7px 7px 7px -6px rgba(0,0,0,0.75);
+                border-radius: 15%;
             }
 
             .update_logo_button{
@@ -165,6 +167,7 @@
         max-width: 48em;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
     .navigation ul{
@@ -201,6 +204,7 @@
         max-width: 48em;
         margin-right: auto;
         margin-left: auto;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
     }
 
     .m_navigation ul{
