@@ -52,7 +52,6 @@ document.getElementById("staff_id_in").addEventListener("keypress", function(e){
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'lockscreen.html'){
-        displayLiveData();
     }
         
     // Checks if page is being viewed on a smartphone and displays navbar accordinly. 
