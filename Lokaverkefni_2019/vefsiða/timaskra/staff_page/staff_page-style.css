@@ -64,12 +64,12 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            width: 65%;
+            width: 75%;
             margin: 18% 0 10% 0;
         }
 
         .button_div button{
-            width: 45%;
+            width: 32%;
             height: 350%;
             font-weight: bold; 
             color: white;

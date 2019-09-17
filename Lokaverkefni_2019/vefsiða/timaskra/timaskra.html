@@ -18,11 +18,31 @@
             </div>
 
             <div class="main" id="main">
-                <h3>Kennitala starfsmanns: </h2>
-                <input class="staff_id_in" id="staff_id_in" placeholder="000000-0000">
+                <h3>Kennitala starfsmanns: </h3>
+                <input class="staff_id_in" id="staff_id_in" placeholder="000000-0000" maxlength="10">
                 <div class="button_div" id="button_div">
-                    <button class="login_button" id="login_button">Skrá inn</button>
+                    <button class="login_button" id="id_login_button">Skrá inn</button>
                 </div>
+                <span>eða</span>
+                <div id="sign_in_section" class="sign_in_section">
+                    <div id="sign_up" class="sign_up">
+                        <h3>Sign up</h3>
+                        <input class="staff_id_in" id="signup_email" placeholder="email" maxlength="40">
+                        <input class="staff_id_in" id="signup_password" placeholder="password" maxlength="40">
+                        <button class="login_button" id="signup_button">Vista</button>
+                    </div>
+                    <div id="sign_in" class="sign_in">
+                        <h3>Sign in</h3>
+                        <input class="staff_id_in" id="login_email" placeholder="email" maxlength="40">
+                        <input class="staff_id_in" id="login_password" placeholder="password" maxlength="40">
+                        <button class="login_button" id="login_button">Skrá inn</button>
+                    </div>
+                    <div id="sign_out" class="sign_in">
+                        <h3>Sign out</h3>
+                        <button class="login_button" id="logout_button">Skrá út</button>
+                    </div>
+                </div>
+                
             </div>
 
             <div class="navigation" id="navigation">
@@ -62,7 +82,11 @@
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
 
+        <script src="../config/initialization.js"></script>
+        <script src="../config/auth.js"></script>
         <script src="timaskra_scripts.js"></script>
+        
     </body>
 </html>

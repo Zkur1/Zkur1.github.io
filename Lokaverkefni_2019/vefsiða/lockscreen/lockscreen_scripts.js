@@ -1,84 +1,7 @@
-// Displays all live data (data that can change) on the page and updates said data in real time. 
-function displayLiveData(){
-}
-
-
-// When the Enter key is pressed in the inputfield.
-document.getElementById("staff_id_in").addEventListener("keypress", function(e){
-    if(e.keyCode == 13){
-        goToStaffPage();
-    }
-});
-
-// User signup. 
-document.getElementById("signup_button").onclick = signup;
-function signup(){
-    var email = document.getElementById("signup_email").value;
-    var password = document.getElementById("signup_password").value;
-    var onSignup = new Promise(function(resolve, reject){
-        createUser(email, password);
-        if(createUser){
-            resolve('resolved. ');
-        }
-        else{
-            reject('rejected. ');
-        }
-    });
-
-    onSignup.then(function resolved() {
-        document.getElementById("signup_email").value = "";
-        document.getElementById("signup_password").value = "";
-      })
-      .catch(function rejected(err) {
-        console.error(err)
-      });
-}
-
-// User login
-document.getElementById("login_button").onclick = login;
-function login(){
-    var email = document.getElementById("login_email").value;
-    var password = document.getElementById("login_password").value;
-    var onLogin = new Promise(function(resolve, reject){
-        loginUser(email, password);
-        if(loginUser){
-            resolve('resolved. ');
-        }
-        else{
-            reject('rejected. ');
-        }
-    });
-
-    onLogin.then(function resolved() {
-        document.getElementById("login_email").value = "";
-        document.getElementById("login_password").value = "";
-    })
-    .catch(function rejected(err) {
-    console.error(err)
-    });
-}
-
-
-// User logout. 
-document.getElementById("logout_button").onclick = logoutUser;
-
-
-// Listens for auth status changes.
-auth.onAuthStateChanged(user => {
-    // If user is logged in. 
-    if(user){
-        window.open('staff_page/staff_page.html','_self');
-    }
-
-    else{
-    }
-})
-
-
 // If "id_login_button" is pressed. 
-document.getElementById("id_login_button").onclick = goToStaffPage;
+document.getElementById("id_login_button").onclick = grantAccess;
 // Checks if the id given by the user matches a user in the database and opens the staff_page of that user if the id's match. 
-function goToStaffPage(){
+function grantAccess(){
     registered_user = false;
     firestore.collection("Users").where("staffIndividualID", "==", document.getElementById("staff_id_in").value).get().then(snapshot => {
         snapshot.forEach(doc => {
@@ -89,7 +12,28 @@ function goToStaffPage(){
     // Waits for the code above finishes before executing the code below. 
     }).then(() => {
         if(registered_user == true){
-            window.open('staff_page/staff_page.html','_self');
+            auth.signInWithEmailAndPassword("fagraf@fagraf.is", "fagraf").then(function(){
+                var nav_selector = localStorage.getItem("nav_selector");
+                if(nav_selector != null){
+                    // Goes to different site depending on which button is pressed. 
+                    if(nav_selector == 'verkfaeri' || nav_selector == 'tool_icon'){
+                        window.open("/vefsiða/index.html", "_self");
+                    }
+                    else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
+                        window.open('/vefsiða/bifreiðir/bifreidir.html','_self');
+                    }
+                    else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
+                        window.open('/vefsiða/starfsmenn/starfsmenn.html','_self');
+                    }
+                    else if(nav_selector == 'stillingar' || nav_selector == 'settings_icon'){
+                        window.open('vefsiða/stillingar/stillingar.html','_self');
+                    }
+                }
+
+                else{
+                    window.open('/vefsiða/index.html','_self')
+                }
+            });
             firestore.collection("Users").onSnapshot(function(){
                 document.getElementById("staff_id_in").value = "";
             });
@@ -114,6 +58,14 @@ function goToStaffPage(){
 
     });
 }
+
+
+// When the Enter key is pressed in the inputfield.
+document.getElementById("staff_id_in").addEventListener("keypress", function(e){
+    if(e.keyCode == 13){
+        grantAccess();
+    }
+});
 
 
 // Makes sure this javascript file is only ran on a specific page.

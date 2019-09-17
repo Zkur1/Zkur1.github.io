@@ -299,7 +299,7 @@ function displayMaintenanceData(){
     // If there are entries in the specific cars checkup history. 
     else{
         checkup_date.textContent = "Óskráð. ";
-        new_checkup_date.placeholder = "00/00/000";
+        new_checkup_date.placeholder = "00/00/0000";
     }
 
      // If the specific cars oil change history is blank. 

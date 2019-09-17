@@ -22,10 +22,18 @@ function renderStaffInfo(){
 }
 
 
-// 
+// When the "add_time_button" is pressed.
 document.getElementById("add_time_button").onclick = goToTimeLogging;
 function goToTimeLogging(){
     window.open("time_logging/time_logging.html", "_self");
+}
+
+
+// When the "add_time_button" is pressed.
+document.getElementById("logout_button").onclick = goToLogin;
+function goToLogin(){
+    window.open("../timaskra.html", "_self");
+    logoutUser();
 }
 
 
@@ -91,5 +99,3 @@ function testForPage(){
 }
 
 testForPage();
-
-    
