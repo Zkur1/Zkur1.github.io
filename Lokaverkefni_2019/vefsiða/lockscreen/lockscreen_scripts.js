@@ -17,16 +17,16 @@ function grantAccess(){
                 if(nav_selector != null){
                     // Goes to different site depending on which button is pressed. 
                     if(nav_selector == 'verkfaeri' || nav_selector == 'tool_icon'){
-                        window.open("/vefsiða/index.html", "_self");
+                        window.open("/Lokaverkefni_2019/vefsiða/index.html", "_self");
                     }
                     else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
-                        window.open('/vefsiða/bifreiðir/bifreidir.html','_self');
+                        window.open('/Lokaverkefni_2019/vefsiða/bifreiðir/bifreidir.html','_self');
                     }
                     else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
-                        window.open('/vefsiða/starfsmenn/starfsmenn.html','_self');
+                        window.open('/Lokaverkefni_2019/vefsiða/starfsmenn/starfsmenn.html','_self');
                     }
                     else if(nav_selector == 'stillingar' || nav_selector == 'settings_icon'){
-                        window.open('vefsiða/stillingar/stillingar.html','_self');
+                        window.open('/Lokaverkefni_2019/vefsiða/stillingar/stillingar.html','_self');
                     }
                 }
 

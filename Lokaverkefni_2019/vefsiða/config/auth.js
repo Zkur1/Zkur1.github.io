@@ -8,7 +8,7 @@ auth.onAuthStateChanged(user => {
     else{
         console.log("User logged out. ")
         if(sPage.trim() != "lockscreen.html"){
-            window.open('/vefsiða/lockscreen/lockscreen.html','_self');
+            window.open('/Lokaverkefni_2019/vefsiða/lockscreen/lockscreen.html','_self');
         }
     }
 });
