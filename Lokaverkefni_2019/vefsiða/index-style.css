@@ -17,11 +17,17 @@
         background: #14489f;
         color: white;
         align-items: center;
-        justify-content: left;
-        font-size: 30pt;
+        justify-content: space-between;
+        font-size: calc(0.5em + 0.5vw);
         font-family: 'Montserrat', sans-serif;
         padding: 1em;
         box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+        }
+
+        .logout_button{
+            width: 15%;
+            height: 60%;
+            
         }
 
     .add_remove{

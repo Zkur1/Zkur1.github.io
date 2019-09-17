@@ -21,6 +21,10 @@ var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
 var counter = 0;
 
 
+// When the "logout_button" is pressed.
+document.getElementById("logout_button").onclick = logoutUser;
+
+
 // Creates elements and renders "tool_list".
 function renderToolList(doc){
     // Creates elements.
