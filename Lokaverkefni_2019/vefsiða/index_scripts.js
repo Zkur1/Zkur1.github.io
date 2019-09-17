@@ -262,7 +262,7 @@ function testForPage(){
                     window.open('starfsmenn/starfsmenn.html','_self')
                 }
                 else if(nav_selector == 'stillingar' || nav_selector == 'settings_icon'){
-                    window.open('timaskra/timaskra.html','_self')
+                    window.open('stillingar/stillingar.html','_self')
                 }
             }   
     
