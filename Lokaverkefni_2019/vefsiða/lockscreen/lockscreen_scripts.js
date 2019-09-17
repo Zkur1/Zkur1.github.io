@@ -13,26 +13,7 @@ function grantAccess(){
     }).then(() => {
         if(registered_user == true){
             auth.signInWithEmailAndPassword("fagraf@fagraf.is", "fagraf").then(function(){
-                var nav_selector = localStorage.getItem("nav_selector");
-                if(nav_selector != null){
-                    // Goes to different site depending on which button is pressed. 
-                    if(nav_selector == 'verkfaeri' || nav_selector == 'tool_icon'){
-                        window.open("/Lokaverkefni_2019/vefsiða/index.html", "_self");
-                    }
-                    else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
-                        window.open('/Lokaverkefni_2019/vefsiða/bifreiðir/bifreidir.html','_self');
-                    }
-                    else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
-                        window.open('/Lokaverkefni_2019/vefsiða/starfsmenn/starfsmenn.html','_self');
-                    }
-                    else if(nav_selector == 'stillingar' || nav_selector == 'settings_icon'){
-                        window.open('/Lokaverkefni_2019/vefsiða/stillingar/stillingar.html','_self');
-                    }
-                }
-
-                else{
-                    window.open('/vefsiða/index.html','_self')
-                }
+                window.open('/Lokaverkefni_2019/vefsiða/index.html','_self');
             });
             firestore.collection("Users").onSnapshot(function(){
                 document.getElementById("staff_id_in").value = "";
@@ -70,7 +51,7 @@ document.getElementById("staff_id_in").addEventListener("keypress", function(e){
 
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
-    if(sPage.trim() === 'timaskra.html'){
+    if(sPage.trim() === 'lockscreen.html'){
         displayLiveData();
     }
         
