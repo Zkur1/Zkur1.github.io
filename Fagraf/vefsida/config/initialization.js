@@ -1,12 +1,12 @@
 //Firebase configuration.
 var firebaseConfig = {
-  apiKey: "AIzaSyAQCv7N_Ca0My8g85_GnTFO632qn8UmnBc",
-  authDomain: "fagraf-2019.firebaseapp.com",
-  databaseURL: "https://fagraf-2019.firebaseio.com",
-  projectId: "fagraf-2019",
-  storageBucket: "gs://fagraf-2019.appspot.com/",
-  messagingSenderId: "1072889478071",
-  appId: "1:1072889478071:web:a8c6b621894abdab"
+    apiKey: "AIzaSyD_AIuy570j-oPay1rbdyK8HbNA5LmP3DQ",
+    authDomain: "fagraf-abcf3.firebaseapp.com",
+    databaseURL: "https://fagraf-abcf3.firebaseio.com",
+    projectId: "fagraf-abcf3",
+    storageBucket: "gs://fagraf-abcf3.appspot.com",
+    messagingSenderId: "893547299015",
+    appId: "1:893547299015:web:96a2793a72c7f717c87ee2"
   };
 
 // Initialize Firebase.

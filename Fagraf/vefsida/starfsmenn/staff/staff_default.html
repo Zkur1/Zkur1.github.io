@@ -5,7 +5,7 @@
         <meta name="description" content="Fagraf App">
         <meta name="author" content="Askur Hugi">
         <title>FagrafAPP</title>
-        <link rel="stylesheet" type="text/css" href="staff_page-style.css">
+        <link rel="stylesheet" type="text/css" href="staff_default-style.css">
         <link rel="stylesheet" type="text/css" href="../../normalize.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
         <link rel="icon" href="https://fagraf.is/wp-content/uploads/2018/08/apple-touch-icon.png">
@@ -16,31 +16,41 @@
             <div class="header">
                     <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
-
             <div class="main" id="main">
-                <div class="staff_info" id="staff_info">
-                    <img class="staff_logo" id="staff_logo" src="">
-                    <h1 class="staff_name" id="staff_name"></h1>
-                    <h2 class="staff_id" id="staff_id"></h2>
-                </div>
-
-                <div class="button_div" id="button_div">
-                    <button class="add_time_button" id="add_time_button">Skrá tíma</button>
-                    <button class="view_time_button" id="view_time_button">Skoða mína tíma</button>
-                    <button class="logout_button" id="logout_button">Skrá út</button>
+                <div class="staff_description" id="staff_description">
+                    <div class="right_description">
+                        <div id="logo_section" class="logo_section">
+                            <img class="staff_logo" id="staff_logo" src="">
+                            <img id="update_logo_button" class="update_logo_button" src="../../../myndir/add.jpg">
+                        </div>
+                        <div id="photo_upload" class="photo_upload" style="display: none;">
+                            <progress value="0" max="100" id="uploader" class="progress_bar">0%</progress>
+                            <input type="file" value="upload" id="upload_button" class="file_in">
+                        </div>               
+                    </div>
+                    
+                    <div id="description" class="description">
+                        <div id="description_text_div" class="description_text_div">
+                            <p id="description_text" class="description_text" contenteditable="true"></p>
+                            <div class="desc_buttons" id="desc_buttons">
+                                <button id="desc_save_button" class="save_text_button" style="display: none;">Vista</button>
+                                <button id="desc_cancel_button" class="remove_button" style="display: none;">Hætta við</button> 
+                            </div>  
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
-
             <div class="navigation" id="navigation">
                 <ul>
                     <li>
                         <a href="../../index.html">Verkfæri</a>
                     </li>
                     <li>
-                        <a href="../../bifreiðir/bifreidir.html">Bifreiðir</a>
+                        <a href="../../bifreidir/bifreidir.html">Bifreiðir</a>
                     </li>
                     <li>
-                        <a href="../../starfsmenn/starfsmenn.html">Starfsmenn</a>
+                        <a href="../starfsmenn.html">Starfsmenn</a>
                     </li>
                     <li>
                         <a href="../../stillingar/stillingar.html">Stillingar</a>
@@ -69,12 +79,10 @@
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
-        <script type="module" src="../data.json"></script>
 
-        <script src="../../config/initialization.js"></script>
-        <script src="../../config/auth.js"></script>
-        <script src="../../starfsmenn/staff/staff_default_scripts.js"></script>
-        <script src="staff_page_scripts.js"></script>
-        
+        <script src="/tar/Fagraf/vefsida/config/initialization.js"></script>
+        <script src="/tar/Fagraf/vefsida/config/auth.js"></script>
+        <script src="../starfsmenn_scripts.js"></script>
+        <script src="staff_default_scripts.js"></script>
     </body>
 </html>

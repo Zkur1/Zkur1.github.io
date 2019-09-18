@@ -21,10 +21,6 @@ var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
 var counter = 0;
 
 
-// When the "logout_button" is pressed.
-document.getElementById("logout_button").onclick = logoutUser;
-
-
 // Creates elements and renders "tool_list".
 function renderToolList(doc){
     // Creates elements.
@@ -69,7 +65,7 @@ function liveToolList(){
     document.getElementById("search_bar").value = "";
 
     // Note: function "orderBy()" lists the objects in order of "toolID".
-    firestore.collection('Tools').orderBy('toolID').onSnapshot(snapshot => {
+    firestore.collection('Tools').orderBy('toolID').limit(10).onSnapshot(snapshot => {
         var changes = snapshot.docChanges();
         // firestore.collection('Tools').orderBy('toolID').limit(10) ---------------------- If you only want to display a finite number of elements (in this case 10 elements).
         changes.forEach(change => {
@@ -159,7 +155,6 @@ function addToolShow(){
 // This function saves user input as a firestore document.
 document.getElementById("save_button").onclick = addToolToDatabase;
 function addToolToDatabase(){
-    console.log("fo")
     var tool_name_in = document.querySelector("#tool_name_in");
     var tool_id_in = document.querySelector("#tool_id_in");
     // If either the "tool_id_in" or "tool_name_in" input fields are empty nothing will execute.

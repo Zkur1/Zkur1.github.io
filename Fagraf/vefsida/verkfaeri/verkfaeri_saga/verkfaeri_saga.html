@@ -5,30 +5,22 @@
         <meta name="description" content="Fagraf App">
         <meta name="author" content="Askur Hugi">
         <title>FagrafAPP</title>
-        <link rel="stylesheet" type="text/css" href="staff_page-style.css">
+        <link rel="stylesheet" type="text/css" href="verkfaeri_saga-style.css">
         <link rel="stylesheet" type="text/css" href="../../normalize.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
         <link rel="icon" href="https://fagraf.is/wp-content/uploads/2018/08/apple-touch-icon.png">
     </head>
     
     <body>
-        <div class="container" id="container">
+        <div class="container">
             <div class="header">
                     <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
 
-            <div class="main" id="main">
-                <div class="staff_info" id="staff_info">
-                    <img class="staff_logo" id="staff_logo" src="">
-                    <h1 class="staff_name" id="staff_name"></h1>
-                    <h2 class="staff_id" id="staff_id"></h2>
-                </div>
+            <div class="main">
+                <ul id="check_in_list" class="check_in_list">
 
-                <div class="button_div" id="button_div">
-                    <button class="add_time_button" id="add_time_button">Skrá tíma</button>
-                    <button class="view_time_button" id="view_time_button">Skoða mína tíma</button>
-                    <button class="logout_button" id="logout_button">Skrá út</button>
-                </div>
+                </ul>
             </div>
 
             <div class="navigation" id="navigation">
@@ -37,7 +29,7 @@
                         <a href="../../index.html">Verkfæri</a>
                     </li>
                     <li>
-                        <a href="../../bifreiðir/bifreidir.html">Bifreiðir</a>
+                        <a href="../../bifreidir/bifreidir.html">Bifreiðir</a>
                     </li>
                     <li>
                         <a href="../../starfsmenn/starfsmenn.html">Starfsmenn</a>
@@ -69,12 +61,10 @@
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
-        <script type="module" src="../data.json"></script>
 
-        <script src="../../config/initialization.js"></script>
-        <script src="../../config/auth.js"></script>
-        <script src="../../starfsmenn/staff/staff_default_scripts.js"></script>
-        <script src="staff_page_scripts.js"></script>
-        
+        <script src="/tar/Fagraf/vefsida/config/initialization.js"></script>
+        <script src="/tar/Fagraf/vefsida/config/auth.js"></script>
+        <script src="../../index_scripts.js"></script>
+        <script src="verkfaeri_saga_scripts.js"></script>
     </body>
 </html>

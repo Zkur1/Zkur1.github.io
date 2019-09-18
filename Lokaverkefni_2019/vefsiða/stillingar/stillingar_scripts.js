@@ -3,6 +3,10 @@ var sPath = window.location.pathname;
 var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
 
 
+// When the "logout_button" is pressed.
+document.getElementById("logout_button").onclick = logoutUser;
+
+
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     if(sPage.trim() === 'stillingar.html'){

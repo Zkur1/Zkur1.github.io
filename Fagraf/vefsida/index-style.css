@@ -1,0 +1,278 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100%;
+    max-width: 50em;
+    padding: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+    .header{
+        height: 12%;
+        display: flex;
+        background: #14489f;
+        color: white;
+        align-items: center;
+        justify-content: space-between;
+        font-size: calc(0.5em + 0.5vw);
+        font-family: 'Montserrat', sans-serif;
+        padding: 1em;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+        }
+
+        .logout_button{
+            width: 15%;
+            height: 60%;
+            
+        }
+
+    .add_remove{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+        .add_remove .add{
+            width: 30%;
+            margin: 2% 40% 0% 0;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+        }
+
+        .add:hover, .add:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+        }
+
+        .add_remove .remove{
+            padding: 1em 2em;
+            width: 30%;
+            margin: 2% 0 0% 0%;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+        }
+
+        .remove:hover, .remove:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+        }
+
+        .dropdown_main{
+            display: none;
+            padding-top: 1em;
+        }
+
+        .add_menu{
+            display: flex;
+            flex-wrap: wrap;
+            width: 55%;
+            padding: 1em 1em 2em 0;
+        }
+
+        .add_menu >*{
+            flex: 1 1 30%;
+            margin-bottom: 1em;    
+        }
+
+        .or_spacer{
+            flex: 1 100%;
+            font-weight: 1000;
+            margin-left: 2em;
+        }
+
+        .save_button{
+            position: relative;
+            left: 0%;
+            padding: 1em 2em;
+            margin: 0 0 2em 0;
+            font-size: 10pt;
+            font-weight: bold; 
+            color: white;
+            background:#14489f;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+            border-radius: 10%;
+        }
+
+        .save_button:hover, .save_button:active{
+            color: white;
+            background:#333;
+            cursor: pointer;
+        }
+
+        .dropdown_remove{
+            display: none;
+        }
+
+        .remove_button{
+            position: relative;
+            left: 0%;
+            padding: 1em 2em;
+            margin: 0 0 2em 0;
+            font-size: 10pt;
+            font-weight: bold; 
+            color: white;
+            background:#9f1414;
+            box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+            border-radius: 10%;
+        }
+
+        .remove_button:hover, .remove_button:active{
+            color: white;
+            background:#333;
+            cursor: pointer;
+        }
+
+    .searchbar{
+        width: 100%;
+        margin: 1em 0 0 0;
+        box-shadow: 5px 5px 5px -6px rgba(0,0,0,0.75);
+    }
+
+        .searchbar:hover, .searchbar:active{
+            box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+        }
+        
+        .searchbar input{
+            width: 100%;
+            font-size: 16pt;
+        }
+
+    .main{
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
+        height: 66%;
+        justify-content: center;
+    }
+
+        .main::-webkit-scrollbar{
+            display: none;
+        }
+
+        .tool_section{
+            display: grid;
+            width: 98%;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 2em;
+            padding: 0;
+            margin: 2% 1%
+        }
+
+            .tool_in_list{
+                list-style-type: none;
+                padding: 1em;
+                font-size: 16pt;
+                background: #14489f;
+                color: white;
+                box-shadow: 5px 7px 7px -6px rgba(0,0,0,0.75);
+            }
+
+            .tool_in_list:hover, .tool_in_list:active{
+                color: black;
+                background: #83aeff;
+                cursor: pointer;
+                box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+            }
+
+            .tool_in_list_greyed{
+                list-style-type: none;
+                padding: 1em;
+                font-size: 16pt;
+                background: #cac6c6;
+                color: grey;
+                box-shadow: 5px 7px 7px -6px rgba(0,0,0,0.75);
+            }
+
+            .tool_in_list_greyed:hover, .tool_in_list_greyed:active{
+                color: black;
+                background: #8e8e8e;
+                cursor: pointer;            
+                box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.75);
+            }
+
+            .tool_section img{
+                max-width:10%;
+                padding-left: 5%;
+            }
+
+            div a{
+                text-decoration: none;
+                color: black;
+            }
+
+    .navigation{
+        display: block;
+        background:#333;
+        text-align: center;
+        position: sticky;
+        bottom: 1em;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        box-shadow: 5px 5px 5px -4px rgba(0,0,0,0.75);
+    }
+
+        .navigation ul{
+            padding: 0;
+            margin: 0;
+        }
+
+        .navigation ul > li{
+            list-style-type: none;
+            display: inline-block;
+            padding: 5px 20px;
+            color: white;
+            font-size: 18px;
+            padding: 1.8em 2em;
+        }
+
+        .navigation a{
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .navigation ul > li:hover, .navigation > li:active{
+            color: black;
+            background: #BFC0C0;
+            cursor: pointer;
+        }
+
+    .m_navigation{
+        display: none;
+        background:#333;
+        text-align: center;
+        position: sticky;
+        bottom: 1em;
+        width: 100%;
+        max-width: 48em;
+        margin-right: auto;
+        margin-left: auto;
+        box-shadow: 5px 5px 5px -4px rgba(0,0,0,0.75);
+    }
+
+        .m_navigation ul{
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr)
+        }
+
+        .m_navigation ul > li{
+            list-style-type: none;
+            color: white;
+            padding: 0.2em;    
+        }
+
+        .m_navigation .icon{
+            text-decoration: none;
+            margin-top: 0.5em;
+            height: 3em;
+            width: 3em;
+        }
+
+        .m_navigation ul > li:hover, .m_navigation > li:active{
+            color: black;
+            background: #BFC0C0;
+            cursor: pointer;
+        }

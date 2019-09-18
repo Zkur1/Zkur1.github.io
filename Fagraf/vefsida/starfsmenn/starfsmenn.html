@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Fagraf App">
+        <meta name="author" content="Askur Hugi">
+        <title>FagrafAPP</title>
+        <link rel="stylesheet" type="text/css" href="starfsmenn-style.css">
+        <link rel="stylesheet" type="text/css" href="../normalize.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
+        <link rel="icon" href="https://fagraf.is/wp-content/uploads/2018/08/apple-touch-icon.png">
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+        <script src="/tar/Fagraf/vefsida/config/initialization.js"></script>
+        <script src="/tar/Fagraf/vefsida/config/auth.js"></script>
+    </head>
+    
+    <body id="starfsmenn">
+        <div class="container">
+            <div class="header">
+                <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
+            </div>
+            
+            <div class="add_remove" id="add_remove">
+                <button id="add_button" class="add"> Bæta við </button>
+                <button id="remove_button" class="remove"> Eyða </button>
+                <div class="dropdown_main" id="dropdown_main">
+                    <h2>Bæta við starfsmanni: </h2>
+                    <div class="add_menu" id="add_menu">
+                        <span>Nafn: </span>
+                        <input type="text" id="staff_name_in">
+                        <span>Kennitala: </span>
+                        <input type="text" id="staff_individual_id_in">
+                        <span>FRS-Númer: </span>
+                        <input type="text" id="staff_id_in" value="FRS-">
+                        <span>Farsími: </span>
+                        <input type="text" id="staff_mobile_in">
+                        <span>Sími: </span>
+                        <input type="text" id="staff_phoneNr_in">
+                        <span>Netfang: </span>
+                        <input type="text" id="staff_email_in" value="">
+                        <span>Starfstitill: </span>
+                        <input type="text" id="staff_position_in" value="" >        
+                    </div>
+                    <button class="save_button" id="save_button">Bæta við</button>
+                </div>
+
+                <div class="dropdown_remove" id="dropdown_remove">
+                    <h2>Eyða starfsmanni: </h2>
+                    <div class="add_menu" id="remove_menu">
+                        <span>Nafn starfsmanns: </span>
+                        <input type="text" id="remove_staff_name_in" class="remove_staff_name_in">
+                        <span class="or_spacer">eða</span>
+                        <span>FRS-Númer: </span>
+                        <input type="text" id="remove_staff_id_in" class="remove_staff_id_in" value="FRS-">
+                    </div>
+                    <button id="delete_button" class="remove_button">Eyða</button>
+                </div>
+            </div>
+
+            <div class="searchbar">
+                    <input type="textfield" id="search_bar" placeholder="Leita að starfsmanni">
+            </div>
+
+            <div class="main" id="main">
+                <ul class="staff_section" id="user_list">
+                    
+                </ul>
+            </div>
+
+            <div class="navigation" id='navigation'>
+                <ul>
+                    <li>
+                        <a href="../index.html">Verkfæri</a>
+                    </li>
+                    <li>
+                        <a href="../bifreidir/bifreidir.html">Bifreiðir</a>
+                    </li>
+                    <li>
+                        <a href="starfsmenn.html">Starfsmenn</a>
+                    </li>
+                    <li>
+                        <a href="../stillingar/stillingar.html">Stillingar</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="m_navigation" id="m_navigation">
+                <ul id="nav_ul">
+                    <li id="verkfaeri">
+                        <img class="icon" src="../../myndir/tools.png" id="tool_icon">
+                    </li>
+                    <li id="bifreidir">
+                        <img class="icon" src="../../myndir/car1.png" id="car_icon">
+                    </li >
+                    <li id="starfsmenn">
+                        <img class="icon" src="../../myndir/staff.svg" id="staff_icon">
+                    </li>
+                    <li id="stillingar">
+                        <img class="icon" src="../../myndir/settings.png" id="settings_icon">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="starfsmenn_scripts.js"></script>
+    </body>
+</html>

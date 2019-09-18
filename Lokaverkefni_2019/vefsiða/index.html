@@ -10,13 +10,18 @@
         <link rel="stylesheet" type="text/css" href="normalize.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
         <link rel="icon" href="https://fagraf.is/wp-content/uploads/2018/08/apple-touch-icon.png">
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+        <script src="/Lokaverkefni_2019/vefsiða/config/initialization.js"></script>
+        <script src="/Lokaverkefni_2019/vefsiða/config/auth.js"></script>
     </head>
     
     <body>
         <div class="container" id="container">
             <div class="header">
                 <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
-                <button id="logout_button" class="logout_button">Skrá út</button>
             </div>
 
             <div class="add_remove" id="add_remove">
@@ -74,7 +79,7 @@
                         <a href="starfsmenn/starfsmenn.html">Starfsmenn</a>
                     </li>
                     <li>
-                        <a href="timaskra/timaskra.html">Stillingar</a>
+                        <a href="stillingar/stillingar.html">Stillingar</a>
                     </li>
                 </ul>
             </div>
@@ -96,13 +101,6 @@
                 </ul>
             </div>
         </div>
-        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
-
-        <script src="/Lokaverkefni_2019/vefsiða/config/initialization.js"></script>
-        <script src="/Lokaverkefni_2019/vefsiða/config/auth.js"></script>
         <script src="index_scripts.js"></script>
     </body>
 </html>
