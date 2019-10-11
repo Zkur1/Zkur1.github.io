@@ -3,6 +3,13 @@ function goToSite(){
     window.open('Lokaverkefni_2019/vefsiða/index.html','_self')
 }
 
+
+document.getElementById("nav_ul").children[3].onclick = goToAppthing;
+
+function goToAppthing(){
+    window.open('/MySite/website/appthing.html','_self')
+}
+
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     // If the browser detects that the page is being viewed on a smartphone. 

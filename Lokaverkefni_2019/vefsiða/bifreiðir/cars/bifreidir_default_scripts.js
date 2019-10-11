@@ -1,19 +1,31 @@
 // Global variables.
 // Creates variables from the elements of the page to be used later.
+var checkup_span = document.getElementById("checkup_span");
 var checkup_date = document.getElementById('checkup_date');
 var new_checkup_date = document.getElementById('new_checkup_date');
 var checkup_date_button = document.getElementById('checkup_date_button');
 var save_checkup_date_button = document.getElementById("save_checkup_date_button");
 
+var oil_change_span = document.getElementById('oil_change_span');
 var oil_change = document.getElementById('oil_change');
 var new_oil_change = document.getElementById('new_oil_change');
 var oil_change_button = document.getElementById('oil_change_button');
 var save_oil_change_button = document.getElementById("save_oil_change_button");
+var milage_at_oilchange_span = document.getElementById("milage_at_oilchange_span");
+var milage_at_oilchange = document.getElementById("milage_at_oilchange");
+var condition_check = document.getElementById("condition_check");
+var condition_checkbox = document.getElementById("condition_checkbox");
 
+var tire_change_span = document.getElementById("tire_change_span");
 var tire_change = document.getElementById('tire_change');
 var new_tire_change = document.getElementById('new_tire_change');
 var tire_change_button = document.getElementById('tire_change_button');
 var save_tire_change_button = document.getElementById("save_tire_change_button");
+var milage_at_tirechange_span = document.getElementById("milage_at_tirechange_span");
+var milage_at_tirechange = document.getElementById("milage_at_tirechange");
+var tire_div = document.getElementById("tire_div");
+var summer = document.getElementById("summer");
+var winter = document.getElementById("winter");
 
 var car_selector = localStorage.getItem("car_selector");
 
@@ -294,6 +306,9 @@ function displayMaintenanceData(){
                 new_checkup_date.placeholder = doc.data().checkupDate;
             });
         });
+        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc){
+            milage_at_oilchange.placeholder = doc.data().milage;
+        });
     }
 
     // If there are entries in the specific cars checkup history. 
@@ -324,6 +339,9 @@ function displayMaintenanceData(){
                 new_tire_change.placeholder = doc.data().tireChangeDate;
             });
         });
+        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).get().then(function(doc){
+            milage_at_tirechange.placeholder = doc.data().milage;
+        });
     }
 
     // If there are entries in the specific cars tire change history. 
@@ -332,8 +350,6 @@ function displayMaintenanceData(){
         new_tire_change.placeholder = "00/00/0000";
     }
 }
-
-
 
 
 // Reads from the database and displays live information about the cars maintenance.
@@ -377,9 +393,8 @@ function newCheckupDate(){
         new_checkup_date.style.display = "block";
         checkup_date_button.style.display = "none";
         save_checkup_date_button.style.display = "block";
-        
     }
-    
+
     // Executes the function "displayMaintenanceData" to determine the placeholder of "new_checkup_date".
     displayMaintenanceData();
 
@@ -412,18 +427,9 @@ function newCheckupDate(){
                 checkupDate: new_checkup_date.value,
                 checkupStaff: checkup_staff,
                 dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            }).then(function(){
+                cancelMaintenanceUpdate();
             });
-            
-            // Hides the "save_checkup_date_button" button and displays "checkup_date_button".
-            save_checkup_date_button.style.display = "none";
-            checkup_date_button.style.display = "block"
-
-            // Hides "new_checkup_date" and displays "checkup_date".
-            new_checkup_date.style.display = "none";
-            checkup_date.style.display = "block";
-
-            // Clears the input field.
-            new_checkup_date.value = "";
         }
 
         else{
@@ -439,16 +445,24 @@ document.getElementById("oil_change_button").onclick = newOilChange;
 function newOilChange(){
     // Determines if either the "current_maintenance" variable or the "new_oil_change" inputfield should be shown and hides the other. 
     if(oil_change.style.display == "block"){
+        checkup_span.style.marginBottom = "10%";
+        oil_change_span.style.marginBottom = "10%";
         oil_change.style.display = "none";
         new_oil_change.style.display = "block";
+        checkup_date.style.marginBottom = "10%";
+        new_oil_change.style.marginBottom = "10%";
         oil_change_button.style.display = "none";
         save_oil_change_button.style.display = "block";
-        firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("oil_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                new_oil_change.placeholder = doc.data().oilChangeKm + " km";
-            });
-        });
+        checkup_date_button.style.marginBottom = "10%";
+        save_oil_change_button.style.marginBottom = "10%";
+        milage_at_oilchange_span.style.display = "block";
+        milage_at_oilchange.style.display = "block";
+        condition_check.style.display = "block";
+
+        // Executes the function "displayMaintenanceData" to determine the placeholder of "new_checkup_date".
+        displayMaintenanceData();
     }
+
 
     // Retrieves the name of the staff using the car and adds it to the variable "oil_change_staff". 
     var oil_change_staff = "";
@@ -473,35 +487,34 @@ function newOilChange(){
     // Saves the users input to the database and resets the input field and button. 
     function saveOilChange(){
         if(new_oil_change.value.length != 0){
+            var condition_check_status;
+            if(condition_checkbox.checked == true){
+                condition_check_status = "Já";
+            }
+            else{
+                condition_check_status = "Nei";
+            }
             // Writes user input to the subcollection "maintenance_history" in the database. 
             firestore.collection('Cars').doc(localStorage.getItem('car_selector')).collection('oil_change_history').add({
                 oilChangeKm: new_oil_change.value,
                 oilChangeStaff: oil_change_staff,
+                oilChangeMilage: milage_at_oilchange.value,
+                conditionCheck: condition_check_status,
                 dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            }).then(function(){
+                // Updates the "milage" field of the specific cars' document. 
+                firestore.collection('Cars').doc(localStorage.getItem('car_selector')).update({
+                    milage: new_oil_change.value,
+                }).then(function(){
+                    cancelMaintenanceUpdate();
+                    });
             });
-            
-            // Hides the "save_oil_change_button" button and displays "oil_change_button".
-            save_oil_change_button.style.display = "none";
-            oil_change_button.style.display = "block"
-
-            // Hides "new_oil_change" and displays "oil_change".
-            new_oil_change.style.display = "none";
-            oil_change.style.display = "block";
-
-            // Updates the "milage" field of the specific cars' document. 
-            firestore.collection('Cars').doc(localStorage.getItem('car_selector')).update({
-                milage: new_oil_change.value,
-            });
-
-            // Clears the input field.
-            new_oil_change.value = "";
         }
 
         else{
             alert("ATH: Vinsamlegast skráðu kílómetrafjölda. ")
         }
     }
-
 }
 
 // Runs "newTireChange" when "tire_change_button" is pressed. 
@@ -514,12 +527,21 @@ function newTireChange(){
         new_tire_change.style.display = "block";
         tire_change_button.style.display = "none";
         save_tire_change_button.style.display = "block";
+        milage_at_tirechange_span.style.display = "block";
+        milage_at_tirechange_span.style.marginTop = "10%";
+        milage_at_tirechange.style.display = "block";
+        milage_at_tirechange.style.marginTop = "10%";
+        tire_div.style.display = "block";
+        tire_div.style.marginTop = "10%";
         firestore.collection("Cars").doc(localStorage.getItem("car_selector")).collection("tire_change_history").orderBy("dateCreated", "desc").limit(1).get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 new_tire_change.placeholder = doc.data().tireChangeDate;
             });
         });
     }
+
+    // Executes the function "displayMaintenanceData" to determine the placeholder of "new_checkup_date".
+    displayMaintenanceData();
 
     // Retrieves the name of the staff using the car and adds it to the variable "tire_change_staff". 
     var tire_change_staff = "";
@@ -544,23 +566,26 @@ function newTireChange(){
     // Saves the users input to the database and resets the input field and button. 
     function saveTireChange(){
         if(new_tire_change.value.length == 10){
+            var tire_type;
+            if(summer.checked == true){
+                tire_type = "Sumardekk";
+            }
+            else if(winter.checked == true){
+                tire_type = "Vetrardekk";
+            }
+            else{
+                tire_type = "Óskráð"
+            }
             // Writes user input to the subcollection "maintenance_history" in the database. 
             firestore.collection('Cars').doc(localStorage.getItem('car_selector')).collection('tire_change_history').add({
                 tireChangeDate: new_tire_change.value,
                 tireChangeStaff: tire_change_staff,
+                tireChangeMilage: milage_at_tirechange.value,
+                tireType: tire_type, 
                 dateCreated: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            }).then(function(){
+                cancelMaintenanceUpdate();
             });
-            
-            // Hides the "save_tire_change_button" button and displays "tire_change_button".
-            save_tire_change_button.style.display = "none";
-            tire_change_button.style.display = "block"
-
-            // Hides "new_tire_change" and displays "tire_change".
-            new_tire_change.style.display = "none";
-            tire_change.style.display = "block";
-
-            // Clears the input field.
-            new_tire_change.value = "";
         }
 
         else{
@@ -575,6 +600,7 @@ document.getElementById("cancel_button").onclick = cancelMaintenanceUpdate;
 function cancelMaintenanceUpdate(){  
     // Resets fields for "checkup_date" section
     if(checkup_date.style.display == "none"){
+        checkup_span.style.marginBottom = "1em";
         new_checkup_date.style.display = "none";
         new_checkup_date.value = "";
         checkup_date.style.display = "block";
@@ -584,11 +610,20 @@ function cancelMaintenanceUpdate(){
 
     // Resets fields for "oil_change" section
     if(oil_change.style.display == "none"){
+        oil_change_span.style.marginBottom = "1em";
+        checkup_span.style.marginBottom = "1em";
+        checkup_date.style.marginBottom = "1em";
+        checkup_date_button.style.marginBottom = "1em";
         new_oil_change.style.display = "none";
         new_oil_change.value = "";
         oil_change.style.display = "block";
         save_oil_change_button.style.display = "none";
         oil_change_button.style.display = "block";
+        milage_at_oilchange_span.style.display = "none";
+        milage_at_oilchange.style.display = "none";
+        milage_at_oilchange.value = "";
+        condition_check.style.display= "none"
+        condition_checkbox.checked = false;
     }
     
     // Resets fields for "tire_change" section
@@ -598,6 +633,12 @@ function cancelMaintenanceUpdate(){
         tire_change.style.display = "block";
         save_tire_change_button.style.display = "none";
         tire_change_button.style.display = "block";
+        milage_at_tirechange_span.style.display = "none";
+        milage_at_tirechange.style.display = "none";
+        milage_at_tirechange.value = "";
+        tire_div.style.display = "none";
+        summer.checked = false;
+        winter.checked = false;
     }
 }
 
@@ -673,7 +714,6 @@ function loanCar(){
             if(staff_id != ""){
                 saveData();
             }
-            
         });
     });
 
@@ -773,8 +813,6 @@ function dropdownSelect(){
 dropdownSelect();
 
 
-
-
 // Makes sure this javascript file is only ran on a specific page.
 function testForPage(){
     // If the browser detects that the page is being viewed on a smartphone. 
@@ -783,7 +821,9 @@ function testForPage(){
         function changeToMobile(){
             document.getElementById("maintenance_info").style.width = "100%";
             document.getElementById("main").insertBefore(document.getElementById("right_description"), document.getElementById("main").firstChild);
-            document.getElementById("description").appendChild(document.getElementById("history_button"));
+            document.getElementById("main").appendChild(document.getElementById("history_button"));
+            document.getElementById("history_button").style.margin = "0.5em 0 1em 20%";
+            document.getElementById("history_button").style.cssFloat = "left";
             document.getElementById("description").style.alignItems = "center";
             document.getElementById("description_text").style.width = "70vw";
             document.getElementById("description_text").style.maxWidth = "70vw";
@@ -798,9 +838,9 @@ function testForPage(){
             document.getElementById("desc_buttons").style.justifyContent = "center";
             document.getElementById("cancel_button").style.maxWidth = "30%";
             
-            for(i = 0; i < document.getElementById("maintenance_info").children.length; i++){
-                document.getElementById("maintenance_info").children[i].style.width = "10%";
-            }
+            // for(i = 0; i < document.getElementById("maintenance_info").children.length; i++){
+            //     document.getElementById("maintenance_info").children[i].style.width = "100%";
+            // }
 
             // Finds every child-input element of a specified parent element and changes its' style attributes. 
             function mobileInputWidth(parent_element){
@@ -840,36 +880,7 @@ function testForPage(){
 
         // Listens for keyboard popup and runs the "hideNavOnKeyboard" function.
         window.addEventListener("resize", hideNavOnKeyboard);
-
-        
-        // Assigns 'nav_ul' to a varible to be used later.
-        var nav_ul = document.getElementById('nav_ul');
-        // When 'nav_ul' (the mobile navbar) is clicked.
-        nav_ul.onclick = function(event){
-            // Checks which button on the navbar was pressed.
-            function getEventTarget(nav_li){
-                nav_li = nav_li || window.event;
-                return nav_li.target || nav_li.srcElement; 
-                }
-            // Fetches the id tag for the button that has been pressed.
-            var target = getEventTarget(event);
-            var nav_selector = target.getAttribute('id');
-
-            // Goes to different site depending on which button is pressed. 
-            if(nav_selector == 'verkfaeri' || nav_selector == 'tool_icon'){
-                window.open("../../index.html", "_self");
-                }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
-                window.open('../../bifreiðir/bifreidir.html','_self')
-                }
-            else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
-                window.open('../../starfsmenn/starfsmenn.html','_self')
-                }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'settings_icon'){
-                window.open('../../stillingar/stillingar.html','_self')
-                }
-            }   
-        }
+    }
 }
     
 
@@ -877,4 +888,3 @@ testForPage();
 displayCarData();
 displayLiveData();
 displayMaintenanceData();
-

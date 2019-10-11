@@ -438,14 +438,16 @@ function testForPage(){
             document.getElementById("right_description").style.alignItems = "center";
             document.getElementById("photo_upload").style.alignItems = "center";
             document.getElementById("photo_upload").style.paddingLeft = "2.5em";
-            document.getElementById("description").appendChild(document.getElementById("history_button"));
+            document.getElementById("main").appendChild(document.getElementById("history_button"));
             document.getElementById("description").style.alignItems = "center";
             document.getElementById("description_text").style.width = "70vw";
             document.getElementById("description_text").style.maxWidth = "70vw";
+            document.getElementById("description_text").style.marginTop = "0";
             document.getElementById("history_button").style.padding = "2em";
             document.getElementById("history_button").style.marginBottom = "2em";
             document.getElementById("history_button").style.width = "60%";
             document.getElementById("history_button").style.float = "none";
+            document.getElementById("history_button").style.margin = "1em 0 1em 20%";
             document.getElementById("tool_description").style.textAlign = "center";
             document.getElementById("desc_buttons").style.width = "100%";
             document.getElementById("desc_buttons").style.justifyContent = "center";
@@ -461,7 +463,6 @@ function testForPage(){
                         for(x = 0; x < document.getElementById(parent_element).children[i].children.length; x++){
                             // If a child is an "input" element.
                             if(document.getElementById(parent_element).children[i].children[x].tagName == "INPUT"){
-                                console.log(document.getElementById(parent_element).children[i].children[x]);
                                 document.getElementById(parent_element).children[i].children[x].style.width = "60%";
                             }
                         }
@@ -494,35 +495,6 @@ function testForPage(){
 
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
-        
-        // Assigns 'nav_ul' to a varible to be used later.
-        var nav_ul = document.getElementById('nav_ul');
-        // When 'nav_ul' (the mobile navbar) is clicked.
-        nav_ul.onclick = function(event){
-            // Checks which button on the navbar was pressed.
-            function getEventTarget(nav_li){
-                nav_li = nav_li || window.event;
-                return nav_li.target || nav_li.srcElement; 
-            }
-            // Fetches the id tag for the button that has been pressed.
-            var target = getEventTarget(event);
-            var nav_selector = target.getAttribute('id');
-
-            // Goes to different site depending on which button is pressed. 
-            if(nav_selector == 'verkfaeri' || nav_selector == 'tool_icon'){
-                window.open("../index.html", "_self");
-            }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
-                window.open('../bifreiðir/bifreidir.html','_self')
-            }
-            else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
-                window.open('../starfsmenn/starfsmenn.html','_self')
-            }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'settings_icon'){
-                window.open('../stillingar/stillingar.html','_self')
-            }
-        }   
-    
     }
 }
     

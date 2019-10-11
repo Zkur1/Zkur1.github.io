@@ -31,18 +31,14 @@ function renderCheckupData(doc){
     
     // Sets specific content in id to each element.
     li.setAttribute("id", doc.id);
-    checkup_date_text.setAttribute("id", "checkup_date");
-    checkup_date_text.setAttribute("class", "checkup_date");
-    checkup_date_var.setAttribute("class", "checkup_bold");  
-    checkup_staff_var.setAttribute("class", "checkup_bold"); 
     
     checkup_date_var.style.fontWeight = "bold";    
     checkup_staff_var.style.fontWeight = "bold";
     
     checkup_date_text.textContent =  "Síðasta skoðun: ";
-    checkup_date_var.textContent = doc.data().checkupDate + "\n";
+    checkup_date_var.textContent = doc.data().checkupDate;
     checkup_staff_text.textContent = "Viðstaddur starfsmaður: ";
-    checkup_staff_var.textContent = doc.data().checkupStaff + " \n";
+    checkup_staff_var.textContent = doc.data().checkupStaff;
 
     // Appends content into li.
     li.appendChild(checkup_date_text);
@@ -66,27 +62,37 @@ function renderOilChangeData(doc){
     let oil_change_var = document.createElement('span');
     let oil_change_staff_text = document.createElement('span');
     let oil_change_staff_var = document.createElement('span');
+    let oil_change_milage_text = document.createElement('span');
+    let oil_change_milage_var = document.createElement('span')
+    let condition_check_text = document.createElement('span');
+    let condition_check_var = document.createElement('span');
     
     // Sets specific content in id to each element.
     li.setAttribute("id", doc.id);
-    oil_change_text.setAttribute("id", "oil_change_km");
-    oil_change_text.setAttribute("class", "oil_change_km");
-    oil_change_staff_text.setAttribute("id", "oil_change_staff");
-    oil_change_staff_var.setAttribute("class", "oil_change_staff");
 
     oil_change_var.style.fontWeight = "bold";
     oil_change_staff_var.style.fontWeight = "bold";
+    oil_change_milage_var.style.fontWeight = "bold";
+    condition_check_var.style.fontWeight = "bold";
 
-    oil_change_text.textContent = "Síðasta smurning: ";
-    oil_change_var.textContent = doc.data().oilChangeKm + " km. \n";
+    oil_change_text.textContent = "Áætlaður km-fjöldi: ";
+    oil_change_var.textContent = doc.data().oilChangeKm + " km.";
     oil_change_staff_text.textContent = "Viðstaddur starfsmaður: ";
-    oil_change_staff_var.textContent = doc.data().oilChangeStaff + " \n";
+    oil_change_staff_var.textContent = doc.data().oilChangeStaff;
+    oil_change_milage_text.textContent = "Km-fjöldi við smurningu: ";
+    oil_change_milage_var.textContent = doc.data().oilChangeMilage + " km.";
+    condition_check_text.textContent = "Þjónustuskoðun: ";
+    condition_check_var.textContent = doc.data().conditionCheck;
 
     // Appends content into li.
     li.appendChild(oil_change_text);
     li.appendChild(oil_change_var);
     li.appendChild(oil_change_staff_text);
     li.appendChild(oil_change_staff_var);
+    li.appendChild(oil_change_milage_text);
+    li.appendChild(oil_change_milage_var);
+    li.appendChild(condition_check_text);
+    li.appendChild(condition_check_var);
 
     // Appends li to the tool_list (ul)
     document.getElementById("oil_change_list").appendChild(li);
@@ -104,27 +110,38 @@ function renderTireChangeData(doc){
         let tire_change_var = document.createElement('span');
         let tire_change_staff_text = document.createElement('span');
         let tire_change_staff_var = document.createElement('span');
+        let tire_change_milage_text = document.createElement('span');
+        let tire_change_milage_var = document.createElement('span')
+        let tire_type_text = document.createElement('span');
+        let tire_type_var = document.createElement('span');
+        
         
         // Sets specific content in id to each element.
         li.setAttribute("id", doc.id);
-        tire_change_text.setAttribute("id", "tire_change_date");
-        tire_change_text.setAttribute("class", "tire_change_date");
-        tire_change_staff_text.setAttribute("id", "tire_change_staff");
-        tire_change_staff_var.setAttribute("class", "tire_change_staff");
-    
+
         tire_change_var.style.fontWeight = "bold";
         tire_change_staff_var.style.fontWeight = "bold";
+        tire_change_milage_var.style.fontWeight = "bold";
+        tire_type_var.style.fontWeight = "bold";
     
         tire_change_text.textContent = "Síðustu dekkjaskipti: ";
-        tire_change_var.textContent = doc.data().tireChangeDate + " ";
+        tire_change_var.textContent = doc.data().tireChangeDate;
         tire_change_staff_text.textContent = "Viðstaddur starfsmaður: ";
-        tire_change_staff_var.textContent = doc.data().tireChangeStaff + " \n";
+        tire_change_staff_var.textContent = doc.data().tireChangeStaff;
+        tire_change_milage_text.textContent = "Km-fjöldi við dekkjaskipti: "
+        tire_change_milage_var.textContent = doc.data().tireChangeMilage;
+        tire_type_text.textContent = "Tegund dekkja: "
+        tire_type_var.textContent = doc.data().tireType;
     
         // Appends content into li.
         li.appendChild(tire_change_text);
         li.appendChild(tire_change_var);
         li.appendChild(tire_change_staff_text);
         li.appendChild(tire_change_staff_var);
+        li.appendChild(tire_change_milage_text);
+        li.appendChild(tire_change_milage_var);
+        li.appendChild(tire_type_text);
+        li.appendChild(tire_type_var);
     
         // Appends li to the tool_list (ul)
         document.getElementById("tire_change_list").appendChild(li);
@@ -133,42 +150,33 @@ function renderTireChangeData(doc){
         document.addEventListener("touchstart", function(){}, true)
 }
 
-// Makes sure this javascript file is only ran on a specific page.
+// If the browser detects that the page is being viewed on a smartphone. 
 function testForMobile(){
     if (/Mobi/.test(navigator.userAgent)) {
+        // Changes the layout of the page to fit the smaller screen of the smartphone. 
+        function changeToMobile(){
+            var scrollbar_style = document.createElement('style');
+            scrollbar_style.innerHTML = `
+            .main::-webkit-scrollbar{
+                display: block;
+                width: 2%;
+                background-color: #F5F5F5;
+                border-radius: 4px;
+            }
+            
+            .main::-webkit-scrollbar-thumb{
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+                background-color: #14489f;
+                border-radius: 4px;
+            }
+            `;
+            document.head.appendChild(scrollbar_style);
+        }
+        changeToMobile();
+
         document.getElementById('navigation').style.display = 'none';     
         document.getElementById('m_navigation').style.display = 'block';
-        
-        // Assigns 'nav_ul' to a varible to be used later.
-        var nav_ul = document.getElementById('nav_ul');
-        // When 'nav_ul' (the mobile navbar) is clicked.
-        nav_ul.onclick = function(event){
-            // Checks which button on the navbar was pressed.
-            function getEventTarget(nav_li){
-                nav_li = nav_li || window.event;
-                return nav_li.target || nav_li.srcElement; 
-                }
-            // Fetches the id tag for the button that has been pressed.
-            var target = getEventTarget(event);
-            var nav_selector = target.getAttribute('id');
-
-            // Goes to different site depending on which button is pressed. 
-            if(nav_selector == 'verkfaeri' || nav_selector == 'tool_icon'){
-                window.open("../../../index.html", "_self");
-                }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'car_icon'){
-                window.open('../../bifreidir.html','_self')
-                }
-            else if(nav_selector == 'starfsmenn' || nav_selector == 'staff_icon'){
-                window.open('../../../starfsmenn/starfsmenn.html','_self')
-                }
-            else if(nav_selector == 'bifreidir' || nav_selector == 'settings_icon'){
-                window.open('../../../stillingar/stillingar.html','_self')
-                }
-            }   
-    
-        }
+    }
 }
-    
 // Functions to be run when the webpage is opened.
 testForMobile();

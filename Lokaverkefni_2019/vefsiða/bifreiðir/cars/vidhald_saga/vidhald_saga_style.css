@@ -31,9 +31,8 @@
 }
 
 .main::-webkit-scrollbar{
-    display: none;
+	display: none;
 }
-
 .maintenance_title{
     margin: 1em 2em 0em 2em;
 }
@@ -48,50 +47,25 @@
 
 .maintenance_list ul{
     list-style-type: none;
-    padding: 0.2em;
+    padding: 0;
     font-size: 16pt;
-    background: lightgray;
+    background: white;
     color: black;
-}
-
-.checkup_list{
     width: 100%;
     margin: 0;
 }
 
-.checkup_list li{
+.maintenance_list ul li span:nth-child(even){
+    padding: 0 0 6% 0;
+}
+
+.maintenance_list ul li{
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
     padding: 1em;
-    font-size: 16pt;
+    margin-bottom: 0.5em;
     background: lightgray;
-    color: black;
-}
-
-
-.oil_change_list{
-    width: 100%;
-    margin: 0;
-}
-
-.oil_change_list li{
-    list-style-type: none;
-    padding: 1em;
-    font-size: 16pt;
-    background: lightgray;
-    color: black;
-}
-
-.tire_change_list{
-    width: 100%;
-    margin: 0;
-}
-
-.tire_change_list li{
-    list-style-type: none;
-    padding: 1em;
-    font-size: 16pt;
-    background: lightgray;
-    color: black;
 }
 
 .navigation{

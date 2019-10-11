@@ -99,7 +99,7 @@ html{
             }
 
             .img_app{
-                max-width: 38vw;
+                max-height: 90%;
                 border-radius: 5vw;
             }
 
@@ -112,11 +112,12 @@ html{
                 margin: 8vw 5vw 0 0;
             }
 
-                .textbox_1{
+                .textbox_title{
+                    text-align: center;
                     margin: 0 0 0 2vw;
-                    padding: 3vw 3vw;
+                    padding: 5% 5%;
                     background: #EDEEE9;
-                    width: 60%;
+                    width: 30%;
                     border-radius: 2vw;
                     box-shadow: 1.1vw 1.1vw 0px 0px rgba(255, 138, 0, 0.5);
                 }
@@ -125,7 +126,7 @@ html{
                         box-shadow: 1.1vw 1.1vw 0px 0px rgba(89, 205, 241, 0.5);
                     }
 
-                .textbox_2{
+                .textbox_text{
                     margin: 10% 0 0 2vw;
                     padding: 3vw 3vw;
                     background: #EDEEE9;

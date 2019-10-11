@@ -14,7 +14,7 @@
     <body>
         <div class="container">
             <div class="header">
-                    <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
+                <img class="logo" src="https://fagraf.is/wp-content/uploads/2018/07/fagraf-logo1x-1.png" alt="logo">
             </div>
             <div class="main" id="main">
                 <div class="car_description" id="car_description">
@@ -43,19 +43,30 @@
                 <div class="maintenance" id="maintenance">
                     <h2>Viðhald:</h2>
                     <div class="maintenance_info" id="maintenance_info">
-                        <span>Skoðun:</span>
+                        <span id="checkup_span">Næsta skoðun:</span>
                         <span class="current_maintenance" id="checkup_date" style="display: block;"></span>
                         <input class="new_maintenance" id="new_checkup_date" placeholder="">
                         <button class="update_maintenance" id="checkup_date_button">Uppfæra dags.</button>
                         <button class="save_maintenance" id="save_checkup_date_button">Vista dags.</button>
 
-                        <span>Smurning:</span>
+                        <span id="milage_at_oilchange_span" class="tire_div">Km-fjöldi við smurningu:</span>
+                        <input class="new_maintenance" id="milage_at_oilchange" placeholder="">
+                        <div id="condition_check" class="condition_check">
+                            <input type="checkbox" id="condition_checkbox">Þjónustuskoðun<br>
+                        </div>
+                        <span id="oil_change_span">Næsta smurning:</span>
                         <span class="current_maintenance" id="oil_change" style="display: block;"></span>
                         <input class="new_maintenance" id="new_oil_change" placeholder="">
                         <button class="update_maintenance" id="oil_change_button">Uppfæra km.</button>
                         <button class="save_maintenance" id="save_oil_change_button">Vista km.</button>
 
-                        <span>Dekkjaskipti:</span>
+                        <span id="milage_at_tirechange_span" class="tire_div">Km-fjöldi við dekkjaskipti:</span>
+                        <input class="new_maintenance" id="milage_at_tirechange" placeholder="">
+                        <div id="tire_div" class="tire_div">   
+                            <input type="checkbox" id="summer" class="tire_type">Sumardekk<br>
+                            <input type="checkbox" id="winter"class="tire_type">Vetrardekk<br>
+                        </div>
+                        <span id="tire_change_span">Næstu dekkjaskipti:</span>
                         <span class="current_maintenance" id="tire_change" style="display: block;"></span>
                         <input class="new_maintenance" id="new_tire_change" placeholder="">
                         <button class="update_maintenance" id="tire_change_button">Uppfæra dags.</button>
@@ -87,40 +98,8 @@
                     <button id="return_button" class="save_button"> Skrá inn</button>
                 </div>
             </div>  
-            <div class="navigation" id="navigation">
-                <ul>
-                    <li>
-                        <a href="../../index.html">Verkfæri</a>
-                    </li>
-                    <li>
-                        <a href="../../bifreiðir/bifreidir.html">Bifreiðir</a>
-                    </li>
-                    <li>
-                        <a href="../../starfsmenn/starfsmenn.html">Starfsmenn</a>
-                    </li>
-                    <li>
-                        <a href="../../stillingar/stillingar.html">Stillingar</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="m_navigation" id="m_navigation">
-                <ul id="nav_ul">
-                    <li id="verkfaeri">
-                        <img class="icon" src="../../../myndir/tools.png" id="tool_icon">
-                    </li>
-                    <li id="bifreidir">
-                        <img class="icon" src="../../../myndir/car1.png" id="car_icon">
-                    </li >
-                    <li id="starfsmenn">
-                        <img class="icon" src="../../../myndir/staff.svg" id="staff_icon">
-                    </li>
-                    <li id="stillingar">
-                        <img class="icon" src="../../../myndir/settings.png" id="settings_icon">
-                    </li>
-                </ul>
-            </div>
         </div>
+        <script src="/Lokaverkefni_2019/vefsiða/config/nav.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>

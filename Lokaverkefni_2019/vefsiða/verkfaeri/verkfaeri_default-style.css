@@ -161,8 +161,6 @@
 
 
         .history_button{
-            position: relative;
-            float: right;
             width: 60%; 
             padding: 2em;
             margin: 0.5em 0 1em 0;
