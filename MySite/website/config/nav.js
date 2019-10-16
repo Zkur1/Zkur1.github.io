@@ -3,7 +3,7 @@ document.getElementById("header").innerHTML += `
     <ul class="nav_ul" id="nav_ul">
         <li id="me">Ég</li>
         <li id="why_me">Afhverju ég?</li>
-        <li id="about_me">Um mig</li>
+        <li id="cars">Flotinn</li>
         <li id="my_projects">Verkefnin mín</li>
     </ul>
 </nav>
@@ -47,8 +47,8 @@ function goToNav(event){
     else if(nav_selector == 'why_me' || nav_selector == 'car_icon'){
         window.open('/MySite/website/index.html','_self')
     }
-    else if(nav_selector == 'about_me' || nav_selector == 'staff_icon'){
-        window.open('/MySite/website/index.html','_self')
+    else if(nav_selector == 'cars' || nav_selector == 'staff_icon'){
+        window.open('/MySite/website/cars/cars.html','_self')
     }
     else if(nav_selector == 'my_projects' || nav_selector == 'settings_icon'){
         window.open('/MySite/website/projects/projects.html','_self')
