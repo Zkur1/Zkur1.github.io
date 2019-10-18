@@ -38,7 +38,7 @@ html{
                 box-shadow: 1.1vw 1.1vw 0px 0px rgba(255, 138, 0, 0.5);
             }
 
-                .dropdown_div input:hover{
+                .dropdown_div input:hover, .dropdown_div input:focus{
                     box-shadow: 1.1vw 1.1vw 0px 0px rgba(89, 205, 241, 0.5);
                     color: rgb(70, 158, 185);
                     cursor: text;
