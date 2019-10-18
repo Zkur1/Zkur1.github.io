@@ -1,7 +1,7 @@
 window.addEventListener('resize', checkForHeight);
 function checkForHeight(){
     if(document.documentElement.offsetHeight > document.getElementById("main").offsetHeight){
-        document.getElementById("main").style.height = "100%";
+        document.getElementById("main").style.height = "90%";
         console.log("100% : " + document.getElementById("main").offsetHeight);
     }
 
