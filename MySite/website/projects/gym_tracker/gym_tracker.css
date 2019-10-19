@@ -21,6 +21,18 @@ html{
         width: 80%;
     }
 
+        .back{
+            position: absolute;
+            top: 2%;
+            left: 2%;
+            max-width: 8%;
+        }
+        
+            .back:hover{
+                src: url("/MySite/pictures/back2.png"); 
+                cursor: pointer;
+            }
+
         .dropdown_div{
             height: 15%;
             width: 60%;
