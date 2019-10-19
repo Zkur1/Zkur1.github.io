@@ -1,6 +1,8 @@
+// Functionality for the "backbutton" in the top left hand corner. 
 let back = document.getElementById("back");
 back.addEventListener('mouseover', backButton);
 back.addEventListener('mouseout', backButton);
+// Highlights the backbutton if hovered over. 
 function backButton(){
     if(back.getAttribute('src') == "/MySite/pictures/back.png"){
         back.setAttribute("src", "/MySite/pictures/back2.png");
@@ -10,12 +12,13 @@ function backButton(){
     }
 }
 
+// Goes back to the "projects.html" if the backbutton is pressed. 
 back.onclick = backBehavior;
 function backBehavior(){
     window.open("/MySite/website/projects/projects.html", "_self");
 }
 
-
+// Keeps the history feed updated at all times through firestore's "onSnapshot" function. 
 function liveHistoryFeed(){
     firestore.collection("gymTracker").doc("gymTrackerDoc").collection("history").onSnapshot(function(){
         renderHistory();
@@ -24,6 +27,7 @@ function liveHistoryFeed(){
 liveHistoryFeed();
 
 
+// Updates the contents of each box in the history feed depending of the content of the database. 
 function renderHistory(){
     let history_ul = document.getElementById("history_ul");
     let counter = -1;
@@ -39,7 +43,6 @@ function renderHistory(){
     }).then(function(){
     });
 }
-
 renderHistory();
 
 
