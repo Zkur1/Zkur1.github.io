@@ -31,11 +31,11 @@ liveHistoryFeed();
 function renderHistory(){
     let history_ul = document.getElementById("history_ul");
     let counter = -1;
-    firestore.collection("gymTracker").doc("gymTrackerDoc").collection("history").orderBy('date', 'desc').limit(5).get().then((snapshot) => {
+    firestore.collection("gymTracker").doc("gymTrackerDoc").collection("history").orderBy('id', 'desc').limit(5).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             counter += 1;
             let data = [doc.data().bodyPart, doc.data().date, doc.data().time];
-            
+        
             for(i=0; i<history_ul.children[counter].childElementCount; i++){
                 history_ul.children[counter].children[i].innerHTML = data[i];
             }
@@ -56,27 +56,35 @@ function saveGymSession(){
 
     // If all the required fields have been filled. 
     if(body_part != "" && date != ""){
-        firestore.collection("gymTracker").doc("gymTrackerDoc").collection("history").add({
-            bodyPart: body_part,
-            date: date,
-            time: time,
+        let id;
+        firestore.collection("gymTracker").doc("gymTrackerDoc").collection("history").doc("counter").get().then(function(doc){
+            id = doc.data().counter + 1;
+            firestore.collection("gymTracker").doc("gymTrackerDoc").collection("history").doc("counter").update({
+                counter: id,
+            });
         }).then(function(){
-            if(main.children[4] != undefined){
-                main.firstChild.remove();
-                document.getElementById("body_part").value = "";
-                document.getElementById("date").value = "";
-                document.getElementById("time").value = "";
-            }
-
-            else{
-                document.getElementById("body_part").value = "";
-                document.getElementById("date").value = "";
-                document.getElementById("time").value = "";
-            }
+            firestore.collection("gymTracker").doc("gymTrackerDoc").collection("history").add({
+                bodyPart: body_part,
+                date: date,
+                time: time,
+                id: id,
+            }).then(function(){
+                if(main.children[4] != undefined){
+                    main.firstChild.remove();
+                    document.getElementById("body_part").value = "";
+                    document.getElementById("date").value = "";
+                    document.getElementById("time").value = "";
+                }
+    
+                else{
+                    document.getElementById("body_part").value = "";
+                    document.getElementById("date").value = "";
+                    document.getElementById("time").value = "";
+                }
+            });
         })
-
-       
     }
+    
     // If all the required fields have not been filled. 
     else if(body_part == "" || date == ""){
         if(main.children[4] == undefined){
