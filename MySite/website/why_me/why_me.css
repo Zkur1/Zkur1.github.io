@@ -1,0 +1,52 @@
+main{
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: #2A2A2A;
+}
+    main div{
+        width: 33.333%;
+    }
+
+    .me_1{
+        max-width: 20%;
+        border-radius: 2vw;
+    }
+
+    .text_container_1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1vw;
+        font-weight: bold;
+        margin: 5% 5% 0 0;
+    }
+
+        .textbox_title{
+            text-align: center;
+            margin: 0 0 0 2vw;
+            padding: 5% 1%;
+            background: #EDEEE9;
+            width: 30%;
+            border-radius: 2vw;
+            box-shadow: 1.1vw 1.1vw 0px 0px rgba(255, 138, 0, 0.5);
+        }
+
+            .textbox_1:hover, .textbox_1:active{
+                box-shadow: 1.1vw 1.1vw 0px 0px rgba(89, 205, 241, 0.5);
+            }
+
+        .general_info{
+            text-align: center;
+            margin: 5% 0 0 3%;
+            padding: 5% 5%;
+            background: #EDEEE9;
+            width: 60%;
+            border-radius: 2vw;
+            box-shadow: 1.1vw 1.1vw 0px 0px rgba(255, 138, 0, 0.5);
+        }
+
+            .general_info:hover, .general_info:active{
+                box-shadow: 1.1vw 1.1vw 0px 0px rgba(89, 205, 241, 0.5);
+            }

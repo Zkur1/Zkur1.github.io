@@ -28,7 +28,7 @@ function goToNav(event){
         window.open("/MySite/website/index.html", "_self");
     }
     else if(nav_selector == 'why_me' || nav_selector == 'car_icon'){
-        window.open('/MySite/website/index.html','_self')
+        window.open('/MySite/website/why_me/why_me.html','_self')
     }
     else if(nav_selector == 'cars' || nav_selector == 'staff_icon'){
         window.open('/MySite/website/cars/cars.html','_self')
