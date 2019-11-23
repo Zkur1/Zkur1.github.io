@@ -98,13 +98,13 @@ html{
 
                     .skipulag:hover .skipulagImg{
                         transform: scale(1.05);
-                        transition: 0.3s;
+                        transition: 0.2s;
                         z-index: 0;
                     }
 
                     .skipulag:hover .skipulagInfo{
                         transform: scale(1.2);
-                        transition: 0.3s;
+                        transition: 0.4s;
                         z-index: 1;
                     }
 
@@ -128,7 +128,7 @@ html{
                         margin-left: -5%;
                         padding: 2%;
                         z-index: 2;
-                        transition: all 0.1s ease-out;
+                        transition: all 0.2s ease-out;
 
                     }
 
@@ -167,13 +167,13 @@ html{
 
                     .serbunadur:hover .serbunadurImg{
                         transform: scale(1.05);
-                        transition: 0.3s;
+                        transition: 0.2s;
                         z-index: 0;
                     }
 
                     .serbunadur:hover .serbunadurInfo{
                         transform: scale(1.2);
-                        transition: 0.3s;
+                        transition: 0.4s;
                         z-index: 1;
                     }
 
@@ -197,7 +197,7 @@ html{
                         margin-right: -5%;
                         padding: 2%;
                         z-index: 2;
-                        transition:all 0.1s ease-out;
+                        transition:all 0.2s ease-out;
 
                     }
 
