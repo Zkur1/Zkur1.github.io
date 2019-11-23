@@ -10,7 +10,7 @@
 }
 
     .nav li{
-
+        transition: all 0.05s ease-in;
     }
         .nav li:hover{
             transform: scale(1.1);
@@ -28,5 +28,4 @@
     }
 
         .nav a:hover{
-            border-bottom: solid 2px;
         }
