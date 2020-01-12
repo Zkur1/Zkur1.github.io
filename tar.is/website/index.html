@@ -6,82 +6,66 @@
         <meta name="description" content="Vefíða TAR ehf.">
         <meta name="author" content="Askur Hugi">
         <title>tar.is</title>
-        <link rel="stylesheet" type="text/css" href="index.css">
-        <link rel="stylesheet" type="text/css" href="config/nav/nav.css"></link>
-        <link rel="stylesheet" type="text/css" href="config/normalize.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Srisakdi" rel="stylesheet">
-        <link rel="icon" href="../pictures/logo/tar.png">
-        <link rel="apple-touch-icon" href="../pictures/logo/tar.png">
-        <!--<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js"></script>-->
+        <link rel="stylesheet" type="text/css" href="/tar.is/website/index.css">
+        <link rel="stylesheet" type="text/css" href="/tar.is/website/config/nav/nav.css">
+        <link rel="stylesheet" type="text/css" href="/tar.is/website/config/normalize.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+        <link rel="icon" href="/tar.is/pictures/logo/tar.png">
+        <link rel="apple-touch-icon" href="../../pictures/logo/tar.png">
     </head>
     
     <body>
         <header>
-            <div class="nav" id="nav"></div>
-            <div class="logo" id="logo">
-                <img src="../pictures/logo/tar3.png">
-            </div>
+                <img id='menuIcon' class='menuIcon' src="/tar.is/pictures/icon/menu.png">
+                <img id='logo' class='logo' src="/tar.is/pictures/logo/circular.png">
+                <img id='searchIcon' class='searchIcon' src="/tar.is/pictures/icon/search.png">
         </header>
-        <div class="main" id="main">
-            <div class="section1" id="section2">
-                <h1>Hugbúnaðarlausnir<br>sérsniðnar þínum þörfum.</h1>
-                <h4>Hugbúnaðurinn frá TAR er góð lausn á skráningu allra eigna fyrirtækja.</h4>
+
+        <div id='main' class='main'>
+            <div id='menuOverlay' class='menuOverlay'>
             </div>
 
-            <div class="section2" id="section2">
-                <div class="skipulag" id="skipulag">
-                    <img src="../pictures/demo/figma_mobile.jpg" class="skipulagImg">
-                    <div class="skipulagInfo" id="skipulagInfo">
-                        <h2 class="skipulagTitle"> Skipulag </h2>
-                        <h5 class="skipulagText">Hugbúnaðurinn frá TAR er góð lausn á skráningu allra eigna fyrirtækja. 
-                                                Verkfæri og bifreiðar eru vistaðar í hugbúnaðinn og þar er hægt að sjá 
-                                                hvar verkfærin eru staðsett og hvaða starfsmaður/verk er skráð á þau.
-                        </h5>
-                        <button class="skoðaNánar" id="skoðaNánar">Skoða nánar</button>
-                    </div>
-                </div>
 
-                <div class="serbunadur" id="serbunadur">
-                    <div class="serbunadurInfo" id="serbunadurInfo">
-                        <h2 class="serbunadurTitle"> Sérbúnaður </h2>
-                        <h5 class="serbunadurText">Við tökum að okkur að hanna og forrita vefsíður fyrir allar tegundir fyrirtækja. 
-                                                   Hafðu samband og við tryggðu þér hágæða vefsíðu á betra verði.
-                        </h5>
-                        <button class="skoðaNánar" id="skoðaNánar">Skoða nánar</button>
-                    </div>
-                    <img src="../pictures/demo/JavaScript.PNG" class="serbunadurImg">
+            <div id='section1' class='section1'>
+                <img id='s1Iphone' class='s1Iphone' src='/tar.is/pictures/appOnDevice/iphone.png'>
+                <div id='s1Info' class='s1Info'>
+                    <h1>Hugbúnaðarlausnir sérsniðnar þínum þörfum</h1>
+                    <h5>Hugbúnaðurinn frá TAR er góð lausn á skráningu allra eigna fyrirtækja.</h5>
+                </div>
+            </div>
+
+
+            <div id='section2' class='section2'>
+                <img src='/tar.is/pictures/appOnDevice/deviceCombo.png'>
+                <div id='s2Info' class='s2Info'>
+                    <h2>Skipulag</h2>
+                    <h3>Hugbúnaðurinn frá TAR er góð lausn á skráningu allra eigna fyrirtækja. 
+                        Verkfæri og bifreiðar eru vistaðar í hugbúnaðinn og þar er hægt að sjá 
+                        hvar verkfærin eru staðsett og hvaða starfsmaður/verk er skráð á þau</h3>
+                </div>
+                <div id='s2Button' class='s2Button'>
+                    <h3>Skoða nánar</h3>
+                </div>
+            </div>
+
+
+            <div id='section3' class='section3'>
+                <img src='/tar.is/pictures/demo/code.png'>
+                <div id='s2Info' class='s2Info'>
+                    <h2>Sérbúnaður</h2>
+                    <h3>Við tökum að okkur að hanna og forrita vefsíður fyrir allar tegundir fyrirtækja. 
+                        Hafðu samband og við tryggðu þér hágæða vefsíðu á betra verði.</h3>
+                </div>
+                <div id='s2Button' class='s2Button'>
+                    <h3>Skoða nánar</h3>
                 </div>
             </div>
         </div>
-    </body>
-    <div class="footerDiv">
-        <div class="footer" id="footer">
-            <div class="footerInfo" id="footerInfo">
-                <h4>TAR hugbúnaðarlausnir</h4>
-                <div class="footerInfoDiv" id="footerInfoDiv">
-                    <div class="infoLeft">
-                        <p class="email">tarSupport@tar.is</p>
-                        
-                        <p class="phoneNr">+354-696-8868</p>
-                    </div>
 
-                    <div class="infoRight">
-                        <p>Reykjavík, Iceland</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="copyright">
-                © 2019 Tar ehf.
-            </div>
-        </div>
-    </div>
+        <footer></footer>
 
-    <!-- Scripts -->
-    <script src="index.js"></script>
-    <script src="config/nav/nav.js"></script>
+        <script src='/tar.is/website/config/nav/nav.js'></script>
+        <script src='/tar.is/website/index.js'></script>
+        
 </html>

@@ -1,0 +1,294 @@
+html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100vw;
+    font-family: Montserrat;
+    font-style: normal;
+}
+
+    body{
+        height: 100%;
+        width: 80%;
+    }
+    
+        header{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            margin: 0 0 2% 0;
+        }
+            .nav{
+                width: 65%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin: 3% 10% 0 0%;
+            }
+
+            .logo{
+                /*position: absolute;
+                right: 14%;
+                top: 2%;*/
+                width: 130px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 360px;
+                margin: 0 0 -5% 0;
+                z-index: 2;
+            }
+                
+                .logo img{
+                    width: 110%;
+                    border-radius: 360px;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    background: white;
+                }
+
+                .logo img:hover{
+                    transform: rotate(360deg);
+                    transition: 0.3s;
+                }
+        
+        .main{
+            height: 90%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 0 0 2% 0;
+            padding: 0;
+        }
+
+            .section1{
+                width: 90%;
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                background: #3FA5D5;
+                color: white;
+                border-radius: 20px;
+                padding: 3% 0% 1% 3%;
+            }
+
+                .section1 h1{
+                    font-size: 50px;
+                    font-weight: bold;
+                    margin: 0;
+                }
+
+                .section1 h4{
+                
+                }
+            
+            .section2{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 2%;
+            }
+
+                .skipulag{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: row;
+                }
+
+                    .skipulag:hover .skipulagImg{
+                        transform: scale(1.05);
+                        transition: 0.2s;
+                        z-index: 0;
+                    }
+
+                    .skipulag:hover .skipulagInfo{
+                        transform: scale(1.2);
+                        transition: 0.4s;
+                        z-index: 1;
+                    }
+
+                    .skipulag img{
+                        width: 60%;
+                        border-radius: 20px;
+                        transition:all 0.1s ease-out;
+                    }
+
+                    .skipulagInfo{
+                        width: 200px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        text-align: center;
+                        background: #3FA5D5;
+                        color: white;
+                        border-radius: 20px;
+                        box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.25);
+                        margin-left: -5%;
+                        padding: 2%;
+                        z-index: 2;
+                        transition: all 0.2s ease-out;
+
+                    }
+
+                        .skipulagTitle{
+                            margin: 5% 0 8% 0;
+                        }
+
+                        .skipulagText{
+                            margin: 0;
+                        }
+
+                        .skoðaNánar{
+                            margin: 8% 0 0 0;
+                            padding: 8% 12%; 
+                            font-size: 20px;
+                            font-weight: bolder;
+                            color: #3FA5D5;
+                            background: white;
+                            border-radius: 20px;
+                            transition: all 0.1s ease-in;
+                        }
+
+                            .skoðaNánar:hover{
+                                color: white;
+                                background: rgb(0, 132, 184);
+                                cursor: pointer;
+                            }
+                
+                .serbunadur{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: row;
+                    margin-top: 2em;
+                }
+
+                    .serbunadur:hover .serbunadurImg{
+                        transform: scale(1.05);
+                        transition: 0.2s;
+                        z-index: 0;
+                    }
+
+                    .serbunadur:hover .serbunadurInfo{
+                        transform: scale(1.2);
+                        transition: 0.4s;
+                        z-index: 1;
+                    }
+
+                    .serbunadur img{
+                        width: 60%;
+                        border-radius: 20px;
+                        transition:all 0.1s ease-out;
+                    }
+
+                    .serbunadurInfo{
+                        width: 180px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        text-align: center;
+                        background: #3FA5D5;
+                        color: white;
+                        border-radius: 20px;
+                        box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.25);
+                        margin-right: -5%;
+                        padding: 2%;
+                        z-index: 2;
+                        transition:all 0.2s ease-out;
+
+                    }
+
+                        .serbunadurTitle{
+                            margin: 5% 0 8% 0;
+                        }
+
+                        .serbunadurText{
+                            margin: 0;
+                        }
+                    
+        .footerDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+            .footer{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                width: 94%;
+                height: 100px;
+                margin: 0 0 20px 0;
+                color: white;
+                background: #3FA5D5;
+                border-radius: 20px;
+            }
+
+                .footerInfo{
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    justify-self: flex-start;
+                    width: 90%;
+                    margin-left: 20px;
+                    font-size: 20px;
+                    font-weight: 900;
+                }
+
+                    .footerInfo h4{
+                        width: 300px;
+                        margin: 0 0 5px 0;
+                        border-bottom: 2px solid white;
+                    }
+
+                    .footerInfoDiv{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        flex-direction: row;
+                        width: 40%;
+                        font-size: 16px;
+                    }
+
+                        .infoLeft{
+                            padding: 0 6px 0 0;
+                            align-self: flex-start;
+                            border-right: 2px solid white;
+                        }
+                    
+                            .email{
+                                margin: 0 0 6px 0;
+                            }
+
+                            .phoneNr{
+                                margin: 0 0 0 0;
+                            }
+
+                        .infoRight{
+                            padding: 0 0 0 6px;
+                            align-self: flex-start;
+                        }
+
+                            .infoRight p{
+                                margin: 0;
+                                padding: 0;
+                            }
+
+
+                .copyright{
+                    width: 13%;
+                    align-self: flex-end;
+                    margin: 0 0 1% 0;
+                    font-size: 16px;
+                    font-weight: 900;
+                }
