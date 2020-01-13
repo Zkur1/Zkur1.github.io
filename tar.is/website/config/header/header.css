@@ -1,0 +1,56 @@
+header{
+    height: 15vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-style: solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-right: none;
+    border-width: 0px;
+    border-color: white;
+}
+
+    .menuIcon{
+        width: 35px;
+        height: 30px;
+        margin-right: 10%;
+        z-index: 1;
+    }
+
+    .logo{
+        width: 133px;
+        height: 133px;
+    }
+
+    .searchIcon{
+        width: 37px;
+        height: 37px;
+        margin-left: 10%;
+    }
+
+
+/* ----------LARGER TABLET / DESKTOP---------- */
+@media only screen and (min-width: 1024px){
+    header{
+        justify-content: flex-end;
+        position: relative;
+        padding: 20px 0 0 0;        
+    }
+        .menuIcon{
+            display: none;
+        }
+
+        .searchIcon{
+            order: 1;
+        }
+
+        .logo{
+            order: 2;
+            width: 220px;
+            height: 220px;
+        }
+}

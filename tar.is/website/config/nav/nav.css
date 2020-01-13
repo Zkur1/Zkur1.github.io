@@ -20,7 +20,7 @@
 
     .menuOverlay.Visible{
         clip-path: ellipse(500px 1200px at -40% 50%);
-        -webkit-clip-path: ellipse(500px 1200px at -40% 50%);
+        -webkit-clip-path: ellipse(135vw 1200px at -40% 50%);
         transition:all 0.5s ease-out;
         overflow: hidden;
         z-index: 0
@@ -33,5 +33,36 @@
         margin: 40px;
     }
 
-    .menuIcon{
+/* ----------MOBILE / TABLET---------- */
+
+@media only screen and (min-width: 768px){
+    .menuOverlay{
+        width: 50%;
     }
+
+    .menuOverlay.Visible{
+        clip-path: ellipse(500px 1200px at -40% 50%);
+        -webkit-clip-path: ellipse(50vw 1200px at 0% 50%);
+    }
+}
+
+/* ----------LARGER TABLET / DESKTOP---------- */
+@media only screen and (min-width: 1024px){
+    .menuOverlay{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        width: 100%;
+        height: 15vh;
+        -webkit-clip-path: none;
+        background: none;
+        padding: 20px 0 0 0;        
+
+    }
+
+        .menuOverlay a{
+            font-size: 25px;
+            font-weight: 600;
+        }
+}

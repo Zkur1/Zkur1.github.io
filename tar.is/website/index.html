@@ -8,57 +8,57 @@
         <title>tar.is</title>
         <link rel="stylesheet" type="text/css" href="/tar.is/website/index.css">
         <link rel="stylesheet" type="text/css" href="/tar.is/website/config/nav/nav.css">
+        <link rel="stylesheet" type="text/css" href="/tar.is/website/config/header/header.css">
         <link rel="stylesheet" type="text/css" href="/tar.is/website/config/normalize.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800&display=swap" rel="stylesheet">
         <link rel="icon" href="/tar.is/pictures/logo/tar.png">
         <link rel="apple-touch-icon" href="../../pictures/logo/tar.png">
     </head>
     
     <body>
         <header>
-                <img id='menuIcon' class='menuIcon' src="/tar.is/pictures/icon/menu.png">
-                <img id='logo' class='logo' src="/tar.is/pictures/logo/circular.png">
-                <img id='searchIcon' class='searchIcon' src="/tar.is/pictures/icon/search.png">
         </header>
 
         <div id='main' class='main'>
-            <div id='menuOverlay' class='menuOverlay'>
-            </div>
-
 
             <div id='section1' class='section1'>
                 <img id='s1Iphone' class='s1Iphone' src='/tar.is/pictures/appOnDevice/iphone.png'>
                 <div id='s1Info' class='s1Info'>
                     <h1>Hugbúnaðarlausnir sérsniðnar þínum þörfum</h1>
-                    <h5>Hugbúnaðurinn frá TAR er góð lausn á skráningu allra eigna fyrirtækja.</h5>
+                    <h5>Hugbúnaðurinn frá TAR er góð lausn á skráningu allra eigna fyrirtækja.
+                    </h5>
                 </div>
             </div>
 
 
             <div id='section2' class='section2'>
-                <img src='/tar.is/pictures/appOnDevice/deviceCombo.png'>
+                <img id='s2Devices' class='s2Devices' src='/tar.is/pictures/appOnDevice/deviceCombo.png'>
                 <div id='s2Info' class='s2Info'>
                     <h2>Skipulag</h2>
-                    <h3>Hugbúnaðurinn frá TAR er góð lausn á skráningu allra eigna fyrirtækja. 
+                    <h3 class="s2Text">Hugbúnaðurinn frá TAR er góð lausn á skráningu allra eigna fyrirtækja. 
                         Verkfæri og bifreiðar eru vistaðar í hugbúnaðinn og þar er hægt að sjá 
-                        hvar verkfærin eru staðsett og hvaða starfsmaður/verk er skráð á þau</h3>
+                        hvar verkfærin eru staðsett og hvaða starfsmaður/verk er skráð á þau
+                    </h3>
+                    <div id='s2Button' class='s2Button'>
+                        <h3>Skoða nánar</h3>
+                    </div>
                 </div>
-                <div id='s2Button' class='s2Button'>
-                    <h3>Skoða nánar</h3>
-                </div>
+                
             </div>
 
 
             <div id='section3' class='section3'>
-                <img src='/tar.is/pictures/demo/code.png'>
-                <div id='s2Info' class='s2Info'>
+                <img class='s3Code' src='/tar.is/pictures/demo/code.png'>
+                <div id='s3Info' class='s3Info'>
                     <h2>Sérbúnaður</h2>
-                    <h3>Við tökum að okkur að hanna og forrita vefsíður fyrir allar tegundir fyrirtækja. 
-                        Hafðu samband og við tryggðu þér hágæða vefsíðu á betra verði.</h3>
+                    <h3 class='s3Text'>Við tökum að okkur að hanna og forrita vefsíður fyrir allar tegundir fyrirtækja. 
+                        Hafðu samband og við tryggðu þér hágæða vefsíðu á betra verði.
+                    </h3>
+                    <div id='s3Button' class='s3Button'>
+                        <h3>Skoða nánar</h3>
+                    </div>
                 </div>
-                <div id='s2Button' class='s2Button'>
-                    <h3>Skoða nánar</h3>
-                </div>
+                
             </div>
         </div>
 
@@ -66,6 +66,7 @@
         <footer></footer>
 
         <script src='/tar.is/website/config/nav/nav.js'></script>
+        <script src='/tar.is/website/config/header/header.js'></script>
         <script src='/tar.is/website/index.js'></script>
         
 </html>

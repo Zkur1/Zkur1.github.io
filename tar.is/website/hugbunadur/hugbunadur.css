@@ -188,3 +188,17 @@ html{
         .footer{
             
         }
+
+/* ----------MOBILE / TABLET---------- */
+@media only screen and (min-width: 768px){
+    .main{
+
+    }
+}
+
+/* ----------LARGER TABLET / DESKTOP---------- */
+@media only screen and (min-width: 1024px){
+    body{
+        width: 80vw;
+    }
+}
