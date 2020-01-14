@@ -1,0 +1,105 @@
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    color: white;
+    font-weight: 400;
+}
+
+    .copyright{
+        margin-bottom: 10px;
+    }
+    
+    .footerInfo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+        .footerInfo h2{
+            margin: 0;
+            border-bottom: solid;
+            border-width: 2px;
+        }
+
+        .footerDetail{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+            .footerDetail h3{
+                margin: 8px 0 0px 0;
+            }
+
+            .emailPhone{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                border-right: solid;
+                border-width: 2px;
+                padding: 0 10px 0 0;
+            }
+
+            .location{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 0 0 10px;
+            }
+
+
+/* ----------LARGER TABLET / DESKTOP---------- */
+@media only screen and (min-width: 1024px){
+    footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    color: white;
+    font-weight: 400;
+    padding-bottom: 20px;
+}
+
+    .copyright{
+        margin-bottom: 10px;
+    }
+    
+    .footerInfo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+        .footerInfo h2{
+            margin: 0;
+            border-bottom: solid;
+            border-width: 2px;
+        }
+
+        .footerDetail{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+            .footerDetail h3{
+                margin: 8px 0 8px 0;
+            }
+
+            .emailPhone{
+                display: block;
+
+                border-right: solid;
+                border-width: 2px;
+                padding: 0 10px 0 0;
+            }
+
+            .location{
+                display: block;
+
+                padding: 0 0 0 10px;
+            }
+}

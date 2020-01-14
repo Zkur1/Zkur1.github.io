@@ -9,7 +9,7 @@ html{
 }
 
     body{
-        height: 100vh;
+        height: 100%;
         width: 100vw;
         background: rgb(2,0,36);
         background: linear-gradient(300deg, rgba(2,0,36,1) 1%, rgba(29,31,74,1) 13%, rgba(42,45,91,1) 43%, rgba(61,59,115,1) 48%, rgba(63,165,213,1) 100%);
@@ -61,6 +61,7 @@ html{
             display: flex;
             flex-direction: column;
             justify-content: center;
+            height: 85vh;
             color: white;
         }
 
