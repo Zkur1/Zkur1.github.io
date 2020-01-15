@@ -1,7 +1,39 @@
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
-   ========================================================================== */
+   /* ------------------------------ SCALING ------------------------------ */
+
+@media only screen and (min-width: 1024px){
+  body{
+      width: 100vw;
+  }
+}
+
+@media only screen and (min-width: 1170px){
+  body{
+      width: 90vw;
+  }
+}
+
+@media only screen and (min-width: 1300px){
+  body{
+      width: 80vw;
+  }
+}
+
+@media only screen and (min-width: 1400px){
+  body{
+      width: 70vw;
+  }
+}
+
+@media only screen and (min-width: 1650px){
+  body{
+      width: 1200px;
+  }
+}
+
+/* ------------------------------ SCALING ------------------------------ */
 
 /**
  * 1. Correct the line height in all browsers.

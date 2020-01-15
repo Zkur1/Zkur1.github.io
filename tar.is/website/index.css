@@ -168,10 +168,12 @@ html{
     }
 }
 
+
+
 /* ----------LARGER TABLET / DESKTOP---------- */
 @media only screen and (min-width: 1024px){
     body{
-        width: 80vw;
+        width: 60vw;
     }
 
         .main{
@@ -179,7 +181,7 @@ html{
 
             .section1{
                 flex-direction: row;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
                 height: 100%;
                 
@@ -200,7 +202,7 @@ html{
                     order: 1;
                     width: 320px;
 
-                    padding: 0% 5% 0% 5%;
+                    padding: 0% 0% 0% 5%;
                     transition:all 0.6s ease-out;
                 }
 
@@ -229,7 +231,7 @@ html{
                 align-items: flex-start;
                 height: 100%;
                 
-                padding: 0% 0% 4% 10%;
+                padding: 0% 0% 4% 0%;
             }
 
                 .section2:hover .s2Devices{
@@ -279,7 +281,7 @@ html{
                 align-items: flex-end;
                 height: 100%;
                 
-                padding: 0% 10% 4% 0%;
+                padding: 0% 0% 4% 0%;
             }
 
                 .section3:hover .s3Code{
@@ -322,5 +324,4 @@ html{
                     .s3Button{
                         margin: 8% 0 0%;
                     }
-
 }

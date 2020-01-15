@@ -53,6 +53,7 @@
     .menuOverlay{
         display: flex;
         flex-direction: row;
+        justify-content: flex-start;
         position: relative;
 
         width: 100%;
@@ -72,4 +73,10 @@
         .menuOverlay a:hover{
             border-bottom: solid;
         }
+
+        .menuOverlay .heim{
+            margin-left: 0;
+        }
+
+        
 }
