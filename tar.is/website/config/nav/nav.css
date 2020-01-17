@@ -80,3 +80,10 @@
 
         
 }
+
+/* ---------- Laptops ---------- */
+@media only screen and (max-height: 700px){
+    .menuOverlay a{
+        font-size: 20px;
+    }
+}

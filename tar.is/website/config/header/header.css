@@ -55,3 +55,11 @@ header{
             height: 138px;
         }
 }
+
+/* ---------- Laptops ---------- */
+@media only screen and (max-height: 700px) and (max-width: 1024){
+    .logo{
+        width: 125px;
+        height: 125px;
+    }
+}
