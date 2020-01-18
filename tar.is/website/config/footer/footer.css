@@ -83,6 +83,7 @@ footer{
             margin: 0;
             border-bottom: solid;
             border-width: 2px;
+            font-size: 25px;
         }
 
         .footerDetail{
@@ -93,6 +94,7 @@ footer{
 
             .footerDetail h3{
                 margin: 8px 0 8px 0;
+                font-size: 18px;
             }
 
             .emailPhone{
@@ -108,4 +110,8 @@ footer{
 
                 padding: 0 0 0 10px;
             }
+    
+    .copyright{
+        font-size: 18px;
+    }
 }
