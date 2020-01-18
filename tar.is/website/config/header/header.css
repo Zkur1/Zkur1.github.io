@@ -57,9 +57,34 @@ header{
 }
 
 /* ---------- Laptops ---------- */
-@media only screen and (max-height: 700px) and (max-width: 1024){
-    .logo{
-        width: 125px;
-        height: 125px;
+@media only screen and (max-height: 800px){
+    @media only screen and (min-width: 1024px){
+        .logo{
+            width: 120px;
+            height: 120px;
+        }
+    }
+}
+
+/* ---------- Small phones ---------- */
+@media only screen and (max-height: 650px){
+    @media only screen and (max-width: 412px){
+        .menuIcon{
+            width: 25px;
+            height: 25px;
+            margin-right: 40px;
+            z-index: 1;
+        }
+    
+        .logo{
+            width: 80px;
+            height: 80px;
+        }
+    
+        .searchIcon{
+            width: 29px;
+            height: 29px;
+            margin-left: 40px;
+        }
     }
 }

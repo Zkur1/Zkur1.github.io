@@ -82,8 +82,10 @@
 }
 
 /* ---------- Laptops ---------- */
-@media only screen and (max-height: 700px){
-    .menuOverlay a{
-        font-size: 20px;
+@media only screen and (max-height: 800px){
+    @media only screen and (min-width: 1024px){
+        .menuOverlay a{
+            font-size: 20px;
+        }
     }
 }
