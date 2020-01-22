@@ -1,9 +1,9 @@
 header{
-    height: 15vh;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 15vh;
+    width: 100%;
 
     border-style: solid;
     border-top: none;
