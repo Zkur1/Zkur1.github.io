@@ -21,6 +21,10 @@ header{
         z-index: 1;
     }
 
+        .menuIcon:hover{
+            cursor: pointer;
+        }
+
     .logo{
         width: 100px;
         height: 100px;
@@ -32,6 +36,9 @@ header{
         margin-left: 40px;
     }
 
+    .searchIcon:hover{
+        cursor: pointer;
+    }
 
 /* ----------LARGER TABLET / DESKTOP---------- */
 @media only screen and (min-width: 1024px){

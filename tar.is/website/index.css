@@ -107,6 +107,10 @@ html{
                     margin: 15% 0 0 0 ;
                 }
 
+                    .s2Button:hover{
+                        cursor: pointer;
+                    }
+
             .section3{
                 display: flex;
                 flex-direction: column;
@@ -155,6 +159,9 @@ html{
                     border-radius: 15px;
                     margin: 15% 0 0 0 ;
                 }
+                    .s3Button:hover{
+                        cursor: pointer;
+                    }
 
         .footer{
             
