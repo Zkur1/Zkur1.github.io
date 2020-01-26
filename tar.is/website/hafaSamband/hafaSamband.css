@@ -52,6 +52,7 @@ html{
 
             .info{
                 width: 70%;
+                display: none;
             }
 
                 .info div{
@@ -96,8 +97,18 @@ html{
                     background: white;
                     color: #3FA5D5;
                     border-radius: 15px;
-                    margin: 20px 0 ;
+                    margin: 0 0 50px 0 ;
+                    background: linear-gradient(to bottom, white 50%, #3FA5D5 50%);
+                    background-size: 100% 200%;
+                    background-position: top;
+                    transition:all 0.2s ease;
                 }
+
+                    .info .button:hover{
+                        cursor: pointer;
+                        color: white;
+                        background-position:bottom;
+                    }
 
                     .info .button h3{
                         margin: 0;

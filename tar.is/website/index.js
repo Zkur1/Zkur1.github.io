@@ -10,7 +10,7 @@ function s2func(){
 }
 
 // Identifies the button and attaches an "onclick" listener to it that runs "s3func" when activated. 
-let s3Button = document.getElementsByClassName('s3Button')[0];
+let s3Button = document.getElementById('s3Button');
 if(s3Button != undefined){
     s3Button.onclick = s3func;
 }

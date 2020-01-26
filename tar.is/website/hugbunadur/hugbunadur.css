@@ -231,9 +231,11 @@ html{
 
                 .s2Info{
                     align-items: flex-start;
+                    height: 100%;
                 }
 
                     .s2Info h2{
+                        justify-self: flex-start;
                         font-size: 40px;
                         text-shadow: 3px 3px black;
                     }
@@ -246,6 +248,7 @@ html{
                 }    
 
                 .s2Button{
+                    margin: 50px 22% 0 0;
                 }
 
             .section3{

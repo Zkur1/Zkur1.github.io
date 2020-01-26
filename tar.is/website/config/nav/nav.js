@@ -3,9 +3,9 @@ window.onload = function buildNav(){
     document.querySelector("header").innerHTML += `
         <div id='menuOverlay' class='menuOverlay'>
             <a href='/tar.is/website/' class='heim'>Heim</a>
-            <a href='/tar.is/website/hugbunadur/hugbunadur.html'>Hugbúnaðarlausnir</a>
-            <a href='/tar.is/website/umOkkur/umOkkur.html'>Um okkur</a>
-            <a href='/tar.is/website/hafaSamband/hafaSamband.html'>Hafa samband</a>
+            <a href='/tar.is/website/hugbunadur/hugbunadur.html' class='hugbunadur'>Hugbúnaðarlausnir</a>
+            <a href='/tar.is/website/umOkkur/umOkkur.html' class='umOkkur'>Um okkur</a>
+            <a href='/tar.is/website/hafaSamband/hafaSamband.html' class='hafaSamband'>Hafa samband</a>
         </div>
     `
 
@@ -20,8 +20,8 @@ window.onload = function buildNav(){
     logo.onclick = goHome;
     }
 
+    // Opens the "index.html" page in the current tab. 
     function goHome(){
-        console.log('?')
         window.open('/tar.is/website/index.html', '_self')
     }
 
@@ -45,4 +45,27 @@ window.onload = function buildNav(){
         }
     }
 
+    function navHighlight(){
+        let heim = document.getElementsByClassName('heim')[0];
+        let hugbunadur = document.getElementsByClassName('hugbunadur')[0];
+        let umOkkur = document.getElementsByClassName('umOkkur')[0];
+        let hafaSamband = document.getElementsByClassName('hafaSamband')[0];
+    
+        let url = window.location.href;
+        url = url.split(window.location.origin).pop();
+    
+        if(url == '/tar.is/website/'){
+            heim.style.borderBottom = 'solid';
+        }
+        if(url == '/tar.is/website/hugbunadur/hugbunadur.html'){
+            hugbunadur.style.borderBottom = 'solid';
+        }
+        if(url == '/tar.is/website/umOkkur/umOkkur.html'){
+            umOkkur.style.borderBottom = 'solid';
+        }
+        if(url == '/tar.is/website/hafaSamband/hafaSamband.html'){
+            hafaSamband.style.borderBottom = 'solid';
+        }
+    }
+    navHighlight();
 }
