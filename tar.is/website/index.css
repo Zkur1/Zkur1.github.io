@@ -50,6 +50,7 @@ html{
                         width: 90%;
                         font-weight: bold;
                         margin: 5% 0 0 0 ;
+                        text-shadow: 3px 3px black;
                     }
 
                     .s1Info h5{
@@ -84,7 +85,9 @@ html{
                         font-size: 25px;
                         width: 80%;
                         font-weight: bold;
-                        margin: 5% 0 0 0 ;
+                        margin: 5% 0 0 0;
+                        text-shadow: 3px 3px black;
+
                     }
 
                     .s2Text{
@@ -101,14 +104,20 @@ html{
                     width: 200px;
                     height: 50px;
 
-                    background: white;
                     color: #3FA5D5;
+                    background: linear-gradient(to bottom, white 50%, #3FA5D5 50%);
+                    background-size: 100% 200%;
+                    background-position: top;
+                    margin-left:10px;
+                    transition:all 0.2s ease;
                     border-radius: 15px;
                     margin: 15% 0 0 0 ;
                 }
 
                     .s2Button:hover{
                         cursor: pointer;
+                        color: white;
+                        background-position: bottom;
                     }
 
             .section3{
@@ -137,7 +146,8 @@ html{
                         font-size: 25px;
                         width: 80%;
                         font-weight: bold;
-                        margin: 5% 0 0 0 ;
+                        margin: 5% 0 0 0;
+                        text-shadow: 3px 3px black;
                     }
 
                     .s3Text{
@@ -145,22 +155,6 @@ html{
                         width: 80%;
                         font-weight: 600;
                         margin: 5% 0 0 0 ;
-                    }
-
-                .s3Button{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 200px;
-                    height: 50px;
-
-                    background: white;
-                    color: #3FA5D5;
-                    border-radius: 15px;
-                    margin: 15% 0 0 0 ;
-                }
-                    .s3Button:hover{
-                        cursor: pointer;
                     }
 
         .footer{

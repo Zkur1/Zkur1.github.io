@@ -30,6 +30,10 @@ header{
         height: 100px;
     }
 
+        .logo:hover{
+            cursor: pointer;
+        }
+
     .searchIcon{
         width: 38px;
         height: 38px;

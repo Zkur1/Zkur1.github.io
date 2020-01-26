@@ -15,6 +15,16 @@ window.onload = function buildNav(){
         menuIcon.onclick = showMenu;
     }
 
+    let logo = document.getElementById('logo');
+    if(logo != undefined){
+    logo.onclick = goHome;
+    }
+
+    function goHome(){
+        console.log('?')
+        window.open('/tar.is/website/index.html', '_self')
+    }
+
     // Hides/Displays the navigation menu onclick of the menu icon. 
     function showMenu(){
         let menu = document.getElementById('menuOverlay');
@@ -34,4 +44,5 @@ window.onload = function buildNav(){
             body.style.overflow = 'hidden';
         }
     }
+
 }

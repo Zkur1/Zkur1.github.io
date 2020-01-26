@@ -21,6 +21,7 @@ html{
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             height: 100%;
             color: white;
         }
@@ -30,14 +31,16 @@ html{
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-
-                height: 70vh;
+                
+                width: 100%;
+                height: auto;
                 text-align: center;
+                margin: 0 0 50px 0;
             }
 
-                .s1Devices{
+                .s1Mobile{
                     width: 300px;
-                    padding: 50px 0 0 50px;
+                    border-radius: 15px;
                 }
                 
                 .s1Info{
@@ -46,6 +49,13 @@ html{
                     align-items: center;
 
                 }
+
+                    .infoText{
+                        font-size: 16px;
+                        width: 80%;
+                        font-weight: 600;
+                        margin: 5% 0 0 0 ;
+                    }
 
                     .s1Info h1{
                         font-size: 30px;
@@ -65,8 +75,9 @@ html{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                justify-content: flex-start;
                 
-                height: 65vh;
+                height: auto;
                 text-align: center;
             }
 
@@ -74,8 +85,6 @@ html{
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-
-                    margin: 10% 0 0 0;
                 }
 
                     .s2Info h2{
@@ -84,16 +93,9 @@ html{
                         font-weight: bold;
                         margin: 5% 0 0 0 ;
                     }
-
-                    .s2Info h3{
-                        font-size: 16px;
-                        width: 80%;
-                        font-weight: 600;
-                        margin: 5% 0 0 0 ;
-                    }
                 
                 .s2Mobile{
-                    width: 300px;
+                    width: 200px;
                     border-radius: 25px;
                     margin: 50px 0;
                 }    
@@ -108,24 +110,33 @@ html{
                     background: white;
                     color: #3FA5D5;
                     border-radius: 15px;
-                    margin: 15% 0 0 0 ;
+                    margin: 0 0 50px 0 ;
+                    background: linear-gradient(to bottom, white 50%, #3FA5D5 50%);
+                    background-size: 100% 200%;
+                    background-position: top;
+                    transition:all 0.2s ease;
                 }
+
+                    .s2Button:hover{
+                        cursor: pointer;
+                        color: white;
+                        background-position:bottom;
+                    }
 
             .section3{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 
-                height: 70vh;
+                height: auto;
                 text-align: center;
+                margin-bottom: 50px;
             }
 
                 .s3Info{
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-
-                    margin: 10% 0 0 0;
                 }
 
                     .s3Info h2{
@@ -135,17 +146,11 @@ html{
                         margin: 5% 0 0 0 ;
                     }
 
-                    .s3Info h3{
-                        font-size: 16px;
-                        width: 80%;
-                        font-weight: 600;
-                        margin: 5% 0 0 0 ;
-                    }
-
                 .s3Mobile{
-                    width: 300px;
+                    display: none;
+                    width: 200px;
                     border-radius: 25px;
-                    margin: 50px 0;
+                    margin: 50px 0 0 0;
                 }
 
                 .s3Button{
@@ -177,4 +182,101 @@ html{
     body{
         width: 80vw;
     }
+
+        .main{
+        }
+
+            .section1{
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+                .s1Info{
+                    position: relative;
+                    align-items: flex-start;
+                    left: 0; 
+                    width: 90%;
+                    text-align: start;
+                }
+
+                    .s1Info h1{
+                        font-size: 60px;
+                        text-shadow: 3px 3px black;
+                    }
+
+                    .s1Info h5{
+                        font-size: 20px;
+                    }
+
+                .imgWrap{
+                    display: flex;
+                    justify-content: flex-end;
+                    width: 30%;
+                    padding: 50px 0 0 0;
+
+                }
+
+                    .s1Mobile{
+                        position: relative;
+                        right: 0;
+                        width: 700px;
+                        z-index: -1;
+                    }
+            
+            .section2{
+                flex-direction: row;
+                width: 80%; 
+            }
+
+                .s2Info{
+                    align-items: flex-start;
+                }
+
+                    .s2Info h2{
+                        font-size: 40px;
+                        text-shadow: 3px 3px black;
+                    }
+
+                    .s2Info h3{
+                        font-size: 20px;
+                    }
+                
+                .s2Mobile{
+                }    
+
+                .s2Button{
+                }
+
+            .section3{
+                flex-direction: row;
+                width: 80%; 
+            }
+
+                .s3Info{
+                    order: 1;
+                    align-items: flex-end;
+                }
+
+                    .s3Info h2{
+                        font-size: 60px;
+                    }
+
+                    .s3Info h3{
+                        font-size: 20px;
+                    }
+
+                .s3Mobile{
+                    order: 0;
+                    display: block;
+                    width: 300px;
+                    margin: 0;
+                }
+
+                .s3Button{
+                }
+}
+
+/* ----------24"+ Desktop---------- */
+@media only screen and (min-width: 1700px){
 }
