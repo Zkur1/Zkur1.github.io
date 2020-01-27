@@ -52,7 +52,7 @@ html{
 
             .info{
                 width: 70%;
-                display: none;
+                display: block;
             }
 
                 .info div{
