@@ -22,7 +22,35 @@ function showMenu(){
     }
     else{
         body.style.overflow = 'hidden';
-    }
+    }   
+}
 
-    
+let submit = document.getElementsByClassName('button')[0];
+if(submit != undefined){
+    submit.onclick = openEmail;
+}
+
+function openEmail(){
+    let name = document.getElementsByClassName('nameIn')[0].value;
+    let subject = document.getElementsByClassName('subjectIn')[0].value;
+    let phone = document.getElementsByClassName('phoneIn')[0].value;
+    let text = document.getElementsByClassName('textIn')[0].value;
+
+    var form = document.createElement('form');
+	
+	//Set the form attributes 
+	form.setAttribute('method', 'post');
+	form.setAttribute('enctype', 'text/plain');
+    form.setAttribute('action', 'mailto:' + encodeURIComponent('tar@tar.is') + '?Subject=' + encodeURIComponent(name + ' - ' + subject)
+                      + '&Body=' + encodeURIComponent(text + '   - ' + name + ' - ' + phone));
+	form.setAttribute('style', 'display:none');
+	
+	//Append the form to the body
+	document.body.appendChild(form);
+ 
+	//Submit the form
+	form.submit();
+	
+	//Clean up
+	document.body.removeChild(form);
 }
