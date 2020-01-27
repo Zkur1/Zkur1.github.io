@@ -1,5 +1,5 @@
 // Identifies the button and attaches an "onclick" listener to it that runs "s2func" when activated. 
-let s2Button = document.getElementsByClassName('s3Button')[0];
+let s2Button = document.getElementsByClassName('s2Button')[0];
 if(s2Button != undefined){
     s2Button.onclick = s2func;
 }

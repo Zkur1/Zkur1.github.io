@@ -59,18 +59,18 @@
         height: 15vh;
         -webkit-clip-path: none;
         background: none;
-        padding: 20px 0 0 0;        
+        padding: 10px 0 0 0;        
 
     }
 
         .menuOverlay a{
-            font-size: 25px;
+            font-size: 26px;
             font-weight: 600;
             transition:all 0.1s ease-out;
         }
 
         .menuOverlay a:hover{
-            border-bottom: solid;
+            text-shadow: 4px 4px black;
         }
 
         .menuOverlay .heim{

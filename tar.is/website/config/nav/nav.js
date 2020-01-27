@@ -55,16 +55,16 @@ window.onload = function buildNav(){
         url = url.split(window.location.origin).pop();
     
         if(url == '/tar.is/website/'){
-            heim.style.borderBottom = 'solid';
+            heim.style.textShadow = '2px 2px black';
         }
         if(url == '/tar.is/website/hugbunadur/hugbunadur.html'){
-            hugbunadur.style.borderBottom = 'solid';
+            hugbunadur.style.textShadow = '2px 2px black';
         }
         if(url == '/tar.is/website/umOkkur/umOkkur.html'){
-            umOkkur.style.borderBottom = 'solid';
+            umOkkur.style.textShadow = '2px 2px black';
         }
         if(url == '/tar.is/website/hafaSamband/hafaSamband.html'){
-            hafaSamband.style.borderBottom = 'solid';
+            hafaSamband.style.textShadow = '2px 2px black';
         }
     }
     navHighlight();
