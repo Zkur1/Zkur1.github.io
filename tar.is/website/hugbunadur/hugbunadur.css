@@ -62,6 +62,7 @@ html{
                         width: 90%;
                         font-weight: bold;
                         margin: 5% 0 0 0 ;
+                        text-shadow: 3px 3px black;
                     }
 
                     .s1Info h5{
@@ -92,6 +93,7 @@ html{
                         width: 80%;
                         font-weight: bold;
                         margin: 5% 0 0 0 ;
+                        text-shadow: 3px 3px black;
                     }
                 
                 .s2Mobile{
@@ -110,7 +112,7 @@ html{
                     background: white;
                     color: #3FA5D5;
                     border-radius: 15px;
-                    margin: 0 0 50px 0 ;
+                    margin: 30px 0 30px 0;
                     background: linear-gradient(to bottom, white 50%, #3FA5D5 50%);
                     background-size: 100% 200%;
                     background-position: top;
@@ -143,7 +145,8 @@ html{
                         font-size: 25px;
                         width: 80%;
                         font-weight: bold;
-                        margin: 5% 0 0 0 ;
+                        margin: 5% 0 0 0;
+                        text-shadow: 3px 3px black;
                     }
 
                 .s3Mobile{
@@ -192,12 +195,24 @@ html{
                 align-items: center;
             }
 
+                .section1:hover .s1Mobile{
+                    transform: scale(1.05);
+                    transition:all 0.3s ease-out;
+                }
+
+                .section1:hover .s1Info{
+                    transform: scale(1.05);
+                    transition:all 0.6s ease-out;
+                }
+
                 .s1Info{
                     position: relative;
                     align-items: flex-start;
                     left: 0; 
                     width: 90%;
                     text-align: start;
+                    align-items: center;
+                    transition:all 1s ease-out;
                 }
 
                     .s1Info h1{
@@ -222,6 +237,7 @@ html{
                         right: 0;
                         width: 700px;
                         z-index: -1;
+                        transition:all 0.6s ease-out;
                     }
             
             .section2{
@@ -229,9 +245,20 @@ html{
                 width: 80%; 
             }
 
+                .section2:hover .s2Mobile{
+                    transform: scale(1.05);
+                    transition:all 0.3s ease-out;
+                }
+
+                .section2:hover .s2Info{
+                    transform: scale(1.05);
+                    transition:all 0.6s ease-out;
+                }
+
                 .s2Info{
                     align-items: flex-start;
                     height: 100%;
+                    transition:all 1s ease-out;
                 }
 
                     .s2Info h2{
@@ -245,6 +272,7 @@ html{
                     }
                 
                 .s2Mobile{
+                    transition:all 0.6s ease-out;
                 }    
 
                 .s2Button{
@@ -256,9 +284,20 @@ html{
                 width: 80%; 
             }
 
+                .section3:hover .s3Mobile{
+                    transform: scale(1.05);
+                    transition:all 0.3s ease-out;
+                }
+
+                .section3:hover .s3Info{
+                    transform: scale(1.05);
+                    transition:all 0.6s ease-out;
+                }
+
                 .s3Info{
                     order: 1;
                     align-items: flex-end;
+                    transition:all 1s ease-out;
                 }
 
                     .s3Info h2{
@@ -272,11 +311,13 @@ html{
                 .s3Mobile{
                     order: 0;
                     display: block;
-                    width: 300px;
+                    width: 320px;
                     margin: 0;
+                    transition:all 0.6s ease-out;
                 }
 
                 .s3Button{
+                    margin: 0 0 50px 0;
                 }
 }
 
