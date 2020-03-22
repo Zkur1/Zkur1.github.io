@@ -32,6 +32,273 @@ html{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+
+                padding-top: 5%;
+                text-align: center;
+            }
+
+                .titleDiv{
+                    font-size: 48pt;
+                    margin: 10% 0 2.5% 0;
+                }
+
+                    .titleDiv .taxi{
+                        font-weight: 500;
+                    }
+                
+                .subTitleDiv{
+                    font-size: 18pt;
+                    margin-bottom: 10%;
+                }
+
+                .clipArt{
+                    width: 80%;
+                }
+
+                .callOrBookDiv{
+                    margin: 10% 0 10% 0;
+                    font-size: 36pt;
+                }
+
+                    .orSpacer{
+                        font-weight: 800;
+                    }
+
+            
+            .section2{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                margin: 10% 0 10% 0;
+                text-align: center;
+            }
+
+                .info{
+                    width: 80%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .info div{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        height: 40%;
+                        max-width: 100%;
+                    }
+
+                    .info h3{
+                        margin-bottom: 8px;
+                    }
+
+                    .info div input{
+                        margin: 2.5% 0;
+                        font-size: 30pt;
+                        padding: 5px;
+                        background: black;
+                        color: #FFB015;
+                    }
+
+                        .info div input:focus{
+                            background: white;
+                            color: black;
+                        }
+
+                            .info div input:focus::placeholder{
+                                color: black;
+                            }
+
+                        .info div input::placeholder {
+                            color: white;
+                        }
+                        
+                    .info .text{
+                        width: 100%;
+                    }
+
+                    .info div .textIn{
+                        height: 90px;
+                        margin: 10px 0;
+                        padding: 5px;
+                        resize: none;
+                        background: black;
+                        color:#FFB015;
+                    }
+
+                        .info div .textIn:focus{
+                            background: white;
+                            color: black;
+                        }
+
+                            .info div .textIn:focus::placeholder{
+                                color: black;
+                            }
+
+                        .info div .textIn::placeholder {
+                            color: white;
+                        }
+
+                    .info .button{
+                        display: flex;
+                        align-self: center;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+
+                        margin: 2.5%;
+                        padding: 2.5% 5%;
+                        background: black;
+                        color: white;
+                        transition:all 0.2s ease;
+                    }
+
+                        .info .button:hover{
+                            cursor: pointer;
+                            color: white;
+                            background-position:bottom;
+                        }
+
+                        .info .button h3{
+                            font-size: 30pt;
+                            margin: 0;
+                        }
+
+            .section3{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 0vh;
+
+                text-align: center;
+            }
+
+                .s3Code{
+                    width: 330px;
+                    border-radius: 25px;
+                }
+
+                .s3Info{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    margin: 10% 0 0 0;
+                }
+
+                    .s3Info h2{
+                        font-size: 25px;
+                        width: 80%;
+                        font-weight: bold;
+                        margin: 5% 0 0 0;
+                        text-shadow: 3px 3px black;
+                    }
+
+                    .s3Text{
+                        font-size: 16px;
+                        width: 80%;
+                        font-weight: 600;
+                        margin: 5% 0 0 0 ;
+                    }
+
+            footer{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            
+                color: black;
+                font-weight: 400;
+            }
+            
+                .copyright{
+                    margin-bottom: 10px;
+                }
+                
+                .footerInfo{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 80%;
+                }
+                    .footerInfo h2{
+                        margin: 0;
+                        border-bottom: solid;
+                        border-width: 2px;
+                        font-size: 20px;
+                    }
+            
+                    .footerDetail{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                    }
+            
+                        .footerDetail h3{
+                            margin: 8px 0 0px 0;
+                            font-size: 15px;
+                        }
+            
+                        .emailPhone{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+            
+                            border-right: none;
+                            border-width: 2px;
+                            padding: 0 10px 0 0;
+                        }
+            
+                        .location{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            padding: 0 0 0 10px;
+                        }
+                    
+                    .copyright{
+                        font-size: 12px;
+                    }
+        
+
+
+/* ----------MOBILE / TABLET---------- */
+
+@media only screen and (min-width: 768px){
+    .main{
+
+    }
+}
+
+
+
+/* ----------LARGER TABLET / DESKTOP---------- */
+@media only screen and (min-width: 1024px){
+    body{
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        font-weight: 100;
+    }
+
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: black;
+        }
+            .boldSpan{
+                font-weight: 500;
+            }
+
+            .section1{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
                 height: 100vh;
 
                 padding-top: 5%;
@@ -39,6 +306,7 @@ html{
             }
 
                 .titleDiv{
+                    order: 0;
                     font-size: 48pt;
                     margin: 10% 0 10% 0;
                 }
@@ -47,7 +315,13 @@ html{
                         font-weight: 500;
                     }
 
+                .clipArt{
+                    order: 2;
+                    width: 200%;
+                }
+
                 .callOrBookDiv{
+                    order: 1;
                     margin: 10% 0 10% 0;
                     font-size: 36pt;
                 }
@@ -194,173 +468,59 @@ html{
                         margin: 5% 0 0 0 ;
                     }
 
-        .footer{
-            
-        }
-
-
-/* ----------MOBILE / TABLET---------- */
-
-@media only screen and (min-width: 768px){
-    .main{
-
-    }
-}
-
-
-
-/* ----------LARGER TABLET / DESKTOP---------- */
-@media only screen and (min-width: 1024px){
-    body{
-        width: 60vw;
-    }
-
-        .main{
-        }
-
-            .section1{
+            footer{
+                display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-                align-items: center;
-                height: 100%;
-                
-                padding: 4% 0% 4% 0;
+                align-items: flex-end;
+            
+                color: white;
+                font-weight: 400;
+                padding-bottom: 15px;
             }
-
-                .section1:hover .s1Iphone{
-                    transform: scale(1.05);
-                    transition:all 0.3s ease-out;
+            
+                .copyright{
+                    margin-bottom: 10px;
                 }
-
-                .section1:hover .s1Info{
-                    transform: scale(1.05);
-                    transition:all 0.6s ease-out;
-                }
-
-                .s1Iphone{
-                    order: 1;
-                    width: 330px;
-
-                    padding: 0% 0% 0% 5%;
-                    transition:all 0.6s ease-out;
-                }
-
-                .s1Info{
-                    order: 0;
-                    height: 100%;
-                    width: 60%;
-                    justify-content: center;
-                    align-items: flex-start;
-                    text-align: start;
-                    margin-bottom: 15%;
-                    transition:all 1s ease-out;
-                }
-
-                    .s1Info h1{
-                        font-size: 60px;
-                    }
-                    
-                    .s1Info h5{
-                        font-size: 20px;
-                    }
-
-            .section2{
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                height: 100%;
                 
-                padding: 0% 0% 4% 0%;
-            }
-
-                .section2:hover .s2Devices{
-                    transform: scale(1.05);
-                    transition:all 0.3s ease-out;
-                }
-
-                .section2:hover .s2Info{
-                    transform: scale(1.05);
-                    transition:all 0.6s ease-out;
-                }
-
-                .s2Devices{
-                    order: 0;
-                    width: 520px;
-
-                    padding: 0% 0% 0% 0%;
-                    transition:all 0.3s ease-out;
-                }
-
-                .s2Info{
-                    order: 1;
-                    height: 100%;
-                    width: 60%;
+                .footerInfo{
+                    display: flex;
+                    flex-direction: column;
                     justify-content: center;
-                    align-items: flex-start;
-                    text-align: start;
-                    margin: 0 0 0 0;
-                    transition:all 0.6s ease-out;
                 }
-
-                    .s2Info h2{
-                        font-size: 60px;
-                    }
-                    
-                    .s2Text{
-                        font-size: 20px;
-                    }
-
-                    .s2Button{
-                        margin: 8% 0 0%;
+                    .footerInfo h2{
+                        margin: 0;
+                        border-bottom: solid;
+                        border-width: 2px;
+                        font-size: 25px;
                     }
             
-            .section3{
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-end;
-                height: 100%;
+                    .footerDetail{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                    }
+            
+                        .footerDetail h3{
+                            margin: 8px 0 8px 0;
+                            font-size: 18px;
+                        }
+            
+                        .emailPhone{
+                            display: block;
+            
+                            border-right: solid;
+                            border-width: 2px;
+                            padding: 0 10px 0 0;
+                        }
+            
+                        .location{
+                            display: block;
+            
+                            padding: 0 0 0 10px;
+                        }
                 
-                padding: 0% 0% 4% 0%;
-            }
-
-                .section3:hover .s3Code{
-                    transform: scale(1.05);
-                    transition:all 0.3s ease-out;
+                .copyright{
+                    font-size: 18px;
                 }
-
-                .section3:hover .s3Info{
-                    transform: scale(1.05);
-                    transition:all 0.6s ease-out;
-                }
-
-                .s3Code{
-                    order: 0;
-                    width: 500px;
-
-                    padding: 0% 0% 0% 0%;
-                    transition:all 0.3s ease-out;
-                }
-
-                .s3Info{
-                    order: 1;
-                    height: 100%;
-                    width: 60%;
-                    justify-content: center;
-                    align-items: flex-end;
-                    text-align: end;
-                    margin: 0 0 0 0;
-                    transition:all 0.6s ease-out;
-                }
-
-                    .s3Info h2{
-                        font-size: 60px;
-                    }
-                    
-                    .s3Text{
-                        font-size: 20px;
-                    }
-
-                    .s3Button{
-                        margin: 8% 0 0%;
-                    }
 }
