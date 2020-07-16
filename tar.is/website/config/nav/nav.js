@@ -4,7 +4,6 @@ window.onload = function buildNav(){
         <div id='menuOverlay' class='menuOverlay'>
             <a href='/tar.is/website/' class='heim'>Heim</a>
             <a href='/tar.is/website/hugbunadur/hugbunadur.html' class='hugbunadur'>Hugbúnaðarlausnir</a>
-            <a href='/tar.is/website/umOkkur/umOkkur.html' class='umOkkur'>Um okkur</a>
             <a href='/tar.is/website/hafaSamband/hafaSamband.html' class='hafaSamband'>Hafa samband</a>
         </div>
     `
